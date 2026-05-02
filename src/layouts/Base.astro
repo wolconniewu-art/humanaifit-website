@@ -1,0 +1,120 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  path?: string;
+}
+
+const { title, description, lang = 'zh-CN', path = '/' } = Astro.props;
+const isCn = lang.startsWith('zh');
+const alternateLang = isCn ? 'en' : 'zh-cn';
+const alternatePath = path === '/' 
+  ? (isCn ? '/en/' : '/') 
+  : (isCn ? `/en${path}` : path.replace('/en', ''));
+const canonicalBase = 'https://humanaifit.com';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | humanaifit</title>
+  <meta name="description" content={description} />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={`${canonicalBase}${path}`} />
+
+  <!-- Alternate hreflang -->
+  <link rel="alternate" href={`${canonicalBase}${isCn ? '/' : '/en/'}`} hreflang="zh-CN" />
+  <link rel="alternate" href={`${canonicalBase}${isCn ? '/en/' : '/'}`} hreflang="en" />
+  <link rel="alternate" href={`${canonicalBase}/`} hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={`${title} | humanaifit`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`${canonicalBase}${path}`} />
+  <meta property="og:locale" content={isCn ? 'zh_CN' : 'en_US'} />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/global.css" />
+
+  <!-- Scripts -->
+  <script>
+    // Simple language persistence
+    document.addEventListener('DOMContentLoaded', () => {
+      const langSwitch = document.querySelector('.lang-switch');
+      if (langSwitch) {
+        langSwitch.addEventListener('click', () => {
+          window.location.href = '{alternatePath}';
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href={isCn ? '/' : '/en/'} class="nav-logo">
+        <svg width="80" height="22" viewBox="0 0 80 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="14" font-family="Inter" font-size="12" font-weight="300" fill="#0F2B46">&lt;/</text>
+          <text x="18" y="14" font-family="Inter" font-size="12" font-weight="800" fill="#C9A96E">AI</text>
+          <text x="34" y="14" font-family="Inter" font-size="11" font-weight="600" fill="#0F2B46" letter-spacing="-0.3">human</text>
+          <text x="68" y="14" font-family="Inter" font-size="11" font-weight="800" fill="#C9A96E" letter-spacing="-0.3">ai</text>
+          <text x="84" y="14" font-family="Inter" font-size="11" font-weight="300" fill="#0F2B46" letter-spacing="-0.3">fit</text>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href={isCn ? '/' : '/en/'}>{isCn ? '首页' : 'Home'}</a></li>
+        <li><a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '服务' : 'Services'}</a></li>
+        <li><a href={isCn ? '/about/' : '/en/about/'}>{isCn ? '关于' : 'About'}</a></li>
+        <li><a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '洞察' : 'Insights'}</a></li>
+        <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
+        <li><span class="lang-switch">{isCn ? 'EN' : '中文'}</span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main style="padding-top:64px;">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="company">human<span style="color:#C9A96E;font-weight:800;">AI</span>fit</div>
+          <div>{isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'}</div>
+          <div style="margin-top:var(--spacing-lg);font-size:12px;">
+            {isCn
+              ? '组织及个人真正的竞争力不来自AI本身，而来自人类智能与人工智能的协同增长。'
+              : 'True competitiveness does not come from AI alone, but from the synergy between human intelligence and artificial intelligence.'}
+          </div>
+        </div>
+        <div>
+          <h4>{isCn ? '服务' : 'Services'}</h4>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '人机协同咨询' : 'Human-AI Fit Consulting'}</a>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? 'CBAM碳合规' : 'CBAM Carbon Compliance'}</a>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '全球化战略' : 'Globalization Strategy'}</a>
+        </div>
+        <div>
+          <h4>{isCn ? '联系' : 'Contact'}</h4>
+          <a href={isCn ? '/contact/' : '/en/contact/'}>{isCn ? '合作咨询' : 'Get in Touch'}</a>
+          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '行业洞察' : 'Insights'}</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; {new Date().getFullYear()} {isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'} — {isCn ? 'All rights reserved.' : 'All rights reserved.'}
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
