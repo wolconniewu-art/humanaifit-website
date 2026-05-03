@@ -47,12 +47,24 @@ const canonicalBase = 'https://humanaifit.com';
 
   <!-- Scripts -->
   <script>
-    // Simple language persistence
+    // Language switch — determine target path from current URL
     document.addEventListener('DOMContentLoaded', () => {
       const langSwitch = document.querySelector('.lang-switch');
       if (langSwitch) {
         langSwitch.addEventListener('click', () => {
-          window.location.href = '{alternatePath}';
+          const isCn = document.documentElement.lang === 'zh-CN';
+          const path = window.location.pathname;
+          let target;
+          if (isCn) {
+            if (path === '/' || path === '') {
+              target = '/en/';
+            } else {
+              target = '/en' + path;
+            }
+          } else {
+            target = path.replace('/en', '') || '/';
+          }
+          window.location.href = target;
         });
       }
     });
