@@ -147,6 +147,28 @@ a:hover {
   color: white;
 }
 
+.btn-cbam {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid #10B981;
+  border-radius: 20px;
+  background: rgba(16, 185, 129, 0.05);
+  color: #059669;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.btn-cbam:hover {
+  background: #10B981;
+  color: white;
+}
+
 /* --- Section --- */
 .section {
   padding: var(--spacing-4xl) 0;
