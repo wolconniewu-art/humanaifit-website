@@ -1,0 +1,70 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Article from '../../../layouts/Article.astro';
+const tags = ["Policy", "Globalization", "EV", "EU", "CBAM"];
+const articleDate = '2026-05-04';
+---
+
+<Article
+  title="EU's EV, Battery & CBAM Policy Framework: Regulation as Competitive Strategy"
+  description="EU EV battery and CBAM policy timeline from 2009 to 2026"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Policy Analysis · 2026-05-04</p>
+      <h1 style="font-size:2rem;line-height:1.35;">EU's EV, Battery & CBAM Policy Framework: Regulation as Competitive Strategy</h1>
+      <div class="article-meta">
+        <span>2026-05-04</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>Why the EU's Policy Approach Differs Fundamentally</h2>
+
+<p>Unlike China's supply-side industrial subsidies or the US's demand-side consumer incentives, the European Union's approach to electric mobility and climate policy is built on a regulatory-first philosophy. The EU uses standards, carbon pricing, and compliance mechanisms to drive industrial transformation — a strategy that creates different winners, different costs, and different compliance burdens.</p>
+
+<p>Our team has compiled <strong>42 major EU policies</strong> spanning 2009 to 2026 across five phases.</p>
+
+<h2>The Five Phases of EU EV & Climate Policy</h2>
+
+<h3>Phase 1: Carbon Ambition Framework (2009–2014)</h3>
+<p>The EU's EV journey is inseparable from its climate ambition. The 2009 Renewable Energy Directive (RED) and the 2014 effort-sharing regulation set the foundational targets. Phase 1 was about building the regulatory architecture rather than directly promoting EVs — a strategic choice that would define the EU's approach for the next decade.</p>
+
+<h3>Phase 2: CO₂ Standards and the Dieselgate Acceleration (2015–2019)</h3>
+<p>The 2015 Paris Agreement elevated EU climate targets. 2019's CO₂ standards for cars and vans set fleet-average targets that made electrification inevitable for automakers. The 2015 "Dieselgate" scandal accelerated the shift away from diesel technology, creating an unexpected policy window for EV adoption.</p>
+
+<h3>Phase 3: Fit for 55 and the Green Deal (2020–2022)</h3>
+<p>The European Green Deal (2020) and "Fit for 55" package (2021) marked a quantum leap in ambition: 55% CO₂ reduction by 2030, effective ICE ban by 2035. The Battery Regulation (proposed 2020, enacted 2023) created the world's first comprehensive battery sustainability framework — covering carbon footprint, recycling content, due diligence, and labeling.</p>
+
+<h3>Phase 4: CBAM, Battery Sovereignty and Tariff Responses (2023–2025)</h3>
+<p>Three transformative policies took shape simultaneously:
+<ul>
+  <li><strong>CBAM (Carbon Border Adjustment Mechanism)</strong>: Entered transitional phase in October 2023, full implementation from 2026. For the first time, imported goods face carbon costs equal to domestic producers.</li>
+  <li><strong>Battery Regulation</strong>: Full enforcement began with carbon footprint declarations for EV batteries from February 2025.</li>
+  <li><strong>Anti-subsidy tariffs on Chinese EVs</strong>: Countervailing duties of 17–36% imposed from October 2025.</li>
+</ul>
+
+<h3>Phase 5: Implementation and Consolidation (2026–)</h3>
+<p>2026 is the year of reckoning. CBAM enters full force. Battery Regulation's second-phase carbon limits take effect. The EU faces a trilemma: maintaining regulatory leadership, preventing industrial hollowing-out, and managing trade tensions with both China and the US.</p>
+
+<h2>Download the Full Table</h2>
+<p>Our complete EU EV, Battery & CBAM policy table (42 entries, Chinese and English versions):</p>
+<ul>
+  <li><a href="/files/EU_NEV_policy_table_CN.docx">EU Policy Table — 中文版 (DOCX)</a></li>
+  <li><a href="/files/EU_NEV_policy_table_EN.docx">EU Policy Table — English (DOCX)</a></li>
+</ul>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>Sources:</strong><br />
+European Commission, European Parliament, EU Council — official regulations and directives<br />
+CEN/CENELEC standards, T&E (Transport & Environment) analysis</p>
+<hr />
+
+  </div>
+</Article>

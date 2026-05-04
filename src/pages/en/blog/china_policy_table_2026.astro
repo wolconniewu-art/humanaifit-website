@@ -1,0 +1,69 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Article from '../../../layouts/Article.astro';
+const tags = ["Policy", "Globalization", "EV", "China"];
+const articleDate = '2026-05-04';
+---
+
+<Article
+  title="China's EV & ICV Policy Landscape: A 40-Year Arc from Strategic Foresight to Global Leadership"
+  description="China EV ICV policy timeline from 1986 to 2026"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Policy Analysis · 2026-05-04</p>
+      <h1 style="font-size:2rem;line-height:1.35;">China's EV & ICV Policy Landscape: A 40-Year Arc from Strategic Foresight to Global Leadership</h1>
+      <div class="article-meta">
+        <span>2026-05-04</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>From Spark to Torch: Why Policy Shaped China's EV Dominance</h2>
+
+<p>China's electric vehicle (NEV) and intelligent connected vehicle (ICV) policy system is arguably the most comprehensive industrial policy framework in the world. Spanning from 1986 to April 2026, this 40-year policy arc reveals a deliberate, phased strategy that transformed China from a technology follower into the world's largest EV market and supply chain powerhouse.</p>
+
+<p>Our research team has compiled a detailed policy table tracing 70 major policies across six distinct phases:</p>
+
+<h2>The Six Phases of China's EV Policy Evolution</h2>
+
+<h3>Phase 1: Strategic Incubation (1986–2008)</h3>
+<p>China's EV journey started not with cars, but with basic research. The 1986 "863 Plan" (National High-Tech R&D Program) quietly planted the seed. By 2001, EV technology was formally designated a national priority in the 10th Five-Year Plan. The 2008 Beijing Olympics served as the first large-scale demonstration of electric vehicles, signaling the end of the incubation period.</p>
+
+<h3>Phase 2: The "Ten Cities, Thousand Vehicles" Era (2009–2014)</h3>
+<p>In 2009, China launched the landmark "Ten Cities, Thousand Vehicles" program — a pilot subsidy scheme that would become the template for global EV adoption incentives. This phase also saw the birth of the "New Energy Vehicle" (NEV) definition, differentiated subsidies by powertrain type, and the first major charging infrastructure standards.</p>
+
+<h3>Phase 3: Volume Scaling and Supply Chain Buildout (2015–2019)</h3>
+<p>China became the world's largest EV market in 2015. The 2015 "Made in China 2025" strategy elevated NEVs to a national strategic industry. The "dual-credit" policy (NEV + CAFC credits) was introduced in 2017, forcing traditional automakers to pivot toward electrification. Battery supply chain policies laid the groundwork for China's dominant position in battery manufacturing.</p>
+
+<h3>Phase 4: Subsidy Phase-Out and Market Maturation (2020–2022)</h3>
+<p>Starting in 2020, China began a carefully calibrated phase-down of purchase subsidies — a sign that the industry was deemed ready to compete on its own. Despite COVID disruptions, NEV sales surged. The "New Infrastructure" push accelerated charging network buildout. ICV policies gained prominence with 5G-V2X standards and testing regulations.</p>
+
+<h3>Phase 5: Global Expansion and ICV Acceleration (2023–2025)</h3>
+<p>China lifted NEV foreign ownership caps (allowing Tesla-style full foreign ownership). Exports exploded — China became the largest auto exporter in 2024. ICV regulation matured with Level 3 and Level 4 autonomous driving guidelines. The EU's countervailing duty investigation (2024–2025) marked the beginning of trade friction over China's EV industrial policy.</p>
+
+<h3>Phase 6: Trade Friction and Dual Circulation (2026–)</h3>
+<p>The current phase is defined by managing external trade pressures while maintaining domestic momentum. Policies focus on: defending export competitiveness amid EU/US tariffs, accelerating ICV adoption, and building a "dual circulation" strategy where domestic consumption and global expansion reinforce each other.</p>
+
+<h2>Download the Full Table</h2>
+<p>Our complete China EV & ICV policy table (70 entries, Chinese and English versions) is available for download:</p>
+<ul>
+  <li><a href="/files/China_NEV_policy_table_CN.docx">China Policy Table — 中文版 (DOCX)</a></li>
+  <li><a href="/files/China_NEV_policy_table_EN.docx">China Policy Table — English (DOCX)</a></li>
+</ul>
+<p>Or visit our <a href="/policy-tables/">Policy Tables page</a> for all six tables (China, EU, US × CN/EN).</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>Sources:</strong><br />
+China State Council, MIIT, MOST, NDRC — official policy documents 1986–2026<br />
+China EV100 Forum, CAAM, CATARC industry data</p>
+<hr />
+
+  </div>
+</Article>

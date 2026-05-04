@@ -1,0 +1,76 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Article from '../../../layouts/Article.astro';
+const tags = ["Policy", "Globalization", "EV", "US", "IRA"];
+const articleDate = '2026-05-04';
+---
+
+<Article
+  title="US EV Policy: Boom, Bust, and the IRA's Unfinished Revolution"
+  description="US EV policy timeline from 2009 to 2026 including IRA CHIPS BIL"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Policy Analysis · 2026-05-04</p>
+      <h1 style="font-size:2rem;line-height:1.35;">US EV Policy: Boom, Bust, and the IRA's Unfinished Revolution</h1>
+      <div class="article-meta">
+        <span>2026-05-04</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>The Most Volatile EV Policy Landscape</h2>
+
+<p>Of the three major EV policy systems (China, EU, US), the United States stands apart for its volatility. The US has experienced the most dramatic policy reversals — from the 2009 ARRA stimulus that launched the modern EV era, to the 2017–2020 rollback under Trump, to the historic 2022 Inflation Reduction Act (IRA), and now the 2025–2026 phase of IRA clawback and tariff escalation under the second Trump administration.</p>
+
+<p>Our policy table documents <strong>61 major US policies</strong> from 2009 to mid-2026, organized across four distinct phases.</p>
+
+<h2>The Four Phases of US EV Policy</h2>
+
+<h3>Phase 1: Federal Launch and the California Effect (2009–2016)</h3>
+<p>The American Recovery and Reinvestment Act (ARRA, 2009) poured billions into EV manufacturing grants, battery R&D, and consumer tax credits ($7,500 federal credit). California's Advanced Clean Cars program and ZEV mandate (adopted by 10+ states) created a parallel regulatory track that would eventually drive national standards.</p>
+
+<p>Key achievements: Tesla's emergence, Nissan Leaf introduction, the first major DC fast-charging deployments, and establishment of the US Advanced Battery Consortium (USABC). The DOE's EV Everywhere Grand Challenge (2012) set ambitious cost targets ($30/kWh for batteries by 2020 — a target that wouldn't be met until 2024).</p>
+
+<h3>Phase 2: Federal Rollback and State Momentum (2017–2020)</h3>
+<p>The first Trump administration rolled back Obama-era fuel economy standards, froze the ZEV mandate expansion, and weakened EPA enforcement. Yet state-level policy (led by California and New York) maintained momentum. The "California waiver" became a legal battlefield. Despite federal retreat, EV sales grew steadily, driven by Tesla's Model 3 and improving battery economics.</p>
+
+<h3>Phase 3: The Inflation Reduction Act — America's Climate Moment (2021–2024)</h3>
+<p>The IRA (August 2022) was the single most consequential climate legislation in US history: $369 billion in clean energy and climate provisions. For EVs, it transformed the consumer credit into a point-of-sale rebate, added critical mineral and battery component sourcing requirements (the "foreign entity of concern" rule — effectively excluding China-sourced content), and introduced used EV credits.</p>
+
+<p>The Bipartisan Infrastructure Law (BIL, 2021) added $7.5 billion for a national EV charging network, alongside the CHIPS Act ($52 billion for domestic semiconductor manufacturing). By 2024, US EV sales exceeded 9% of new vehicle sales (from ~2% in 2020). But the IRA's "friendshoring" requirements began constraining the battery supply chain.</p>
+
+<h3>Phase 4: IRA Under Threat, Tariff Escalation (2025–2026)</h3>
+<p>The second Trump administration took office in January 2025. Key changes:
+<ul>
+  <li>IRA tax credits for EVs faced funding cuts and regulatory rollback (the OBBB — One Big Beautiful Bill — terminated or reduced several IRA provisions)</li>
+  <li>100% tariff on Chinese EVs maintained and expanded</li>
+  <li>Executive orders targeting the EPA's tailpipe emissions rules</li>
+  <li>The EV tax credit's "leased vehicle loophole" (which allowed Chinese-content EVs to qualify via leasing programs) came under scrutiny</li>
+</ul>
+
+<p>As of mid-2026, the US EV policy landscape remains deeply uncertain. The IRA's core structure survives but with diminished scope. The long-term question is whether state-level policy and market economics can sustain EV adoption if federal support continues to erode.</p>
+
+<h2>Download the Full Table</h2>
+<p>Our complete US EV policy table (61 entries, Chinese and English versions) including IRA, BIL, CHIPS, and Trump-era reversals:</p>
+<ul>
+  <li><a href="/files/US_NEV_policy_table_CN.docx">US Policy Table — 中文版 (DOCX)</a></li>
+  <li><a href="/files/US_NEV_policy_table_EN.docx">US Policy Table — English (DOCX)</a></li>
+</ul>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>Sources:</strong><br />
+US Congress — IRA, BIL, CHIPS Acts (official legislation)<br />
+DOE, EPA, DOT — federal agency regulations and guidance<br />
+California Air Resources Board (CARB) — ZEV regulations<br />
+Alliance for Automotive Innovation — industry data</p>
+<hr />
+
+  </div>
+</Article>
