@@ -8,36 +8,40 @@ import Base from '../layouts/Base.astro';
   lang="zh-CN"
   path="/"
 >
-  <!-- Hero (redesigned) -->
+  <!-- Hero (v2: 方案B配色 + 无CBAM按钮) -->
   <section class="section" style="padding-top:120px;padding-bottom:100px;position:relative;overflow:hidden;background:linear-gradient(160deg, #f5f7fa 0%, #ffffff 40%, #eef1f5 100%);">
     
     <!-- Background glow effects -->
-    <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);pointer-events:none;"></div>
-    <div style="position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle, rgba(15,43,70,0.06) 0%, transparent 70%);pointer-events:none;"></div>
-    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle, rgba(201,169,110,0.04) 0%, transparent 60%);pointer-events:none;"></div>
+    <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle, rgba(59,130,246,0.10) 0%, transparent 70%);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 60%);pointer-events:none;"></div>
     
     <!-- Subtle grid pattern -->
     <div style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.03;background-image:radial-gradient(circle, #0F2B46 1px, transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
 
     <div class="container text-center" style="position:relative;z-index:1;">
       <div class="fade-in" style="margin-bottom:var(--spacing-lg);">
-        <!-- Logo redesigned: HTML+CSS instead of SVG text -->
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:var(--spacing-md);">
+        <!-- Logo: 深海蓝 + 琥珀金 + 电光蓝点缀 -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:var(--spacing-md);">
           <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="hbignav" x1="0" y1="0" x2="0" y2="56">
+              <linearGradient id="hlogo" x1="0" y1="0" x2="56" y2="56">
                 <stop offset="0%" stop-color="#0F2B46"/>
                 <stop offset="100%" stop-color="#1A3F64"/>
               </linearGradient>
+              <linearGradient id="hlogoAccent" x1="0" y1="0" x2="56" y2="56">
+                <stop offset="0%" stop-color="#3B82F6"/>
+                <stop offset="100%" stop-color="#06B6D4"/>
+              </linearGradient>
             </defs>
-            <rect width="56" height="56" rx="14" fill="url(#hbignav)"/>
+            <rect width="56" height="56" rx="14" fill="url(#hlogo)"/>
             <text x="28" y="37" text-anchor="middle" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="white">H</text>
           </svg>
           <span style="font-size:34px;font-weight:400;color:#0F2B46;letter-spacing:-0.5px;">human</span>
           <span style="font-size:40px;font-weight:900;background:linear-gradient(135deg,#C9A96E,#DFC88A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</span>
           <span style="font-size:28px;font-weight:300;color:#8A8A8A;">fit</span>
         </div>
-      <p class="section-label" style="color:var(--color-accent);font-weight:600;">彼恳企业管理咨询</p>
+      <p class="section-label" style="color:#3B82F6;font-weight:600;">彼恳企业管理咨询</p>
       <h1 style="max-width:700px;margin:0 auto var(--spacing-md);font-size:2.6rem;color:var(--color-primary);">
         你的AI用了，<br>
         但<span style="background:linear-gradient(135deg,#C9A96E,#B8944C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">竞争力增长</span>了吗？
@@ -47,23 +51,22 @@ import Base from '../layouts/Base.astro';
         帮助组织和个人从"会用AI"走向"因AI而真正更强的状态"。
       </p>
       <div style="display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;">
-        <a href="https://cbam.humanaifit.com" class="btn btn-primary" style="background:#10B981;padding:14px 36px;font-size:16px;border-radius:10px;box-shadow:0 4px 14px rgba(16,185,129,0.25);" target="_blank">🌿 免费试用CBAM助手 →</a>
-        <a href="/contact/" class="btn btn-outline" style="border-width:2px;padding:14px 36px;font-size:16px;border-radius:10px;">预约免费诊断</a>
+        <a href="https://cbam.humanaifit.com" class="btn btn-primary" style="background:#10B981;padding:14px 36px;font-size:16px;border-radius:10px;box-shadow:0 4px 14px rgba(16,185,129,0.25);" target="_blank">🌿 CBAM碳合规自检 →</a>
       </div>
 
-      <!-- Hero Dynamic Element: Typewriter subtitle + Data anchor trust bar -->
+      <!-- Hero Dynamic Element: Typewriter (蓝青色光标) + Data anchor trust bar -->
       <div style="margin-top:var(--spacing-2xl);">
-        <p style="font-size:15px;color:var(--color-text-muted);font-weight:500;margin-bottom:var(--spacing-md);">
-          <span id="typewriter" style="color:var(--color-accent);font-weight:600;"></span>
+        <p style="font-size:16px;color:var(--color-text-secondary);font-weight:500;margin-bottom:var(--spacing-md);">
+          <span id="typewriter" style="color:#3B82F6;font-weight:600;"></span>
         </p>
         <div style="display:flex;gap:var(--spacing-lg);justify-content:center;flex-wrap:wrap;">
           <div class="data-anchor-item">
-            <div class="data-anchor-number">17</div>
+            <div class="data-anchor-number">24</div>
             <div class="data-anchor-label">篇行业洞察</div>
           </div>
           <div class="data-anchor-item">
-            <div class="data-anchor-number">🌿</div>
-            <div class="data-anchor-label">CBAM自检已上线</div>
+            <div class="data-anchor-number">173</div>
+            <div class="data-anchor-label">条政策记录</div>
           </div>
           <div class="data-anchor-item">
             <div class="data-anchor-number">3</div>
@@ -105,18 +108,18 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <!-- CBAM CTA -->
-  <section style="padding:var(--spacing-3xl) 0;background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+  <!-- Policy Tables Highlight -->
+  <section style="padding:var(--spacing-3xl) 0;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);">
     <div class="container text-center">
-      <p class="section-label" style="color:#059669;">免费工具 · 即开即用</p>
-      <h2 style="color:#065f46;">CBAM碳合规自检助手</h2>
-      <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);font-size:15px;color:#047857;">
-        30秒判断产品是否受欧盟碳关税（CBAM）影响。<br>
-        无需注册，打开即用。
+      <p class="section-label" style="color:#3B82F6;">研究产出 · 开放下载</p>
+      <h2 style="color:#1E3A5F;">中美欧电动车 & 电池政策全景</h2>
+      <p style="max-width:550px;margin:var(--spacing-md) auto var(--spacing-xl);font-size:15px;color:#1E40AF;">
+        173条政策，覆盖1986-2026四十年的产业政策演变。<br>
+        中英双语，六张表格，免费下载。
       </p>
       <div style="display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;">
-        <a href="https://cbam.humanaifit.com" class="btn btn-primary" style="background:#059669;" target="_blank">🌿 开始自检 →</a>
-        <a href="/services/" class="btn btn-outline" style="border-color:#059669;color:#065f46;">了解更多</a>
+        <a href="/policy-tables/" class="btn btn-primary" style="background:#3B82F6;box-shadow:0 4px 14px rgba(59,130,246,0.25);" target="_blank">📊 查看政策表 →</a>
+        <a href="/services/" class="btn btn-outline" style="border-color:#3B82F6;color:#1E3A5F;">了解更多服务</a>
       </div>
     </div>
   </section>
@@ -174,14 +177,14 @@ import Base from '../layouts/Base.astro';
       <a href="/contact/" class="btn btn-primary">立即预约 →</a>
     </div>
   </section>
-  <!-- Typewriter animation script -->
+  <!-- Typewriter animation script (v2: 蓝青色光标 + 优化文案) -->
   <script is:inline>
     document.addEventListener("DOMContentLoaded", function() {
       var phrases = [
         "你的组织AI成熟度在哪个阶段？",
-        "最受关注的CBAM碳合规问题，30秒找到答案",
-        "中美欧三国EV/电池政策对比来了",
-        "人机契合，从会用AI到因AI而更强"
+        "中美欧173条EV/电池政策最新对比",
+        "让AI投资真正产生竞争力增长",
+        "从"会用AI"到"因AI而更强""
       ];
       var el = document.getElementById("typewriter");
       if (!el) return;
@@ -193,7 +196,7 @@ import Base from '../layouts/Base.astro';
         } else {
           current = full.substring(0, charIdx++);
         }
-        el.textContent = current + "▌";
+        el.innerHTML = current + '<span style="color:#06B6D4;">▌</span>';
         if (!isDeleting && charIdx === full.length + 1) {
           isDeleting = true;
           setTimeout(type, 2000);
