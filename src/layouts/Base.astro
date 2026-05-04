@@ -56,7 +56,10 @@ const canonicalBase = 'https://humanaifit.com';
           const path = window.location.pathname;
           let target;
           if (isCn) {
-            if (path === '/' || path === '') {
+            // On blog article pages, go to /en/blog/ instead of non-existent /en/blog/...
+            if (path.startsWith('/blog/') && path !== '/blog/') {
+              target = '/en/blog/';
+            } else if (path === '/' || path === '') {
               target = '/en/';
             } else {
               target = '/en' + path;
@@ -75,20 +78,22 @@ const canonicalBase = 'https://humanaifit.com';
   <header class="header">
     <nav class="nav">
       <a href={isCn ? '/' : '/en/'} class="nav-logo">
-        <svg width="80" height="22" viewBox="0 0 80 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="14" font-family="Inter" font-size="12" font-weight="300" fill="#0F2B46">&lt;/</text>
-          <text x="18" y="14" font-family="Inter" font-size="12" font-weight="800" fill="#C9A96E">AI</text>
-          <text x="34" y="14" font-family="Inter" font-size="11" font-weight="600" fill="#0F2B46" letter-spacing="-0.3">human</text>
-          <text x="68" y="14" font-family="Inter" font-size="11" font-weight="800" fill="#C9A96E" letter-spacing="-0.3">ai</text>
-          <text x="84" y="14" font-family="Inter" font-size="11" font-weight="300" fill="#0F2B46" letter-spacing="-0.3">fit</text>
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <rect width="34" height="34" rx="8" fill="url(#logog1)" style="background:#0F2B46;"/>
+          <text x="17" y="23" text-anchor="middle" font-family="Inter" font-size="18" font-weight="800" fill="white">H</text>
         </svg>
+        <span class="logo-text">
+          <span style="font-weight:400;color:#0F2B46;">human</span>
+          <span style="font-weight:800;color:#C9A96E;">AI</span>
+          <span style="font-weight:300;color:#8A8A8A;">fit</span>
+        </span>
       </a>
       <ul class="nav-links">
-        <li><a href={isCn ? '/' : '/en/'}>{isCn ? '首页' : 'Home'}</a></li>
-        <li><a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '服务' : 'Services'}</a></li>
-        <li><a href={isCn ? '/about/' : '/en/about/'}>{isCn ? '关于' : 'About'}</a></li>
-        <li><a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '洞察' : 'Insights'}</a></li>
-        <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank" style="padding:8px 16px;font-size:12px;">🌿 {isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
+        <li><a href={isCn ? '/' : '/en/'} class="nav-home">{isCn ? '首页' : 'Home'}</a></li>
+        <li><a href={isCn ? '/services/' : '/en/services/'} class="nav-services">{isCn ? '服务' : 'Services'}</a></li>
+        <li><a href={isCn ? '/about/' : '/en/about/'} class="nav-about">{isCn ? '关于' : 'About'}</a></li>
+        <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '洞察' : 'Insights'}</a></li>
+        <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
         <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
         <li><span class="lang-switch">{isCn ? 'EN' : '中文'}</span></li>
       </ul>

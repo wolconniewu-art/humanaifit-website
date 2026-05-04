@@ -1,5 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const articles = [
+  { date: "2026-05-03", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同（中英双语）", tags: "公司动态, 人机契合" },
+  { date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM碳关税正式生效——中国出口企业绕不开的一课", tags: "全球化, 经济" },
+  { date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026报告：企业的AI部署正在加速，但治理在\"掉队\"", tags: "人机契合, 前沿科技" },
+  { date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI指数：中美AI差距真的在缩小吗？", tags: "全球化, 人机契合" },
+  { date: "2026-05-03", slug: "AI_knowledge_management_2026", title: "AI知识管理2026：当知识库变成AI的\"上下文\"", tags: "知识管理, 人机契合" },
+  { date: "2026-05-03", slug: "humanoid_robot_half_marathon", title: "人形机器人跑赢人类半马——这意味着什么？", tags: "前沿科技" },
+  { date: "2026-05-03", slug: "MERICS_China_humanoid_path", title: "两种路径，一个目标——MERICS报告解读中美机器人产业路线", tags: "全球化, 前沿科技" },
+  { date: "2026-05-03", slug: "humanoid_supply_chain_China", title: "人形机器人供应链：中国的\"十亿美元级\"机遇与瓶颈", tags: "前沿科技, 全球化" },
+  { date: "2026-05-03", slug: "human_AI_workforce_China", title: "\"人机劳动力\"崛起——中国如何在全球AI劳动力转型中定位自己", tags: "人机契合, 全球化" },
+  { date: "2026-05-03", slug: "Australia_AI_moment_China", title: "澳大利亚的\"AI时刻\"：中国在亚太算力竞赛中的站位", tags: "全球化, 前沿科技" },
+  { date: "2026-05-03", slug: "GEI_China_opportunities", title: "全球经济的\"阴云\"与中国的\"亮光\"——解读McKinsey 2026年3月全球经济情报", tags: "经济, 全球化" },
+  { date: "2026-05-02", slug: "global_localization", title: "从Mixue到NIO：中国品牌全球化的\"本地化悖论\"", tags: "全球化, 商业" },
+  { date: "2026-05-02", slug: "digital_leadership", title: "当AI能替代70%的管理工作，领导者的价值在哪里？", tags: "人机契合, 商业" },
+  { date: "2026-05-02", slug: "AI_productivity_paradox", title: "当投入AI\"看不到效果\"——对生产力悖论的深度分析", tags: "人机契合, 知识管理" },
+  { date: "2026-05-02", slug: "HBR_augmentation_vs_automation", title: "AI增强 vs 自动化：为什么选择\"人机协同\"的公司长期胜出", tags: "人机契合, AI效率" },
+  { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "当自动化偏见遇上算法厌恶：行为经济学视角下的人机协同", tags: "人机契合, 前沿科技" },
+  { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "让人机关系\"对\"——Deloitte 2026报告的深度解读", tags: "人机契合, 知识管理" },
+];
+
+const tagGroups = ["全部", "公司动态", "人机契合", "全球化", "前沿科技", "商业", "经济", "知识管理", "AI效率"];
+const months = articles.reduce((acc, a) => {
+  const m = a.date.substring(0, 7);
+  if (!acc[m]) acc[m] = [];
+  acc[m].push(a);
+  return acc;
+}, {});
 ---
 
 <Base
@@ -8,24 +36,63 @@ import Base from '../layouts/Base.astro';
   lang="zh-CN"
   path="/blog/"
 >
-  <section class="section" style="padding-top:100px;">
-    <div class="container text-center">
-      <p class="section-label">行业洞察</p>
+  <section class="section" style="padding-top:120px;padding-bottom:60px;background:linear-gradient(160deg, #f5f7fa 0%, #ffffff 50%, #eef1f5 100%);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-60px;right:-60px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+    <div class="container text-center" style="position:relative;z-index:1;">
+      <p class="section-label" style="color:var(--color-accent);font-weight:600;">行业洞察</p>
       <h1>前沿思考</h1>
-      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);">
-        关于人机契合、碳合规、全球化与知识管理的深度文章，即将上线。
+      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);font-size:16px;">
+        关于人机契合、碳合规、全球化与知识管理的深度分析。
       </p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
-    <div class="container text-center" style="padding:var(--spacing-3xl) 0;">
-      <div style="font-size:48px;margin-bottom:var(--spacing-lg);">📝</div>
-      <h3>内容筹备中</h3>
-      <p style="color:var(--color-text-secondary);max-width:400px;margin:var(--spacing-md) auto;">
-        我们的研究团队正在撰写一系列深度文章，涵盖人机协同、CBAM合规、企业全球化等方向。
-      </p>
-      <p style="color:var(--color-text-muted);font-size:13px;">敬请期待</p>
+  <!-- Tag filter -->
+  <section style="padding:24px 0;border-bottom:1px solid var(--color-border);">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      {tagGroups.map(tag => (
+        <span class="tag-filter {tag === '全部' ? 'tag-active' : ''}" data-tag={tag === '全部' ? 'all' : tag}
+          onclick="filterArticles(this)">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Articles grouped by month -->
+  <section class="section">
+    <div class="container" id="article-list">
+      {Object.entries(months).sort(([a],[b]) => b.localeCompare(a)).map(([month, items]) => (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-text-muted);margin-bottom:24px;font-weight:500;">
+            {month === "2026-05" ? "2026年5月" : month}
+          </h3>
+          <div style="display:grid;gap:20px;">
+            {items.map(item => (
+              <a href={`/blog/${item.slug}/`} class="article-card"
+                data-tags="{item.tags}"
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:var(--color-surface);
+                       border:1px solid var(--color-border);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span style="font-size:13px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;">
+                  {item.date.substring(5)}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -39,3 +106,49 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 </Base>
+
+<style is:global>
+  .article-card:hover {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 2px 12px rgba(201,169,110,0.12);
+    transform: translateY(-2px);
+  }
+  .tag-filter {
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s;
+    border:1.5px solid var(--color-border);
+    color:var(--color-text-secondary);
+    background:transparent;
+  }
+  .tag-filter:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent-dark) !important;
+  }
+  .tag-filter.tag-active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+</style>
+
+<script>
+  function filterArticles(el) {
+    // Update active state via class
+    document.querySelectorAll('.tag-filter').forEach(t => t.classList.remove('tag-active'));
+    el.classList.add('tag-active');
+    
+    const tag = el.dataset.tag;
+    document.querySelectorAll('.article-card').forEach(card => {
+      if (tag === 'all' || card.dataset.tags.includes(tag)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>

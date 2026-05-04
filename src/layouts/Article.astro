@@ -1,0 +1,241 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  date?: string;
+  tags?: string[];
+  lang?: string;
+}
+
+const { title, description, date = '', tags = [], lang = 'zh-CN' } = Astro.props;
+const isCn = lang.startsWith('zh');
+const path = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | humanaifit 洞察</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={`${title} | humanaifit 洞察`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content={`https://www.humanaifit.com${path}`} />
+  <link rel="canonical" href={`https://www.humanaifit.com${path}`} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <style>
+    .article-hero {
+      padding: 120px 0 40px;
+      background: linear-gradient(160deg, #f5f7fa 0%, #ffffff 50%, #eef1f5 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: var(--spacing-md);
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .article-meta .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(201,169,110,0.12);
+      color: var(--color-accent-dark);
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px var(--content-padding) 80px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--color-text);
+    }
+    .article-body h2 {
+      font-size: 1.5rem;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .article-body h3 {
+      font-size: 1.2rem;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    .article-body p {
+      margin-bottom: 16px;
+    }
+    .article-body blockquote {
+      margin: 24px 0;
+      padding: 16px 24px;
+      border-left: 4px solid var(--color-accent);
+      background: rgba(201,169,110,0.06);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #555;
+    }
+    .article-body blockquote p { margin-bottom: 0; }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .article-body th, .article-body td {
+      padding: 10px 14px;
+      border: 1px solid var(--color-border);
+      text-align: left;
+    }
+    .article-body th {
+      background: var(--color-primary);
+      color: white;
+      font-weight: 600;
+    }
+    .article-body tr:nth-child(even) {
+      background: #f8f8f8;
+    }
+    .article-body hr {
+      margin: 40px 0;
+      border: none;
+      border-top: 1px solid var(--color-border);
+    }
+    .article-body .callout {
+      margin: 24px 0;
+      padding: 16px 20px;
+      background: rgba(15,43,70,0.04);
+      border-radius: 8px;
+      border-left: 4px solid var(--color-primary);
+    }
+    .article-body .callout strong {
+      color: var(--color-primary);
+    }
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+    .article-back:hover { color: var(--color-accent); }
+    .article-footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px var(--content-padding) 64px;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .article-hero { padding: 90px 0 24px; }
+      .article-body { font-size: 15px; padding: 24px var(--content-padding) 80px; }
+      .article-body h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <a href={isCn ? '/' : '/en/'} class="nav-logo">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <rect width="34" height="34" rx="8" fill="#0F2B46"/>
+          <text x="17" y="23" text-anchor="middle" font-family="Inter" font-size="18" font-weight="800" fill="white">H</text>
+        </svg>
+        <span class="logo-text">
+          <span style="font-weight:400;color:#0F2B46;">human</span>
+          <span style="font-weight:800;color:#C9A96E;">AI</span>
+          <span style="font-weight:300;color:#8A8A8A;">fit</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href={isCn ? '/' : '/en/'} class="nav-home">{isCn ? '首页' : 'Home'}</a></li>
+        <li><a href={isCn ? '/services/' : '/en/services/'} class="nav-services">{isCn ? '服务' : 'Services'}</a></li>
+        <li><a href={isCn ? '/about/' : '/en/about/'} class="nav-about">{isCn ? '关于' : 'About'}</a></li>
+        <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '洞察' : 'Insights'}</a></li>
+        <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
+        <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
+        <li><span class="lang-switch">{isCn ? 'EN' : '中文'}</span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main style="padding-top:0;">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="company">human<span style="color:#C9A96E;font-weight:800;">AI</span>fit</div>
+          <div>{isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'}</div>
+          <div style="margin-top:var(--spacing-lg);font-size:12px;">
+            {isCn
+              ? '组织及个人真正的竞争力不来自AI本身，而来自人类智能与人工智能的协同增长。'
+              : 'True competitiveness does not come from AI alone, but from the synergy between human intelligence and artificial intelligence.'}
+          </div>
+        </div>
+        <div>
+          <h4>{isCn ? '服务' : 'Services'}</h4>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '人机协同咨询' : 'Human-AI Fit Consulting'}</a>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? 'CBAM碳合规' : 'CBAM Carbon Compliance'}</a>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '全球化战略' : 'Globalization Strategy'}</a>
+        </div>
+        <div>
+          <h4>{isCn ? '联系' : 'Contact'}</h4>
+          <a href={isCn ? '/contact/' : '/en/contact/'}>{isCn ? '合作咨询' : 'Get in Touch'}</a>
+          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '行业洞察' : 'Insights'}</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; {new Date().getFullYear()} {isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'}
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const langSwitch = document.querySelector('.lang-switch');
+      if (langSwitch) {
+        langSwitch.addEventListener('click', () => {
+          const isCn = document.documentElement.lang === 'zh-CN';
+          const path = window.location.pathname;
+          let target;
+          if (isCn) {
+            // On blog article pages, go to /en/blog/ instead of non-existent /en/blog/...
+            if (path.startsWith('/blog/') && path !== '/blog/') {
+              target = '/en/blog/';
+            } else if (path === '/' || path === '') {
+              target = '/en/';
+            } else {
+              target = '/en' + path;
+            }
+          } else {
+            target = path.replace('/en', '') || '/';
+          }
+          window.location.href = target;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
