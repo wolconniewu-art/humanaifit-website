@@ -8,7 +8,7 @@ import Base from '../layouts/Base.astro';
   lang="zh-CN"
   path="/"
 >
-  <!-- Hero (v2: 方案B配色 + 无CBAM按钮) -->
+  <!-- Hero (v3: 方案B配色 + 大Logo + 无按钮/无数字) -->
   <section class="section" style="padding-top:120px;padding-bottom:100px;position:relative;overflow:hidden;background:linear-gradient(160deg, #f5f7fa 0%, #ffffff 40%, #eef1f5 100%);">
     
     <!-- Background glow effects -->
@@ -21,25 +21,27 @@ import Base from '../layouts/Base.astro';
 
     <div class="container text-center" style="position:relative;z-index:1;">
       <div class="fade-in" style="margin-bottom:var(--spacing-lg);">
-        <!-- Logo: 深海蓝 + 琥珀金 + 电光蓝点缀 -->
-        <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:var(--spacing-md);">
-          <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <!-- Logo: 加大 + 方案B配色（深海蓝+琥珀金+电光蓝） -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:var(--spacing-lg);">
+          <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="hlogo" x1="0" y1="0" x2="56" y2="56">
+              <linearGradient id="hlogo" x1="0" y1="0" x2="72" y2="72">
                 <stop offset="0%" stop-color="#0F2B46"/>
                 <stop offset="100%" stop-color="#1A3F64"/>
               </linearGradient>
-              <linearGradient id="hlogoAccent" x1="0" y1="0" x2="56" y2="56">
+              <linearGradient id="hlogoBg" x1="0" y1="0" x2="72" y2="72">
                 <stop offset="0%" stop-color="#3B82F6"/>
                 <stop offset="100%" stop-color="#06B6D4"/>
               </linearGradient>
             </defs>
-            <rect width="56" height="56" rx="14" fill="url(#hlogo)"/>
-            <text x="28" y="37" text-anchor="middle" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="white">H</text>
+            <rect width="72" height="72" rx="18" fill="url(#hlogo)"/>
+            <!-- 电光蓝装饰线 -->
+            <rect x="4" y="4" width="64" height="64" rx="14" fill="none" stroke="url(#hlogoBg)" stroke-width="2" opacity="0.4"/>
+            <text x="36" y="47" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="800" fill="white">H</text>
           </svg>
-          <span style="font-size:34px;font-weight:400;color:#0F2B46;letter-spacing:-0.5px;">human</span>
-          <span style="font-size:40px;font-weight:900;background:linear-gradient(135deg,#C9A96E,#DFC88A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</span>
-          <span style="font-size:28px;font-weight:300;color:#8A8A8A;">fit</span>
+          <span style="font-size:44px;font-weight:400;color:#0F2B46;letter-spacing:-0.5px;">human</span>
+          <span style="font-size:52px;font-weight:900;background:linear-gradient(135deg,#C9A96E,#DFC88A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</span>
+          <span style="font-size:36px;font-weight:300;color:#8A8A8A;">fit</span>
         </div>
       <p class="section-label" style="color:#3B82F6;font-weight:600;">彼恳企业管理咨询</p>
       <h1 style="max-width:700px;margin:0 auto var(--spacing-md);font-size:2.6rem;color:var(--color-primary);">
@@ -50,29 +52,12 @@ import Base from '../layouts/Base.astro';
         我们专注于<span style="font-weight:600;color:var(--color-primary);">人机契合（Human-AI Fit）</span>研究与实践——
         帮助组织和个人从"会用AI"走向"因AI而真正更强的状态"。
       </p>
-      <div style="display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;">
-        <a href="https://cbam.humanaifit.com" class="btn btn-primary" style="background:#10B981;padding:14px 36px;font-size:16px;border-radius:10px;box-shadow:0 4px 14px rgba(16,185,129,0.25);" target="_blank">🌿 CBAM碳合规自检 →</a>
-      </div>
 
-      <!-- Hero Dynamic Element: Typewriter (蓝青色光标) + Data anchor trust bar -->
-      <div style="margin-top:var(--spacing-2xl);">
-        <p style="font-size:16px;color:var(--color-text-secondary);font-weight:500;margin-bottom:var(--spacing-md);">
+      <!-- Hero Dynamic Element: 仅打字动画（无按钮，无数据统计）-->
+      <div style="margin-top:var(--spacing-lg);">
+        <p style="font-size:17px;color:var(--color-text-secondary);font-weight:500;">
           <span id="typewriter" style="color:#3B82F6;font-weight:600;"></span>
         </p>
-        <div style="display:flex;gap:var(--spacing-lg);justify-content:center;flex-wrap:wrap;">
-          <div class="data-anchor-item">
-            <div class="data-anchor-number">24</div>
-            <div class="data-anchor-label">篇行业洞察</div>
-          </div>
-          <div class="data-anchor-item">
-            <div class="data-anchor-number">173</div>
-            <div class="data-anchor-label">条政策记录</div>
-          </div>
-          <div class="data-anchor-item">
-            <div class="data-anchor-number">3</div>
-            <div class="data-anchor-label">国政策对比表</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
