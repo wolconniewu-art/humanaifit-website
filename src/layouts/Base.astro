@@ -71,11 +71,30 @@ const canonicalBase = 'https://humanaifit.com';
         });
       }
     });
+
+    // Active nav highlighting
+    document.addEventListener('DOMContentLoaded', () => {
+      var path = window.location.pathname;
+      var links = document.querySelectorAll('.nav-links a');
+      links.forEach(function(a) {
+        var href = a.getAttribute('href');
+        // Skip buttons and external links
+        if (a.classList.contains('btn') || a.classList.contains('btn-cbam') || a.classList.contains('lang-switch') || !href) return;
+        // Exact match or starts-with match for deeper pages
+        if (href === '/' && (path === '/' || path === '')) {
+          a.style.color = '#C9A96E';
+          a.style.fontWeight = '600';
+        } else if (href !== '/' && path.startsWith(href) && href.length > 1) {
+          a.style.color = '#C9A96E';
+          a.style.fontWeight = '600';
+        }
+      });
+    });
   </script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
+  <!-- Header (v2: 毛玻璃效果 + 当前页面高亮) -->
+  <header class="header" style="-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background:rgba(255,255,255,0.85);">
     <nav class="nav">
       <a href={isCn ? '/' : '/en/'} class="nav-logo">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
@@ -92,7 +111,7 @@ const canonicalBase = 'https://humanaifit.com';
         <li><a href={isCn ? '/' : '/en/'} class="nav-home">{isCn ? '首页' : 'Home'}</a></li>
         <li><a href={isCn ? '/services/' : '/en/services/'} class="nav-services">{isCn ? '服务' : 'Services'}</a></li>
         <li><a href={isCn ? '/about/' : '/en/about/'} class="nav-about">{isCn ? '关于' : 'About'}</a></li>
-        <li><a href={isCn ? '/policy-tables/' : '/en/policy-tables/'} class="nav-tables" style="color:var(--color-accent);">{isCn ? '政策表' : 'Policy Tables'}</a></li>
+        <li><a href={isCn ? '/policy-tables/' : '/en/policy-tables/'} class="nav-tables">{isCn ? '政策表' : 'Policy Tables'}</a></li>
         <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '洞察' : 'Insights'}</a></li>
         <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
         <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
@@ -108,17 +127,27 @@ const canonicalBase = 'https://humanaifit.com';
     <slot />
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (v2: 加大Logo + 订阅区 + 社交链接占位) -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="company">human<span style="color:#C9A96E;font-weight:800;">AI</span>fit</div>
-          <div>{isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'}</div>
-          <div style="margin-top:var(--spacing-lg);font-size:12px;">
+          <div class="company" style="font-size:28px;margin-bottom:12px;">
+            <span style="font-weight:400;color:var(--color-primary);">human</span>
+            <span style="color:#C9A96E;font-weight:800;">AI</span>
+            <span style="font-weight:300;color:var(--color-text-muted);">fit</span>
+          </div>
+          <div style="font-size:14px;color:var(--color-text-secondary);margin-bottom:8px;">{isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'}</div>
+          <div style="font-size:13px;color:var(--color-text-muted);line-height:1.7;max-width:280px;">
             {isCn
               ? '组织及个人真正的竞争力不来自AI本身，而来自人类智能与人工智能的协同增长。'
               : 'True competitiveness does not come from AI alone, but from the synergy between human intelligence and artificial intelligence.'}
+          </div>
+          <!-- Social links placeholder -->
+          <div style="margin-top:var(--spacing-md);display:flex;gap:12px;">
+            <span style="font-size:20px;color:var(--color-text-muted);cursor:default;" title="WeChat">💬</span>
+            <span style="font-size:20px;color:var(--color-text-muted);cursor:default;" title="LinkedIn">🔗</span>
+            <span style="font-size:20px;color:var(--color-text-muted);cursor:default;" title="Zhihu">📝</span>
           </div>
         </div>
         <div>
@@ -131,6 +160,17 @@ const canonicalBase = 'https://humanaifit.com';
           <h4>{isCn ? '联系' : 'Contact'}</h4>
           <a href={isCn ? '/contact/' : '/en/contact/'}>{isCn ? '合作咨询' : 'Get in Touch'}</a>
           <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '行业洞察' : 'Insights'}</a>
+        </div>
+        <!-- Newsletter subscribe section -->
+        <div>
+          <h4>{isCn ? '订阅更新' : 'Subscribe'}</h4>
+          <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-sm);">
+            {isCn ? '每周精选洞察，直接到你的邮箱。' : 'Weekly insights delivered to your inbox.'}
+          </p>
+          <form style="display:flex;gap:6px;" action="#" method="post" onsubmit="alert('订阅功能即将上线');return false;">
+            <input type="email" placeholder={isCn ? '输入邮箱' : 'your@email.com'} required style="flex:1;padding:8px 12px;border:1px solid var(--color-border);border-radius:6px;font-size:13px;background:var(--color-bg);" />
+            <button type="submit" style="padding:8px 16px;background:#3B82F6;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">{isCn ? '订阅' : '→'}</button>
+          </form>
         </div>
       </div>
       <div class="footer-bottom">

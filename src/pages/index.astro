@@ -162,39 +162,46 @@ import Base from '../layouts/Base.astro';
       <a href="/contact/" class="btn btn-primary">立即预约 →</a>
     </div>
   </section>
-  <!-- Typewriter animation script (v2: 蓝青色光标 + 优化文案) -->
+  <!-- Typewriter animation script (v3: 稳健初始化 + 青碧色光标) -->
   <script is:inline>
-    document.addEventListener("DOMContentLoaded", function() {
+    (function() {
       var phrases = [
-        "你的组织AI成熟度在哪个阶段？",
+        "你’的组织AI成熟度在哪个阶段？",
         "30秒判断产品是否受CBAM碳关税影响",
         "中美欧173条EV/电池政策最新对比",
-        "从"会用AI"到"因AI而更强""
+        "从“会用AI”到“因AI而更强”"
       ];
-      var el = document.getElementById("typewriter");
-      if (!el) return;
-      var idx = 0, charIdx = 0, isDeleting = false, current = "";
-      function type() {
-        var full = phrases[idx];
-        if (isDeleting) {
-          current = full.substring(0, charIdx--);
-        } else {
-          current = full.substring(0, charIdx++);
+      function init() {
+        var el = document.getElementById("typewriter");
+        if (!el) { setTimeout(init, 100); return; }
+        var idx = 0, charIdx = 0, isDeleting = false, current = "";
+        function type() {
+          var full = phrases[idx];
+          if (isDeleting) {
+            current = full.substring(0, charIdx--);
+          } else {
+            current = full.substring(0, charIdx++);
+          }
+          el.innerHTML = current + '<span style="color:#06B6D4;">▌</span>';
+          if (!isDeleting && charIdx === full.length + 1) {
+            isDeleting = true;
+            setTimeout(type, 2000);
+            return;
+          }
+          if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            idx = (idx + 1) % phrases.length;
+          }
+          setTimeout(type, isDeleting ? 40 : 80);
         }
-        el.innerHTML = current + '<span style="color:#06B6D4;">▌</span>';
-        if (!isDeleting && charIdx === full.length + 1) {
-          isDeleting = true;
-          setTimeout(type, 2000);
-          return;
-        }
-        if (isDeleting && charIdx === 0) {
-          isDeleting = false;
-          idx = (idx + 1) % phrases.length;
-        }
-        setTimeout(type, isDeleting ? 40 : 80);
+        type();
       }
-      type();
-    });
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
   </script>
 
 </Base>
