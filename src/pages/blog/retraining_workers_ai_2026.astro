@@ -1,0 +1,73 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "劳动力转型", "职业培训", "AI素养"];
+const articleDate = '2026-05-04';
+---
+
+<Article
+  title={'AI时代的劳动者再培训：从"谁会被替代"到"谁需要新技能"'}
+  description="AI时代的劳动者再培训：从谁会被替代到谁需要新技能"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回洞察</a>
+      <p class="section-label" style="color:var(--color-accent);">行业洞察 · 2026-05-04</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI时代的劳动者再培训：从"谁会被替代"到"谁需要新技能"</h1>
+      <div class="article-meta">
+        <span>2026-05-04</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>AI再培训正在成为一项系统性工程</h2>
+
+<p>2026年第一季度，关于AI对就业市场影响的讨论出现了值得关注的转向：从“AI会取代哪些工作”逐渐转向“如何系统性地帮助劳动者获得AI时代需要的新技能”。</p>
+
+<p>世界经济论坛（WEF）发布了一份题为“Invest in the workforce for the AI age: A blueprint for scale, skills, and responsible growth”的报告，提出了一套面向规模化、多技能的AI时代劳动力发展战略[WEF, 2026.04]。</p>
+
+<p>Brookings Institution也发表了类似的分析，强调在AI时代需要“以人为优先”的工作未来愿景[Brookings, 2026.04]。</p>
+
+<h2>几个值得关注的模式</h2>
+
+<h3>政府引领的大规模再培训计划</h3>
+<p>美国民主党州长候选人Francesca Hong提出的“Labor SHIFT”政策中，包含了一个值得关注的AI时代劳动者保护方案[Urban Milwaukee, 2026.04]。虽然这仍是州级竞选提案，但它代表了政策层面对AI就业冲击的一种回应模式。</p>
+
+<h3>企业内部的AI技能普及</h3>
+<p>多家大型企业已经开始将AI素养培训纳入员工的必修课。与传统的“一次性培训”不同，新趋势是建立持续性的“AI学习路径”，让员工在不同职业生涯阶段都能获得与自身岗位相关的AI技能提升。</p>
+
+<p>The Guardian报道了一个值得关注的趋势：资深劳动者正在主动寻求AI培训以保持自身竞争力——“There's a lot of desperation: skilled older workers turn to AI training to stay afloat”[The Guardian, 2026.04]。这提示了一个事实：AI时代的技能焦虑并非年轻人独有，工作年限较长、经验丰富的劳动者同样面临适应性挑战。</p>
+
+<h3>职业技术教育的新定位</h3>
+<p>Palantir CEO最近的一个观点在业内引起了广泛讨论——他认为AI“会摧毁”人文学科类的很多工作岗位，但同时“经过职业培训的人将有足够多的工作机会”[Fortune, 2026.04]。这一观点虽有争议，但它指出了职业技术教育在AI时代可能的重新定位。</p>
+
+<h2>数据争议与讨论平衡</h2>
+
+<p>值得指出的是，关于AI对就业的具体影响程度，学术界和政策研究机构之间仍存在分歧。</p>
+<ul>
+  <li>一部分研究认为，AI对就业的影响将类似于过去的技术进步——某些岗位消失，但更多新岗位被创造出来。</li>
+  <li>另一部分研究则警告，与以往的技术革命不同，AI可能同时对认知类和体力类工作产生替代效应，影响范围更广、速度更快。</li>
+</ul>
+<p>无论如何，各方都认同一个共识：劳动者需要持续获得新技能，而“一次性学历教育”的模式在快速变化的技术环境中越来越不足以支撑职业生涯全周期。</p>
+
+<h2>从人机契合视角的解读</h2>
+
+<p>“再培训”话题的核心，其实是一个关于“人机契合”的实践问题。</p>
+
+<p>单纯的“教人使用AI工具”只是技能层面的培训。更深层的是：如何帮助劳动者理解AI的能力边界、如何评估AI输出、如何在一个“人+AI”协作的工作流中找到自己的角色定位。这才是“AI素养”的真正内涵——不是会按按钮，而是懂得与AI共事。</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>主要参考来源：</strong><br />
+WEF, "Invest in the workforce for the AI age: A blueprint for scale, skills, and responsible growth", 2026.04<br />
+Brookings, "A people-first vision for the future of work in the age of AI", 2026.04<br />
+The Guardian, "Skilled older workers turn to AI training to stay afloat", 2026.04<br />
+Fortune, "Palantir CEO says AI 'will destroy' humanities jobs", 2026.04<br />
+Urban Milwaukee, "Labor SHIFT Policy to Protect Workers in the AI Age", 2026.04</p>
+<hr />
+
+  </div>
+</Article>
