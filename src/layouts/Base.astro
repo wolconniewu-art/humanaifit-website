@@ -47,16 +47,16 @@ const canonicalBase = 'https://humanaifit.com';
 
   <!-- Scripts -->
   <script>
-    // Language switch — determine target path from current URL
+    // Language switch — works on any page, not just index
+    // Only fires when lang-switch has no href (legacy fallback)
     document.addEventListener('DOMContentLoaded', () => {
       const langSwitch = document.querySelector('.lang-switch');
-      if (langSwitch) {
+      if (langSwitch && !langSwitch.getAttribute('href')) {
         langSwitch.addEventListener('click', () => {
           const isCn = document.documentElement.lang === 'zh-CN';
           const path = window.location.pathname;
           let target;
           if (isCn) {
-            // On blog article pages, go to /en/blog/ instead of non-existent /en/blog/...
             if (path.startsWith('/blog/') && path !== '/blog/') {
               target = '/en/blog/';
             } else if (path === '/' || path === '') {
@@ -96,7 +96,10 @@ const canonicalBase = 'https://humanaifit.com';
         <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '洞察' : 'Insights'}</a></li>
         <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
         <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
-        <li><span class="lang-switch">{isCn ? 'EN' : '中文'}</span></li>
+        <li>
+          <!-- Language switch as direct links (no JS dependency) -->
+          <a href={isCn ? '/en/' : '/'} class="lang-switch" style="text-decoration:none;cursor:pointer;">{isCn ? 'EN' : '中文'}</a>
+        </li>
       </ul>
     </nav>
   </header>
