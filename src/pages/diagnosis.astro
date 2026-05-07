@@ -231,6 +231,18 @@
       .option { font-size: 14px; padding: 12px 14px; }
     }
   </style>
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "孩子AI素养诊断",
+    "description": "10道选择题，30秒测出你孩子的AI学习类型：探索型🔍 / 应用型🛠️ / 创作型🎨",
+    "educationalLevel": "Parent",
+    "teaches": "AI Learning Style Assessment for Children",
+    "url": "https://www.humanaifit.com/diagnosis/"
+  }
+  </script>
 </head>
 <body>
 
@@ -258,7 +270,7 @@
   <div class="loading-spinner"></div>
 </div>
 
-<script>
+<script is:inline>
 // ===== 10道题数据 =====
 const QUESTIONS = [
   {
@@ -361,13 +373,13 @@ const RESULTS = {
     badge: '好奇心驱动',
     desc: '这个小发明家对世界充满好奇\u2014\u2014TA总是想知道"为什么"和"如果\u2026\u2026会怎样"。',
     direction: 'AI工作原理科普、与ChatGPT对话实验、AI伦理小讨论',
-    tools: '可汗学院AI课程、ChatGPT探索模式、AI for Kids科普视频',
-    advice: '你不需要教TA，你只需要给TA一个AI工具箱。提供开放性问题，鼓励孩子用AI"做实验"。',
     ageAdvice: {
       '6-9': 'AI故事 + AI小实验 + 简单的因果推理游戏',
       '10-12': 'AI原理科普（机器学习入门）+ 数据可视化小项目',
       '13-18': 'AI伦理讨论 + Python+AI入门 + 未来职业探索',
-    }
+    },
+    service: '我们提供"AI探索者家庭学习计划"，包含AI原理启蒙课程、亲子对话指南和适龄学习路径设计。从孩子的第一个AI实验开始，系统培养科学思维。',
+    parentNote: '在AI时代，好奇心是孩子最宝贵的能力。您的角色不是回答所有问题，而是帮孩子找到探索AI的起点。我们可以一起构建这份学习计划。'
   },
   apply: {
     icon: '\uD83D\uDEE0\uFE0F',
@@ -375,13 +387,13 @@ const RESULTS = {
     badge: '实用主义导向',
     desc: '这个实用主义者不喜欢空谈\u2014\u2014TA更关心"这个东西能帮我做什么"。',
     direction: 'AI写作辅助、AI绘画工具、AI+学习效率',
-    tools: 'Grammarly（写作）、Midjourney/DALL-E（绘画）、Notion AI（笔记）',
-    advice: 'AI不是你孩子的玩具，是你孩子的瑞士军刀。让AI帮孩子"省下无聊的时间"，用在真正感兴趣的事情上。',
     ageAdvice: {
       '6-9': '图形化AI工具 + AI辅助画画/写故事',
       '10-12': 'AI辅助学习工具 + 零代码AI项目入门',
       '13-18': 'AI高效学习技巧 + 项目实践（用AI做个作品）',
-    }
+    },
+    service: '我们提供"AI应用者赋能方案"，包含适龄AI工具清单、学习效能提升指南和应用型项目模板。帮孩子从"会用AI"到"用AI解决问题"。',
+    parentNote: '您已经看到了AI作为实用工具的价值。接下来可以帮孩子聚焦一个具体问题，用AI去解决它。我们的方案可以帮您和孩子找到最合适的路径。'
   },
   create: {
     icon: '\uD83C\uDFA8',
@@ -389,13 +401,13 @@ const RESULTS = {
     badge: '表达者冲动',
     desc: '这个小创作者有表达的冲动\u2014\u2014TA需要的是工具，让想法变成作品。',
     direction: 'AI音乐创作、AI视频制作、AI绘本/故事生成',
-    tools: 'Suno AI（音乐）、Canva AI（设计）、Runway（视频）',
-    advice: '给孩子一个"从0到1"的创作项目，AI负责技术，孩子负责创意。AI帮你孩子把脑洞变成作品。',
     ageAdvice: {
       '6-9': 'AI绘画 + AI绘本制作 + 简单AI音乐创作',
       '10-12': 'AI视频入门 + AI音乐制作 + 数字艺术创作',
       '13-18': '完整创作项目 + 专业工具链 + 作品集搭建指导',
-    }
+    },
+    service: '我们提供"AI创作者成长计划"，包括AI创作工具入门指导、从想法到作品的项目流程和作品集打造建议。让孩子的表达力在AI时代充分释放。',
+    parentNote: '创作是孩子理解世界的方式。AI可以帮孩子跨越技术门槛，把脑洞变成真正的作品。我们的计划能帮您为孩子找到合适的创作起点。'
   }
 };
 
@@ -548,14 +560,54 @@ function renderResult() {
         <p>${ageAdviceText}</p>
       </div>
 
-      <div class="result-section">
-        <h3>推荐工具</h3>
-        <p>${r.tools}</p>
+      <div class="result-section" style="margin-top:8px;">
+        <h3>为孩子选一个适合的AI学习方案</h3>
+
+        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="font-weight:600;font-size:15px;">AI素养深度解读报告</span>
+              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e8f5e9;color:#2e7d32;border-radius:10px;font-size:11px;">永久有效</span>
+            </div>
+            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥49</span>
+          </div>
+          <p style="font-size:13px;color:#666;margin:6px 0 0;">基于诊断结果生成的10页专属报告，含学习路径推荐和适龄工具清单</p>
+        </div>
+
+        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="font-weight:600;font-size:15px;">AI学习者家庭计划（季度）</span>
+              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#fff3e0;color:#e65100;border-radius:10px;font-size:11px;">热门</span>
+            </div>
+            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥199/季</span>
+          </div>
+          <p style="font-size:13px;color:#666;margin:6px 0 0;">分龄AI课程 + 每月家长问答 + 学习进度追踪，每季更新内容</p>
+        </div>
+
+        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="font-weight:600;font-size:15px;">1对1家庭教育顾问咨询</span>
+              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e3f2fd;color:#1565c0;border-radius:10px;font-size:11px;">深度定制</span>
+            </div>
+            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥599起</span>
+          </div>
+          <p style="font-size:13px;color:#666;margin:6px 0 0;">45分钟深度咨询，量身定制孩子未来6个月的AI学习路径</p>
+        </div>
+
+        <!-- 限时优惠横幅 -->
+        <div style="background:linear-gradient(135deg,#0F2B46,#1A3F64);border-radius:10px;padding:14px;text-align:center;">
+          <p style="color:#C9A96E;font-size:14px;font-weight:600;margin-bottom:4px;">🎁 前50名付费用户享早鸟价</p>
+          <p style="color:white;font-size:13px;opacity:0.9;">购买任一付费产品享<span style="color:#C9A96E;font-weight:700;">7折</span>优惠 · 已有 <span style="color:#C9A96E;font-weight:700;">12</span> 人加入</p>
+        </div>
+
+        <a href="/services/" style="display:block;margin-top:12px;padding:12px;background:#0F2B46;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;text-align:center;">查看详情 · 立即购买 →</a>
       </div>
 
-      <div class="result-section">
-        <h3>家长一句话</h3>
-        <p style="font-weight:500; color:var(--primary);">${r.advice}</p>
+      <div class="result-section" style="background:#f0f7ff;padding:16px;border-radius:10px;margin-top:16px;">
+        <h3 style="margin-top:0;">给家长的一句话</h3>
+        <p style="font-weight:500; color:#0F2B46; font-size:14px;">${r.parentNote}</p>
       </div>
 
       <hr class="sep" />

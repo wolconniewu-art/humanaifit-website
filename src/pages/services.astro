@@ -53,13 +53,129 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
+  <!-- 家庭端产品专区 -->
+  <section class="section" style="background:linear-gradient(160deg, #f8f7f4 0%, #ffffff 100%);padding-bottom:var(--spacing-3xl);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
+        <p class="section-label" style="color:#3B82F6;">家庭端方案</p>
+        <h2>为孩子选一个适合的AI学习方案</h2>
+        <p style="max-width:500px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);">
+          先做 <a href="/diagnosis/" style="color:#0F2B46;font-weight:600;">免费诊断</a>，再按需选择
+        </p>
+      </div>
+
+      <div style="max-width:500px;margin:0 auto;">
+
+        <div style="border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;">
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">AI素养深度解读报告</span>
+            <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e8f5e9;color:#2e7d32;border-radius:10px;font-size:11px;">永久有效</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">基于诊断结果生成的10页专属报告</p>
+          </div>
+        <div style="border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;">
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">AI素养深度解读报告</span>
+            <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e8f5e9;color:#2e7d32;border-radius:10px;font-size:11px;">永久有效</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">基于诊断结果生成的10页专属报告</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+            <div style="font-weight:700;color:#0F2B46;font-size:18px;">¥49</div>
+            <button onclick="copyEmail('购买', 'AI素养深度解读报告')" style="display:inline-block;margin-top:6px;padding:8px 20px;background:#0F2B46;color:white;border-radius:6px;border:none;font-size:13px;font-weight:500;cursor:pointer;">购买</button>
+          </div>
+        </div>
+
+        <div style="border:2px solid #C9A96E;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;position:relative;">
+          <div style="position:absolute;top:-10px;right:20px;background:#C9A96E;color:#0F2B46;padding:2px 12px;border-radius:10px;font-size:11px;font-weight:600;">推荐</div>
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">AI学习者家庭计划（季度）</span>
+            <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#fff3e0;color:#e65100;border-radius:10px;font-size:11px;">热门</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">分龄AI课程 + 每月家长问答 + 学习进度追踪</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+            <div style="font-weight:700;color:#0F2B46;font-size:18px;">¥199</div>
+            <div style="font-size:12px;color:#888;">/ 季度</div>
+            <button onclick="copyEmail('订阅', 'AI学习者家庭计划 ¥199/季')" style="display:inline-block;margin-top:6px;padding:8px 20px;background:#0F2B46;color:white;border-radius:6px;border:none;font-size:13px;font-weight:500;cursor:pointer;">订阅</button>
+          </div>
+        </div>
+
+        <div style="border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;">
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">1对1家庭教育顾问咨询</span>
+            <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e3f2fd;color:#1565c0;border-radius:10px;font-size:11px;">深度定制</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">45分钟深度咨询，量身定制孩子AI学习路径</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+            <div style="font-weight:700;color:#0F2B46;font-size:18px;">¥599起</div>
+            <button onclick="copyEmail('预约', '1对1家庭教育顾问 ¥599起')" style="display:inline-block;margin-top:6px;padding:8px 20px;background:#0F2B46;color:white;border-radius:6px;border:none;font-size:13px;font-weight:500;cursor:pointer;">预约</button>
+          </div>
+        </div>
+
+        <!-- 限时优惠 + 邮箱显示 + 内联JS -->
+        <div style="background:linear-gradient(135deg,#0F2B46,#1A3F64);border-radius:12px;padding:20px 20px;text-align:center;">
+          <p style="color:#C9A96E;font-size:15px;font-weight:600;margin-bottom:4px;">🎁 前50名付费用户享早鸟价</p>
+          <p style="color:white;font-size:13px;opacity:0.9;">购买任一付费产品享<span style="color:#C9A96E;font-weight:700;">7折</span>优惠 · 已有 <span style="color:#C9A96E;font-weight:700;">12</span> 人加入</p>
+          <div style="margin-top:12px;padding:10px 16px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;gap:10px;">
+            <span style="color:white;font-size:13px;">联系邮箱：</span>
+            <span style="color:#C9A96E;font-weight:600;font-size:14px;" id="emailDisplay">connie@humanaifit.com</span>
+            <button onclick="copyRawEmail()" style="padding:4px 12px;background:rgba(201,169,110,0.3);color:#C9A96E;border:1px solid rgba(201,169,110,0.5);border-radius:4px;font-size:12px;cursor:pointer;">复制</button>
+          </div>
+          <p id="copyMsg" style="color:#4ade80;font-size:12px;margin-top:8px;height:18px;"></p>
+        </div>
+
+        <script is:inline>
+          function copyEmail(action, product) {
+            var text = '【' + action + '】' + product + '\n\n请发邮件至 connie@humanaifit.com，我会尽快联系您完成支付。';
+            var msg = document.getElementById('copyMsg');
+            if (navigator.clipboard) {
+              navigator.clipboard.writeText(text).then(function() {
+                msg.textContent = '✅ 已复制购买信息，请前往邮箱发送';
+              }).catch(function() {
+                fallbackCopy(text, msg);
+              });
+            } else {
+              fallbackCopy(text, msg);
+            }
+          }
+          function copyRawEmail() {
+            var msg = document.getElementById('copyMsg');
+            if (navigator.clipboard) {
+              navigator.clipboard.writeText('connie@humanaifit.com').then(function() {
+                msg.textContent = '✅ 已复制邮箱地址';
+              }).catch(function() {
+                fallbackCopy('connie@humanaifit.com', msg);
+              });
+            } else {
+              fallbackCopy('connie@humanaifit.com', msg);
+            }
+          }
+          function fallbackCopy(text, msgEl) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand('copy');
+              msgEl.textContent = '✅ 已复制到剪贴板';
+            } catch(e) {
+              msgEl.textContent = '请复制邮箱：connie@humanaifit.com';
+            }
+            document.body.removeChild(ta);
+          }
+        </script>
+
+      </div>
+    </div>
+  </section>
+
   <section class="section section-dark text-center">
     <div class="container">
       <h2>不确定哪个服务适合你？</h2>
       <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
         预约免费诊断，我们帮你找到最迫切的需求。
       </p>
-      <a href="/contact/" class="btn btn-primary">预约诊断 →</a>
+      <button onclick="copyEmail('咨询', '预约诊断')" class="btn btn-primary" style="border:none;cursor:pointer;padding:14px 28px;background:var(--color-accent);color:#0F2B46;border-radius:8px;font-size:16px;font-weight:600;">预约诊断 →</button>
     </div>
   </section>
 </Base>

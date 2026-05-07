@@ -1,0 +1,117 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["碳合规", "全球化"];
+const articleDate = '2026-05-07';
+---
+
+<Article
+  title="英国CBAM与欧盟CBAM的区别——一文看懂两个碳边境调节机制"
+  description="英国CBAM与欧盟CBAM的区别——一文看懂两个碳边境调节机制"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回洞察</a>
+      <p class="section-label" style="color:var(--color-accent);">专栏文章 · 2026-05-07</p>
+      <h1 style="font-size:2rem;line-height:1.35;">英国CBAM与欧盟CBAM的区别——一文看懂两个碳边境调节机制</h1>
+      <div class="article-meta">
+        <span>2026-05-07</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+<blockquote>UK CBAM 2027年1月正式上路，EU CBAM 2026年10月进入"确定性阶段"。两个名字一样，规则可不完全一样。</blockquote>
+
+<h2>一、为什么这个问题值得认真回答？</h2>
+
+<p>2026年5月，不少出口企业已经开始"碳焦虑"了。因为两个超级重要的时间节点越来越近：</p>
+
+<li><strong>2026年10月</strong>：欧盟CBAM从过渡期（2023.10-2025.12已被延长）正式转为<strong>确定性阶段</strong>实施节奏——进口商需要开始准备真实的嵌入式排放数据申报</li>
+<li><strong>2027年1月</strong>：英国CBAM正式生效</li>
+
+<p>问题是：<strong>好多企业以为CBAM就是CBAM，欧盟搞的那一套搬到英国也一样。</strong></p>
+
+<p>不对。</p>
+
+<h2>二、"两个CBAM"的关键差异</h2>
+
+<h3>1. 时间表不同</h3>
+
+<table>
+  <tr><td>维度</td><td>欧盟CBAM</td><td>英国CBAM</td></tr>
+  <tr><td>立法完成</td><td>2023年5月正式立法</td><td>2025年《财政法案2025-2026》确立框架</td></tr>
+  <tr><td>过渡期</td><td>2023年10月-2025年12月</td><td>无过渡期</td></tr>
+  <tr><td>正式生效</td><td>2026年1月起逐步执行</td><td>2027年1月直接全面执行</td></tr>
+  <tr><td>第一期申报</td><td>2026年10月</td><td>2027年5月</td></tr>
+</table>
+
+<p>英国最大的不同在于：<strong>没有过渡期。</strong> 2027年1月生效后，进口商直接按正式规则执行，没有"先试试报告数据"的缓冲阶段。</p>
+
+<h3>2. 覆盖范围的不同</h3>
+
+<p>欧盟CBAM覆盖六大行业：水泥、钢铁、铝、化肥、电力、氢。</p>
+
+<p>英国CBAM目前覆盖的行业与欧盟<strong>基本一致</strong>，但有一个关键差异：<strong>英国尚未确定是否覆盖"间接排放"（即生产过程中消耗电力产生的碳排放）。</strong></p>
+
+<p>欧盟CBAM从2026年1月起已经开始要求覆盖间接排放。英国在这一块上的政策仍在咨询阶段（2026年上半年正在进行第二轮咨询）。</p>
+
+<p><strong>这对中国企业意味着什么？</strong> 如果你的产品主要用电能生产（比如电解铝），欧盟CBAM的成本计算会比英国高出一截，因为电力排放也要算进去。</p>
+
+<h3>3. 碳价格计算方式不同</h3>
+
+<p>这是最核心的差异。</p>
+
+<p><strong>EU ETS（欧盟碳市场）：</strong></p>
+<li>当前碳价约€65-80/吨</li>
+<li>欧盟CBAM要求进口商购买CBAM证书，价格与EU ETS配额拍卖价挂钩</li>
+<li>已在本国支付碳价的部分可以抵扣</li>
+
+<p><strong>UK ETS（英国碳市场）：</strong></p>
+<li>当前碳价约£35-45/吨（显著低于欧盟）</li>
+<li>英国CBAM的价格机制与UK ETS配额价格挂钩</li>
+<li>同样承认出口国已支付的碳价</li>
+
+<p><strong>关键结论：</strong> 如果同一种产品出口到英国vs欧盟，英国CBAM带来的额外成本理论上会低一些——不是因为英国更宽松，而是因为UK ETS的碳价本身就比EU ETS低。</p>
+
+<h3>4. 政策成熟度不同</h3>
+
+<p>欧盟CBAM已经运行了近3年（含过渡期），积累了相当多的实操经验：</p>
+<li>有明确的报告模板和计算工具</li>
+<li>有完善的第三方核查机制</li>
+<li>有官方的《CBAM实施条例》详细规定</li>
+<li>争议仲裁机制已经建立</li>
+
+<p>英国CBAM则处于：</p>
+<li>二次立法草案已发布（2026年初）</li>
+<li>第2轮咨询仍在进行</li>
+<li>监测与核查规则在2026年4月最新版本中刚刚细化</li>
+<li>实际执行细则仍待完善</li>
+
+<p><strong>实操提示</strong>：对已经合规欧盟CBAM的企业来说，转做英国CBAM合规的学习成本相对较低。但对"双线操作"的企业，千万别用欧盟的模板直接照搬到英国申报。</p>
+
+<h3>5. 申报频率</h3>
+
+<p>欧盟CBAM要求<strong>每季度申报</strong>（过渡期结束后）。英国CBAM则是<strong>首次申报在2027年5月，之后每年一次申报。</strong></p>
+
+<h2>三、还有哪些"隐藏差异"值得关注？</h2>
+
+<h3>英国CBAM独有的风险点</h3>
+
+<li><strong>反规避条款</strong>：英国CBAM立法中特别强调了反规避条款，禁止企业通过转运或轻微加工来规避碳关税义务。这一点在英国的草案中措辞比欧盟更强硬。</li>
+
+<li><strong>监管机构</strong>：欧盟CBAM由欧盟委员会统一管理；英国CBAM由HMRC（英国税务海关总署）负责执行。HMRC以"严格执法"著称，执法风格与欧盟委员会有明显差异。</li>
+
+<h2>四、给中国出口企业的三个操作建议</h2>
+
+<li><strong>不要等</strong>：英国虽然是2027年1月才生效，但没有过渡期意味着你现在就得开始收集数据。建议最迟2026年下半年启动英国CBAM数据收集。</li>
+
+<li><strong>分开算</strong>：欧盟和英国的碳价格不同，合规成本也不同。不要混为一谈。建议做双轨成本预测。</li>
+
+<li><strong>看宽一点</strong>：2026年还有一个重要趋势——越来越多的国家在考虑碳边境调节机制。加拿大、澳大利亚、日本都在研究类似机制。今天搞懂EU CBAM vs UK CBAM的区别，其实是在为未来更多市场的碳合规打基础。</li>
+
+
+    </div>
+</Article>
