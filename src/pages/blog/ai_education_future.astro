@@ -34,29 +34,21 @@ const articleDate = '2026-05-08';
 
 <p>BCG把AI对工作的影响分为六类，这是个很好的"跑道图"：</p>
 
-<style>
-  .ai-table { width:100%; border-collapse:collapse; margin:1.5rem 0; }
-  .ai-table th, .ai-table td { border:1px solid var(--color-border,#ddd); padding:0.6rem 0.8rem; text-align:left; font-size:0.9rem; }
-  .ai-table th { background:var(--color-primary,#0F2B46); color:white; }
-  .ai-table tr:nth-child(even) { background:var(--color-bg-alt,#f5f5f5); }
-  .recommend { color:var(--color-accent,#C9A96E); font-weight:bold; }
-</style>
-
-<table class="ai-table">
+<table class="ai-table" style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
   <thead>
-    <tr><th>类型</th><th>占就业比</th><th>说明</th></tr>
+    <tr><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">类型</th><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">占就业比</th><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">说明</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>Enabled（赋能型）</strong></td><td>~20%</td><td>AI为高度碎片化工作提供决策辅助（教师、护士等专业岗）</td></tr>
-    <tr><td><strong>Amplified（增强型）</strong></td><td>~5%</td><td>AI增强能力，人仍是核心（软件工程师、律师）</td></tr>
-    <tr><td><strong>Rebalanced（再平衡型）</strong></td><td>~14%</td><td>AI做常规工作，人负责更复杂部分（营销、研究）</td></tr>
-    <tr><td><strong>Divergent（分化型）</strong></td><td>~12%</td><td>AI替代部分工作，但新需求创造新岗位（保险、IT支持）</td></tr>
-    <tr><td><strong>Substituted（替代型）</strong></td><td>长期10-15%</td><td>AI完全替代（呼叫中心等常规流程岗位）</td></tr>
-    <tr><td><strong>Limited Exposure（低暴露型）</strong></td><td>~15%</td><td>AI影响有限，高度依赖人际/物理技能（体力劳动、手工艺）</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>Enabled（赋能型）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">~23%</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI为高度碎片化工作提供决策辅助（教师、护士等专业岗）</td></tr>
+    <tr style="background:var(--color-bg-alt,#f5f5f5);"><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>Amplified（增强型）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">~5%</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI增强能力，人仍是核心（软件工程师、律师）</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>Rebalanced（再平衡型）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">~14%</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI做常规工作，人负责更复杂部分（营销、研究）</td></tr>
+    <tr style="background:var(--color-bg-alt,#f5f5f5);"><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>Divergent（分化型）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">~12%</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI替代部分工作，但新需求创造新岗位（保险、IT支持）</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>Substituted（替代型）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">~12%</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI完全替代（呼叫中心等常规流程岗位）</td></tr>
+    <tr style="background:var(--color-bg-alt,#f5f5f5);"><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>Limited Exposure（低暴露型）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">~34%</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI影响有限，高度依赖人际/物理技能（体力劳动、手工艺）</td></tr>
   </tbody>
 </table>
 
-<p>这六类覆盖了BCG研究中的<strong>全部工作类型</strong>，从上到下人-AI协同度递减。你的孩子要争取<strong>前三行</strong>的岗位——赋能型、增强型、再平衡型——这些位子上，AI是工具，人仍然是核心决策者。而替代型是需要警惕的方向——那是完全交给AI、人不再创造价值的岗位。</p>
+<p>这六类覆盖了BCG研究中的<strong>全部工作类型</strong>，从上到下人与AI的协同度逐渐降低。你的孩子要争取<strong>前三行</strong>的岗位——赋能型、增强型、再平衡型——这些位子上，AI是工具，人仍然是核心决策者。而替代型是需要警惕的方向——那是完全交给AI、人不再创造价值的岗位。</p>
 
 <h2>三条教育路线（按优先级排序）</h2>
 
@@ -86,22 +78,15 @@ const articleDate = '2026-05-08';
 
 <p>高盛/BCG/Adecco的多份报告显示，AI最难替代的能力恰恰是教育中最容易被忽视的：</p>
 
-<style>
-  .skill-table { width:100%; border-collapse:collapse; margin:1.5rem 0; }
-  .skill-table th, .skill-table td { border:1px solid var(--color-border,#ddd); padding:0.6rem 0.8rem; text-align:left; font-size:0.9rem; }
-  .skill-table th { background:var(--color-primary,#0F2B46); color:white; }
-  .skill-table tr:nth-child(even) { background:var(--color-bg-alt,#f5f5f5); }
-</style>
-
-<table class="skill-table">
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
   <thead>
-    <tr><th>能力</th><th>为什么AI难替代</th><th>怎么培养</th></tr>
+    <tr><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">能力</th><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">为什么AI难替代</th><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">怎么培养</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>复杂人际沟通</strong></td><td>情感、信任、协商依赖大量非语言信号</td><td>多参加团队活动、辩论、真实社交</td></tr>
-    <tr><td><strong>动手实践能力</strong></td><td>物理世界的操作短期内无法完全自动化</td><td>手工、实验、做饭、修理</td></tr>
-    <tr><td><strong>跨系统思考</strong></td><td>不同领域知识的创造性连接</td><td>多学科阅读、项目式学习</td></tr>
-    <tr><td><strong>主动发现问题的能力</strong></td><td>AI只会回答"被问的问题"</td><td>鼓励孩子发现日常中的"不合理"</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>复杂人际沟通</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">情感、信任、协商依赖大量非语言信号</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">多参加团队活动、辩论、真实社交</td></tr>
+    <tr style="background:var(--color-bg-alt,#f5f5f5);"><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>动手实践能力</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">物理世界的操作短期内无法完全自动化</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">手工、实验、做饭、修理</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>跨系统思考</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">不同领域知识的创造性连接</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">多学科阅读、项目式学习</td></tr>
+    <tr style="background:var(--color-bg-alt,#f5f5f5);"><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>主动发现问题的能力</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">AI只会回答"被问的问题"</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">鼓励孩子发现日常中的"不合理"</td></tr>
   </tbody>
 </table>
 
@@ -120,20 +105,14 @@ const articleDate = '2026-05-08';
 
 <h2>给家长的行动清单</h2>
 
-<style>
-  .action-table { width:100%; border-collapse:collapse; margin:1.5rem 0; }
-  .action-table th, .action-table td { border:1px solid var(--color-border,#ddd); padding:0.6rem 0.8rem; text-align:left; font-size:0.9rem; }
-  .action-table th { background:var(--color-primary,#0F2B46); color:white; }
-</style>
-
-<table class="action-table">
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
   <thead>
-    <tr><th>阶段</th><th>每天花10分钟</th><th>每周花1小时</th></tr>
+    <tr><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">阶段</th><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">每天花10分钟</th><th style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;text-align:left;background:var(--color-primary,#0F2B46);color:white;">每周花1小时</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>小学（6-12岁）</strong></td><td>提问游戏、动手实验</td><td>一次"AI探索"：一起用AI查一个好奇的问题</td></tr>
-    <tr><td><strong>初中（12-15岁）</strong></td><td>讨论一个新闻事件，用AI辅助分析正反两面</td><td>让孩子教你怎么用AI做一件事（翻转学习）</td></tr>
-    <tr><td><strong>高中（15-18岁）</strong></td><td>练习用AI辅助研究一个课题，记录每一步思考</td><td>引导孩子批判性地分析AI的某个答案</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>小学（6-12岁）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">提问游戏、动手实验</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">一次"AI探索"：一起用AI查一个好奇的问题</td></tr>
+    <tr style="background:var(--color-bg-alt,#f5f5f5);"><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>初中（12-15岁）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">讨论一个新闻事件，用AI辅助分析正反两面</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">让孩子教你怎么用AI做一件事（翻转学习）</td></tr>
+    <tr><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;"><strong>高中（15-18岁）</strong></td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">练习用AI辅助研究一个课题，记录每一步思考</td><td style="border:1px solid var(--color-border,#ddd);padding:0.6rem 0.8rem;">引导孩子批判性地分析AI的某个答案</td></tr>
   </tbody>
 </table>
 
