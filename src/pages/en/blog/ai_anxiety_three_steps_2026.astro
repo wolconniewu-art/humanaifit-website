@@ -1,0 +1,51 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "Future of Work", "AI Anxiety"];
+const articleDate = '2026-05-09';
+---
+
+<Article
+  title="AI Anxiety Is Spreading: Should You Fear Replacement or Evolve?"
+  description="A three-step framework for navigating AI career anxiety — with data from Nature, The Guardian, Fortune, and SCMP"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Career · 2026-05-09</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI Anxiety Is Spreading: Should You Fear Replacement or Evolve?</h1>
+      <div class="article-meta">
+        <span>2026-05-09</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>First, Should You Be Afraid?</h2>
+<p>Yes — fear is normal and data-backed. A May 2026 study in Nature Scientific Reports shows AI anxiety has already influenced career decisions among Chinese university students — over 60% actively avoid careers perceived as "replaceable by AI." The Guardian describes it as "AI anxiety upending career ambitions." Fortune blames organizations, not the technology: "Gen Z turning its back on AI isn't irrational — it's a verdict on everyone who failed them."</p>
+
+<h2>Three Layers of Fear</h2>
+<ul>
+  <li><strong>Layer 1: Fear of the unknown</strong> — how far will AI go? Will my degree matter in 3 years?</li>
+  <li><strong>Layer 2: Fear of the process</strong> — the learning curve is steep, information is overwhelming</li>
+  <li><strong>Layer 3: Fear of the outcome</strong> — even if I learn, will my company actually implement human-AI collaboration?</li>
+</ul>
+
+<h2>A Three-Step Action Framework</h2>
+
+<p><strong>Step 1: Assess your "AI-irreplaceability."</strong> High-repetition + low-judgment work: high risk, pivot or upskill. Medium-creativity + high-interpersonal + high-judgment: moderate risk, learn to amplify with AI. High-creativity + high-strategy + high-trust: low risk, focus on decision-making and innovation.</p>
+
+<p><strong>Step 2: Learn "human-AI collaboration patterns," not "AI tools."</strong> The Guardian reports that the most effective learners aren't the most technical — they're the best question-askers. Key competencies: prompt engineering + judgment + cross-domain connection.</p>
+
+<p><strong>Step 3: Convert anxiety into "irreplaceability investment."</strong> Rest of World covers young Chinese launching one-person companies powered by AI — not waiting to be replaced, but actively redefining their value. SCMP reports Chinese courts ruling that AI cost-cutting is not a legal basis for firing workers — meaning organizations can't simply use "AI is here" as a layoff excuse.</p>
+
+<h2>The Deeper Picture</h2>
+<p>Spring Health's 2026 report notes AI anxiety isn't "just another anxiety" — it's a fundamental shakeup of future security. AI won't eliminate 70% of jobs in 3 years (that's a myth). But it <strong>will</strong> significantly reduce the competitiveness of those who don't use AI.</p>
+
+<p><strong>Bottom line</strong>: Don't fear AI — fear the 0-to-1 startup cost. Spend 15 minutes a day redoing one work task with AI. In 30 days, you'll no longer be "someone afraid of being replaced" — you'll be "someone redefining their work."</p>
+
+</div>
+</Article>

@@ -1,0 +1,60 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Energy", "Globalization", "Manufacturing"];
+const articleDate = '2026-05-09';
+---
+
+<Article
+  title="China's Solar Industry Shakeout: Low Prices, Overcapacity, and the Global Ripple Effect"
+  description="CSIS reports China's solar sector is in deep structural turmoil — and the instability will ripple globally"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Industry Analysis · 2026-05-09</p>
+      <h1 style="font-size:2rem;line-height:1.35;">China's Solar Industry Shakeout: Low Prices, Overcapacity, and the Global Ripple Effect</h1>
+      <div class="article-meta">
+        <span>2026-05-09</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>In May 2026, the Center for Strategic and International Studies (CSIS) released a major report: "China's Solar Industry Is in Upheaval — The Effects Will Be Global." The core judgment is sobering: China's solar photovoltaic sector is in a deep structural crisis whose impact will reverberate worldwide.</p>
+
+<h2>What Happened</h2>
+<p>China's solar PV industry experienced the world's most aggressive capacity expansion between 2020-2025:</p>
+<ul>
+  <li>China now accounts for over 80% of global solar module production capacity</li>
+  <li>Industry-wide profit margins hit historic lows in 2025, with second-tier firms operating at a loss</li>
+  <li>Polysilicon prices have fallen over 80% from their 2022 peak</li>
+  <li>Massive numbers of small and medium solar companies face bankruptcy or forced exit</li>
+</ul>
+
+<h2>Three Interlocking Tensions</h2>
+
+<p><strong>1. Domestic overcapacity vs. slowing demand growth.</strong> Manufacturing efficiency has soared, but grid absorption capacity and energy storage infrastructure haven't kept pace. CREA notes China's 15th Five-Year Plan is shifting emphasis from "capacity expansion" to "system integration and efficiency."</p>
+
+<p><strong>2. Booming global demand vs. rising trade barriers.</strong> The US is pursuing anti-dumping investigations targeting Southeast Asia (where Chinese solar firms set up "transit bases"). India is building domestic PV capacity through PLI programs. The EU is developing a "solar autonomy" framework to reduce reliance on Chinese modules.</p>
+
+<p><strong>3. Low-price strategies vs. brand upgrade.</strong> Chinese module prices have fallen below $0.10/watt — making every non-Chinese manufacturer unprofitable. But the cost is compressed margins and minimal brand value.</p>
+
+<h2>Three Transmission Paths</h2>
+<p>CSIS identifies three channels through which the Chinese solar crisis will spread globally:</p>
+<ul>
+  <li><strong>Price shock</strong> — cheaper modules accelerate renewable deployment but crush non-Chinese manufacturers</li>
+  <li><strong>Investment uncertainty</strong> — overcapacity erodes investor confidence, tightening new project financing</li>
+  <li><strong>Trade friction escalation</strong> — governments face a dilemma between "cheaper solar" and "domestic manufacturing protection"</li>
+</ul>
+
+<h2>Lessons for Chinese Companies Going Global</h2>
+<p><strong>Scale is not a moat.</strong> 80% global capacity means neither pricing power nor profit when the entire industry is driven by scale and cost-cutting.</p>
+<p><strong>Trade barriers aren't just "political."</strong> Europe and America's push for solar autonomy has real economic and employment logic.</p>
+<p><strong>The energy transition is not linear.</strong> Storage and smart grids — not more PV panels — are the next competitive battleground.</p>
+
+</div>
+</Article>

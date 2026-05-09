@@ -1,0 +1,49 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Globalization", "China", "Europe", "Business Strategy"];
+const articleDate = '2026-05-09';
+---
+
+<Article
+  title="Is Europe Still a Good Market for Chinese Companies Going Global?"
+  description="A multi-layered assessment of the European market for Chinese companies in May 2026 — three structural changes and three strategic responses"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Global Strategy · 2026-05-09</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Is Europe Still a Good Market for Chinese Companies Going Global?</h1>
+      <div class="article-meta">
+        <span>2026-05-09</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>The short answer: <strong>Yes, but the rules have changed.</strong> The era of "low prices + trading channels" as a mode of entry is over. In 2026, Europe is undergoing three structural shifts that directly affect any Chinese company's strategic calculus.</p>
+
+<h2>Change 1: From Free Trade to Managed Market Access</h2>
+<p>The EV sector is the clearest example. The EU is replacing punitive tariffs on Chinese BEVs with a <strong>price floor mechanism</strong> — not blocking entry, but setting a minimum price. For Chinese companies: pure price competition is dead. For European consumers: they lose the benefit of lower-cost Chinese EVs.</p>
+
+<h2>Change 2: Trade Barriers from Single to Systemic</h2>
+<p>May 2026 sees three fronts simultaneously: EV price floors, US anti-dumping on Southeast Asian solar (Chinese transit bases), and the MATCH Act on semiconductors. Different targets, different instruments — same direction: <strong>systematically tightening access conditions for "Made in China."</strong></p>
+
+<h2>Change 3: From Product Export to Ecosystem Building</h2>
+<p>ITIF's April 2026 report identifies a key shift: the real battlefield for Chinese globalization is moving to the Global South. But Europe still matters — the nature of European engagement is upgrading from product export to <strong>value chain embedding</strong>: manufacturing relocation (BYD/Hungary, Chery/Spain), R&D localization, and brand building.</p>
+
+<h2>Three Strategies for Three Company Types</h2>
+<ul>
+  <li><strong>Product-based companies</strong> (low-end manufacturing/OEM): approach cautiously — consider Southeast Asia, Middle East, Latin America first</li>
+  <li><strong>Technology-based companies</strong> (new energy, smart hardware): actively invest — build local teams, find European partners, prepare compliance frameworks</li>
+  <li><strong>Brand-based companies</strong> (consumer goods, services): go deep but focused — master 1-2 countries before scaling</li>
+</ul>
+
+<h2>A Deeper Perspective</h2>
+<p>Higher entry barriers are not necessarily bad. They act as a filter — screening out quick-profit entrants while rewarding those willing to invest long-term and truly localize. Europe remains one of the world's most valuable markets for companies prepared for a strategic, multi-year commitment.</p>
+
+</div>
+</Article>
