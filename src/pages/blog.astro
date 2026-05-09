@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 
+const pinned = [
+  { date: "2026-05-03", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同（中英双语）", tags: "公司动态, 人机契合" },
+];
+
 const articles = [
     { date: '2026-05-09', slug: 'eu_china_ev_price_floor_2026', title: 'EU与中国电动车关税博弈："价格下限"正在改写游戏规则', tags: '全球化, 能源' },
   { date: "2026-05-09", slug: "eu_ai_act_omnibus_2026", title: "EU AI Act简化方案出台——企业AI合规压力是松了还是变了？", tags: "人机契合, AI治理" },
@@ -24,7 +28,6 @@ const articles = [
   { date: "2026-05-04", slug: "us_semiconductor_export_controls_2026", title: "美国半导体出口管制2026：规则升级与边界", tags: "全球化, 前沿科技" },
   { date: "2026-05-04", slug: "eu_ai_act_reality_2026", title: "EU AI Act的实施延迟：合规压力退潮还是风暴前的平静？", tags: "人机契合, AI治理" },
   { date: "2026-05-04", slug: "meta_consumer_ai_2026", title: "Meta消费者AI：AI从\"工具\"走向\"日常伴侣\"", tags: "前沿科技, AI应用" },
-  { date: "2026-05-03", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同（中英双语）", tags: "公司动态, 人机契合" },
   { date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM碳关税正式生效——中国出口企业绕不开的一课", tags: "全球化, 经济" },
   { date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026报告：企业的AI部署正在加速，但治理在\"掉队\"", tags: "人机契合, 前沿科技" },
   { date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI指数：中美AI差距真的在缩小吗？", tags: "全球化, 人机契合" },
@@ -38,7 +41,6 @@ const articles = [
   { date: "2026-05-02", slug: "global_localization", title: "从Mixue到NIO：中国品牌全球化的\"本地化悖论\"", tags: "全球化, 商业" },
   { date: "2026-05-02", slug: "digital_leadership", title: "当AI能替代70%的管理工作，领导者的价值在哪里？", tags: "人机契合, 商业" },
   { date: "2026-05-02", slug: "AI_productivity_paradox", title: "当投入AI\"看不到效果\"——对生产力悖论的深度分析", tags: "人机契合, 知识管理" },
-  { date: "2026-05-02", slug: "HBR_augmentation_vs_automation", title: "AI增强 vs 自动化：为什么选择\"人机协同\"的公司长期胜出", tags: "人机契合, AI效率" },
   { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "当自动化偏见遇上算法厌恶：行为经济学视角下的人机协同", tags: "人机契合, 前沿科技" },
   { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "让人机关系\"对\"——Deloitte 2026报告的深度解读", tags: "人机契合, 知识管理" },
 ];
@@ -81,9 +83,37 @@ const months = articles.reduce((acc, a) => {
     </div>
   </section>
 
-  <!-- Articles grouped by month -->
+  <!-- Pinned articles -->
   <section class="section">
     <div class="container" id="article-list">
+      {pinned.length > 0 && (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-accent);margin-bottom:24px;font-weight:500;">📌 推荐阅读</h3>
+          <div style="display:grid;gap:20px;">
+            {pinned.map(item => (
+              <a href={`/blog/${item.slug}/`} class="article-card"
+                data-tags="{item.tags}"
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.02));
+                       border:1px solid rgba(201,169,110,0.3);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span style="font-size:13px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;">{item.date}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
       {Object.entries(months).sort(([a],[b]) => b.localeCompare(a)).map(([month, items]) => (
         <div style="margin-bottom:48px;">
           <h3 style="font-size:1.1rem;color:var(--color-text-muted);margin-bottom:24px;font-weight:500;">

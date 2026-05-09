@@ -21,7 +21,21 @@ import Base from '../../layouts/Base.astro';
   <section class="section" style="padding-top:0;">
     <div class="container">
 
-            <!-- 2026-05-09: 7 new articles -->
+                  <!-- Pinned: always on top -->
+      <div style="margin-bottom:var(--spacing-lg);border-bottom:2px solid var(--color-accent);padding-bottom:var(--spacing-sm);background:linear-gradient(135deg,rgba(201,169,110,0.06),transparent);border-radius:12px;padding:16px;">
+        <p style="font-size:11px;color:var(--color-accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;">📌 Featured</p>
+        <div style="padding:var(--spacing-md) 0 0;">
+          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Company News</span>
+          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Human-AI Fit</span>
+        </div>
+        <h3 style="font-size:1rem;line-height:1.4;margin-top:8px;"><a href="/en/blog/about_humanaifit/" style="color:var(--color-primary);text-decoration:none;">Meet humanaifit — Where Humans and AI Actually Work Together</a></h3>
+        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
+          Introducing Beacon Consulting — a new advisory firm grounded in Human-AI Fit research.
+        </p>
+        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-03</p>
+      </div>
+
+<!-- 2026-05-09: 7 new articles -->
       <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
         <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
         <div style="padding:var(--spacing-md) 0;">
@@ -207,16 +221,7 @@ import Base from '../../layouts/Base.astro';
 
       <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
         <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Company News</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Human-AI Fit</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/about_humanaifit/" style="color:var(--color-primary);text-decoration:none;">Meet humanaifit — Where Humans and AI Actually Work Together</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Introducing Beacon Consulting — a new advisory firm grounded in Human-AI Fit research.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-03</p>
-      </div>
+
 
     </div>
   </section>
