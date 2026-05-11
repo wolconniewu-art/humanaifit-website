@@ -1,0 +1,66 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Globalization", "China", "Technology"];
+const articleDate = '2026-05-11';
+---
+
+<Article
+  title="Chinese Companies Going Global Are Changing Their Playbook"
+  description="A new generation of Chinese companies is expanding overseas — not on price, but on technology standards. The Economist reports on a paradigm shift."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Trends · 2026-05-11</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Chinese Companies Going Global Are Changing Their Playbook</h1>
+      <div class="article-meta">
+        <span>2026-05-11</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>In April, The Economist published: "A new generation of Chinese companies is expanding around the world."</p>
+<p>Sounds like a familiar topic. But look closer.</p>
+
+<h2>Three Waves of Globalization</h2>
+<p>Chinese companies' globalization can be roughly divided into three waves:</p>
+<p><strong>Wave 1 (2000s)</strong>: Textiles, home appliances, infrastructure. Representative companies: Haier, Huawei, ZTE. Core advantage: manufacturing capability and price.</p>
+<p><strong>Wave 2 (2010s)</strong>: Internet platforms. Representative: TikTok, Shein, Temu. Core advantage: supply chain efficiency and algorithms. The model was "Made in China + Global Operations" — goods produced in China, apps distributed worldwide.</p>
+<p><strong>Wave 3 (2025+)</strong>: AI, clean energy, medical technology. What makes this wave different: <strong>they're not competing on price — they're competing on technology standards</strong>.</p>
+
+<h2>What the New Generation Looks Like</h2>
+<p>The Economist didn't name many specific companies, but China Daily's follow-up coverage provided clues:</p>
+<ul>
+  <li><strong>AI</strong>: Chinese large language model companies are winning contracts in Southeast Asia and the Middle East — not as ChatGPT replacements, but as local-language industry models</li>
+  <li><strong>Clean energy</strong>: Energy storage systems are achieving <strong>technology premiums</strong> in German and US markets — not cheaper, but more reliable</li>
+  <li><strong>MedTech</strong>: Gene sequencing equipment is opening markets in South America, driven by Chinese automated workflows that cut costs 60% below US competitors</li>
+</ul>
+<p>The founding teams behind these companies look different too. No longer factory owners and traders — engineers and scientists. They don't say "our price is lower" overseas. They say "our solution fits better."</p>
+
+<h2>A Shift in Three Questions</h2>
+<p>David Shambaugh's updated edition of <em>China Goes Global</em> captures this with a simple observation:</p>
+<p>In the 2000s, Westerners asked: "What can you make?"<br />
+In the 2010s: "What do you want to buy?"<br />
+Now: "What can you teach us?"</p>
+<p>This shift says more about China's new globalization phase than any data set.</p>
+
+<h2>Implications</h2>
+<p>For entrepreneurs going global, two concrete takeaways:</p>
+<p><strong>1. Don't copy TikTok's playbook.</strong> Subsidized customer acquisition doesn't work in B2B tech going global. The new wave runs on trust and adaptation time — your product running smoothly for six months at a client site is the real moat.</p>
+<p><strong>2. Technology standard globalization requires defining the standard.</strong> Genshin Impact succeeded not because its gameplay was pioneering (open world wasn't invented by miHoYo), but because it defined "cultural hybrid" as a new category. Can your product become synonymous with a category in a niche market?</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>Sources</strong><br />
+The Economist — "A new generation of Chinese companies is expanding around the world" (April 2026)<br />
+China Daily — "Chinese firms seek collaborative expansion for global success"<br />
+Asia Society — Book review of Shambaugh's <em>China Goes Global</em><br />
+Note: The Economist article is behind a paywall. Analysis based on news summaries and cross-references.</p>
+<hr />
+
+  </div>
+</Article>

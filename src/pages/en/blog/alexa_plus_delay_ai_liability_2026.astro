@@ -1,0 +1,71 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["AI", "Digital Life", "Technology"];
+const articleDate = '2026-05-11';
+---
+
+<Article
+  title="Why Did Alexa+ Launch Get Delayed? Because AI Can't Say 'I Don't Know'"
+  description="When AI transitions from text assistant to living agent, liability shifts from an engineering problem to an ethics problem"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Technology Analysis · 2026-05-11</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Why Did Alexa+ Launch Get Delayed? Because AI Can't Say "I Don't Know"</h1>
+      <div class="article-meta">
+        <span>2026-05-11</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>Amazon's Alexa+ was recently reported by the Washington Post to be delayed.</p>
+<p>The delay isn't a technology problem — the tech has been working for a while.</p>
+<p>What's really holding it up is one question: <strong>how does an AI handle "I don't know"?</strong></p>
+
+<h2>Background</h2>
+<p>In late 2025, Amazon launched Alexa.com at CES — a web-based AI assistant. Then came Germany, the UK. BMW integrated Alexa+ into the 2026 iX3. Expedia announced integration. Fortune ran a story about how Alexa+ tracks whether the dog has been fed.</p>
+<p>Everything looked smooth.</p>
+<p>Then the Washington Post reported: Amazon delayed the web launch of Alexa+. The reason? <strong>AI hallucination risk in home environments is too high</strong>.</p>
+<p>Specifically: if Alexa+ says "the dog has been fed" — but it hasn't — this isn't a hallucination problem. It's a liability problem.</p>
+
+<h2>What Makes Home AI Different</h2>
+<p>In academic research, AI hallucination results in a wrong paragraph. In coding, it produces non-functional code.</p>
+<p>But in a home environment, AI hallucination results in <strong>real-world actions</strong>.</p>
+<p>Alexa+ knows your door lock code. Knows when your kids get home from school. Knows your financial situation. It can place orders, unlock doors, tell people whether you're home.</p>
+<p>Now imagine: Alexa+ says "there's milk in the fridge" — but there isn't. Your kid drinks sour milk. Who's liable?</p>
+<p>This isn't a tech problem. It's a legal problem.</p>
+
+<h2>Industry-Wide Dilemma</h2>
+<p>This isn't unique to Amazon. Every AI product transitioning from "text assistant" to "life agent" faces the same challenge:</p>
+<p>The chasm between AI confidence and accuracy.</p>
+<p>In the lab, accuracy can go from 95% to 99%. But home environments require <strong>99.999%</strong> — because the cost isn't compute, it's safety.</p>
+<p>Internal debates at Alexa+ reportedly center on: when an AI is only 80% confident, should it:</p>
+<p>A. Guess based on past patterns<br />
+B. Say "I don't know"<br />
+C. Ask the user to confirm</p>
+<p>If B or C, user stickiness drops sharply — who wants an assistant that constantly says "I don't know"?</p>
+<p>But if A, the company takes on real-world risk.</p>
+
+<h2>Why This Matters to You</h2>
+<p>If you're building any consumer-facing AI product, this dilemma is unavoidable.</p>
+<p>Not just home AI. Financial advisory AI, medical diagnostic AI, educational assessment AI — when AI transitions from "advisor" to "actor," liability shifts from engineering to ethics.</p>
+<p>Amazon's delay is telling you: <strong>AI's last mile isn't code. It's trust</strong>.</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>Sources</strong><br />
+About Amazon — "Building a global Alexa+: How Amazon is teaching AI to understand culture, not just language"<br />
+Fortune — "Amazon's new Alexa aims to detangle chaos in the household, like whether someone fed the dog"<br />
+TechCrunch — "Amazon's AI assistant comes to the web with Alexa.com"<br />
+Washington Post — "Amazon delays Alexa's web debut — and a faceoff with ChatGPT"<br />
+BMW Group — Official: BMW Intelligent Personal Assistant expanded to include Alexa+<br />
+Expedia — Official integration announcement</p>
+<hr />
+
+  </div>
+</Article>

@@ -1,0 +1,71 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Semiconductor", "Globalization", "Export Controls", "Supply Chain"];
+const articleDate = '2026-05-11';
+---
+
+<Article
+  title="The MATCH Act Isn't Just Another Sanction — It Changes the Game"
+  description="The MATCH Act shifts chip export controls from executive orders to codified law. For global supply chains, this means the old 'wait it out' strategy no longer works."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Geopolitics · 2026-05-11</p>
+      <h1 style="font-size:2rem;line-height:1.35;">The MATCH Act Isn't Just Another Sanction — It Changes the Game</h1>
+      <div class="article-meta">
+        <span>2026-05-11</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>Last week, the US House of Representatives advanced the MATCH Act — the Mandating Assessments of Chinese-procured Hardware Act. In plain English: <strong>Congress wants to lock chip equipment exports to China into law</strong>.</p>
+
+<p>This isn't another round of sanctions escalation.</p>
+<p>The rules of the game are changing.</p>
+
+<h2>What Changed</h2>
+<p>For the past three years, US chip restrictions relied on BIS administrative orders. The Commerce Secretary says "this can't be exported," and companies comply. That's an administrative action. A new Secretary could loosen it. A new administration could reverse it.</p>
+
+<p>The MATCH Act shifts this power <strong>from the Commerce Department to Congress</strong>.</p>
+
+<p>Translation: regardless of who sits in the White House in 2028, chip restrictions on China become <strong>codified law</strong>.</p>
+
+<p>Tom's Hardware detailed the expanded scope: not just AI chips, but DUV lithography equipment (ASML's mainstream deep ultraviolet machines) now falls under the control list. The R Street Institute called it "Industrial Policy Dressed as National Security."</p>
+
+<h2>Why It Matters</h2>
+<p>If you're a decision-maker in a globalizing company, your strategy for the past three years was probably: "Wait it out. Eventually you'll be able to buy again."</p>
+
+<p>With the MATCH Act, that assumption no longer holds. Because: <strong>executive orders can be changed. Laws cannot.</strong></p>
+
+<p>BIS export controls have explicit "controlled item lists" — companies can build compliance programs around them. But once Congress codifies the restrictions, the list only grows. Look at the CHIPS Act — passed in 2022, and already amended twice with additional restrictions by 2025.</p>
+
+<h2>Three Baselines to Reset</h2>
+<p><strong>1. Supply chain planning</strong>: For chips, lithography equipment, and EDA software, assume restrictions will tighten over 5-10 years, not loosen. When building overseas factories, don't just look at labor costs — look at equipment procurement pathways.</p>
+
+<p><strong>2. Compliance budget</strong>: Spending $500K on an export compliance team used to be "big company" behavior. It's becoming a standard operating cost. Micron is already lobbying Congress to tighten further — big companies will use controls to cement their moats.</p>
+
+<p><strong>3. Technology roadmap</strong>: If the latest equipment is permanently off the table, can your product design "step back" to mature process nodes? This is what Huawei proved with the Mate 60 Pro — 7nm for a flagship chip isn't optimal, but it works.</p>
+
+<h2>Bottom Line</h2>
+<p>The MATCH Act is still in the legislative pipeline. But both R Street's critique and Lawfare's deep analysis converge on the same judgment: <strong>bipartisan containment of China's semiconductor sector is now Washington consensus</strong>.</p>
+
+<p>Not whether — just how fast.</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>Sources</strong><br />
+Tom's Hardware — MATCH Act technical scope and equipment coverage<br />
+R Street Institute — "Industrial Policy Dressed as National Security"<br />
+Reuters — Micron lobbying to restrict chip equipment sales to Chinese rivals<br />
+Lawfare — "Congress Enters the Chip Wars"<br />
+SCMP — US Congress rolls out "largest" export control upgrade against China<br />
+CSIS — China's semiconductor localization drive gains impetus from allied export controls</p>
+<hr />
+
+  </div>
+</Article>
