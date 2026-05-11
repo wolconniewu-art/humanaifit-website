@@ -1,0 +1,71 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["AI", "数字生活", "前沿科技"];
+const articleDate = '2026-05-11';
+---
+
+<Article
+  title="Alexa+为什么推迟上线？因为AI不能说'不知道'"
+  description="当AI从文本助手变成生活Agent，责任归因从工程问题变成了伦理问题"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回洞察</a>
+      <p class="section-label" style="color:var(--color-accent);">科技分析 · 2026-05-11</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Alexa+为什么推迟上线？因为AI不能说"不知道"</h1>
+      <div class="article-meta">
+        <span>2026-05-11</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>Amazon的Alexa+最近被Washington Post爆料推迟上线。</p>
+<p>推迟的原因不是技术问题——技术早就跑通了。</p>
+<p>真正卡住的是一个问题：<strong>AI怎么处理"不知道"的情况</strong>。</p>
+
+<h2>背景</h2>
+<p>2025年底Amazon在CES上发布了Alexa.com——一个网页版AI助手。随后德国、英国上线。BMW把Alexa+装进了2026款iX3。Expedia宣布整合。Fortune还发了篇报道，讲Alexa+如何在家庭里追踪"狗喂了没有"。</p>
+<p>看起来一切顺利。</p>
+<p>但Washington Post报道：Amazon推迟了Alexa的网页版上线时间。理由是<strong>AI幻觉在家居场景中的风险太高</strong>。</p>
+<p>具体来说：如果Alexa+说"狗已经喂过了"，但实际没喂——这不是幻觉的问题，这是责任的问题。</p>
+
+<h2>家居AI的特殊之处</h2>
+<p>在学术论文场景里，AI幻觉的结果是一段错误的文字。在编程场景里，是一段不能用的代码。</p>
+<p>但在家居场景里，AI幻觉的结果是<strong>真实世界的行动</strong>。</p>
+<p>Alexa+知道你家门锁的密码。知道你孩子的放学时间。知道你家的财务状况。它能替你下单、开门、告诉别人你在不在家。</p>
+<p>现在设想一个场景：Alexa+说"冰箱里还有牛奶"——事实上没有。你孩子喝了一口坏牛奶。谁来负责？</p>
+<p>不是技术问题。是法律问题。</p>
+
+<h2>行业难题</h2>
+<p>这不是Amazon独有的问题。所有从"文本助手"走向"生活Agent"的AI产品，都在面对同一个困境：</p>
+<p>AI的自信度和准确度之间的鸿沟。</p>
+<p>在实验室里，准确率可以从95%做到99%。但家居场景需要的是<strong>99.999%</strong>——因为成本不再是算力，而是安全。</p>
+<p>Alexa+团队的内部分歧据报道集中在：当一个AI在某个问题上只有80%把握时，它应该：</p>
+<p>A. 凭经验猜<br />
+B. 说"不知道"<br />
+C. 反问用户确认</p>
+<p>如果选B或C，用户的粘性会断崖下降——谁会用动不动就说"不知道"的助手？</p>
+<p>但如果选A，企业要承担真实世界风险。</p>
+
+<h2>这个困境对你有用</h2>
+<p>如果你在做任何To C的AI产品，这个问题是绕不开的。</p>
+<p>不只是家居AI。金融AI的投顾建议、医疗AI的诊断辅助、教育AI的学习评估——当AI从"建议者"变成"行动者"，责任归属就从一个工程问题变成了伦理问题。</p>
+<p>Amazon的推迟在告诉你：<strong>AI产品的最后一公里，不是代码，是信任</strong>。</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>主要参考来源：</strong><br />
+About Amazon — "Building a global Alexa+: How Amazon is teaching AI to understand culture, not just language"<br />
+Fortune — "Amazon's new Alexa aims to detangle chaos in the household, like whether someone fed the dog"<br />
+TechCrunch — "Amazon's AI assistant comes to the web with Alexa.com"<br />
+Washington Post — "Amazon delays Alexa's web debut — and a faceoff with ChatGPT"<br />
+BMW Group — "BMW Intelligent Personal Assistant expanded to include Amazon Alexa+ Technology"<br />
+Expedia — Official integration announcement</p>
+<hr />
+
+  </div>
+</Article>

@@ -1,0 +1,66 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["全球化", "中国企业出海", "前沿科技"];
+const articleDate = '2026-05-11';
+---
+
+<Article
+  title="中国公司出海，正在换打法"
+  description="从价格出海到技术标准出海——第三代中国企业全球化的范式转变"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回洞察</a>
+      <p class="section-label" style="color:var(--color-accent);">趋势观察 · 2026-05-11</p>
+      <h1 style="font-size:2rem;line-height:1.35;">中国公司出海，正在换打法</h1>
+      <div class="article-meta">
+        <span>2026-05-11</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>The Economist 4月发了篇报道：《A new generation of Chinese companies is expanding around the world》。</p>
+<p>听起来像老生常谈，但细看不同。</p>
+
+<h2>三代出海</h2>
+<p>中国企业的全球化，可以粗略分成三代：</p>
+<p><strong>第一代（2000s）</strong>：纺织、家电、基建。代表性公司：海尔、华为、中兴。核心优势是制造能力和价格。</p>
+<p><strong>第二代（2010s）</strong>：互联网平台。代表性公司：TikTok、Shein、Temu。核心优势是供应链效率和算法能力。靠的是"中国制造+全球运营"的模式——货在中国生产，App在全球推广。</p>
+<p><strong>第三代（2025+）</strong>：AI、新能源、医疗健康。这批公司不一样的地方在于——<strong>它们不是靠价格出海，是靠技术标准出海</strong>。</p>
+
+<h2>新一代长什么样</h2>
+<p>The Economist没有点名太多具体公司，但China Daily的跟进报道给出了线索：</p>
+<ul>
+  <li><strong>AI领域</strong>：中国的大模型公司在东南亚和中东拿订单，不是做ChatGPT的替代品，而是做本地语言的行业模型</li>
+  <li><strong>新能源领域</strong>：储能系统在德国和美国市场实现了<strong>技术溢价</strong>——不是卖得便宜，而是卖得可靠</li>
+  <li><strong>医疗健康</strong>：基因测序设备在南美打开市场，靠的是中国研发的自动化流程比美国竞品成本降低60%</li>
+</ul>
+<p>这批出海公司的创始团队画像也变了：不再是工厂主和贸易商，而是工程师和科学家。他们在海外不说"我们的价格更低"，说"我们的方案更适配"。</p>
+
+<h2>中心思想是一个人的转变</h2>
+<p>David Shambaugh的《China Goes Global》出了新版。他在书里说了一个观察：</p>
+<p>2000年代中国走出去，西方人问的是"你们能做什么？"<br />
+2010年代问的是"你们要买什么？"<br />
+现在问的是"你们能教我们什么？"</p>
+<p>这个转变，比任何数据都更能说明中国全球化的新阶段。</p>
+
+<h2>有什么用</h2>
+<p>对于正在出海的创业者，有两条具体的判断：</p>
+<p><strong>1. 不要复制TikTok的打法</strong>。互联网平台的补贴获客在B2B技术出海领域不适用。第三代出海靠的是信任和适配时间——你的产品在客户那里跑了6个月没问题，这才是壁垒。</p>
+<p><strong>2. 技术标准出海的前提是你能定义标准</strong>。原神之所以在全球成功，不是因为它的玩法领先（开放世界不是米哈游发明的），而是它定义了"文化混合体"这个新品类。你的产品能不能在某个细分市场成为一个品类的代名词？</p>
+
+<hr />
+<p style="font-size:13px;color:#888;"><strong>主要参考来源：</strong><br />
+The Economist — "A new generation of Chinese companies is expanding around the world" (2026.04)<br />
+China Daily — "Chinese firms seek collaborative expansion for global success"<br />
+Asia Society — 书评《China Goes Global》by David Shambaugh<br />
+注：The Economist原文有付费墙，以上分析基于新闻报道摘要和交叉参考。</p>
+<hr />
+
+  </div>
+</Article>
