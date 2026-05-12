@@ -1,0 +1,92 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Neurotechnology", "Frontier Tech", "AI Extension"];
+const articleDate = '2026-05-12';
+---
+
+<Article
+  title={'China Approves World\'s First Commercial Brain-Computer Interface Chip'}
+  description="China approves world's first commercial brain-computer interface chip — not just China's Neuralink"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Insights</a>
+      <p class="section-label" style="color:var(--color-accent);">Frontier Tech · 2026-05-12</p>
+      <h1 style="font-size:2rem;line-height:1.35;">China Approves World's First Commercial Brain-Computer Interface Chip</h1>
+      <div class="article-meta">
+        <span>2026-05-12</span>
+        <span class="separator">·</span>
+        <span>Connie Wu</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content">
+    <div class="container" style="max-width:720px;">
+      <p>On May 11, Nature reported a milestone: China approved the world's first commercial brain-computer interface (BCI) device for treating paralysis. Scientific American, Reuters, Bloomberg, Fierce Biotech, and Smithsonian Magazine all followed up.</p>
+      <p>This is not a "China's Neuralink" story.</p>
+
+      <h2>What happened</h2>
+      <p>China's NMPA approved a device called NEO — a BCI implant for paralysis treatment. This marks the first time any regulator has approved a BCI device for commercial use, not clinical trials. Neuralink, by comparison, remains under the FDA's clinical trial framework.</p>
+      <p class="footnote">Source: Nature, Reuters, Bloomberg, Scientific American, 2026.5</p>
+
+      <h2>Two technological paths</h2>
+      <p>Neuralink uses intracortical implantation — electrodes inserted directly into brain tissue. High precision, but highly invasive.</p>
+      <p>China's NEO follows an endovascular route — electrodes are delivered through the jugular vein to brain blood vessels, sitting against the cortex without penetrating. Lower surgical risk, no craniotomy needed.</p>
+      <p>These are fundamentally different approaches, not directly comparable.</p>
+      <p class="footnote">Source: Scientific American, 2026.5</p>
+
+      <h2>Signals of an accelerating field</h2>
+      <p>China's BCI activity goes beyond this single approval. 36Kr reports that Chinese BCI companies raised 3.8 billion yuan in Q1 2026 — exceeding the entire 2025 total. Investment logic is shifting from "concept hype" to "industrialization expectations."</p>
+      <p>Meanwhile, Mass General Brigham and Brown University published research showing two paralyzed patients able to type thoughts using a BCI — published in Nature during the same week.</p>
+      <p>Smithsonian Magazine's headline captured it: "An Experimental Brain Implant Allows People With Paralysis to Type Their Thoughts With Their Minds."</p>
+      <p>Neuralink is also pushing forward. Elon Musk recently stated Neuralink plans high-volume BCI production by 2026.</p>
+      <p class="footnote">Sources: 36Kr; Nature; Mass General Brigham; statnews; Smithsonian Magazine; Reuters</p>
+
+      <h2>Why this matters</h2>
+
+      <h3>Diverging regulatory paths</h3>
+      <p>China's NMPA approved for commercial use; the FDA is still in clinical trials. Each regulatory framework follows its own logic. How these frameworks diverge will shape BCI product timelines globally.</p>
+
+      <h3>BCI transitions from academia to industry</h3>
+      <p>The 3.8 billion yuan Q1 figure signals a shift. Global BCI market projections for 2036 reach tens of billions of dollars.</p>
+
+      <h3>Imagination for human-AI fusion</h3>
+      <p>BCI isn't about "replacing" human brains. Paralyzed patients typing with their thoughts — this is the most direct and urgent human-AI extension scenario.</p>
+      <p>The more interesting question isn't "who leads the BCI race" but: who sets the rules for this market when BCI becomes a commercial product?</p>
+
+      <hr />
+
+      <p class="footnote">
+        Sources:<br />
+        Nature: China approves brain chip to treat paralysis — a world first (2026.5)<br />
+        Scientific American: China just approved its first brain implant for commercial use (2026.5)<br />
+        Reuters: China approves market launch of BCI medical device (2026.5)<br />
+        Bloomberg: China Approves First Brain Implant for Commercial Use (2026.5)<br />
+        Fierce Biotech: China approves first BCI implant for paralyzed patients (2026.5)<br />
+        Smithsonian Magazine: Brain Implant Allows People With Paralysis to Type Thoughts (2026.5)<br />
+        Mass General Brigham / Brown University / Nature: BCI enables rapid communication (2026.5)<br />
+        36Kr: BCI raised 3.8B yuan in Q1 2026 (2026)<br />
+        Reuters: Neuralink plans high-volume brain implant production by 2026
+      </p>
+    </div>
+  </section>
+</Article>
+<style>
+  h1 { font-size: 2rem; line-height: 1.35; }
+  h2 { font-size: 1.4rem; margin-top: 2.5rem; color: var(--color-heading, #1a2334); }
+  h3 { font-size: 1.15rem; margin-top: 1.8rem; color: var(--color-heading, #1a2334); }
+  p { line-height: 1.8; color: var(--color-text, #333); margin-bottom: 1rem; }
+  .footnote { font-size: 0.85rem; color: #777; line-height: 1.6; }
+  hr { margin: 2rem 0; border: none; border-top: 1px solid #eee; }
+  .article-hero { background: linear-gradient(135deg, #0f2b46 0%, #1a3a5c 100%); padding: 3rem 0 2rem; color: #fff; }
+  .article-hero h1 { color: #fff; }
+  .article-back { color: #c9a96e; text-decoration: none; font-size: 0.9rem; }
+  .article-back:hover { text-decoration: underline; }
+  .section-label { font-size: 0.85rem; margin-top: 0.25rem; }
+  .article-meta { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; }
+  .article-meta .separator { margin: 0 .5rem; }
+</style>

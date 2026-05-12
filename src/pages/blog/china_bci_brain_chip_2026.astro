@@ -1,0 +1,94 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["脑神经科技", "前沿科技", "AI延伸"];
+const articleDate = '2026-05-12';
+---
+
+<Article
+  title={'中国批准全球首个商用脑机接口芯片：不只是「中国的Neuralink」'}
+  description="中国批准全球首个商用脑机接口芯片：不只是中国的Neuralink"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回洞察</a>
+      <p class="section-label" style="color:var(--color-accent);">前沿科技 · 2026-05-12</p>
+      <h1 style="font-size:2rem;line-height:1.35;">中国批准全球首个商用脑机接口芯片：不只是「中国的Neuralink」</h1>
+      <div class="article-meta">
+        <span>2026-05-12</span>
+        <span class="separator">·</span>
+        <span>Connie Wu</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content">
+    <div class="container" style="max-width:720px;">
+      <p>5月11日，Nature发了一条新闻：中国批准了全球首个商用脑机接口设备。随后Scientific American、Reuters、Bloomberg、Fierce Biotech、Smithsonian Magazine全部跟进报道。</p>
+      <p>这不是一个"中国版Neuralink"的故事。</p>
+
+      <h2>发生了什么</h2>
+      <p>中国药品监督管理局批准了一款名为NEO的脑机接口设备用于治疗瘫痪。</p>
+      <p>这是全球第一次有监管机构正式批准一款BCI设备进入商用——不是临床试验，是商用。Neuralink在美国的进展仍在FDA的临床试验框架下，尚未拿到商用批准。</p>
+      <p class="footnote">Source: Nature, Reuters, Bloomberg, Scientific American, 2026.5.11</p>
+
+      <h2>两条技术路线</h2>
+      <p>Neuralink做的是皮层内植入——电极直接插入大脑皮层，精度高，但手术侵入性强。</p>
+      <p>中国批准的NEO走的是血管内路径——通过颈静脉将电极送入大脑血管壁，贴着大脑皮层但不穿透皮层。手术风险低得多，不需要开颅。</p>
+      <p>这是两条完全不同的路线选择，不能简单类比。</p>
+      <p class="footnote">Source: Scientific American, 2026.5</p>
+
+      <h2>赛道升温的信号</h2>
+      <p>中国在BCI领域的动作不止这一个。</p>
+      <p>36氪的数据：2026年Q1中国脑机接口融资额达到38亿人民币，超过2025年全年总和。投资逻辑正在从"概念炒作"转向"产业化预期"。</p>
+      <p>同一周，Mass General Brigham和Brown University联合发表了一项研究：一种脑机接口能让两名瘫痪患者用意念打字交流。这是Nature同期发表的研究。</p>
+      <p>Smithsonian Magazine用了这样的场景描述："An Experimental Brain Implant Allows People With Paralysis to Type Their Thoughts With Their Minds"。</p>
+      <p>Neuralink也在推进。Elon Musk在最近的一份声明中说：Neuralink计划在2026年实现脑机接口的高产量制造。</p>
+      <p class="footnote">Sources: 36Kr; Nature; Mass General Brigham; statnews; Smithsonian Magazine; Reuters, 2026.5</p>
+
+      <h2>为什么值得关注</h2>
+
+      <h3>监管路径的分岔</h3>
+      <p>中国NMPA批了商用，美国FDA还在临床。两条监管路径都有各自的评估逻辑。值得关注的是，不同监管框架的差异化处理正在影响BCI产品的上市节奏。</p>
+
+      <h3>BCI从学术课题变成产业赛道</h3>
+      <p>2026年Q1中国BCI融资38亿RMB就是信号。全球范围，BCI市场预测2036年将达数百亿美元。</p>
+
+      <h3>对人机融合的想象</h3>
+      <p>BCI不是来"替代"人脑的。瘫痪患者用意念打字——这是最直观、最紧迫的human-AI延伸场景。</p>
+      <p>比"谁在BCI竞赛中领先"更有意思的问题是：当脑机接口变成商用产品之后，谁来决定这个市场的规则？</p>
+
+      <hr />
+
+      <p class="footnote">
+        来源交叉验证：<br />
+        Nature: China approves brain chip to treat paralysis — a world first (2026.5.11)<br />
+        Scientific American: China just approved its first brain implant for commercial use (2026.5)<br />
+        Reuters: China approves market launch of BCI medical device (2026.5)<br />
+        Bloomberg: China Approves First Brain Implant for Commercial Use (2026.5)<br />
+        Fierce Biotech: China approves first BCI implant for paralyzed patients (2026.5)<br />
+        Smithsonian Magazine: Brain Implant Allows People With Paralysis to Type Thoughts (2026.5)<br />
+        Mass General Brigham / Brown University / Nature: BCI enables rapid communication for paralysis (2026.5)<br />
+        36Kr: BCI raised 3.8B yuan in Q1 2026 (2026)<br />
+        Reuters: Neuralink plans high-volume brain implant production by 2026
+      </p>
+    </div>
+  </section>
+</Article>
+<style>
+  h1 { font-size: 2rem; line-height: 1.35; }
+  h2 { font-size: 1.4rem; margin-top: 2.5rem; color: var(--color-heading, #1a2334); }
+  h3 { font-size: 1.15rem; margin-top: 1.8rem; color: var(--color-heading, #1a2334); }
+  p { line-height: 1.8; color: var(--color-text, #333); margin-bottom: 1rem; }
+  .footnote { font-size: 0.85rem; color: #777; line-height: 1.6; }
+  hr { margin: 2rem 0; border: none; border-top: 1px solid #eee; }
+  .article-hero { background: linear-gradient(135deg, #0f2b46 0%, #1a3a5c 100%); padding: 3rem 0 2rem; color: #fff; }
+  .article-hero h1 { color: #fff; }
+  .article-back { color: #c9a96e; text-decoration: none; font-size: 0.9rem; }
+  .article-back:hover { text-decoration: underline; }
+  .section-label { font-size: 0.85rem; margin-top: 0.25rem; }
+  .article-meta { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; }
+  .article-meta .separator { margin: 0 .5rem; }
+</style>
