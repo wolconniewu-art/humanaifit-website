@@ -1,0 +1,89 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "AI前沿"];
+const articleDate = '2026-05-13';
+---
+
+<Article
+  title="ServiceNow说它的AI员工能运行你整个公司——你信吗？"
+  description="2026年5月ServiceNow推出自主劳动力平台，AI Agent从工具跃升为'企业员工'——但HBR说别把AI当员工"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回洞察</a>
+      <p class="section-label" style="color:var(--color-accent);">热点解读 · 2026-05-13</p>
+      <h1 style="font-size:2rem;line-height:1.35;">ServiceNow说它的AI员工能运行你整个公司——你信吗？</h1>
+      <div class="article-meta">
+        <span>2026-05-13</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>"让你的AI员工去搞定。"</p>
+
+<p>这不是科幻小说。这是2026年5月ServiceNow发布"Autonomous Workforce"时说的原话。</p>
+
+<h2>一个平台，两个承诺</h2>
+
+<p>ServiceNow的新产品不是某个AI工具，而是一个完整的"AI员工管理系统"。企业可以在里面定义AI Agent的岗位、权限、工作流——让它们在IT、HR、客服、财务部门独立运作。</p>
+
+<p>Josh Bersin的评价很直接："ServiceNow正在赌整个企业平台——AI治理、自动化、编排，所有东西。"</p>
+
+<p>Futurum Group用了三个关键词：<strong>治理（Governed）、自主（Autonomous）、编排（Orchestration）</strong>。</p>
+
+<p>翻译成大白话：AI终于不是"打杂的工具"，而是"有工号、有岗位说明书的员工"。</p>
+
+<h2>问题来了：AI能当员工吗？</h2>
+
+<p>几乎同一时间，HBR发了一篇文章，标题是：《研究：别把AI Agent当员工》。</p>
+
+<p>观点也很直接：AI Agent和人类员工的协作关系，不能用传统雇佣关系的框架来理解。角色模糊、责任不清、信任机制缺失——当AI Agent出错，谁来负责？是你的AI员工，还是买它的厂商，还是用它的企业？</p>
+
+<p>ServiceNow的回答是：我们来管。我们有AI Control Tower，能监控、治理、追踪AI Agent的所有行为。</p>
+
+<p>HBR的回答是：这不是监控的问题，这是框架的问题。</p>
+
+<h2>两条路：替代还是协同？</h2>
+
+<p>这不是一个学术争论。</p>
+
+<p>ServiceNow的路线：AI is the worker。员工做不了的事，AI来做；员工不想做的事，AI来替；你觉得人力不够？用AI补。</p>
+
+<p>HBR的路线：AI is the partner。你不需要"管理"AI，你需要"协作"AI。角色不是替代，是互补。</p>
+
+<p>这两条路的分歧，恰好是你——企业管理者、HR负责人、CTO——此刻正在面对的决策。</p>
+
+<p>你是买ServiceNow的平台，还是重新设计你和AI的关系？</p>
+
+<h2>一个好消息，一个坏消息</h2>
+
+<p>好消息：AI真的能干活了。ServiceNow不是画饼——他们的产品已经在企业里跑，从IT工单自动分配到HR入职流程，再到客服响应，全链条自动化。</p>
+
+<p>坏消息：跑起来之后，问题才真正开始。AI Agent出错了怎么办？谁来审计？几个AI Agent之间怎么协调？当AI Agent说"这件事我不能做"的时候，怎么知道它是真的不能做，还是在偷懒？</p>
+
+<p>这不是开玩笑。当AI Agent变成"员工"，你突然发现——管理人的那套方法论，管不了AI。</p>
+
+<h2>这和你有什么关系？</h2>
+
+<p><strong>如果你是CIO：</strong>这不是个要不要买的问题，而是买完怎么接的问题。ServiceNow只是第一批，SAP、Salesforce、Oracle都会跟上来。你的企业架构准备好了吗？</p>
+
+<p><strong>如果你是HR负责人：</strong>AI可以当员工了——那你原来负责的"人员管理"边界往外推了一大截。HR不只要管人，还要管AI Agent。</p>
+
+<p><strong>如果你是研究者（像我们这样的人）：</strong>这个案例恰好是人机契合（Human-AI Fit）最前沿的战场。"AI即员工"vs"AI≠员工"，两股力量正在定义人机协作的下一个十年。</p>
+
+<h2>最后说一句</h2>
+
+<p>ServiceNow不想取代你的员工——它的野心更大。它想让你重新思考：什么是工作，什么是员工，什么是管理。</p>
+
+<p>这个问题，没有一个厂商能替你回答。</p>
+
+  <p style="font-size:0.85rem;color:#666;margin-top:3rem;border-top:1px solid #eee;padding-top:1rem;">
+    来源：Fortune (2026-05), ServiceNow Autonomous Workforce launch, Josh Bersin Company, Futurum Group, HBR "Research: Why You Shouldn't Treat AI Agents Like Employees"
+  </p>
+  </div>
+</Article>
