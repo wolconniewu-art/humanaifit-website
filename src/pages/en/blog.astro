@@ -1,5 +1,76 @@
 ---
 import Base from '../../layouts/Base.astro';
+
+const pinned = [
+  { date: "2026-05-03", slug: "about_humanaifit", title: "Meet humanaifit — Where Humans and AI Actually Work Together (ZH+EN)", tags: "Company News, Human-AI Fit" },
+];
+
+const articles = [
+  { date: '2026-05-18', slug: 'is_ai_dulling_minds_2026', title: "Is AI Actually Making Us Dumber? Three Independent Studies Say the Answer Isn't Simple", tags: "Human-AI Fit, AI Literacy, Cognitive Science" },
+  { date: '2026-05-17', slug: 'sharing_ideas_with_ai_originality_2026', title: 'Should You Tell AI Your Research Ideas? A Two-Year Experiment\'s Answer', tags: "Human-AI Fit, Research, AI Literacy" },
+  { date: '2026-05-16', slug: 'life_waste_ai_2026', title: "If Money Were No Object Tomorrow, What Would You 'Waste' Your Life On?", tags: "Human-AI Fit, Personal Growth, Meaning" },
+  { date: '2026-05-16', slug: 'ai_us_education_2026', title: 'How AI Is Infiltrating U.S. Education: Beyond the Hype, It\'s a Restructuring of Production Relations', tags: "Human-AI Fit, AI Education, Globalization" },
+  { date: '2026-05-16', slug: 'cognitive_judgment_ai_2026', title: "How to Tell if Someone's Thinking Is Above Your Own — And Why the AI Era Has Rewritten the Question", tags: "Human-AI Fit, Cognition, Metacognition" },
+  { date: '2026-05-15', slug: 'retraining_white_collar_ai_2026', title: "When Retraining Can't Save Us: The White-Collar Career Restructuring in the AI Era", tags: "Human-AI Fit, Tech Frontiers" },
+  { date: '2026-05-15', slug: 'parallel_currency_dedollarization_2026', title: 'Parallel Currency: The New Reality of De-Dollarization in a Multi-Polar World', tags: "Globalization, Economy" },
+  { date: '2026-05-14', slug: 'ai_efficiency_org_mismatch_2026', title: 'AI Makes You Faster. But Is Your Organization Actually Better?', tags: "Human-AI Fit, Tech Frontiers" },
+  { date: '2026-05-14', slug: 'trump_china_summit_16_ceos_2026', title: "When 16 US CEOs Flew to Beijing: Trump's China Summit and the 'Multi-Polar Co-opetition' Moment", tags: "Globalization, Tech Frontiers" },
+  { date: "2026-05-13", slug: "servicenow_ai_workforce_2026", title: "ServiceNow Says Its AI Workers Can Run Your Entire Company — Do You Believe It?", tags: "Human-AI Fit, AI Frontiers" },
+  { date: "2026-05-13", slug: "ai_corporate_education_subscription_2026", title: "Corporate Training Is Shifting from Project-Based to Subscription-Based — An AI-Driven Narrative", tags: "Knowledge Entrepreneurship, Human-AI Fit" },
+  { date: "2026-05-13", slug: "creator_economy_consolidation_2026", title: "The Creator Economy Is Consolidating — Who Gets Washed Out?", tags: "Knowledge Entrepreneurship, AI Frontiers" },
+  { date: "2026-05-12", slug: "china_bci_brain_chip_2026", title: "China Approves the World's First Commercial Brain-Computer Interface Chip: More Than Just 'China's Neuralink'", tags: "Tech Frontiers" },
+  { date: "2026-05-12", slug: "bcg_gaming_platforms_colliding_2026", title: 'BCG 2026 Gaming Report: Platforms Are Colliding, 55% of Players Are Gaming More', tags: "Tech Frontiers, Digital Economy" },
+  { date: '2026-05-11', slug: 'match_act_institutionalization_2026', title: "The MATCH Act Is Here, but the Real Danger Isn't the Sanctions", tags: "Tech Frontiers, Globalization" },
+  { date: '2026-05-11', slug: 'china_third_wave_globalization_2026', title: 'Chinese Companies Going Global Are Changing Their Playbook', tags: "Globalization, Tech Frontiers" },
+  { date: '2026-05-11', slug: 'alexa_plus_delay_ai_liability_2026', title: "Why Was Alexa+ Delayed? Because AI Can't Say 'I Don't Know'", tags: "Tech Frontiers, AI Applications" },
+  { date: '2026-05-10', slug: 'fed_ai_stagflation_2026', title: "Fed Says AI Success Means Higher Rates, Failure Means Stagflation — The Same Logic Behind Two Extreme Predictions", tags: "Economy, Tech Frontiers, Human-AI Fit" },
+  { date: '2026-05-10', slug: 'mothers_day_ai_china_2026', title: "A Different Mother's Day Story: When Chinese Mothers Support the AI Era with Their Own Hands", tags: "Human-AI Fit, Life style" },
+  { date: '2026-05-09', slug: 'eu_china_ev_price_floor_2026', title: 'EU-China EV Tariff Negotiation: The "Price Floor" Is Rewriting the Rules', tags: "Globalization, Energy" },
+  { date: "2026-05-09", slug: "eu_ai_act_omnibus_2026", title: 'EU AI Act Omnibus Simplification — Is Compliance Pressure Easing or Just Changing Shape?', tags: "Human-AI Fit, AI Governance" },
+  { date: "2026-05-09", slug: "china_solar_overcapacity_2026", title: "China's Solar Industry Shakeout — The Triple Struggle of Low Prices, Overcapacity, and Globalization", tags: "Energy, Globalization" },
+  { date: "2026-05-09", slug: "alexa_plus_ai_assistant_2026", title: "Alexa+ Is Here, but the AI Personal Assistant War Is Just Beginning", tags: "Tech Frontiers, AI Applications" },
+  { date: "2026-05-09", slug: "us_export_controls_2026_may", title: "US Chip Export Controls 2026 Upgrade: MATCH Act, Micron's Lobbying, and China's Computing Independence Path", tags: "Tech Frontiers, Globalization" },
+  { date: "2026-05-09", slug: "ai_anxiety_three_steps_2026", title: "AI Anxiety Is Spreading: Should You Fear Replacement or Evolve?", tags: "Human-AI Fit, Personal Growth" },
+  { date: "2026-05-09", slug: "europe_market_china_companies_2026", title: 'Chinese Companies Going Global: Is Europe Still a Good Market? — May 2026 Assessment', tags: "Globalization, Business" },
+  { date: "2026-05-08", slug: "ai_education_future", title: "How Should Children Be Educated to Outrun the Future in the AI Era?", tags: "Human-AI Fit, AI Education" },
+  { date: "2026-05-07", slug: "ai_knowledge_meaning", title: "Does Learning Knowledge Still Matter in the AI Era?", tags: "Human-AI Fit, AI Education" },
+  { date: "2026-05-07", slug: "human_competence", title: "Human Core Competence in the AI Era: Not Doing Better Than AI, But Doing What AI Can't", tags: "Human-AI Fit, AI and Workforce" },
+  { date: "2026-05-07", slug: "uk_vs_eu_cbam", title: "UK CBAM vs EU CBAM — A Clear Comparison of Two Carbon Border Mechanisms", tags: "Carbon Compliance, Globalization" },
+  { date: "2026-05-07", slug: "carbon_price", title: "How Much Does a Ton of Carbon Actually Cost?", tags: "Carbon Compliance, Economy" },
+  { date: "2026-05-06", slug: "mckinsey_rigor_ai_impact_2026", title: 'From Ambition to Impact: McKinsey on Using Rigor and Data to Make AI Pay Off', tags: "Human-AI Fit, Business, Tech Frontiers" },
+  { date: "2026-05-05", slug: "digital_tech_reshape_collaboration", title: "When Digital Tech Reshapes Human Collaboration, Management's Boundaries Are Being Rewritten", tags: "Academic Frontiers, Human-AI Fit, Organizational Behavior" },
+  { date: "2026-05-04", slug: "chinese_evs_tesla_2026", title: 'Chinese EV Going Global: From "Price Advantage" to "Value Reconstruction"', tags: "Globalization, EV" },
+  { date: "2026-05-04", slug: "deepseek_flagship_2026", title: "DeepSeek V4 Launch: A Breakthrough Moment in the AI Race", tags: "Tech Frontiers, AI" },
+  { date: "2026-05-04", slug: "deloitte_human_capital_2026", title: 'Deloitte 2026 Human Capital Trends: The "Culture Debt" of the AI Era', tags: "Human-AI Fit, Organizational Change" },
+  { date: "2026-05-04", slug: "imf_economic_outlook_2026", title: "IMF 2026 Spring Outlook: Global Economic Growth Under Pressure", tags: "Economy, Globalization" },
+  { date: "2026-05-04", slug: "retraining_workers_ai_2026", title: 'Worker Retraining in the AI Era: From "Replacement Anxiety" to "Skill Upgrade"', tags: "Human-AI Fit, Workforce Transformation" },
+  { date: "2026-05-04", slug: "us_semiconductor_export_controls_2026", title: "US Semiconductor Export Controls 2026: Rule Upgrades and Boundaries", tags: "Globalization, Tech Frontiers" },
+  { date: "2026-05-04", slug: "eu_ai_act_reality_2026", title: 'EU AI Act Implementation Delay: Compliance Pressure Ebbing or Calm Before the Storm?', tags: "Human-AI Fit, AI Governance" },
+  { date: "2026-05-04", slug: "meta_consumer_ai_2026", title: "Meta Consumer AI: From Tool to Daily Companion", tags: "Tech Frontiers, AI Applications" },
+  { date: "2026-05-03", slug: "about_humanaifit", title: 'Meet humanaifit — Where Humans and AI Actually Work Together', tags: "Company News, Human-AI Fit" },
+  { date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM Carbon Tariff Takes Effect — A Lesson Chinese Exporters Can't Avoid", tags: "Globalization, Economy" },
+  { date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026: Enterprise AI Deployment Is Accelerating, But Governance Is Falling Behind", tags: "Human-AI Fit, Tech Frontiers" },
+  { date: "2026-05-03", slug: "eu_china_ev_price_floor_2026", title: "EU-China EV Tariff Negotiation: The Price Floor Is Rewriting the Rules", tags: "Globalization, Energy" },
+  { date: "2026-05-03", slug: "eu_ai_act_omnibus_2026", title: "EU AI Act Omnibus Simplification — Compliance Pressure Easing?", tags: "Human-AI Fit, AI Governance" },
+  { date: "2026-05-03", slug: "alexa_plus_ai_assistant_2026", title: "Alexa+ Is Here, but the War Is Just Beginning", tags: "Tech Frontiers, AI Applications" },
+  { date: "2026-05-03", slug: "china_solar_overcapacity_2026", title: "China Solar Shakeout — Overcapacity and Globalization", tags: "Energy, Globalization" },
+  { date: "2026-05-03", slug: "us_export_controls_2026_may", title: "US Chip Export Controls 2026", tags: "Tech Frontiers, Globalization" },
+  { date: "2026-05-03", slug: "ai_anxiety_three_steps_2026", title: "AI Anxiety Is Spreading", tags: "Human-AI Fit, Personal Growth" },
+  { date: "2026-05-03", slug: "europe_market_china_companies_2026", title: "Chinese Companies in Europe — May 2026", tags: "Globalization, Business" },
+  { date: "2026-05-02", slug: "global_localization", title: 'From Mixue to NIO: The "Localization Paradox" of Chinese Global Brands', tags: "Globalization, Business" },
+  { date: "2026-05-02", slug: "digital_leadership", title: "When AI Can Replace 70% of Management, Where Is the Leader's Value?", tags: "Human-AI Fit, Business" },
+  { date: "2026-05-02", slug: "AI_productivity_paradox", title: "When AI Investment Shows No Results — A Deep Dive into the Productivity Paradox", tags: "Human-AI Fit, Knowledge Management" },
+  { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "When Automation Bias Meets Algorithm Aversion: Human-AI Collaboration Through Behavioral Economics", tags: "Human-AI Fit, Tech Frontiers" },
+  { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: 'Getting Human-Machine Relationships "Right" — A Deep Dive into Deloitte 2026', tags: "Human-AI Fit, Knowledge Management" },
+];
+
+const tagGroups = ["All", "Company News", "Human-AI Fit", "Globalization", "Tech Frontiers", "Business", "Economy", "AI Education", "Carbon Compliance"];
+const months = articles.reduce((acc, a) => {
+  const m = a.date.substring(0, 7);
+  if (!acc[m]) acc[m] = [];
+  acc[m].push(a);
+  return acc;
+}, {});
 ---
 
 <Base
@@ -8,487 +79,146 @@ import Base from '../../layouts/Base.astro';
   lang="en"
   path="/en/blog/"
 >
-  <section class="section" style="padding-top:100px;">
-    <div class="container">
-      <p class="section-label">Insights</p>
+  <section class="section" style="padding-top:120px;padding-bottom:60px;background:linear-gradient(160deg, #f5f7fa 0%, #ffffff 50%, #eef1f5 100%);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-60px;right:-60px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+    <div class="container text-center" style="position:relative;z-index:1;">
+      <p class="section-label" style="color:var(--color-accent);font-weight:600;">Insights</p>
       <h1>Thinking at the Frontier</h1>
-      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);">
+      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);font-size:16px;">
         Deep dives on Human-AI Fit, carbon compliance, globalization and knowledge management.
       </p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
-    <div class="container">
+  <!-- Tag filter -->
+  <section style="padding:24px 0;border-bottom:1px solid var(--color-border);">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      {tagGroups.map(tag => (
+        <span class="tag-filter {tag === 'All' ? 'tag-active' : ''}" data-tag={tag === 'All' ? 'all' : tag}
+          onclick="filterArticles(this)">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </section>
 
-                  <!-- Pinned: always on top -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:2px solid var(--color-accent);padding-bottom:var(--spacing-sm);background:linear-gradient(135deg,rgba(201,169,110,0.06),transparent);border-radius:12px;padding:16px;">
-        <p style="font-size:11px;color:var(--color-accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;">📌 Featured</p>
-        <div style="padding:var(--spacing-md) 0 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Company News</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Human-AI Fit</span>
+  <!-- Pinned articles -->
+  <section class="section">
+    <div class="container" id="article-list">
+      {pinned.length > 0 && (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-accent);margin-bottom:24px;font-weight:500;">📌 Featured</h3>
+          <div style="display:grid;gap:20px;">
+            {pinned.map(item => (
+              <a href={`/en/blog/${item.slug}/`} class="article-card"
+                data-tags="{item.tags}"
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.02));
+                       border:1px solid rgba(201,169,110,0.3);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span style="font-size:13px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;">{item.date}</span>
+              </a>
+            ))}
+          </div>
         </div>
-        <h3 style="font-size:1rem;line-height:1.4;margin-top:8px;"><a href="/en/blog/about_humanaifit/" style="color:var(--color-primary);text-decoration:none;">Meet humanaifit — Where Humans and AI Actually Work Together</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Introducing Beacon Consulting — a new advisory firm grounded in Human-AI Fit research.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-03</p>
-      </div>
+      )}
 
-      <!-- 2026-05-16: Life Waste AI Era -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Personal Growth</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Meaning</span>
+      {Object.entries(months).sort(([a],[b]) => b.localeCompare(a)).map(([month, items]) => (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-text-muted);margin-bottom:24px;font-weight:500;">
+            {month === "2026-05" ? "May 2026" : month}
+          </h3>
+          <div style="display:grid;gap:20px;">
+            {items.map(item => (
+              <a href={`/en/blog/${item.slug}/`} class="article-card"
+                data-tags="{item.tags}"
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:var(--color-surface);
+                       border:1px solid var(--color-border);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span style="font-size:13px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;">
+                  {item.date.substring(5)}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/life_waste_ai_2026/" style="color:var(--color-primary);text-decoration:none;">If Money Were No Object Tomorrow, What Would You 'Waste' Your Life On?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          As AI gradually removes 'survival anxiety' from most people's agendas, 'meaning anxiety' moves to the front. This isn't a chicken-soup question — it's a collective inquiry taking shape in real time. AI has built the bridge. The question is whether you truly want to cross it.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-16</p>
-      </div>
-
-      <!-- 2026-05-16: AI in US Education -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Education</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Globalization</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/ai_us_education_2026/" style="color:var(--color-primary);text-decoration:none;">How AI Is Infiltrating U.S. Education: Beyond the Hype, It's a Restructuring of Production Relations</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Behind the headlines of The Atlantic, NYT, OpenAI's 400,000 teacher partnership, South Korea's failed AI textbook experiment, and a mom who built an AI tutor for her dyslexic son — a structural shift is reshaping America's classrooms.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-16</p>
-      </div>
-
-      <!-- 2026-05-16: Cognitive Judgment AI Era -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Cognition</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Metacognition</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/cognitive_judgment_ai_2026/" style="color:var(--color-primary);text-decoration:none;">How to Tell if Someone's Thinking Is Above Your Own — And Why the AI Era Has Rewritten the Question</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          When LLMs can pass the bar exam and beat PhDs at logic, what does 'higher cognition' even mean? A four-layer model of cognition reveals that the human advantage lies not in knowing more, but in asking better questions.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-16</p>
-      </div>
-
-      <!-- 2026-05-18: Is AI Dulling Our Minds -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Research</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Literacy</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/sharing_ideas_with_ai_originality_2026/" style="color:var(--color-primary);text-decoration:none;">Should You Tell AI Your Research Ideas? A Two-Year Experiment's Answer</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          From academic fear to methodological reconstruction — a response grounded in a two-year controlled experiment. The answer isn't 'should I use AI,' but 'how do I systematically engage AI without diluting originality.'
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-17</p>
-      </div>
-
-      <!-- 2026-05-18: Is AI Dulling Our Minds -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Literacy</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Cognition</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/is_ai_dulling_minds_2026/" style="color:var(--color-primary);text-decoration:none;">Is AI Actually Making Us Dumber? Three Independent Studies Say the Answer Isn't Simple</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Three independent studies from Harvard, ScienceAlert, and Frontiers in Psychology converge on one concern — but the real conclusion is more nuanced than the headlines suggest. The problem isn't AI. It's how we use it.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-18</p>
-      </div>
-
-      <!-- 2026-05-15: Retraining / White-Collar -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Tech Frontiers</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/retraining_white_collar_ai_2026/" style="color:var(--color-primary);text-decoration:none;">When Retraining Can't Save Us: The White-Collar Career Restructuring in the AI Era</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          McKinsey slashes partner cash compensation, top consultancies freeze starting salaries, multiple top-tier reports declare retraining models ineffective — the pyramid model of white-collar careers is being dismantled by AI.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-15</p>
-      </div>
-
-      <!-- 2026-05-15: Parallel Currency / De-Dollarization -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Globalization</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Economy</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/parallel_currency_dedollarization_2026/" style="color:var(--color-primary);text-decoration:none;">Parallel Currency: The New Reality of De-Dollarization in a Multi-Polar World</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          As the NYT reports sanctions accelerated China's currency push, as the Belt and Road shows resilient recovery, and as BRICS advances an independent payment system — the parallel monetary system is quietly taking shape across the Global South.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-15</p>
-      </div>
-
-      <!-- 2026-05-14: AI Efficiency Org Mismatch -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Tech Frontiers</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/ai_efficiency_org_mismatch_2026/" style="color:var(--color-primary);text-decoration:none;">AI Makes You Faster. But Is Your Organization Actually Better?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Three reports point to the same paradox: individual productivity is up, organizational performance is flat. The problem isn't how good AI is.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-14</p>
-      </div>
-
-      <!-- 2026-05-14: Trump China Summit -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Globalization</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Tech Frontiers</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/trump_china_summit_16_ceos_2026/" style="color:var(--color-primary);text-decoration:none;">When 16 US CEOs Flew to Beijing: Trump's China Summit and the 'Multi-Polar Co-opetition' Moment</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Trump visits China for the first time in 9 years, accompanied by 16 top US CEOs. While politicians in Washington talk decoupling, business leaders chose Beijing.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-14</p>
-      </div>
-
-      <!-- 2026-05-13: 3 new articles -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Frontier</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/servicenow_ai_workforce_2026/" style="color:var(--color-primary);text-decoration:none;">ServiceNow Says Its AI Workers Can Run Your Entire Company — Do You Buy It?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          ServiceNow's Autonomous Workforce launch promises AI agents as 'employees' — but HBR says don't treat them like employees.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-13</p>
-        <div style="padding:var(--spacing-md) 0 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Knowledge Entrepreneurship</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Human-AI Fit</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/ai_corporate_education_subscription_2026/" style="color:var(--color-primary);text-decoration:none;">Corporate Education Is Shifting From Projects to Subscriptions — An AI-Driven Undercurrent</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          AI is reshaping corporate education from one-time projects to continuous learning subscriptions.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-13</p>
-        <div style="padding:var(--spacing-md) 0 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Knowledge Entrepreneurship</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Frontier</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/creator_economy_consolidation_2026/" style="color:var(--color-primary);text-decoration:none;">The Creator Economy Is Consolidating — Forbes Says It's an Era of Consolidation. Who Gets Washed Out?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          The creator economy enters a consolidation phase — brands shift from KOL selection to systematic creator management.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-13</p>
-      </div>
-
-      <!-- 2026-05-12: 2 new articles -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/china_bci_brain_chip_2026/" style="color:var(--color-primary);text-decoration:none;">China Approves World's First Commercial Brain-Computer Interface Chip</a></h3>
-          <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-            China approves the world's first commercial brain-computer interface device — two tech paths, one race.
-          </p>
-          <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-12</p>
-        </div>
-        <div style="padding:var(--spacing-md) 0;">
-          <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/bcg_gaming_platforms_colliding_2026/" style="color:var(--color-primary);text-decoration:none;">BCG 2026 Gaming Report: Platforms Are Colliding, 55% of Gamers Playing More</a></h3>
-          <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-            BCG's 2026 gaming report reveals a structural shift — boundaries between platforms are dissolving.
-          </p>
-          <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-12</p>
-        </div>
-      </div>
-
-<!-- 2026-05-11: MATCH Act -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Globalization</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Semiconductor</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Geopolitics</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/match_act_institutionalization_2026/" style="color:var(--color-primary);text-decoration:none;">The MATCH Act Isn't Just Another Sanction — It Changes the Game</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          The MATCH Act shifts chip export controls from executive orders to codified law. For global supply chains, the old 'wait it out' strategy no longer works.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-11</p>
-      </div>
-
-      <!-- 2026-05-11: China third wave -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Globalization</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">China</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Technology</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/china_third_wave_globalization_2026/" style="color:var(--color-primary);text-decoration:none;">Chinese Companies Going Global Are Changing Their Playbook</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          A new generation of Chinese companies is expanding overseas — not on price, but on technology standards.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-11</p>
-      </div>
-
-      <!-- 2026-05-11: Alexa+ delay -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">AI</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Digital Life</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Liability</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/alexa_plus_delay_ai_liability_2026/" style="color:var(--color-primary);text-decoration:none;">Why Did Alexa+ Launch Get Delayed? Because AI Can't Say "I Don't Know"</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          When AI transitions from text assistant to living agent, liability shifts from an engineering problem to an ethics problem.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-11</p>
-      </div>
-
-      <!-- 2026-05-10: Fed AI Stagflation -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Macro Economy</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Economy</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Productivity</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/fed_ai_stagflation_2026/" style="color:var(--color-primary);text-decoration:none;">The Fed Says AI Success Could Mean Rate Hikes, Failure Means Stagflation</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          The Fed faces a two-sided risk: AI that succeeds too fast could overheat the economy; AI that fails to deliver could produce stagflation. Both scenarios share the same root — uncertainty.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-10</p>
-      </div>
-
-      <!-- 2026-05-10: Mother's Day feature -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Life Style</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/mothers_day_ai_china_2026/" style="color:var(--color-primary);text-decoration:none;">A Different Mother's Day Story: How Chinese Mothers Built AI with Their Own Hands</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          From data labelers in rural China to Gen Z entrepreneurs — how Chinese mothers are shaping and being reshaped by AI.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-10</p>
-      </div>
-
-<!-- 2026-05-09: 7 new articles -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Globalization</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Business Strategy</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/europe_market_china_companies_2026/" style="color:var(--color-primary);text-decoration:none;">Is Europe Still a Good Market for Chinese Companies Going Global?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          A multi-layered assessment of Europe for Chinese companies — three structural changes, three strategic responses.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Future of Work</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/ai_anxiety_three_steps_2026/" style="color:var(--color-primary);text-decoration:none;">AI Anxiety Is Spreading: Should You Fear Replacement or Evolve?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          A three-step framework for navigating AI career anxiety with data from Nature, The Guardian, and Fortune.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Geopolitics</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Semiconductor</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/us_export_controls_2026_may/" style="color:var(--color-primary);text-decoration:none;">US Chip Export Controls Escalate: MATCH Act, Micron's Lobbying, China's Response</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Export controls shift from precision national security tools to systematic industrial decoupling.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Consumer Tech</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Digital Life</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/alexa_plus_ai_assistant_2026/" style="color:var(--color-primary);text-decoration:none;">Alexa+ Is Here, But the AI Personal Assistant War Has Only Just Begun</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Amazon's Alexa+ launch marks a new phase — the real battle is about trust, privacy, and daily life integration.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Energy</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Globalization</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/china_solar_overcapacity_2026/" style="color:var(--color-primary);text-decoration:none;">China's Solar Shakeout: Overcapacity, Low Prices, and Global Ripple Effects</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          CSIS reports China's solar sector is in deep structural turmoil with global consequences.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">AI Policy</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Regulation</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/eu_ai_act_omnibus_2026/" style="color:var(--color-primary);text-decoration:none;">EU AI Act Simplification: Relief or Reshaped Pressure?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          The EU's Omnibus package delays high-risk AI rules but the compliance burden may just be shifting form.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Globalization</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Energy</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/eu_china_ev_price_floor_2026/" style="color:var(--color-primary);text-decoration:none;">EU-China EV Tariff Game: How Price Floor Is Rewriting the Rules</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          The EU is replacing punitive EV tariffs with a novel price floor — managed competition in EVs.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-09</p>
-      </div>
-
-      <!-- 2026-05-07: 4 new articles -->
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Carbon Compliance</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Economics</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/carbon_price/" style="color:var(--color-primary);text-decoration:none;">What Is a Ton of Carbon Actually Worth?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Breaking down the carbon pricing mechanism — from EU ETS to China's national carbon market.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-07</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Carbon Compliance</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Globalization</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/uk_vs_eu_cbam/" style="color:var(--color-primary);text-decoration:none;">UK CBAM vs EU CBAM: Key Differences Explained</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          A clear comparison of the EU and UK carbon border adjustment mechanisms.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-07</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">Future of Work</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/human_competence_ai/" style="color:var(--color-primary);text-decoration:none;">Human Core Competence in the AI Era</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          What makes humans irreplaceable when AI can do almost anything?
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-07</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Human-AI Fit</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">AI Education</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/ai_knowledge_meaning/" style="color:var(--color-primary);text-decoration:none;">Does Learning Still Matter in the Age of AI?</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          Why personal knowledge still matters when every answer is just a query away.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-07</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Policy Analysis</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">EV & Globalization</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/china_policy_table_2026/" style="color:var(--color-primary);text-decoration:none;">China's EV & ICV Policy Landscape: 40 Years from Foresight to Global Leadership</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          70 policies across 6 phases (1986–2026) — the most comprehensive EV policy framework in the world.
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-04</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Policy Analysis</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">CBAM & Carbon</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/eu_policy_table_2026/" style="color:var(--color-primary);text-decoration:none;">EU's EV, Battery & CBAM Policy Framework: Regulation as Competitive Strategy</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          42 policies from the Green Deal to CBAM full implementation (2009–2026).
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-04</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-        <div style="padding:var(--spacing-md) 0;">
-          <span style="background:rgba(201,169,110,0.1);color:var(--color-accent-dark);padding:2px 8px;border-radius:12px;font-size:11px;">Policy Analysis</span>
-          <span style="background:rgba(15,43,70,0.05);color:var(--color-text-secondary);padding:2px 8px;border-radius:12px;font-size:11px;margin-left:6px;">IRA & Climate</span>
-        </div>
-        <h3 style="font-size:1rem;line-height:1.4;"><a href="/en/blog/us_policy_table_2026/" style="color:var(--color-primary);text-decoration:none;">US EV Policy: Boom, Bust, and the IRA's Unfinished Revolution</a></h3>
-        <p style="color:var(--color-text-secondary);font-size:13px;margin-top:6px;">
-          61 policies from ARRA to the second Trump rollback (2009–2026).
-        </p>
-        <p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">2026-05-04</p>
-      </div>
-
-      <div style="margin-bottom:var(--spacing-lg);border-bottom:1px solid var(--color-border);padding-bottom:var(--spacing-sm);">
-        <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:var(--spacing-xs);">May 2026</p>
-
-
+      ))}
     </div>
   </section>
 
   <section class="section section-dark text-center">
     <div class="container">
-      <h2>Want to work with us?</h2>
+      <h2>Don't want to miss updates?</h2>
       <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
-        Whether you want to improve your team's AI effectiveness or prepare for CBAM compliance, we're here to help.
+        Leave your contact and we'll notify you when new articles are published.
       </p>
-      <a href="/en/contact/" class="btn btn-primary">Get in Touch →</a>
+      <a href="/en/contact/" class="btn btn-primary">Subscribe →</a>
     </div>
   </section>
 </Base>
+
+<style is:global>
+  .article-card:hover {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 2px 12px rgba(201,169,110,0.12);
+    transform: translateY(-2px);
+  }
+  .tag-filter {
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s;
+    border:1.5px solid var(--color-border);
+    color:var(--color-text-secondary);
+    background:transparent;
+  }
+  .tag-filter:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent-dark) !important;
+  }
+  .tag-filter.tag-active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+</style>
+
+<script>
+  function filterArticles(el) {
+    document.querySelectorAll('.tag-filter').forEach(t => t.classList.remove('tag-active'));
+    el.classList.add('tag-active');
+    
+    const tag = el.dataset.tag;
+    document.querySelectorAll('.article-card').forEach(card => {
+      if (tag === 'all' || card.dataset.tags.includes(tag)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
