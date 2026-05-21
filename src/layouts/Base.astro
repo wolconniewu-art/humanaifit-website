@@ -112,7 +112,7 @@ const canonicalBase = 'https://humanaifit.com';
         <li><a href={isCn ? '/services/' : '/en/services/'} class="nav-services">{isCn ? '服务' : 'Services'}</a></li>
         <li><a href={isCn ? '/about/' : '/en/about/'} class="nav-about">{isCn ? '关于' : 'About'}</a></li>
         <li><a href={isCn ? '/policy-tables/' : '/en/policy-tables/'} class="nav-tables">{isCn ? '政策表' : 'Policy Tables'}</a></li>
-        <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '洞察' : 'Insights'}</a></li>
+        <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '博客' : 'Blog'}</a></li>
         <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
         <li><a href="/diagnosis/" class="btn btn-diagnosis" style="padding:8px 16px;background:var(--color-accent);color:#0F2B46;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">{isCn ? 'AI素养诊断' : 'AI Literacy'}</a></li>
         <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
@@ -160,13 +160,13 @@ const canonicalBase = 'https://humanaifit.com';
         <div>
           <h4>{isCn ? '联系' : 'Contact'}</h4>
           <a href={isCn ? '/contact/' : '/en/contact/'}>{isCn ? '合作咨询' : 'Get in Touch'}</a>
-          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '行业洞察' : 'Insights'}</a>
+          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '博客' : 'Blog'}</a>
         </div>
         <!-- Newsletter subscribe section -->
         <div>
           <h4>{isCn ? '订阅更新' : 'Subscribe'}</h4>
           <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-sm);">
-            {isCn ? '每周精选洞察，直接到你的邮箱。' : 'Weekly insights delivered to your inbox.'}
+            {isCn ? '每周精选博客，直接到你的邮箱。' : 'Weekly insights delivered to your inbox.'}
           </p>
           <form style="display:flex;gap:6px;" action="#" method="post" onsubmit="alert('订阅功能即将上线');return false;">
             <input type="email" placeholder={isCn ? '输入邮箱' : 'your@email.com'} required style="flex:1;padding:8px 12px;border:1px solid var(--color-border);border-radius:6px;font-size:13px;background:var(--color-bg);" />

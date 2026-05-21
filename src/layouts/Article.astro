@@ -17,9 +17,9 @@ const path = Astro.url.pathname;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | humanaifit 洞察</title>
+  <title>{title} | humanaifit 博客</title>
   <meta name="description" content={description} />
-  <meta property="og:title" content={`${title} | humanaifit 洞察`} />
+  <meta property="og:title" content={`${title} | humanaifit 博客`} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="article" />
   <meta property="og:url" content={`https://www.humanaifit.com${path}`} />
@@ -169,7 +169,7 @@ const path = Astro.url.pathname;
         <li><a href={isCn ? '/' : '/en/'} class="nav-home">{isCn ? '首页' : 'Home'}</a></li>
         <li><a href={isCn ? '/services/' : '/en/services/'} class="nav-services">{isCn ? '服务' : 'Services'}</a></li>
         <li><a href={isCn ? '/about/' : '/en/about/'} class="nav-about">{isCn ? '关于' : 'About'}</a></li>
-        <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '洞察' : 'Insights'}</a></li>
+        <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '博客' : 'Insights'}</a></li>
         <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
         <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
         <li><span class="lang-switch">{isCn ? 'EN' : '中文'}</span></li>
@@ -203,7 +203,7 @@ const path = Astro.url.pathname;
         <div>
           <h4>{isCn ? '联系' : 'Contact'}</h4>
           <a href={isCn ? '/contact/' : '/en/contact/'}>{isCn ? '合作咨询' : 'Get in Touch'}</a>
-          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '行业洞察' : 'Insights'}</a>
+          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '博客' : 'Blog'}</a>
         </div>
       </div>
       <div class="footer-bottom">
