@@ -1,0 +1,74 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "AI Productivity", "Future of Work"];
+const articleDate = '2026-05-21';
+---
+
+<Article
+  title="AI Brain Fry: The Early Adopters Are Burning Out First"
+  description="Harvard Business Review, Fortune, CIO.com, and Frontiers all report the same counterintuitive trend — more AI tools are leading to email doubling, 9% less focused work, and a new phenomenon called 'reskilling fatigue.'"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Insights · 2026-05-21</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI Brain Fry: The Early Adopters Are Burning Out First</h1>
+      <div class="article-meta">
+        <span>2026-05-21</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+<h2>A New Phenomenon</h2>
+<p>In May 2026, Harvard Business Review published a provocatively titled piece: <em>"When Using AI Leads to 'Brain Fry'"</em>.</p>
+<p>This isn't clickbait from an anti-tech outlet. Based on empirical research, the article reveals a counterintuitive finding: <strong>knowledge workers who were first to embrace AI are now experiencing a new form of burnout — AI Burnout, or "AI Brain Fry."</strong></p>
+<p>On the same day, Fortune released a complementary set of data:</p>
+<blockquote>
+<p>AI promised supreme productivity, but it's actually straining workloads for employees — <strong>time spent emailing has doubled, and focused work sessions fell by 9%.</strong></p>
+</blockquote>
+<p>CIO.com added a critical nuance: <strong>Increased AI expectations without guidance leads to employee burnout.</strong></p>
+
+<h2>3 Alarming Trends</h2>
+<h3>1. More Tools, More Context Switching</h3>
+<p>Employees switch between 10-15 different AI tools daily. Each requires different prompting techniques, output formats, and verification methods. This cognitive load accumulation cancels out the time saved on individual tasks.</p>
+<h3>2. Focus Time Is Shrinking</h3>
+<p>Deep focused work time has dropped by 9%. Even though AI shortens individual task completion, fragmented tool-switching is eroding our capacity for sustained thinking.</p>
+<h3>3. "Reskilling Fatigue" Is Emerging</h3>
+<p>Frontiers journal introduced a new term in May 2026: <strong>Reskilling Fatigue</strong> — employees are constantly asked to learn new AI tools and skills, but the learning itself has become a burden.</p>
+
+<h2>Why This Matters</h2>
+<p>This gets to the heart of the Human-AI Fit problem: <strong>tool availability ≠ tool integration.</strong></p>
+<p>A good AI tool must not only work — it must seamlessly integrate into a human workflow without adding cognitive load or creating new switching costs.</p>
+<p>But the typical enterprise AI onboarding looks like this: buy multiple AI SaaS tools → require all employees to learn them → no workflow redesign → no workload reduction. The predictable result: <strong>more tools, more fatigue, falling productivity.</strong></p>
+
+<h2>The Root Cause Is Not AI</h2>
+<p>HBR's conclusion is measured: AI itself is not the problem. The issue is whether organizations have clear AI usage strategies and training systems. CIO.com's research confirms: <strong>"Increased expectations without guidance" is the real source of burnout.</strong></p>
+<p>Organizations that "hope for the best" with AI are leaving their employees in a state of "AI Brain Fry." Teams that deliberately design human-AI collaboration workflows — reducing tool fragmentation and preserving deep work space — are the ones actually unlocking AI's productivity dividends.</p>
+
+<h2>What Individuals Can Do</h2>
+<p>If you're experiencing "AI Brain Fry":</p>
+<ol>
+<li><strong>Subtraction over addition</strong> — Not every new AI tool is worth trying</li>
+<li><strong>Build your own "human-AI protocol"</strong> — Stick to 2-3 core tools, build a prompt library and workflow templates</li>
+<li><strong>Protect deep work time</strong> — Schedule 2-3 daily hours of "AI-interruption-free" focused work</li>
+<li><strong>Beware "performative AI use"</strong> — Ask yourself: is this AI task increasing output, or just performing "I'm using AI"?</li>
+</ol>
+
+<hr>
+<p style="font-size:0.85em;color:#888;">
+<strong>Sources:</strong><br>
+Harvard Business Review, <em>"When Using AI Leads to 'Brain Fry'", May 2026<br>
+Fortune, "AI promised supreme productivity, but it's actually straining workloads for employees", May 21, 2026<br>
+CIO.com, "Increased AI expectations without guidance leads to employee burnout", May 2026<br>
+Built In, "Why AI Is Increasing Workplace Burnout", May 2026<br>
+Help Net Security, "More AI tools, more burnout! New research explains why", May 20, 2026<br>
+Frontiers, "AI-driven skill volatility and the emergence of re-skilling fatigue", May 2026<br>
+EBONY, "Reality Check: AI Brain Fry Is Here", May 2026<br>
+<em>Note: Some source details are based on Google News titles and summaries. Please refer to original articles for full content.</em>
+</p>
+  </div>
+</Article>
