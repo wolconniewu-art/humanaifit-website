@@ -1,0 +1,458 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "知识管理", "思维方法"];
+const articleDate = '2026-05-26';
+---
+
+<Article
+  title="171个推理技能教AI「怎么思考」：人机协同的下一个前沿不是让AI更聪明，而是让人类智慧更结构化地传递给AI"
+  description="一个GitHub 8000+星的项目，将171种人类结构化推理方法打包为AI可调用的技能——从逻辑、概率、博弈论到审美推理，不教AI回答什么，而教AI如何思考。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-05-26</p>
+      <h1 style="font-size:2rem;line-height:1.35;">171个推理技能教AI「怎么思考」：人机协同的下一个前沿不是让AI更聪明，而是让人类智慧更结构化地传递给AI</h1>
+      <div class="article-meta">
+        <span>2026-05-26</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+## 一个8000星的开源项目
+
+2026年5月中旬，一个名为 **skills-for-humanity** 的项目在Hacker News Show版亮相。它的构想简单到令人惊讶：将人类历史上最严谨的思维者的结构化推理方法，打包为AI可以直接调用的"技能"。
+
+截至2026年5月26日，这个项目已在GitHub上获得**超过8000颗星**，成为HN Show版近期讨论度最高的项目之一。
+
+项目主页开篇就提出了一个锋芒毕露的问题：
+
+> "当AI可以瞬间检索人类所有知识时，衡量个体的关键不再是'你知道什么'，而是'你知道怎么思考'。"
+
+这个项目，就是写给AI的"怎么思考"的系统说明书。
+
+---
+
+## 171个技能，27大分类
+
+skills-for-humanity将结构化推理方法打包为Claude Code可以调用的技能模块。以下是完整的技能清单（按五大模块、27个子分类排列）：
+
+### 🧠 Think Sharper（思维更锐利）— 7个分类
+
+#### `/logic` 逻辑推理
+
+| 技能 | 功能 |
+|------|------|
+| `/logic` | 逻辑工具箱入口 |
+| `/logic-argument-validation` | 验证前提是否支撑结论，识别逻辑谬误 |
+| `/logic-causality-mapping` | 映射因果关系，追踪依赖链 |
+| `/logic-check` | 快速逻辑综合报告：验证前提、测试推理、检测谬误、输出判定 |
+| `/logic-consistency-check` | 识别文档、规格、计划中的内部矛盾 |
+| `/logic-constraint-mapping` | 映射完整约束景观：区分硬限制与软偏好 |
+| `/logic-council` | 5位逻辑顾问组成的"委员会"协同分析 |
+
+#### `/probability` 概率推理
+
+| 技能 | 功能 |
+|------|------|
+| `/probability` | 概率工具箱入口 |
+| `/probability-base-rate-anchoring` | 用历史基准率锚定估算，再根据具体因素调整 |
+| `/probability-confidence-calibration` | 检验置信度是否与证据匹配（纠正过度自信/不够自信） |
+| `/probability-expected-value-calculation` | 计算预期价值，比较不确定性下的选项 |
+| `/probability-scenario-weighting` | 为不同场景分配明确概率后再做决策 |
+
+#### `/decision` 决策科学
+
+| 技能 | 功能 |
+|------|------|
+| `/decision` | 决策工具箱入口 |
+| `/decision-criteria-weighting` | 加权多标准分析，量化每个选项的优劣 |
+| `/decision-option-mapping` | 确保所有真实选项可见后再选择（对抗"假二分法"） |
+| `/decision-premortem-analysis` | 假设决策已做出且失败，再诊断失败原因 |
+| `/decision-reversibility-analysis` | 根据决策的可逆性选择对应的流程严谨度 |
+
+#### `/constraint` 约束分析
+
+| 技能 | 功能 |
+|------|------|
+| `/constraint` | 约束工具箱入口 |
+| `/constraint-hardness-testing` | 测试约束是否真实（区分真正的限制与假设/习惯） |
+| `/constraint-rule-inversion` | 把约束翻转成创意驱动力 |
+| `/constraint-scope-reduction` | 找到满足真实需求的最小可行方案 |
+| `/constraint-workaround-mapping` | 在不移除约束的前提下找到绕过路径 |
+
+
+#### `/game-theory` 博弈论
+
+| 技能 | 功能 |
+|------|------|
+| `/game-theory` | 博弈论工具箱入口 |
+| `/game-theory-auction` | 分析竞标策略和拍卖设计 |
+| `/game-theory-coalition` | 分析联盟形成和收益分配（Shapley值） |
+| `/game-theory-equilibrium` | 找到战略互动的稳定点（纳什均衡） |
+| `/game-theory-iterated` | 分析长期重复互动：合作如何形成、信任如何建立 |
+| `/game-theory-mechanism-design` | 设计规则和激励系统，引导自利玩家产生期望结果 |
+| `/game-theory-prisoners-dilemma` | 分析"个人理性导致集体非理性"的合作困境 |
+| `/game-theory-signaling` | 分析可信度问题，设计"造假成本高昂"的信号 |
+
+#### `/epistemology` 认识论
+
+| 技能 | 功能 |
+|------|------|
+| `/epistemology` | 认识论工具箱入口 |
+| `/epistemology-epistemic-status` | 诚实严谨地校准：知道 vs 相信 vs 假设 vs 希望 |
+| `/epistemology-justification` | 分析什么样的证据才能真正支撑一个主张 |
+| `/epistemology-knowledge-types` | 映射某个主张涉及的知识类型 |
+| `/epistemology-limits` | 识别什么是"无法知道"的，界定可回答的部分 |
+
+#### `/investigation` 调查分析
+
+| 技能 | 功能 |
+|------|------|
+| `/investigation` | 调查工具箱入口 |
+| `/investigation-claim-decomposition` | 将复杂主张拆解为最小可独立验证的子主张 |
+| `/investigation-counter-hypothesis` | 生成同一观察的最佳替代解释 |
+| `/investigation-evidence-audit` | 评估证据的质量、强度和完整性 |
+| `/investigation-source-trace` | 追溯主张的源头：谁最初提出的？证据是什么？ |
+| `/investigation-triangulation` | 用真正独立的来源验证主张（区分放大与证实） |
+
+### 💡 Think Differently（思维更多元）— 3个分类
+
+#### `/creativity` 创造力（全部来自Edward de Bono方法）
+
+| 技能 | 功能 |
+|------|------|
+| `/creativity` | 创造力工具箱入口 |
+| `/creativity-alternatives` | APC工具：刻意生成选项，暂不评估 |
+| `/creativity-assumption-excavator` | 发掘问题背后的隐藏假设 |
+| `/creativity-brainstorm` | 多方法组合的创意冲刺 |
+| `/creativity-concept-fan` | 概念扇：在承诺方案前扩展解空间 |
+| `/creativity-consider-factors` | CAF工具：做决策前考虑所有相关因素 |
+| `/creativity-lateral-thinking` | 水平思考：逃离主导模式，生成真正的新方向 |
+| `/creativity-other-perspectives` | OPS工具：真正从他人视角思考 |
+| `/creativity-plus-minus-interesting` | PMI工具：多维评估任何想法 |
+| `/creativity-provocation` | Po工具：用刻意荒谬的陈述激发新想法 |
+| `/creativity-random-entry` | 随机入口：用不相关的词/物打破认知惯性 |
+| `/creativity-six-hats` | 六顶思考帽：结构化平行思考 |
+| `/creativity-water-logic` | 水逻辑：基于流动的、非判断式的探索 |
+
+#### `/analogy` 类比推理
+
+| 技能 | 功能 |
+|------|------|
+| `/analogy` | 类比工具箱入口 |
+| `/analogy-boundary-testing` | 在依赖类比前找出它的边界在哪里崩塌 |
+| `/analogy-domain-transfer` | 从不相关领域引入解决方案（借结构） |
+| `/analogy-perspective-shifting` | 从完全不同领域切入问题（破除专家盲点） |
+| `/analogy-structure-mapping` | 识别两个情境间的深层结构对应（真正同构 vs 表面相似） |
+
+#### `/play` 玩乐式思维
+
+| 技能 | 功能 |
+|------|------|
+| `/play` | 玩乐工具箱入口 |
+| `/play-constraint-inversion` | 移除或反转主要约束，用"无约束版本"找灵感 |
+| `/play-perspective-reversal` | 完全站在对立面思考：竞争者、批评者、用户 |
+| `/play-stimulus-generation` | 引入随机无关元素打破思维定式 |
+| `/play-worst-case-reversal` | 刻意设计最差版本，再把每个失败模式反转成设计原则 |
+
+
+### 👥 Think About People（理解他人）— 9个分类
+
+#### `/communication` 沟通
+
+| 技能 | 功能 |
+|------|------|
+| `/communication` | 沟通工具箱入口 |
+| `/communication-audience-modeling` | 映射受众的信念、关心点和恐惧 |
+| `/communication-clarity-audit` | 发送前审计沟通中可能被误解的部分 |
+| `/communication-medium-selection` | 根据信息选择最佳渠道和格式 |
+| `/communication-objection-mapping` | 在提出方案前预判可能的反对意见 |
+
+#### `/social` 社会动态
+
+| 技能 | 功能 |
+|------|------|
+| `/social` | 社会动态工具箱入口 |
+| `/social-coalition-mapping` | 绘制需要对齐的关键人物及联盟构建策略 |
+| `/social-dynamics-analysis` | 识别群体心理学因素：群体思维、地位动态、心理安全 |
+| `/social-incentive-analysis` | 绘制驱动行为的真实激励结构 |
+| `/social-power-mapping` | 绘制权力分布：正式权威、非正式影响、专家权、看门人 |
+
+#### `/emotional` 情感智能
+
+| 技能 | 功能 |
+|------|------|
+| `/emotional` | 情感工具箱入口 |
+| `/emotional-motivation-mapping` | 绘制不同人的真实驱动力 |
+| `/emotional-resistance-diagnosis` | 诊断他人为什么抵抗（表面之下的东西） |
+| `/emotional-stakes-mapping` | 绘制每个利益相关者真正关心什么 |
+| `/emotional-trust-audit` | 评估关系中的信任建设/破坏因素 |
+
+#### `/ethics` 伦理决策
+
+| 技能 | 功能 |
+|------|------|
+| `/ethics` | 伦理工具箱入口 |
+| `/ethics-bias-check` | 评估算法、模型、排名系统的歧视模式 |
+| `/ethics-check` | 快速伦理综合报告（一次运行5个伦理框架） |
+| `/ethics-consent-review` | 审查UX流程中用户同意的真实性 |
+| `/ethics-council` | 5位伦理顾问"委员会"独立分析 |
+| `/ethics-crisis-triage` | 危机伦理评估：数据泄露、有害结果、歧视事件 |
+| `/ethics-data-audit` | 审计数据收集/留存/共享决策 |
+| `/ethics-empathy-circle` | Jaron Lanier的共情圈框架 |
+| `/ethics-impact-scan` | 功能上线前的快速伦理影响评估 |
+| `/ethics-vendor-review` | 评估第三方供应商的伦理标准 |
+
+#### `/identity` 身份认同
+
+| 技能 | 功能 |
+|------|------|
+| `/identity` | 身份认同工具箱入口 |
+| `/identity-character-testing` | 问：真正有诚信的人/组织会怎么做？ |
+| `/identity-mission-alignment` | 检验决策是否真正与使命一致 |
+| `/identity-values-clarification` | 挖掘和检验真正的运作价值观 |
+
+#### `/narrative` 叙事思维
+
+| 技能 | 功能 |
+|------|------|
+| `/narrative` | 叙事工具箱入口 |
+| `/narrative-audience-modeling` | 沟通前绘制受众的信念/目标/恐惧 |
+| `/narrative-frame-analysis` | 识别当前框架，生成揭示不同真相的替代框架 |
+| `/narrative-structure-mapping` | 为提案、演讲等应用故事架构 |
+| `/narrative-tension-mapping` | 找到或创造让沟通值得被关注的张力 |
+
+#### `/psychology` 心理学
+
+| 技能 | 功能 |
+|------|------|
+| `/psychology` | 心理学工具箱入口 |
+| `/psychology-behavior-change` | 诊断维持行为的因素，设计干预方案 |
+| `/psychology-cognitive-biases` | 诊断当前情境中活跃的认知偏见 |
+| `/psychology-heuristics` | 评估快速思维模式何时可靠、何时误导 |
+| `/psychology-motivation` | 诊断驱动行为的真实动机 |
+| `/psychology-persuasion` | 识别适合的影响力方式并构建说服路径 |
+
+#### `/mindset` 心智模式
+
+| 技能 | 功能 |
+|------|------|
+| `/mindset` | 心智模式工具箱入口 |
+| `/mindset-flow` | Csikszentmihalyi心流框架：诊断并设计最佳体验状态 |
+| `/mindset-growth` | Carol Dweck成长型思维作为实用方法论 |
+| `/mindset-positive` | 积极心理学作为严谨实践（非鸡汤版） |
+| `/mindset-reframe` | 认知重构作为严谨方法论（CBT体系） |
+| `/mindset-stoic` | 完整的斯多葛主义方法论工具箱 |
+
+#### `/writing` 写作（最庞大分类，23个技能）
+
+| 技能 | 功能 |
+|------|------|
+| `/writing` | 写作工具箱入口 |
+| `/writing-arc-design` | 人物弧光和主题弧线的映射与修复 |
+| `/writing-argument` | 构建和修复说服性论证 |
+| `/writing-audience-calibration` | 为特定读者校准写作 |
+| `/writing-character-development` | 塑造心理真实的角色 |
+| `/writing-copy` | 营销文案、落地页、广告文案 |
+| `/writing-dialogue` | 诊断并修复对话的潜台词、角色差异化 |
+| `/writing-executive-summary` | 生成高管摘要、1页简报 |
+| `/writing-inconsistency-audit` | 4轮系统审计：时间线、角色逻辑、世界规则、连续性 |
+| `/writing-line-editing` | 5类别编辑：冗余、名词化、被动语态、节奏、开场废话 |
+| `/writing-plot-structure` | 五拍戏剧框架诊断 |
+| `/writing-pov` | 视角审计：违规、一致性和适合度 |
+| `/writing-prose-elevation` | 提升平庸但合格的散文 |
+| `/writing-report` | 商务报告、简报文件 |
+| `/writing-restructure` | 诊断修复非虚构作品的结构问题 |
+| `/writing-rhetoric` | 分析文章的修辞策略：隐喻映射、情感语言 |
+| `/writing-scene-construction` | 诉求/障碍/结果框架诊断修复单场景 |
+| `/writing-technical` | 技术文档、API文档、用户指南 |
+| `/writing-tone-alignment` | 诊断修复语气漂移 |
+| `/writing-voice-consistency` | 提取"声音指纹"并审计一致性 |
+| `/writing-worldbuilding` | 审计虚构世界的内部一致性和规则对齐 |
+
+### ⏳ Think in Time & Systems（时间与系统）— 5个分类
+
+#### `/systems` 系统思维
+
+| 技能 | 功能 |
+|------|------|
+| `/systems` | 系统思维工具箱入口 |
+| `/systems-archetype-matching` | 使用Senge的8个经典系统原型诊断系统行为 |
+| `/systems-emergence-detection` | 识别系统中任何个体组件都不存在的整体属性 |
+| `/systems-feedback-mapping` | 绘制所有增强（+）和平衡（-）反馈回路 |
+| `/systems-leverage-analysis` | 用Donella Meadows杠杆点层级找到最有效的干预点 |
+
+#### `/temporal` 时间思维
+
+| 技能 | 功能 |
+|------|------|
+| `/temporal` | 时间思维工具箱入口 |
+| `/temporal-cycle-detection` | 识别当前情境是哪个循环的实例以及当前位置 |
+| `/temporal-futures-mapping` | 可能性、概率性、偏好性三种未来的情景思考 |
+| `/temporal-horizon-mapping` | 绘制决策在短/中/长期的影响 |
+| `/temporal-timing-analysis` | 评估现在是行动、等待还是准备的时机 |
+
+#### `/historical` 历史思维
+
+| 技能 | 功能 |
+|------|------|
+| `/historical` | 历史思维工具箱入口 |
+| `/historical-cycle-detection` | 识别当前情境是哪个历史循环的实例 |
+| `/historical-failure-analysis` | 从类似历史情境中提取重复出现的失败模式 |
+| `/historical-lesson-extraction` | 从特定历史案例中提取可迁移的原则 |
+| `/historical-precedent-analysis` | 找到并应用真正相似的历史先例 |
+
+#### `/resource` 资源优化
+
+| 技能 | 功能 |
+|------|------|
+| `/resource` | 资源工具箱入口 |
+| `/resource-allocation-analysis` | 在竞争需求间分配有限资源 |
+| `/resource-bottleneck-analysis` | 识别真正限制吞吐量的瓶颈（约束理论） |
+| `/resource-leverage-mapping` | 找到有限资源的最大杠杆效应点 |
+| `/resource-waste-audit` | 找出资源浪费、重复和低效 |
+
+#### `/strategy` 战略思维（源自孙子兵法+克劳塞维茨）
+
+| 技能 | 功能 |
+|------|------|
+| `/strategy` | 战略工具箱入口 |
+| `/strategy-alliance` | 绘制各方势力、识别天然盟友、评估联盟稳定性 |
+| `/strategy-deception` | 合法竞争中的信息不对称管理 |
+| `/strategy-force-economy` | 用最小干预实现目标（尤其在劣势时） |
+| `/strategy-intelligence` | 审计你对自己和对手真正了解什么 |
+| `/strategy-positioning` | 在竞争开始前建立不可攻击的地位 |
+| `/strategy-terrain` | 绘制竞争地形：优势点、均势点、高代价交战区 |
+| `/strategy-timing` | 分析现在行动还是等待，识别最佳时机触发的条件 |
+| `/strategy-victory` | 在竞争开始前定义"胜利"的真正含义 |
+
+### 👁️ See More Clearly（看得更清）— 2个分类
+
+#### `/aesthetic` 审美推理
+
+| 技能 | 功能 |
+|------|------|
+| `/aesthetic` | 审美工具箱入口 |
+| `/aesthetic-coherence-check` | 检查作品各部分是否相互一致 |
+| `/aesthetic-elegance-testing` | 评估方案：是否比需要的更复杂 |
+| `/aesthetic-pattern-detection` | 识别形式层面正在运作的模式 |
+| `/aesthetic-simplicity-analysis` | 寻找更简方案——分辨"简化"与"去除必要复杂性" |
+
+#### `/sensory` 感官洞察
+
+| 技能 | 功能 |
+|------|------|
+| `/sensory` | 感官工具箱入口 |
+| `/sensory-detail-mining` | 从观察中提取被忽略的细节 |
+| `/sensory-signal-detection` | 在噪声中识别真正重要的信号 |
+| `/sensory-structured-observation` | 在解读前进行有纪律的观察 |
+
+### 🧩 `/think` 中枢路由
+
+项目还有一个核心入口技能：
+
+`/think` — 描述你的情境，自动路由到正确的方法论。你不需要知道哪个技能适合——这正是它的意义所在。
+
+---
+
+## 项目的方法论大师名单
+
+每个技能的背后都是人类思想史上最耀眼的名字：
+
+**Edward de Bono**（12个创造力技能） · **Donella Meadows**（系统杠杆点） · **Genrich Altshuller**（TRIZ） · **Barbara Minto**（金字塔原理） · **Eliyahu Goldratt**（约束理论） · **Philip Tetlock**（预测校准） · **Gary Klein**（决策） · **John Stuart Mill**（逻辑） · **Immanuel Kant**（伦理） · **Aristotle**（逻辑与伦理） · **Nel Noddings**（关怀伦理） · **John Rawls**（正义论） · **Sun Tzu**（8个战略技能） · **Carl von Clausewitz**（战争论） · **Miyamoto Musashi**（战略） · **John Nash**（博弈论） · **Robert Axelrod**（合作演化） · **William Vickrey** · **Lloyd Shapley** · **Michael Spence**（信号博弈）
+
+以及：**Peter Senge** · **Carol Dweck** · **Csikszentmihalyi** · **Jaron Lanier** · **Frans de Waal** · **Daniel Kahneman** · **Cialdini**
+
+---
+
+## 为什么这个项目突然爆火？
+
+171个技能、27个分类、8000+星——这不是一个"好用工具"级别的热度。它之所以在HN上引发如此大的反响，是因为它精准地落地在三个重要趋势的交汇点上：
+
+### 趋势一：AI能力的"结构化需求"爆发
+
+2025-2026年，AI从"能对话"进化到"能执行任务"。但一个核心瓶颈始终存在：**AI缺少调用结构化方法的能力**。你可以让AI"分析这个商业问题"，它会给出一个漂亮的泛泛之谈。但如果你结构化为"第一步用波特五力识别竞争结构，第二步用SWOT评估优势，第三步用SCQA输出结论"——出来的东西就完全不同了。
+
+skills-for-humanity做的就是这个：给AI装上一个"思维框架调度器"。
+
+### 趋势二：知识管理从"存储"转向"激活"
+
+过去十年，知识管理（KM）的核心命题是"如何存储和检索"——Wiki、知识库、RAG都在这个维度。但当AI可以瞬间检索任何信息时，瓶颈已经转移：**不是找不到信息，而是不知道用信息做什么**。
+
+skills-for-humanity代表了一种新的KM范式：**知识管理的单位不是"知识点"，而是"思维协议"**。
+
+### 趋势三：人类视角的回归
+
+项目最引人注目的一点：它的技能库不是AI生成的"最佳实践"，而是来自人类历史真正的大师们——所有技能背后都有明确的思想谱系。这是一个有趣的反转：在大多数人关注"AI能做什么"的时候，skills-for-humanity在问"人类最擅长什么——以及AI如何学会这些"。
+
+---
+
+## 人机契合的新框架：从"提示"到"协议"
+
+skills-for-humanity的深层意义，指向了三代人机交互范式的更替：
+
+| 世代 | 时期 | 核心模式 | 质量来源 |
+|------|------|---------|---------|
+| 1.0 | 2018-2023 | Prompt → Response | 人的表达能力 |
+| 2.0 | 2024-2025 | Chain of Thought → Reasoning | 框架设计质量 |
+| **3.0** | **2026-** | **Protocol → Execution** | **方法论的结构化程度** |
+
+skills-for-humanity正是第三代的典型代表。它不是在教AI"回答什么"，而是在教AI"如何思考"。
+
+从Human-AI Fit角度看，这标志着人机协同迈出了结构性的一步：**人不再需要事无巨细地告诉AI每一步做什么，而是将人类最优秀的"思考习惯"预装在AI的执行引擎中。AI获得了方法论直觉，人保留了价值判断和优先级决策权。**
+
+---
+
+## 值得思考的三个挑战
+
+### 1. 方法论结构化会"杀死"创造力吗？
+
+反对者会说：把思维方法变成"可调用的函数"，会不会让人变成按流程走的机器人？
+
+关键在于：skills-for-humanity的技能是 **可选而非强制** 的。它是一套思维工具箱——大部分时候你自由发挥，但遇到棘手问题时，打开工具箱找一个经过验证的方法来解围。
+
+创造力不是不要结构，而是在掌握结构之后选择性地打破它。
+
+### 2. 谁来决定"值得结构化"的思维方法？
+
+目前171个技能以西方思想传统为主——亚里士多德、康德、德波诺——但东方哲学中的辩证思维、禅宗的直觉、中医的整体观思维如何体现？这是这个项目最有想象力的拓展方向。
+
+### 3. "思维协议"会成为下一个知识管理的基础设施吗？
+
+如果趋势成立，未来每个知识工作者都可能拥有自己的"思维技能包"——一组经过结构化的人类推理方法，配置到AI助手的工作流中。这不再是"知识管理"（管理信息），而是 **"思维管理"（管理方法论）** 。企业的AI竞争力，可能更多取决于组织的"思维协议库"的深度，而非数据中心规模。
+
+---
+
+## 结语：值得记住这一周
+
+2026年5月的最后一周，Hacker News上同时出现了两篇指向同一方向的内容：
+
+一篇是Nolan Lawson提出的"用AI更慢地写出更好的代码"——从开发实践层面探讨人机协同的质量标准。
+
+另一篇是skills-for-humanity——从方法论层面探索将171种人类结构化推理思维传递给AI。
+
+它们从不同角度给出了同一个信号：**人机协同的下一个前沿，不是让AI更聪明，而是让人类智慧更结构化地传递给AI。**
+
+速度退位，方法至上。
+
+---
+
+## 参考文献
+1. **skills-for-humanity** — 171 personal reasoning skills for Claude Code | GitHub, 2026-05 ↳ https://news.ycombinator.com/item?id=48261925
+2. **Nolan Lawson** — "Using AI to write better code more slowly" | nolanlawson.com，2026-05-25 ↳ https://news.ycombinator.com/item?id=48272984
+3. **Peter Senge** — The Fifth Discipline（系统思维）
+4. **Edward de Bono** — Lateral Thinking
+5. **Thomas C. Schelling** — The Strategy of Conflict
+6. **Donella Meadows** — Leverage Points
+7. **Carol Dweck** — Mindset
+8. **Mihaly Csikszentmihalyi** — Flow
+9. **Eliyahu M. Goldratt** — The Goal
+
+  </div>
+</Article>

@@ -1,0 +1,123 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "AI Productivity", "Development Practices"];
+const articleDate = '2026-05-26';
+---
+
+<Article
+  title="The 'Slow Philosophy' of AI Coding: Good Code Is Never Written by AI Alone"
+  description="HN 522 upvotes debate — former Mozilla engineer Nolan Lawson's counterintuitive insight: let AI review your code instead of writing it, produce better code by slowing down."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-05-26</p>
+      <h1 style="font-size:2rem;line-height:1.35;">The "Slow Philosophy" of AI Coding: Good Code Is Never Written by AI Alone</h1>
+      <div class="article-meta">
+        <span>2026-05-26</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>On May 25, 2026, former Mozilla engineer Nolan Lawson published an article whose title was itself a manifesto: <strong>"Using AI to write better code more slowly."</strong> Within 24 hours, it earned 522 upvotes and nearly 200 comments on Hacker News, hitting #2 on the front page.</p>
+
+<p>What resonated so deeply with developers was a central paradox of human-AI collaboration in the age of LLMs — when everyone is chasing "10x productivity," <strong>the method that actually makes code better is slowing down.</strong></p>
+
+<hr />
+
+<h2>1. A Counterintuitive Experiment</h2>
+
+<p>"Write it and move on" has become the default mode of AI-assisted development. But Lawson proposed a strikingly different approach:</p>
+
+<p><strong>Have three AI models review your code simultaneously.</strong></p>
+
+<p>In his workflow, a single PR is sent to three independent models — Claude, Codex, and Cursor Bugbot — for code review. Cross-validation eliminates hallucinations. The human developer then sorts captured defects by severity — critical, high, medium, low — verifies each one, and filters out false positives.</p>
+
+<p><strong>An unexpected result emerged: the review process not only caught issues in the new code, but frequently found pre-existing bugs — defects that were already in the codebase before AI was ever introduced.</strong></p>
+
+<p>His workflow became a "tangential" path: fixing problems discovered by AI while having to write unit tests and repair latent defects along the way. His development speed didn't increase. But code quality improved significantly. More importantly, his understanding of the codebase deepened to a level he'd never reached before.</p>
+
+<p><strong>The first lesson: AI is a mirror that reveals your blind spots.</strong></p>
+
+<h2>2. "Efficiency" Was Always a Flawed Concept</h2>
+
+<p>The article sparked nearly 200 deep discussions because it hit on a fundamental problem in AI-era product design: <strong>our definition of "efficiency" is itself one-sided.</strong></p>
+
+<p><strong>If "efficiency" = lines of code produced per unit time — then AI has indeed made efficiency explode.</strong></p>
+
+<p><strong>If "efficiency" = sustainable, maintainable, defect-free value produced per unit time — the story is entirely different.</strong></p>
+
+<p>The HN comment section revealed a nuanced polarization:</p>
+
+<ul>
+  <li><strong>Proponents</strong> use LLMs as "AI mentors" — a slower process with far greater cognitive gains. Code quality improves exponentially over time.</li>
+  <li><strong>Skeptics</strong> point out the AI review/fix loop is "sometimes longer than manual coding."</li>
+  <li><strong>Centrists</strong> observe: "Use the cheaper model for planning, let AI handle the grunt work."</li>
+</ul>
+
+<p><strong>One conclusion emerges: the same technology produces wildly different outcomes depending on who uses it and how.</strong></p>
+
+<h2>3. Two Models of Human-AI Collaboration</h2>
+
+<h3>Model A — Substitution (Speed First)</h3>
+<p>AI generates → human quickly reviews → merge → next line. The human is a "checker." Information flow is one-directional.</p>
+
+<h3>Model B — Augmentation (Quality First)</h3>
+<p>Human writes framework → AI cross-reviews → human validates and deep-fixes → cognitive retention. Information flow is cyclical.</p>
+
+<p><strong>Why are experienced developers transitioning from Model A to Model B?</strong> The more code AI generates, the faster technical debt accumulates. Without disciplined oversight, an AI-driven codebase becomes an untouchable mess in six months.</p>
+
+<p>This pattern extends beyond programming:</p>
+
+<ul>
+  <li><strong>AI-assisted writing</strong> — fastest: AI writes the draft. Best: human outlines structure, AI handles fact-checking.</li>
+  <li><strong>AI-assisted data analysis</strong> — fastest: throw data at AI. Best: human defines framework, AI runs hypothesis testing.</li>
+  <li><strong>AI-assisted product design</strong> — fastest: AI generates mockups. Best: human maps user journey, AI suggests optimizations.</li>
+</ul>
+
+<p><strong>Core insight: the depth of human understanding determines the ceiling of AI output.</strong></p>
+
+<h2>4. Slower, But Deeper</h2>
+
+<p>User <em>justinlivi</em>: "LLM code never fits my style or architecture in the first version. I spend just as much time bringing it up to my standard."</p>
+
+<p>User <em>kiba</em>: "I use the LLM as a tutor — I write code I know is imperfect, then let the LLM tirelessly point out my mistakes. In the end, I've written code I could never have written myself — and I understand why it works."</p>
+
+<p><strong>This is not a victory of speed. It's a victory of learning depth.</strong></p>
+
+<blockquote>
+  <p>"If you're the sort of developer who generates hundreds-of-lines PRs from a chatbot without really understanding them, I invite you to slow down. Ask your AI to explain how your PR works, where it might fail. You won't be more 'productive' in raw lines of code. But you'll discover a more 'augmented' way of programming — careful, methodical, quality-first, focused on making the next developer's life better." — Nolan Lawson</p>
+</blockquote>
+
+<h2>5. Echoing 171 Reasoning Skills</h2>
+
+<p>Coincidentally, on the same day, another HN front-page project — skills-for-humanity — offered a complementary perspective. It packages 171 structured human reasoning methodologies as AI-callable skills, building infrastructure for "slow" thinking from the methodology side.</p>
+
+<p><strong>These two projects appearing on HN's front page in the same final week of May 2026 is not a coincidence. They point to the same frontier: not making AI faster, but making the collaboration deeper. Not letting AI think for you, but teaching AI how you think.</strong></p>
+
+<hr />
+
+<h2>Conclusion: Choose to Slow Down in an Age of Acceleration</h2>
+
+<p>In an era chasing "10x productivity," Lawson points to a third path — <strong>this is not about acceleration. It's about deepening.</strong> The best accelerator isn't having AI run for you. It's having AI teach you how to run smarter.</p>
+
+<p>Speed is a byproduct. Depth is the goal.</p>
+
+<hr />
+
+<h2>References</h2>
+<ol>
+  <li><strong>Nolan Lawson</strong> — "Using AI to write better code more slowly" | nolanlawson.com, 2026-05-25 ↳ <a href="https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/">nolanlawson.com</a></li>
+  <li><strong>Hacker News discussion</strong> — 522 points, 199 comments, 2026-05-25 ↳ <a href="https://news.ycombinator.com/item?id=48272984">HN</a></li>
+  <li><strong>skills-for-humanity</strong> — 171 Personal Reasoning Skills | GitHub, 2026-05 ↳ 8000+ stars, <a href="https://news.ycombinator.com/item?id=48261925">HN Show</a></li>
+  <li><strong>Matt Pocock</strong> — "/grill-me" skill for Claude Code</li>
+  <li><strong>magpie tool</strong> — LLM cross-model code review tool</li>
+</ol>
+
+  </div>
+</Article>

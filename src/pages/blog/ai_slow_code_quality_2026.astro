@@ -1,0 +1,151 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "AI效率", "开发实践"];
+const articleDate = '2026-05-26';
+---
+
+<Article
+  title="AI编程的「慢哲学」：好的代码，从来不是AI一个人写出来的"
+  description="HN 522点赞热议——前Mozilla工程师Nolan Lawson提出的反直觉观点：让AI审代码而不是写代码，用更慢的速度写出更好的代码。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-05-26</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI编程的「慢哲学」：好的代码，从来不是AI一个人写出来的</h1>
+      <div class="article-meta">
+        <span>2026-05-26</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>2026年5月25日，前Mozilla工程师Nolan Lawson发表了一篇文章，标题本身就是一个宣言：<strong>"Using AI to write better code more slowly"</strong>（用AI更慢地写出更好的代码）。不到24小时，它在Hacker News上获得了522个点赞和近200条评论，冲上首页第二名。</p>
+
+<p>这个标题之所以打动这么多开发者，是因为它揭示了AI时代人机协同的一个核心悖论——当所有人都在追求"10倍效率"时，<strong>真正让代码变好的方法却是慢下来。</strong></p>
+
+<hr />
+
+<h2>一、一个反直觉的实验</h2>
+
+<p>"写完就扔"似乎成了AI辅助开发的默认模式。但Lawson提出了一个截然相反的方法：</p>
+
+<p><strong>三个AI模型同时审查你的代码。</strong></p>
+
+<p>在他的工作流中，一次PR提交后会同时交给Claude、Codex和Cursor Bugbot三个独立模型进行代码审查。多模型交叉验证消除幻觉，然后由人类开发者对捕获的缺陷排序——critical、high、medium、low——逐条验证，去伪存真。</p>
+
+<p><strong>这个过程中出现了一个意想不到的结果：审查过程不仅发现了新写的代码的问题，还经常发现代码库中本就存在的bug——那些在引入AI之前就已经存在的缺陷。</strong></p>
+
+<p>于是他的工作流变成了一条"偏题"的路线：一边修复AI发现的新问题，一边不得不回头补写单元测试、修复预存缺陷。开发速度没有提高，但代码质量显著提升。更重要的是，他对代码库的理解深入到了一种前所未有的程度。</p>
+
+<p><strong>人机协同的第一个教训：AI是一面镜子，照出的是人的盲区。</strong></p>
+
+<h2>二、"效率"本来就是有问题的概念</h2>
+
+<p>这篇文章在HN上引发近200条深度讨论，是因为它戳中了AI产品设计中的一个根本问题：<strong>我们对"效率"的定义本身就是片面的。</strong></p>
+
+<p><strong>如果你说的"效率"等于"单位时间内产出的代码行数"——AI确实让效率爆炸了。</strong></p>
+
+<p><strong>如果你说的"效率"等于"单位时间内产出的可持续、可维护、无缺陷的价值"——故事完全不一样了。</strong></p>
+
+<p>这个悖论从2022年ChatGPT出现以来就一直存在，只是在2026年——当AI编码工具已经无处不在的时候——它变得更加尖锐了。</p>
+
+<p>HN评论区讨论的微妙分化印证了这一点：</p>
+
+<ul>
+  <li><strong>拥趸者</strong>把LLM当作"AI导师"。让AI解释代码逻辑和缺陷，这个过程虽慢但认知收益远超手动编码。用户的代码质量随着时间推移指数级提升。</li>
+  <li><strong>质疑者</strong>则指出，花在AI评审/修复循环上的时间"有时比手动编码还长"，这不是效率提升。</li>
+  <li><strong>中立派</strong>观察到关键不在AI本身，而在于你怎么用——"用更便宜的模型做规划，让AI只干苦活"。</li>
+</ul>
+
+<p><strong>这个共同发现可以概括为一句话：同一种技术，不同的人用出完全不同的效果。差异不在工具，在于人。</strong></p>
+
+<h2>三、人机协同的两种模型</h2>
+
+<p>把Lawson实验背后的逻辑抽象出来，可以清晰看到AI辅助开发的两种路径：</p>
+
+<h3>模型A——替代型协同（速度优先）</h3>
+<p>AI生成 → 人工快速过目 → 合并 → 下一行。</p>
+<p>人的角色是"检查者"——只用判断"代码能不能跑"。AI是效率放大器，以量取胜。这个模型下，人的判断力只用在"接收AI的产出"这个点上。</p>
+
+<h3>模型B——增强型协同（质量优先）</h3>
+<p>人写框架 → AI做多角度交叉审查 → 人逐条验证和深入修复 → 认知沉淀。</p>
+<p>人的角色是"评审委员会主席"——判断力、优先级排序、跨上下文整合才是关键能力。这个模型下，信息流是循环的：每次循环都是一次认知深化的机会。</p>
+
+<p><strong>为什么越来越多有经验的开发者从模型A转向模型B？</strong> 因为他们发现：AI生成的代码越多，代码库的"技术债务"累积得越快。如果不加节制地让AI快速产出，六个月后的代码库会变成一团谁都不敢动的乱麻。</p>
+
+<p>这个发现跳出编程领域同样适用。</p>
+
+<ul>
+  <li><strong>AI辅助写作</strong>——最快的方法是让AI生成全文再小修。最好的方法是人构思框架，让AI做事实核查和参考文献组织。</li>
+  <li><strong>AI辅助数据分析</strong>——最快的用法是扔给AI"帮我分析"。最有效的用法是人定义分析框架，让AI在框架内跑各种假设检验。</li>
+  <li><strong>AI辅助产品设计</strong>——最快的方案是让AI出十个UI稿。最好的方案是人定义用户旅程，让AI在每个触点生成优化建议。</li>
+</ul>
+
+<p><strong>核心结论：人对任务的理解深度，决定了AI输出的天花板。</strong></p>
+
+<h2>四、慢了，但是更"深"了</h2>
+
+<p>让HN评论区品质拉升到一个新高度的，是那些自发的、具有认知深度的用户体验分享。</p>
+
+<p>用户 <em>justinlivi</em> 分享了自己的真实经验：</p>
+
+<blockquote>
+  <p>"我发现自己在AI审核/修复循环上花费的时间，比手动编码还要长。部分原因是我进入状态后写代码极快。但更大的原因是，LLM代码在第一版中从来就不符合我的风格或架构，我需要花费同样多的时间让它达到我能接受的水平。"</p>
+</blockquote>
+
+<p>他捕捉到了AI时代一个普遍体验：<strong>一个好的开发者，无论用不用AI，都不会把"能跑"作为质量标准。</strong></p>
+
+<p>用户 <em>kiba</em> 的表达则更直击人心：</p>
+
+<blockquote>
+  <p>"我把LLM当作导师——我努力写出我知道可能不完美的代码，但这是我最好的水平。然后让LLM不知疲倦地指出我的错误，解释为什么应该那么写。到最后，我写下了我永远写不出的代码——并且我确实理解了它为什么这样工作。"</p>
+</blockquote>
+
+<p><strong>这不是速度的胜利，这是学习深度的胜利。</strong></p>
+
+<hr />
+
+<p>Lawson在文章末尾给出了一段值得反复读的话：</p>
+
+<blockquote>
+  <p>"如果你是用AI生成几百行的PR、自己几乎不理解这些代码的那种开发者，我邀请你慢下来。让AI解释你的PR是如何工作的、它可能在哪里失败。你可能不会在原始代码行数上更'高效'。你可能会烧掉大量tokens只是为了发现你的方案一开始就走错了路。但你会发现，这是一种更'增强版'的编程方式——小心翼翼、有条不紊、质量至上、专注于让下一个开发者过得更好。"</p>
+</blockquote>
+
+<h2>五、与171个思维技能共鸣</h2>
+
+<p>巧合的是，同一天，另一个HN上的热门项目——skills-for-humanity——给出了从不同方向走向同一结论的补充。</p>
+
+<p>skills-for-humanity将171种人类结构化推理方法论打包为AI可调用的技能。它的基本思想是：<strong>与其让AI自由发挥，不如让它在人类设计好的结构内思考。</strong></p>
+
+<p>如果说Lawson的方法是从实践层面证明了"慢"的价值——让人的判断力在AI的辅助下反复被训练和深化。</p>
+
+<p>那么skills-for-humanity就是从方法论层面构建了"慢"的基础设施——由人定义思维协议，由AI在协议内高效执行。</p>
+
+<p><strong>这两个项目在2026年5月的最后一周同时出现在HN首页，不是巧合。它们共同指向了人机协同的下一个前沿：不是让AI更快，而是让人机协同更"深"。不是让AI代替你思考，而是把你的思考方法教给AI。</strong></p>
+
+<hr />
+
+<h2>结语：在加速的时代选择慢下来</h2>
+
+<p>在一个人人追求"10倍效率"的时代，Lawson指出了第三条路——<strong>这不是关于加速，这是关于深化。</strong> 最好的加速器不是AI替你跑，而是AI教会你怎么跑得更聪明。</p>
+
+<p>速度是副产品，深度才是目的。</p>
+
+<hr />
+
+<h2>参考文献</h2>
+<ol>
+  <li><strong>Nolan Lawson</strong> — "Using AI to write better code more slowly" | nolanlawson.com，2026-05-25 ↳ <a href="https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/">https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/</a></li>
+  <li><strong>Hacker News discussion</strong> — 522 points, 199 comments, 2026-05-25 ↳ <a href="https://news.ycombinator.com/item?id=48272984">https://news.ycombinator.com/item?id=48272984</a></li>
+  <li><strong>skills-for-humanity</strong> — 171 Personal Reasoning Skills | GitHub, 2026-05 ↳ 8000+ stars, <a href="https://news.ycombinator.com/item?id=48261925">HN Show</a></li>
+  <li><strong>Matt Pocock</strong> — "/grill-me" skill for Claude Code</li>
+  <li><strong>magpie tool</strong> — LLM cross-model code review tool</li>
+</ol>
+
+  </div>
+</Article>
