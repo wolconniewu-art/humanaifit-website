@@ -1,0 +1,80 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["AI Governance", "AI Safety"];
+const articleDate = '2026-05-28';
+---
+
+<Article
+  title="Illinois Just Passed America's Strongest AI Safety Bill — What SB 315 Means"
+  description="SB 315 requires frontier AI labs to undergo mandatory third-party safety audits. It moves US AI regulation from 'self-reporting' to 'independent verification.'"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Policy Analysis · 2026-05-28</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Illinois Just Passed America's Strongest AI Safety Bill — What SB 315 Means</h1>
+      <div class="article-meta">
+        <span>2026-05-28</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>Abstract</h2>
+
+<p>On May 27, 2026, the Illinois House of Representatives passed SB 315, a bill requiring frontier AI laboratories — including OpenAI, Anthropic, and Google DeepMind — to undergo mandatory third-party safety audits. Governor JB Pritzker has signaled he will sign it into law. According to AI safety experts interviewed by WIRED, this would become the single strongest check on the power of major AI companies in the United States.</p>
+
+<h2>What SB 315 Actually Does</h2>
+
+<p>The core mechanism is deceptively simple: <strong>independent auditors must verify that AI labs are adhering to their own stated safety standards.</strong></p>
+
+<p>Before SB 315, the landscape looked like this:</p>
+
+<table>
+<tr><th>State</th><th>What It Did</th><th>Year</th></tr>
+<tr><td>California</td><td>Required AI labs to disclose model guardrails and safety incidents</td><td>2025</td></tr>
+<tr><td>New York</td><td>Similar disclosure requirements with public reporting</td><td>2025</td></tr>
+<tr><td>Illinois</td><td><strong>Mandated independent third-party audits of safety practices</strong></td><td>2026</td></tr>
+</table>
+
+<p>As Scott Wisor, policy director at the Secure AI Project, told WIRED: &quot;We're in a situation where the AI companies grade their own homework. Should SB 315 become law, Illinois would require an independent auditor to check whether the AI labs in fact adhere to their safety commitments.&quot;</p>
+
+<p>The auditors could come from the Big Four accounting firms (Deloitte, EY, KPMG, PwC) or from specialized AI evaluator organizations like METR, Transluce, and Averi — members of the AI Evaluator Forum.</p>
+
+<h2>Why Illinois? Why Now?</h2>
+
+<p>The absence of federal AI legislation has turned state legislatures into the primary battleground for AI safety policy. As Illinois state representative Daniel Didech, a sponsor of SB 315, explained: &quot;Laws like this create a world where it's more likely for the federal government to pass something.&quot;</p>
+
+<p>This &quot;state lab&quot; model mirrors the history of data privacy legislation in the US — years of scattered state-level laws preceded GDPR and CCPA becoming de facto standards.</p>
+
+<h2>The Corporate Angle Worth Watching</h2>
+
+<p>SB 315's passage also reveals a notable shift in the AI industry's political strategy. OpenAI had previously supported a separate Illinois bill that would have exempted AI labs from liability. But in a notable reversal, OpenAI's chief of global affairs Chris Lehane called that support &quot;an oversight.&quot;</p>
+
+<p>Lehane told WIRED that OpenAI's AI policy strategy is now <strong>oriented around passing a series of similar state laws</strong> — meaning that rather than fighting state-level regulation, major AI labs are now engaging with it and shaping it. This is a significant departure from blanket opposition to regulation.</p>
+
+<h2>Three Implications for Global AI Governance</h2>
+
+<p><strong>1. The &quot;state lab&quot; model is accelerating.</strong> Federal inaction → states fill the vacuum → each bill builds on the last. This pattern may be adopted by other countries.</p>
+<p><strong>2. &quot;Independent audit&quot; is becoming a regulatory staple.</strong> The move from self-reporting to mandatory third-party audit mirrors financial regulation — a pattern that took decades in accounting but years in AI.</p>
+<p><strong>3. The compliance industry is forming.</strong> If independent audits become standard, a new ecosystem of auditors, evaluators, and certification frameworks will emerge. The AI Evaluator Forum is an early signal.</p>
+
+<h2>What This Means for Non-US Readers</h2>
+
+<p>European readers may recognize a parallel with the EU AI Act's tiered compliance framework. But the EU AI Act is top-down across member states; the US approach is bottom-up. The result may be a regulatory patchwork creating compliance complexity for companies operating across multiple states — similar to what privacy regulations looked like before GDPR.</p>
+
+<h2>References</h2>
+
+<ol>
+<li><strong>Illinois Lawmakers Just Passed America's Strongest AI Safety Bill</strong> — WIRED, Maxwell Zeff, 2026-05-27</li>
+<li><strong>OpenAI's Chris Lehane on State-Level AI Policy Strategy</strong> — WIRED, 2026-05</li>
+<li><strong>Americans Pessimistic About AI's Impact and Want More Regulation</strong> — Annenberg Public Policy Center, 2026-01</li>
+<li><strong>AI Evaluator Forum</strong> — aievaluatorforum.org</li>
+</ol>
+
+  </div>
+</Article>

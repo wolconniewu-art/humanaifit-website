@@ -1,0 +1,86 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "AI反思"];
+const articleDate = '2026-05-28';
+---
+
+<Article
+  title="AI 的暗面：2026 年 5 月的三件事拼出了什么？"
+  description="AI疲劳、CEO AI精神病、DuckDuckGo暴涨28%——三件事同周发生，从个体、组织、市场三个维度揭示了人机契合的系统性失败。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">趋势分析 · 2026-05-28</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI 的暗面：2026 年 5 月的三件事拼出了什么？</h1>
+      <div class="article-meta">
+        <span>2026-05-28</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>摘要</h2>
+
+<p>2026年5月最后一周，技术行业同时发生了三件看似独立的事件：Hacker News上&quot;AI疲劳&quot;文章获1869分成为当日最热、TechCrunch发表评论称科技CEO们正患上&quot;AI精神病&quot;、DuckDuckGo在Google宣传AI搜索后访问量暴涨28%。本文认为这三件事并非巧合——它们从个体、组织和市场三个维度揭示了当前人机契合的系统性失败，并提出AI产品设计需要从&quot;替用户思考&quot;转向&quot;让用户选择&quot;。</p>
+
+<h2>一、三个事件</h2>
+
+<h3>事件一：个体层面的AI疲劳</h3>
+
+<p>2026年5月22日，一位开发者发表了一篇题为&quot;I'm Tired of Talking to AI&quot;的短文（Orchid Files）。文章描述了一个在现代工作中越来越普遍的体验：向AI提问GitHub安全审查问题，AI给出错误答案；在GitHub上发帖求助，人类回复的内容和AI的错误答案一字不差。</p>
+
+<p>这篇文章在Hacker News上获得了1869分——这个分数接近甚至超过许多主流科技产品发布讨论的热度。它表明&quot;AI疲劳&quot;不是小众情绪，而是大量一线技术从业者的集体感受。</p>
+
+<h3>事件二：组织层面的AI精神病</h3>
+
+<p>2026年5月27日，TechCrunch发表评论文章，标题直白地写道&quot;Tech CEOs are suffering from AI psychosis&quot;。文章引用Box CEO Aaron Levie的观察：CEO们对AI的认知已经接近&quot;宗教信仰&quot;而非商业判断。他们选择性忽视三个事实：AI对大多数企业的投入产出比仍为负值、AI可靠性远未达到关键业务流程可依赖的程度、员工对AI工具的真实接纳度远低于CEO的预期。</p>
+
+<h3>事件三：市场层面的逃离行为</h3>
+
+<p>同一天，PC Gamer报道DuckDuckGo在Google宣称&quot;用户热爱AI模式&quot;后访问量暴涨28%。用户在态度上可能说&quot;AI很好&quot;，但在行为上正在寻找替代品。</p>
+
+<h2>二、三个维度的系统性分析</h2>
+
+<p>这三个事件不是孤立的。它们从个体、组织、市场三个维度指向同一个系统性问题——人机契合的失败。</p>
+
+<table>
+<tr><th>维度</th><th>表现形式</th><th>核心问题</th><th>解决方向</th></tr>
+<tr><td>个体</td><td>AI疲劳</td><td>用户无法分辨AI输出的质量和来源</td><td>透明度与可审计性</td></tr>
+<tr><td>组织</td><td>CEO AI精神病</td><td>决策层对AI真实能力的认知严重偏离事实</td><td>基于证据的AI治理框架</td></tr>
+<tr><td>市场</td><td>逃离AI搜索</td><td>用户用行为反对&quot;被替思考&quot;的体验</td><td>保留选择权和控制权</td></tr>
+</table>
+
+<p>从人机契合（Human-AI Fit, Burton-Jones & Straub, 2006）的理论视角看，这三个问题指向同一个根源：<strong>当AI被强嵌入那些用户需要控制感和透明度才能信任的场景中时，契合度降至负值。</strong></p>
+
+<h2>三、这不是反AI</h2>
+
+<p>需要特别说明：以上讨论不意味着&quot;AI错了&quot;或&quot;AI时代结束了&quot;。恰恰相反——正因为AI的能力正快速逼近关键场景的实用门槛，<strong>这些关于信任、透明度、控制权的讨论才变得迫切</strong>。</p>
+
+<p>如果AI只是无用的玩具技术，没人会在乎它是否有幻觉。它有用——所以需要被认真对待。</p>
+
+<p>DuckDuckGo做的不是一个&quot;反AI&quot;选择。它做的是<strong>加AI，但标注清楚。</strong> 这就是一个成熟人机契合设计思路：让用户保留选择权和控制权，然后观察他们如何与AI协同。</p>
+
+<h2>四、展望</h2>
+
+<p>2026年5月这一周可能被未来的技术史学者标记为&quot;AI从狂热进入反思&quot;的转折点。三件事同时发生，且彼此呼应，说明这不是个别现象。</p>
+
+<p>对于AI产品设计师和研究人机契合的学者来说，这些信号的价值不在于&quot;唱衰AI&quot;，而在于指出一个明确的方向：<strong>下一阶段的人机契合竞争，将从技术能力比拼转向信任与控制权设计能力的比拼。</strong></p>
+
+<h2>参考文献</h2>
+
+<ol>
+<li><strong>I'm Tired of Talking to AI</strong> — Orchid Files, 2026-05-22</li>
+<li><strong>Tech CEOs are apparently suffering from AI psychosis</strong> — TechCrunch, Julie Bort, 2026-05-27</li>
+<li><strong>DuckDuckGo's AI-free search saw nearly 28% more visits</strong> — PC Gamer, 2026-05-27</li>
+<li><strong>Your CEO is suffering from AI psychosis</strong> — Handy AI Substack, 2026-05</li>
+<li><strong>Americans pessimistic about AI's impact and want more regulation</strong> — Annenberg Public Policy Center, 2026</li>
+<li><strong>Leveraging the Human-AI Fit: A Conceptual Framework</strong> — Burton-Jones, A. & Straub, D., 2006 (MIS Quarterly, 30:1)</li>
+</ol>
+
+  </div>
+</Article>

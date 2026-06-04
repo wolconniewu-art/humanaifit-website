@@ -15,6 +15,8 @@ const path = Astro.url.pathname;
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | humanaifit 博客</title>
@@ -92,6 +94,42 @@ const path = Astro.url.pathname;
       color: #555;
     }
     .article-body blockquote p { margin-bottom: 0; }
+    /* ===== 表格显示样式 ===== */
+    .article-body table {
+      width: 100%;
+      margin: 32px 0;
+      border-collapse: collapse;
+    }
+    .article-body th {
+      background: var(--color-accent);
+      color: white;
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+    .article-body td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      line-height: 1.6;
+      vertical-align: top;
+    }
+    .article-body thead + tbody tr:nth-child(even) td {
+      background: #f9f9f7;
+    }
+    .article-body .copy-source {
+      display: none;
+    }
+    /* 浏览器复制时的优化：在td之间插入空格，让复制出来的表格列之间有分隔 */
+    .article-body th::after,
+    .article-body td::after {
+      content: " | ";
+      white-space: pre;
+    }
+    .article-body td:last-child::after {
+      content: none;
+    }
     .article-body table {
       width: 100%;
       border-collapse: collapse;

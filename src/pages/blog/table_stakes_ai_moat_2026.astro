@@ -1,0 +1,215 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "AI效率", "竞争战略"];
+const articleDate = '2026-05-27';
+---
+
+<Article
+  title="牌桌入场费（Table Stakes）都必须交，然后呢？谁能赢牌？"
+  description="2026年，89%的组织已经在用AI。但所有人都用着同样的AI模型。如果每个人都有同样的优势，那就不是优势。麦肯锡最新报告指出：AI只是入场券，真正的竞争在入场之后——谁在建护城河，谁在裸奔？"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-05-27</p>
+      <h1 style="font-size:2rem;line-height:1.35;">牌桌入场费（Table Stakes）都必须交，然后呢？谁能赢牌？</h1>
+      <div class="article-meta">
+        <span>2026-05-27</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<blockquote>
+<p>如果你和你的竞争对手用着同样的AI工具，那AI就不是你的秘密武器——它只是你的入场券。</p>
+</blockquote>
+
+<hr />
+
+<h2>从App到AI：历史正在重演</h2>
+
+<p>2018年，每一家银行都在做App。</p>
+
+<p>到2022年，几乎每家银行都有了App，功能和体验高度趋同。结果呢？没有任何一家银行因为&quot;做了App&quot;而获得竞争优势。真正拉开差距的，是那些<strong>把数字化嵌入整个客户旅程</strong>的银行——App只是入场券，入局之后怎么做，才是分水岭。</p>
+
+<p>今天，「AI」正成为2026年的App。</p>
+
+<p>麦肯锡2026年5月的调研显示：<strong>近九成（89%）组织已经在至少一个业务职能中使用AI</strong>。但你可能没留意到后半句——所有人都在用着同样的LLM（GPT、Claude、DeepSeek……），做着同样的事情。</p>
+
+<p>如果每个人都有同一件东西，它就不再是优势。</p>
+
+<p><strong>它只是个参赛资格。</strong></p>
+
+<h2>先分清：入场费，还是武器？</h2>
+
+<p>打扑克的时候，你坐下来之前要先交底注——这笔钱叫 <strong>Table Stakes（牌桌入场费）</strong>。不交？你连牌桌都上不了。交了？不等于你会赢。<strong>它只是让你有资格坐在牌桌上。</strong></p>
+
+<p>AI在2026年，就是这个入场费。</p>
+
+<table>
+<thead>
+<tr><th></th><th>Table Stakes（入场费）</th><th>Competitive Advantage（护城河）</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>是什么</strong></td><td>有AI，你不会领先</td><td>有护城河，对手追不上</td></tr>
+<tr><td><strong>可复制性</strong></td><td>谁都能买</td><td>抄不走</td></tr>
+<tr><td><strong>心态</strong></td><td>&quot;我们也得有一个AI&quot;</td><td>&quot;这是我的独门武器&quot;</td></tr>
+<tr><td><strong>举例</strong></td><td>买个GPT会员、接个API</td><td>用独家数据训练自己的模型、AI嵌入核心业务流程</td></tr>
+</tbody>
+</table>
+
+<p>这个区分解释了为什么很多投入了AI的人和企业还没赢：<strong>他们只交了入场费，就以为自己在赢牌了。</strong></p>
+
+<h2>为什么交了入场费，还没赢？</h2>
+
+<p>一个从大厂离职、经营一人公司的朋友告诉我：</p>
+
+<blockquote>
+<p>&quot;我自己投了AI，也招了会写提示词的人，但在小红书上卖课，我仍然卷不过比我更会用AI的人。&quot;</p>
+</blockquote>
+
+<p>2026年中国OPC（一人公司）白皮书给出了一组数据——<strong>1600万人注册了OPC，月收入中位数不到7000元。</strong></p>
+
+<p>如果AI真的能帮人赚钱，为什么九成的人没赚到？</p>
+
+<p>原因很简单：你有的AI工具，你的竞争对手也有。你用GPT写文案，三公里外另一位也在用。你用AI做客服，对面那家用得一样溜。</p>
+
+<p><strong>AI平权了所有人的起点。但差异化的竞争，从来不在起点，而在起点之后。</strong></p>
+
+<p>麦肯锡在《From AI Table Stakes to AI Advantage: Building Competitive Moats》（2026年5月）里的核心观点：<strong>AI本身不是竞争力。真正的竞争力来自用AI建立的&quot;护城河&quot;——一条对手跨不过去的沟。</strong></p>
+
+<h2>三条护城河</h2>
+
+<p>麦肯锡的报告总结了六条战略性护城河和三种能力性护城河。从中筛选出三条和个体创业者、中小团队最相关的：</p>
+
+<h3>护城河一：规模效应——你的边际成本能趋近于零吗？</h3>
+
+<p>麦肯锡报告引用Resolution Life保险公司的案例。这家美国-澳大利亚寿险公司用AI平台自动处理精算、营销、财务任务，产品推出成本降到历史最低。<strong>15秒处理索赔</strong>——原来要几周。一旦AI基础设施搭好，每多处理一份保单，边际成本趋近于零。</p>
+
+<p>听起来是&quot;大公司的事&quot;？不。这个逻辑对任何规模的业务都成立。</p>
+
+<p><strong>翻译成你的业务：</strong></p>
+
+<p>如果你做的是知识服务——以AI自助问答响应80%的常规问题，你只处理20%的高价值复杂情况。每一次你改进一个AI回复模板，受益的是接下来所有的客户，而你的时间成本没有增加。</p>
+
+<p>现在问自己一个问题：<strong>你的业务里，&quot;15秒就能搞定但现在是2小时&quot;的事到底有多少？</strong></p>
+
+<p>再问一个更扎心的：<strong>你有没有在持续消除这些低效，还是把它当成了&quot;本来就是这样&quot;？</strong></p>
+
+<p>规模效应最容易被忽视的一点是：它不是&quot;一次性省力&quot;——它是<strong>累积性的结构优势</strong>。每优化一个环节，你省下的时间和成本是永久性的，而竞争对手要重新走一遍你走过的路。</p>
+
+<h3>护城河二：特权数据——你有的数据，别人没有</h3>
+
+<p>麦肯锡报告引用亚马逊的案例。搜索行为、产品浏览、购买记录、广告响应——这些数据形成闭环。每一笔交易都在训练推荐系统和定价模型。竞争对手没有同样的交易数据，根本追不上。</p>
+
+<p>这背后是一个被称为&quot;数据飞轮&quot;的东西：<strong>每一次交互都产生新数据，新数据改进模型，改进后的模型产生更好的交互，更好的交互又产生更多的数据。</strong></p>
+
+<p><strong>翻译成你的业务：</strong></p>
+
+<p>想象一下，你是一名独立咨询师，做了1000小时1对1服务。你把这1000小时的对话结构化输入到自己的AI系统里。</p>
+
+<p>刚开始，它只是一个问答工具。但到了第500次咨询，它开始&quot;认出&quot;常见的问题模式。到了第1000次，它学会了你的说话风格、理解了你的客户画像、能自动分类每个新客户的需求。每一次新咨询又反过来产生新数据。</p>
+
+<p>一个刚入行的同行，下载同一个AI工具，但他没有这1000小时的数据。这就是<strong>数据护城河</strong>——它不是靠买来的，是靠时间积累出来的。</p>
+
+<p><strong>但问题来了：你的专业数据沉淀下来了吗？还是每一次交互都消失在了零散的聊天记录里？</strong></p>
+
+<h3>护城河三：信任——在高风险领域，信任≈入场券</h3>
+
+<p>麦肯锡报告指出在金融、医疗、身份认证行业，AI的安全、公平、隐私不仅仅是合规要求——它决定了客户愿不愿意把最核心的业务流程交给你。先建立信任的公司，就有了结构性优势。</p>
+
+<p>为什么会这样？因为在高风险场景里，&quot;做错了&quot;的代价远大于&quot;做得慢&quot;。客户不是不需要AI，而是需要一个<strong>他们信得过的AI系统</strong>。</p>
+
+<p><strong>翻译成你的业务：</strong></p>
+
+<p>如果你做的是健康咨询、法律建议、财务规划——客户只有信任你才会付钱。AI在这里不是替代你的，而是在三个层面帮你加固信任：</p>
+
+<ul>
+<li><strong>一致性</strong>：同样的标准输出，不会今天心情好就讲得细、累了就敷衍</li>
+<li><strong>可追溯</strong>：每一条建议的推理路径和来源都有记录，客户问到&quot;你凭什么这么说&quot;——你拿得出依据</li>
+<li><strong>透明度</strong>：AI给出建议的同时，也告诉客户它的局限在哪里</li>
+</ul>
+
+<p>这些听起来不&quot;酷&quot;，但它们是客户决定付费的关键。</p>
+
+<p>信任的护城河还有一个独特属性：<strong>它越用越深。</strong> 你和客户的每一次成功交互，都是给这条护城河多加了一瓢水。别人想抄，只能从头开始挖。</p>
+
+<h2>三条护城河之间的关系</h2>
+
+<p>它们不是互斥的，而是相互增强的：</p>
+
+<blockquote>
+<p><strong>信任</strong>帮你获得更深层次的客户数据 → <strong>数据</strong>让你的AI更懂你的客户 → <strong>规模效应</strong>让你用更低的成本服务更多人 → 服务更多人又进一步巩固<strong>信任</strong>。</p>
+</blockquote>
+
+<p>这就是护城河的飞轮效应。它不是建一道墙就能高枕无忧，而是三条沟互相引流，越挖越深。</p>
+
+<h2>所以，谁在赢牌？</h2>
+
+<p>那些交了入场费、然后认真建护城河的人，正在赢。</p>
+
+<p>来，做个自查：</p>
+
+<table>
+<thead>
+<tr><th>维度</th><th>你处于哪个阶段？</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. 入场阶段</strong></td><td>✅ 你买了AI工具 → 用了 → 和所有人一样</td></tr>
+<tr><td><strong>2. 数据沉淀</strong></td><td>❓ 你的每一次AI交互沉淀为了只有你有的数据？</td></tr>
+<tr><td><strong>3. 规模效应</strong></td><td>❓ 你搭建了&quot;服务100个人和10个人差不多累&quot;的基础设施？</td></tr>
+<tr><td><strong>4. 信任壁垒</strong></td><td>❓ 你的客户是因为&quot;信任你的方法&quot;而选择你，不是&quot;你也有AI&quot;？</td></tr>
+</tbody>
+</table>
+
+<p>如果你只在阶段1——你已经交了入场费，但这只是让你能坐在牌桌上。真正的竞争，刚刚开始。</p>
+
+<h2>行动建议</h2>
+
+<h3>1. 选1-2条护城河——选你业务的结构性优势，不是你擅长的</h3>
+
+<p>你不必九条都建。但至少要有一条：</p>
+<ul>
+<li>有独特数据积累 → 建数据护城河</li>
+<li>服务量大但重复性高 → 建规模效应</li>
+<li>依赖客户深度信任 → 建信任壁垒</li>
+</ul>
+
+<p>关键判断标准：<strong>这条护城河，换了竞争对手来做，他需要多少时间和成本才能追上？</strong></p>
+
+<p>答案如果是&quot;几个月&quot;——说明它还不够深。如果是&quot;几年&quot;或&quot;不可能&quot;——这就是你的结构性优势。</p>
+
+<h3>2. 把护城河当系统来建——不是一次性工程</h3>
+
+<p>你买一个AI工具，不是护城河。你围绕它设计了&quot;收集数据→训练模型→迭代改进&quot;的飞轮，那才是护城河。</p>
+
+<p>每周问自己一次：<strong>这周我的护城河变深了吗？</strong></p>
+
+<h3>3. 把最好的资源投给护城河</h3>
+
+<p>如果你认为AI是你的竞争优势，那就给它配<strong>最好的数据和最多的时间</strong>。别让它做任何竞争对手也能轻易做到的事。</p>
+
+<h2>写在最后</h2>
+
+<p>2026年，AI已经是基础设施了。</p>
+
+<p>买AI工具、交入场费——这是你必须要做的事，不做注定落后。但如果你止步于此，以为交了入场费就等于有了竞争优势，那很可能一年后回头看，发现自己只是&quot;和别人一样有AI&quot;，什么都没有真正改变。</p>
+
+<p><strong>工具可以复制。价值来自壁垒。</strong></p>
+
+<p>一个更让人不安的事实是：<strong>入场费的金额，正在被入场的人太多而变得越来越不值钱。</strong> 当90%的人都在用AI，有AI这个事实本身的价值就在快速衰减。你真正需要回答的问题，从来不是&quot;我该不该用AI&quot;，而是——</p>
+
+<p><strong>你的AI在帮你建护城河，还是只是在交入场费？</strong></p>
+
+<h2>参考文献</h2>
+<ol>
+<li><strong>McKinsey &amp; Company</strong> — Diedrich, D., Williams, E., Catlin, T., &amp; Fountaine, T. &quot;From AI Table Stakes to AI Advantage: Building Competitive Moats&quot;，2026-05</li>
+<li><strong>2026中国OPC白皮书</strong> — 中国个体劳动者协会，2026 — 1600万人注册OPC，月收入中位数不到7000元</li>
+<li><strong>McKinsey Technology Research</strong> — Global AI Adoption Survey：89%组织已在至少一个业务职能中使用AI，2026</li>
+</ol>
+  </div>
+</Article>

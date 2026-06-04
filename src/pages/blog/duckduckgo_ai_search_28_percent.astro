@@ -1,0 +1,75 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "AI搜索"];
+const articleDate = '2026-05-28';
+---
+
+<Article
+  title="DuckDuckGo 搜索量暴涨 28%：用户真的热爱 AI 搜索吗？"
+  description="Google说用户爱AI搜索，一周后DuckDuckGo桌面端访问量飙升28%。这个数据从行为而非态度的维度，检验了市场对AI搜索的真实接受度。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">热点解读 · 2026-05-28</p>
+      <h1 style="font-size:2rem;line-height:1.35;">DuckDuckGo 搜索量暴涨 28%：用户真的热爱 AI 搜索吗？</h1>
+      <div class="article-meta">
+        <span>2026-05-28</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>摘要</h2>
+
+<p>2026年5月，Google宣布&quot;用户热爱AI模式&quot;后一周，DuckDuckGo——一个默认不提供AI生成答案的隐私搜索引擎——桌面端访问量暴涨近28%。这个数据从&quot;用户行为&quot;而非&quot;用户态度&quot;的维度，检验了市场对AI搜索的真实接受度。本文从人机契合的视角分析该现象背后的三个信号：用户对AI输出的控制权需求、搜索透明度的价值、以及人机交互设计中&quot;控制点理论&quot;的当代验证。</p>
+
+<h2>一、事件：一个数据引发的问题</h2>
+
+<p>2026年5月中旬，Google在Search Central博客上发文，称用户对Google搜索的AI模式参与度&quot;显著提升&quot;。一周后，多家第三方追踪机构的数据显示：DuckDuckGo的桌面端访问量飙升了接近28%（PC Gamer）。</p>
+
+<p>两组数据同时出现在同一周，指向一个矛盾的现象：Google说用户爱AI搜索，用户却涌向了没有AI的搜索引擎。</p>
+
+<p>这不是一个针对Google的孤立事件。它揭示了一个更深层的问题——在AI产品设计者热切地&quot;替用户做一切&quot;的同时，有一部分用户正在用脚投票，表达完全不同的偏好。</p>
+
+<h2>二、现象分析：搜索透明度的价值在回升</h2>
+
+<p>DuckDuckGo创始人Gabriel Weinberg长期坚持一个理念：搜索的核心是信息检索，不是信息生成。当用户输入问题时，DuckDuckGo返回一组链接供用户自行判断，而非一段由AI生成的&quot;看起来像答案&quot;的文字。</p>
+
+<p>2026年初Annenberg公共政策中心的一项跨国调查显示：超过60%的受访者无法判断AI搜索产品返回信息的可靠性；40%的受访者明确表示更信任搜索结果中的原始来源链接，而非AI生成的摘要。</p>
+
+<p>DuckDuckGo在流量暴涨后的下一个动作很能说明问题：宣布将在AI生成的结果摘要周围加上<strong>红色边框</strong>，并附带提示&quot;此摘要由AI生成，可能存在误差&quot;。这不是反AI——这是给AI&quot;画圈&quot;：标注清楚、让用户自己决定是否信任。</p>
+
+<h2>三、理论视角：控制点与人机契合</h2>
+
+<p>这个现象与HCI（人机交互）研究中经典的&quot;控制点理论&quot;（Locus of Control, Lefcourt, 1982）高度相关：当用户感知到自己对工具失去控制权时，即使工具本身性能优越，满意度和信任度也会下降。</p>
+
+<p>Google AI Mode的核心改变在于&quot;替用户做选择&quot;——它替你阅读多个来源、替你生成摘要、替你做结论。对一部分用户来说，这不是效率提升，这是控制权丧失。</p>
+
+<p>而在2026年5月Hacker News上获得1869分的帖子&quot;I'm Tired of Talking to AI&quot;中，作者描述了一个更加极致的场景：他向AI提问GitHub仓库安全问题，AI给出错误答案——然后他在GitHub上发帖求助，收到的人类回复，和AI的答案<strong>一字不差</strong>。他被另一个人类用AI的中介所回复。</p>
+
+<p>这就是&quot;控制权丧失&quot;的终极形态：你甚至无法确定和你对话的是人还是AI的中转站。</p>
+
+<h2>四、展望：人机契合的另一个方向</h2>
+
+<p>DuckDuckGo的28%增长不是一个孤立数据点。它揭示了AI产品设计中的一个长期被忽视的维度——<strong>用户希望保留选择权和控制权</strong>。</p>
+
+<p>当前硅谷的主流叙事是：AI越&quot;像人&quot;越好，越主动越好，越能替你做完一切越好。但DuckDuckGo的数据提醒我们：有一部分用户——而且不是一个小数目——需要的是<strong>工具</strong>，不是<strong>代理</strong>。</p>
+
+<p>对人机契合的研究者来说，这可能是2026年最有启发性的&quot;反面案例&quot;：一个不主打AI能力的搜索引擎，在AI狂潮中逆势增长。它告诉我们，人机契合不只是让AI更强，也包括<strong>让AI清楚地被标识、被框定、可选择</strong>。</p>
+
+<h2>参考文献</h2>
+
+<ol>
+<li><strong>DuckDuckGo's AI-free search saw nearly 28% more visits</strong> — PC Gamer, 2026-05-27</li>
+<li><strong>I'm Tired of Talking to AI</strong> — Orchid Files, 2026-05-22</li>
+<li><strong>Americans pessimistic about AI's impact and want more regulation</strong> — Annenberg Public Policy Center, 2026</li>
+<li><strong>Locus of Control: Current Trends in Theory and Research</strong> — Lefcourt, H.M., 1982</li>
+</ol>
+
+  </div>
+</Article>

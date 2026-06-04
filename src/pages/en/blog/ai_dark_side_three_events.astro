@@ -1,0 +1,86 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "AI Reflection"];
+const articleDate = '2026-05-28';
+---
+
+<Article
+  title="The Dark Side of AI: Three Events in One Week That Tell a Single Story"
+  description="AI fatigue, CEO AI psychosis, DuckDuckGo's 28% surge — three events in the same week reveal a systemic failure of Human-AI Fit at individual, organizational, and market levels."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Trend Analysis · 2026-05-28</p>
+      <h1 style="font-size:2rem;line-height:1.35;">The Dark Side of AI: Three Events in One Week That Tell a Single Story</h1>
+      <div class="article-meta">
+        <span>2026-05-28</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>Abstract</h2>
+
+<p>The last week of May 2026 produced three seemingly unrelated events: a Hacker News post titled &quot;I'm Tired of Talking to AI&quot; scored 1,869 points and became the day's hottest discussion; TechCrunch published an essay declaring that tech CEOs are suffering from &quot;AI psychosis&quot;; and DuckDuckGo's desktop traffic surged 28% following Google's insistence that users love AI Mode. This paper argues that these three events are not coincidental — they reveal a systemic failure of Human-AI Fit at the individual, organizational, and market levels respectively, and point toward a fundamental redesign priority: shifting from &quot;thinking for the user&quot; to &quot;letting the user choose.&quot;</p>
+
+<h2>The Three Events</h2>
+
+<h3>Event 1: Individual-Level AI Fatigue</h3>
+
+<p>On May 22, 2026, a developer published a short post titled &quot;I'm Tired of Talking to AI&quot; (Orchid Files). It described an increasingly common experience: asking AI for help with a GitHub security audit and receiving a useless answer; posting on GitHub to find help and receiving a human reply that was verbatim identical to the AI's wrong answer.</p>
+
+<p>The post scored 1,869 points on Hacker News — a level of engagement comparable to major product launch discussions. This signals that &quot;AI fatigue&quot; is not a fringe sentiment but a collective experience among frontline technologists.</p>
+
+<h3>Event 2: Organizational-Level AI Psychosis</h3>
+
+<p>On May 27, TechCrunch published a commentary titled &quot;Tech CEOs are apparently suffering from AI psychosis.&quot; Drawing on observations from Box CEO Aaron Levie, the article argues that executives' perceptions of AI have crossed from business judgment into something approaching religious belief. Three facts are being systematically ignored: for most enterprises, AI's ROI remains negative; AI reliability has not reached the threshold for critical business processes; and real employee adoption rates are far lower than what CEOs believe them to be.</p>
+
+<h3>Event 3: Market-Level Exit Behavior</h3>
+
+<p>On the same day, PC Gamer reported DuckDuckGo's 28% traffic surge following Google's claim that &quot;users love AI Mode.&quot; Users may say they love AI — but their behavior tells a different story.</p>
+
+<h2>Systemic Analysis Across Three Dimensions</h2>
+
+<p>These three events are not coincidental. They point to failures of Human-AI Fit (Burton-Jones & Straub, 2006) at different levels:</p>
+
+<table>
+<tr><th>Dimension</th><th>Manifestation</th><th>Core Problem</th><th>Direction</th></tr>
+<tr><td>Individual</td><td>AI Fatigue</td><td>Users cannot assess AI output quality or provenance</td><td>Transparency and auditability</td></tr>
+<tr><td>Organizational</td><td>CEO AI Psychosis</td><td>Decision-makers hold inflated beliefs about AI capability</td><td>Evidence-based AI governance</td></tr>
+<tr><td>Market</td><td>AI Search Exit</td><td>Users reject &quot;being thought for&quot; through actual behavior</td><td>Preserving choice and control</td></tr>
+</table>
+
+<p>The common root: when AI is embedded into contexts where users require a sense of control and transparency to maintain trust, Human-AI Fit drops to negative values.</p>
+
+<h2>A Critical Clarification: This Is Not Anti-AI</h2>
+
+<p>It is important to emphasize: this analysis does not argue that &quot;AI is wrong&quot; or &quot;the AI era is ending.&quot; Quite the opposite — it is precisely because AI capabilities are approaching the practical threshold for critical scenarios that these discussions about trust, transparency, and control have become urgent.</p>
+
+<p>If AI were a useless toy technology, no one would care about its hallucinations. It is useful — and therefore it deserves to be taken seriously.</p>
+
+<p>DuckDuckGo's approach is not an &quot;anti-AI&quot; choice. It is <strong>AI with clear labeling</strong>. This is a mature Human-AI Fit design pattern: give users choice and control, then observe how they choose to collaborate with AI.</p>
+
+<h2>Looking Ahead</h2>
+
+<p>The last week of May 2026 may be remembered by future technology historians as the week AI tipped from hype into reflection. Three events, occurring simultaneously and reinforcing each other, suggest this is not an isolated phenomenon.</p>
+
+<p>For AI product designers and Human-AI Fit researchers, the signal is clear: <strong>the next phase of Human-AI Fit competition will shift from technical capability to the ability to design for trust and user agency.</strong></p>
+
+<h2>References</h2>
+
+<ol>
+<li><strong>I'm Tired of Talking to AI</strong> — Orchid Files, 2026-05-22</li>
+<li><strong>Tech CEOs are apparently suffering from AI psychosis</strong> — TechCrunch, Julie Bort, 2026-05-27</li>
+<li><strong>DuckDuckGo's AI-free search saw nearly 28% more visits</strong> — PC Gamer, 2026-05-27</li>
+<li><strong>Your CEO is suffering from AI psychosis</strong> — Handy AI Substack, 2026-05</li>
+<li><strong>Americans pessimistic about AI's impact and want more regulation</strong> — Annenberg Public Policy Center, 2026</li>
+<li><strong>Leveraging the Human-AI Fit: A Conceptual Framework</strong> — Burton-Jones, A. & Straub, D., 2006 (MIS Quarterly)</li>
+</ol>
+
+  </div>
+</Article>
