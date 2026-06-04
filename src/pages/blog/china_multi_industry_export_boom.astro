@@ -1,0 +1,89 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["全球化", "CBAM", "碳合规"];
+const articleDate = '2026-05-28';
+---
+
+<Article
+  title="中国多行业同时爆单，订单排到明年的结构性分析"
+  description="光伏、储能、造船、新能源汽车——四个行业同步订单井喷。这背后是地缘冲突的替代效应，还是中国制造的竞争优势？"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">产业分析 · 2026-05-28</p>
+      <h1 style="font-size:2rem;line-height:1.35;">中国多行业同时爆单，订单排到明年的结构性分析</h1>
+      <div class="article-meta">
+        <span>2026-05-28</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>摘要</h2>
+
+<p>2026年5月下旬，&quot;中国又一行业爆单&quot;登上百度热搜。但单一行业的关注掩盖了一个更重要的结构性事实：当前中国多个出口导向行业——光伏、储能、造船、新能源汽车——正在经历同步的订单井喷。这种&quot;多行业同时爆单&quot;的现象在近十年中极为罕见，其背后是地缘冲突加速能源转型（替代效应）与中国制造业长期积累（竞争优势）的叠加共振。本文从替代效应和竞争优势两个分析维度展开，并对碳边境调节机制（CBAM）可能带来的中期影响进行前瞻性评估。</p>
+
+<h2>一、数据侧写：哪些行业在爆单</h2>
+
+<p><strong>光伏出口：</strong> 中国光伏组件出口在2026年4月环比增长约一倍（ZME Science）。驱动力：伊朗战争导致全球油价飙升，各国加速光伏替代化石能源。</p>
+
+<p><strong>储能锂电池：</strong> 赣锋锂业（Ganfeng Lithium）的储能订单已排至2027年上半年（IndexBox）。驱动力：中东局势引发的能源供应不确定性，催生了大规模的储能储备需求。</p>
+
+<p><strong>造船业（VLCC市场）：</strong> 2026年Q1，中国船厂在全球超大型油轮（VLCC）新订单中的占比超过90%（IndexBox / Sunsirs）。驱动力：伊朗战争后的航运路线重构，叠加中国造船业的成本与工期优势。</p>
+
+<p><strong>新能源汽车出口：</strong> 2026年4月，中国新能源汽车出口同比增长约40%（GuruFocus）。驱动力：燃油价格飙升加速全球电动车替代，叠加中国EV产业链成本优势。这一增长是在欧盟加征中国EV关税的背景下实现的。</p>
+
+<h2>二、分析框架：两个增长逻辑</h2>
+
+<h3>逻辑一：替代效应（机会驱动）</h3>
+
+<p>当外部供给因地缘冲突、制裁、物流中断等原因出现突发短缺时，中国现有产能快速填补空白。适用行业：光伏、储能。</p>
+
+<p>关键特征：需求的触发因素是外生冲击（伊朗战争），增长曲线陡峭（一个月翻倍），因此难以持续维持同样增速。可持续性取决于外部局势发展和进口国的供应链重建策略。</p>
+
+<h3>逻辑二：竞争优势（结构驱动）</h3>
+
+<p>行业本身在全球范围内形成了不可替代的竞争优势——价格、质量、交期三个维度的综合领先。适用行业：造船、新能源汽车。</p>
+
+<p>关键特征：需求的触发因素是结构性优势，增长曲线相对平缓但可持续，即使在外部政策压力下（如欧盟EV关税）仍然保持竞争力。</p>
+
+<h2>三、交叉视角：CBAM碳边境调节机制的中期影响</h2>
+
+<p>当前CBAM覆盖钢铁、铝、化肥、电力、氢能五大类（过渡期2023-2026年，2026年起正式征收）。对爆单行业的潜在影响：</p>
+
+<table>
+<tr><th>行业</th><th>CBAM扩展预期</th><th>影响时间</th></tr>
+<tr><td>光伏</td><td>组件全生命周期碳足迹认证收紧中</td><td>2027-2030</td></tr>
+<tr><td>储能锂电池</td><td>EU电池法案（碳足迹声明）已实施</td><td>已生效→2028强化</td></tr>
+<tr><td>造船（钢材）</td><td>钢材作为原料可能被追溯碳成本</td><td>2026+</td></tr>
+<tr><td>新能源汽车</td><td>欧盟正推进EV电池碳足迹标准</td><td>2026-2028</td></tr>
+</table>
+
+<p><strong>核心判断：</strong>当前爆单的窗口期内，出口企业应同步推进三项碳合规建设：产品碳足迹核算、出口目的国碳政策跟踪、碳合规能力成本模型。</p>
+
+<h2>四、总结</h2>
+
+<p>中国多行业同步爆单是2026年全球经济格局变化下的一次&quot;压力测试&quot;。它证明了中国制造业在全球供给体系中的不可替代性，但也暴露了对外部冲击的路径依赖。</p>
+
+<p>对于出口型企业来说，核心课题不是&quot;还能爆单多久&quot;，而是<strong>如何用这波窗口期的收益，完成下一阶段的竞争要素建设。</strong></p>
+
+<h2>参考文献</h2>
+
+<ol>
+<li><strong>China's Solar Exports Doubled In One Month As The Iran War Shook Oil Markets</strong> — ZME Science, 2026-05</li>
+<li><strong>Ganfeng Lithium Orders Full Through H1 2027</strong> — IndexBox, 2026-05</li>
+<li><strong>China Dominates Global VLCC Market with Over 90% of New Orders</strong> — IndexBox, 2026-05</li>
+<li><strong>China's Shipbuilding &quot;Order Boom&quot;: 90% of Global VLCC Orders</strong> — Sunsirs, 2026-05</li>
+<li><strong>China's EV Exports Surge 40% YoY in April</strong> — GuruFocus, 2026-05</li>
+<li><strong>China and Climate: China Restricts Fuel Exports, Solar Exports Surge</strong> — CFR, 2026-05</li>
+<li><strong>CBAM Expansion Outlook</strong> — Reuters, 2026-04</li>
+<li><strong>Iran War Accelerating China's Solar and Battery Export Boom</strong> — BusinessGreen, 2026-05</li>
+</ol>
+
+  </div>
+</Article>

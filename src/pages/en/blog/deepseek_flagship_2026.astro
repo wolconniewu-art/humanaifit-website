@@ -1,0 +1,79 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Frontier Technology", "Artificial Intelligence", "Large Language Models", "US-China Tech"];
+const articleDate = '2026-05-04';
+---
+
+<Article
+  title={'DeepSeek V4 Launch: A Milestone in the AI Race'}
+  description="DeepSeek V4 Launch: A Milestone in the AI Race"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-05-04</p>
+      <h1 style="font-size:2rem;line-height:1.35;">DeepSeek V4 Launch: A Milestone in the AI Race</h1>
+      <div class="article-meta">
+        <span>2026-05-04</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>A Launch That Didn't &quot;Rock the Markets&quot;</h2>
+
+<p>In late April 2026, Chinese AI company DeepSeek released the long-anticipated preview of its V4 model. Unlike the market upheaval triggered by the V3 launch in early 2025, this release was relatively subdued.</p>
+
+<p>CNN reported that &quot;DeepSeek's new AI model did not rock the markets like last year&quot; [CNN, 2026.04]. Reuters similarly observed that market reaction was more rational [Reuters, 2026.04]. This phenomenon itself is worth more analysis than the model itself.</p>
+
+<h2>Technical Evaluation Data</h2>
+
+<p>The US National Institute of Standards and Technology (NIST) published CAISI evaluation results for DeepSeek V4 Pro. CAISI (Comprehensive AI System Intelligence) is NIST's comprehensive AI model evaluation framework, covering reasoning, code generation, multilingual understanding, safety alignment, and other dimensions [NIST.gov, 2026.04].</p>
+
+<p>Based on published evaluation information, DeepSeek V4 shows significant improvements in reasoning and code generation compared to V3, approaching or even reaching the level of mainstream US closed-source models on certain benchmarks. However, detailed evaluation specifics and full cross-baseline comparisons are not yet fully available from public sources.</p>
+
+<h2>Why &quot;No Market Shock&quot; Is Itself a Signal</h2>
+
+<p>The change in market sentiment reflects the entire AI industry entering a new phase:</p>
+
+<ul>
+  <li><strong>Diminishing marginal returns on model performance</strong>: From GPT-4 to GPT-4o, Claude 3 to Claude 4, DeepSeek V3 to V4 — each generation's performance improvement is narrowing. The Moore's Law effect of model architecture is naturally decaying.</li>
+  <li><strong>Normalization of the competitive landscape</strong>: When multiple models are released in a single quarter, any individual release finds it hard to produce a &quot;game-changing&quot; effect.</li>
+  <li><strong>Focus shifting from models to applications</strong>: Industry attention is moving from &quot;whose model is bigger and stronger&quot; to &quot;who can generate measurable business value in real-world scenarios.&quot;</li>
+</ul>
+
+<p>The Council on Foreign Relations (CFR) argues that DeepSeek V4 marks a &quot;new phase&quot; in US-China AI competition — shifting from &quot;catch-up competition&quot; to &quot;parallel competition&quot; [CFR, 2026.04]. This means two technology ecosystems are evolving independently, rather than a one-directional technology pursuit.</p>
+
+<h2>Industry Perspective: Divergence of Two Technology Paths</h2>
+
+<p>A key aspect of DeepSeek V4 is that it represents a different technology path from OpenAI/Google:</p>
+<ul>
+  <li><strong>Efficiency-first</strong>: DeepSeek's innovations in training efficiency (including MoE architecture optimization, low-precision training, etc.) enabled competitive model performance under constrained compute resources.</li>
+  <li><strong>Open-source ecosystem</strong>: DeepSeek continues its partial open-source approach, working alongside Meta's Llama series to foster an independent AI development ecosystem.</li>
+  <li><strong>Different application model</strong>: AI applications in the Chinese market tend toward deep vertical scenario integration rather than general-purpose platform products.</li>
+</ul>
+
+<h2>Implications for Enterprises and Individuals</h2>
+
+<p>Several trends from this case are worth noting:</p>
+<ul>
+  <li><strong>AI infrastructure is becoming multi-polar</strong>: There is no longer &quot;one best model&quot; — multiple ecosystems coexist. Enterprises need to choose model ecosystems based on compliance requirements, data sovereignty, and cost structure.</li>
+  <li><strong>Model evaluation needs independent third parties</strong>: The role of independent evaluation bodies like NIST's CAISI will become increasingly important.</li>
+  <li><strong>&quot;Good enough&quot; is more practical than &quot;the best&quot;</strong>: For most enterprise business scenarios, model performance doesn't need to be top-tier — stable reliability, controllable cost, and compliance safety are the core requirements.</li>
+</ul>
+
+<h2>References</h2>
+<ol>
+  <li><strong>China's DeepSeek releases preview of long-awaited V4 model as AI race intensifies</strong> — CNBC, 2026.04</li>
+  <li><strong>China's AI upstart DeepSeek drops new model. Will it make waves like last year?</strong> — CNN, 2026.04</li>
+  <li><strong>DeepSeek's new AI model does not wow markets in fast-changing industry</strong> — Reuters, 2026.04</li>
+  <li><strong>CAISI Evaluation of DeepSeek V4 Pro</strong> — NIST, 2026.04</li>
+  <li><strong>DeepSeek V4 Signals a New Phase in the U.S.-China AI Rivalry</strong> — CFR, 2026.04</li>
+</ol>
+
+  </div>
+</Article>

@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import Article from '../../layouts/Article.astro';
+const tags = ["政策", "全球化", "新能源汽车", "欧盟", "CBAM"];
+const articleDate = '2026-05-04';
+---
+
+<Article
+  title="欧盟电动车、电池与CBAM政策框架：监管即竞争策略"
+  description="欧盟电动车、电池与CBAM政策时间线，2009年至2026年"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">政策分析 · 2026-05-04</p>
+      <h1 style="font-size:2rem;line-height:1.35;">欧盟电动车、电池与CBAM政策框架：监管即竞争策略</h1>
+      <div class="article-meta">
+        <span>2026-05-04</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>欧盟的政策路径为何根本不同</h2>
+
+<p>与中国供给侧产业补贴或美国需求侧消费者激励不同，欧盟在电动出行和气候政策上的路径建立在&quot;监管优先&quot;的哲学之上。欧盟通过标准、碳定价和合规机制推动产业转型——这一策略催生了不同的赢家、不同的成本和不同的合规负担。</p>
+
+<p>我们的团队整理了<strong>42项欧盟重大政策</strong>，横跨2009年至2026年的五个阶段。</p>
+
+<h2>欧盟电动汽车与气候政策的五个阶段</h2>
+
+<h3>第一阶段：碳雄心框架（2009–2014）</h3>
+<p>欧盟的电动汽车征程与其气候雄心密不可分。2009年的《可再生能源指令》（RED）和2014年的《努力分担条例》设定了基础目标。第一阶段的核心是构建监管架构而非直接推广电动汽车——这一战略选择将在未来十年定义欧盟的路径。</p>
+
+<h3>第二阶段：CO₂标准与&quot;柴油门&quot;加速（2015–2019）</h3>
+<p>2015年的《巴黎协定》提升了欧盟的气候目标。2019年出台的汽车和货车CO₂排放标准设定了车队平均目标，使电动化成为车企的必然选择。2015年的&quot;柴油门&quot;丑闻加速了柴油技术的退场，为电动汽车推广创造了意想不到的政策窗口。</p>
+
+<h3>第三阶段：&quot;Fit for 55&quot;与绿色新政（2020–2022）</h3>
+<p>《欧洲绿色新政》（2020年）和&quot;Fit for 55&quot;一揽子计划（2021年）标志着雄心的量子跃升：2030年减排55%，2035年实质禁售燃油车。《电池法规》（2020年提案，2023年颁布）创建了全球首个全面的电池可持续性框架——涵盖碳足迹、回收含量、尽职调查和标签。</p>
+
+<h3>第四阶段：CBAM、电池主权与关税应对（2023–2025）</h3>
+<p>三项变革性政策同时成形：
+<ul>
+  <li><strong>CBAM（碳边境调节机制）</strong>：2023年10月进入过渡期，2026年全面实施。进口商品首次面临与国内生产者同等的碳成本。</li>
+  <li><strong>《电池法规》</strong>：自2025年2月起，电动汽车电池碳足迹声明的全面执法开始。</li>
+  <li><strong>对中国电动汽车的反补贴关税</strong>：自2025年10月起征收17–36%的反补贴税。</li>
+</ul>
+
+<h3>第五阶段：实施与整合（2026–）</h3>
+<p>2026年是关键之年。CBAM全面生效。《电池法规》第二阶段碳限制开始实施。欧盟面临三难困境：保持监管领导力、防止产业空心化、同时管理与中美两国的贸易紧张关系。</p>
+
+<h2>下载完整表格</h2>
+<p>我们的欧盟电动车、电池与CBAM完整政策表格（42条，中英文版本）：</p>
+<ul>
+  <li><a href="/files/EU_NEV_policy_table_CN.docx">欧盟政策表格 — 中文版 (DOCX)</a></li>
+  <li><a href="/files/EU_NEV_policy_table_EN.docx">欧盟政策表格 — English (DOCX)</a></li>
+</ul>
+
+<h2>参考文献</h2>
+<ol>
+<li>欧盟委员会、欧洲议会、欧盟理事会——官方法规与指令</li>
+<li>CEN/CENELEC标准、T&E（交通与环境）分析报告</li>
+</ol>
+
+
+  </div>
+</Article>
