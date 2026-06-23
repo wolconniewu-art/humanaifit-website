@@ -6,6 +6,28 @@
 #   - 中文/英文文章必须确认同时存在后才部署
 set -euo pipefail
 
+# 🔴 安全锁（2026-06-12 Connie设定）：防止未经许可发布文章
+# 调用方式：
+#   bash deploy_humanaifit.sh              # 拒绝部署（安全模式）
+#   bash deploy_humanaifit.sh --site-update # 站点更新（修改个人/公司信息，非新文章）
+#
+# --site-update 仅用于：修改关于页面、团队介绍、联系方式等站点自身内容
+# 禁止用于发布新博客文章。新文章发布必须走内容管线流程。
+
+if [ "${1:-}" != "--site-update" ]; then
+  echo ""
+  echo "🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴"
+  echo "🔴 Connie 指令 (2026-06-12): 没有我的命令，不允许在网站发布任何文章"
+  echo "🔴 默认模式已锁定，仅允许 --site-update 参数进行站点配置更新"
+  echo "🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴"
+  echo ""
+  echo "💡 如需发布新文章，告知 Connie 批准内容管线流程。"
+  echo "💡 如需站点信息修改（about/team info）：bash deploy_humanaifit.sh --site-update"
+  exit 1
+fi
+
+echo "🔓 站点更新模式（个人/公司信息修改，不含新文章发布）"
+
 SITE_DIR="/home/connie/.openclaw/workspace/humanaifit-website"
 ZONE_ID="9274a5936a5ae5d9b2fe82889cd4e79a"
 TOKEN_FILE="/home/connie/.wsl_cf_token"

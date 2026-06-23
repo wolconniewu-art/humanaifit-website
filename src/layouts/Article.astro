@@ -208,7 +208,7 @@ const path = Astro.url.pathname;
         <li><a href={isCn ? '/services/' : '/en/services/'} class="nav-services">{isCn ? '服务' : 'Services'}</a></li>
         <li><a href={isCn ? '/about/' : '/en/about/'} class="nav-about">{isCn ? '关于' : 'About'}</a></li>
         <li><a href={isCn ? '/blog/' : '/en/blog/'} class="nav-insights">{isCn ? '博客' : 'Insights'}</a></li>
-        <li><a href="https://cbam.humanaifit.com" class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
+        <li><a href={isCn ? '/diagnosis/cbam/' : 'https://cbam.humanaifit.com/?lang=en'} class="btn btn-cbam" target="_blank">{isCn ? 'CBAM助手' : 'CBAM Tool'}</a></li>
         <li><a href={isCn ? '/contact/' : '/en/contact/'} class="btn btn-primary" style="padding:8px 20px;font-size:13px;">{isCn ? '合作咨询' : 'Contact'}</a></li>
         <li><span class="lang-switch">{isCn ? 'EN' : '中文'}</span></li>
       </ul>
