@@ -1,0 +1,31 @@
+---
+// CBAM Carbon Compliance Self-Check Tool — English
+// Embeds the Python service running on port 8080
+layout: "~/layouts/Blog.astro"
+lang: "en"
+path: "/en/diagnosis/cbam/"
+title: "CBAM Carbon Compliance Self-Check — Check Your Product in 30 Seconds"
+description: "Enter your HS code (first 6-8 digits) for a free 30-second diagnosis: Is your product affected by EU CBAM? Includes emission estimation and compliance roadmap."
+og_type: "website"
+og_url: "https://www.humanaifit.com/en/diagnosis/cbam/"
+---
+
+<div style="width:100%;height:100vh;border:none;overflow:hidden;">
+  <iframe 
+    src="https://cbam.humanaifit.com/?lang=en&v=2" 
+    style="width:100%;height:100%;border:none;min-height:100vh;"
+    title="CBAM Carbon Compliance Self-Check Tool"
+    loading="eager"
+    allow="payment"
+  ></iframe>
+</div>
+
+<script>
+  // Adaptive iframe height
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'resize') {
+      const iframe = document.querySelector('iframe');
+      if (iframe) iframe.style.height = e.data.height + 'px';
+    }
+  });
+</script>

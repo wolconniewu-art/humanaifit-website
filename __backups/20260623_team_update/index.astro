@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="人机协同，驱动增长"
+  description="彼恳管理咨询 — 专注于人机契合（Human-AI Fit）研究与实践，帮助组织和个人实现真正的竞争力增长。"
+  lang="zh-CN"
+  path="/"
+>
+  <!-- Hero (简洁版：去装饰层，留核心信息) -->
+  <section class="section" style="padding-top:100px;padding-bottom:80px;background:linear-gradient(160deg, #f5f7fa 0%, #ffffff 40%, #eef1f5 100%);">
+    <div class="container text-center">
+      <div class="fade-in" style="margin-bottom:var(--spacing-lg);">
+        <!-- Logo: 去电光蓝装饰线 -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:var(--spacing-lg);">
+          <svg width="56" height="56" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hlogo" x1="0" y1="0" x2="72" y2="72">
+                <stop offset="0%" stop-color="#0F2B46"/>
+                <stop offset="100%" stop-color="#1A3F64"/>
+              </linearGradient>
+            </defs>
+            <rect width="72" height="72" rx="18" fill="url(#hlogo)"/>
+            <text x="36" y="47" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="800" fill="white">H</text>
+          </svg>
+          <span style="font-size:36px;font-weight:400;color:#0F2B46;letter-spacing:-0.5px;">human</span>
+          <span style="font-size:44px;font-weight:900;background:linear-gradient(135deg,#C9A96E,#DFC88A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</span>
+          <span style="font-size:30px;font-weight:300;color:#8A8A8A;">fit</span>
+        </div>
+      <p class="section-label" style="color:#3B82F6;font-weight:600;">彼恳企业管理咨询</p>
+      <h1 style="max-width:700px;margin:0 auto var(--spacing-md);font-size:2.4rem;color:var(--color-primary);">
+        你用了AI，<span style="background:linear-gradient(135deg,#C9A96E,#B8944C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">竞争力增长</span>了吗？
+      </h1>
+      <p style="font-size:17px;color:var(--color-text-secondary);white-space:nowrap;margin:0 auto var(--spacing-lg);line-height:1.8;">
+        我们专注于<span style="font-weight:600;color:var(--color-primary);">人机契合（Human-AI Fit）</span>研究与实践——帮助组织和个人从"会用AI"走向"因AI而真正更强"。
+      </p>
+
+      <!-- Typewriter -->
+      <div style="margin-top:var(--spacing-lg);">
+        <p style="font-size:17px;color:var(--color-text-secondary);font-weight:500;">
+          <span id="typewriter" style="color:#3B82F6;font-weight:600;"></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition: 服务卡片 2+2 分组（去编号、去emoji） -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
+        <p class="section-label">我们的信念</p>
+        <h2>真正的竞争力来自人机协同</h2>
+        <p style="font-size:17px;color:var(--color-text-secondary);white-space:nowrap;margin:var(--spacing-md) auto 0;">
+          不是AI工具本身，而是人如何与AI协同工作，决定了一个组织能否在变革中领先。
+        </p>
+      </div>
+
+      <!-- 面向组织 -->
+      <p class="section-label" style="margin-bottom:var(--spacing-sm);">面向组织</p>
+      <div class="grid-2" style="margin-bottom:var(--spacing-2xl);">
+        <div class="service-card">
+          <h4>人机协同咨询</h4>
+          <p style="font-size:14px;color:var(--color-text-secondary);">诊断组织当前的AI使用成熟度，设计人与AI协同的工作流程，让技术投资转化为真实效率增长。</p>
+        </div>
+        <div class="service-card">
+          <h4>CBAM碳合规</h4>
+          <p style="font-size:14px;color:var(--color-text-secondary);">30秒自检产品是否受欧盟碳关税影响。面向中小企业的低成本碳合规方案，助您从容应对欧盟CBAM法规。</p>
+          <a href="/diagnosis/cbam/" class="btn btn-sm" style="display:inline-block;margin-top:12px;padding:8px 16px;background:#2e7d32;color:white;border-radius:6px;text-decoration:none;font-size:13px;font-weight:500;">开始自检</a>
+        </div>
+        <div class="service-card">
+          <h4>全球化战略</h4>
+          <p style="font-size:14px;color:var(--color-text-secondary);">基于学术研究与产业实践，为出海企业提供全球化战略咨询，涵盖市场准入、合规路径与本地化运营。</p>
+        </div>
+      </div>
+
+      <!-- 面向个人 -->
+      <p class="section-label" style="margin-bottom:var(--spacing-sm);">面向个人</p>
+      <div class="grid-2">
+        <a href="/diagnosis/" class="service-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+          <h4>孩子AI素养诊断</h4>
+          <p style="font-size:14px;color:var(--color-text-secondary);">10道选择题，30秒测出你孩子的AI学习类型：探索型 / 应用型 / 创作型。附个性化学习建议，帮家长回答「我的孩子该学什么AI？」</p>
+          <span style="display:inline-block;margin-top:12px;padding:8px 16px;background:#2e7d32;color:white;border-radius:6px;font-size:13px;font-weight:500;">免费诊断</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policy Tables Highlight -->
+  <section style="padding:var(--spacing-2xl) 0;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);">
+    <div class="container text-center">
+      <p class="section-label" style="color:#3B82F6;">研究产出 · 开放下载</p>
+      <h2 style="color:#1E3A5F;">中美欧电动车 & 电池政策全景</h2>
+      <p style="max-width:550px;margin:var(--spacing-md) auto var(--spacing-xl);font-size:15px;color:#1E40AF;">
+        173条政策，覆盖1986-2026四十年。中英双语，六张表格，免费下载。
+      </p>
+      <div style="display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;">
+        <a href="/policy-tables/" class="btn btn-primary" style="background:#3B82F6;box-shadow:0 4px 14px rgba(59,130,246,0.25);">查看政策表</a>
+        <a href="/services/" class="btn btn-outline" style="border-color:#3B82F6;color:#1E3A5F;">了解更多服务</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items:center;">
+        <div>
+          <p class="section-label">关于</p>
+          <h2>研究者 · 创业者 · 人机协同架构师</h2>
+          <p style="color:var(--color-text-secondary);">
+            彼恳咨询由Connie创立，专注于人机契合（Human-AI Fit）研究与实践。我们不卖软件、不套模板——带着学术研究的严谨和产业实战的经验，帮助组织和个人找到最适合自己的人机协同路径。
+          </p>
+          <a href="/about/" class="btn btn-outline" style="margin-top:var(--spacing-md);">了解更多</a>
+        </div>
+        <div style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
+          <div style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-lg);">核心领域</div>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
+            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Human-AI Fit</span>
+            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Organizational Behavior</span>
+            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">CBAM Compliance</span>
+            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Globalization</span>
+            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Knowledge Management</span>
+            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">AI Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section section-dark text-center">
+    <div class="container">
+      <p class="section-label" style="margin-bottom:var(--spacing-md);">准备好聊聊了吗？</p>
+      <p style="max-width:500px;margin:0 auto var(--spacing-lg);font-size:14px;opacity:0.85;">
+        告诉我们你的挑战，30分钟内给你一个可行的方向。
+      </p>
+      <a href="/contact/" class="btn btn-primary">立即预约</a>
+    </div>
+  </section>
+
+  <!-- Typewriter animation script -->
+  <script is:inline>
+    (function() {
+      var phrases = [
+        "你的组织AI成熟度在哪个阶段？",
+        "30秒判断产品是否受CBAM碳关税影响",
+        "中美欧173条EV/电池政策最新对比",
+        "从\u201C会用AI\u201D到\u201C因AI而更强\u201D",
+        "你的AI素养什么水平？10题快速诊断",
+        "网站有中英文双语版，记得切换阅读哦"
+      ];
+      function init() {
+        var el = document.getElementById("typewriter");
+        if (!el) { setTimeout(init, 100); return; }
+        var idx = 0, charIdx = 0, isDeleting = false, current = "";
+        function type() {
+          var full = phrases[idx];
+          if (isDeleting) {
+            current = full.substring(0, charIdx--);
+          } else {
+            current = full.substring(0, charIdx++);
+          }
+          el.innerHTML = current + '<span style="color:#06B6D4;">\u258c</span>';
+          if (!isDeleting && charIdx === full.length + 1) {
+            isDeleting = true;
+            setTimeout(type, 2000);
+            return;
+          }
+          if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            idx = (idx + 1) % phrases.length;
+          }
+          setTimeout(type, isDeleting ? 40 : 80);
+        }
+        type();
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+</Base>

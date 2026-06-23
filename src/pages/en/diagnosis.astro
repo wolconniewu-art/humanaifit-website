@@ -333,7 +333,7 @@
     <!-- 初始为空，由JS渲染开始页 -->
   </div>
   <div class="footer-note">
-    Beacon Consulting · <a href="https://www.humanaifit.com">www.humanaifit.com</a>
+    <a href="https://www.humanaifit.com">www.humanaifit.com</a> · <a href="https://www.humanaifit.com/en/blog/privacy_policy_2026/">Privacy Policy</a>
   </div>
 </div>
 
@@ -345,10 +345,10 @@
     <input type="text" id="leadName" placeholder="Your name (optional)" />
     <input type="text" id="leadContact" placeholder="WeChat ID / Phone (required)" />
     <p style="font-size:11px;color:#999;margin:-4px 0 12px;">You will receive the "2025 Global AI Education Policy Report" PDF + your diagnosis results.</p>
-    <p style="font-size:12px;color:#888;margin:6px 0;">We respect your privacy and will not share your or your child's information with any third party.</p>
+    <p style="font-size:12px;color:#888;margin:6px 0;">We respect your privacy and will not share your or your child's information with any third party. Read our <a href="https://www.humanaifit.com/en/blog/privacy_policy_2026/" target="_blank" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>.</p>
         <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#666;margin:8px 0;cursor:pointer;white-space:nowrap;">
           <input type="checkbox" id="privacyAgree" style="width:16px;height:16px;flex-shrink:0;" />
-          <span style="line-height:1.4;">I have read and agree to the privacy commitment above</span>
+          <span style="line-height:1.4;">I have read and agree to our <a href="https://www.humanaifit.com/en/blog/privacy_policy_2026/" target="_blank" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a></span>
         </label>
     <button class="lead-btn" onclick="submitLead()">✅ Get Free Report</button>
     <button class="lead-close" onclick="closeLead()">Skip, show results</button>
@@ -439,9 +439,9 @@ const QUESTIONS = [
     id: 9,
     title: 'What\'s your attitude toward your child using technology?',
     options: [
-      { text: 'Open but with rules — okay to use with time limits', scores: { explore: 1, apply: 1, create: 1 } },
+      { text: 'Open but with rules — okay to use with time limits', scores: { explore: 2, apply: 1, create: 1 } },
       { text: 'Conservative — avoid it when possible', scores: { explore: 0, apply: 0, create: 0 } },
-      { text: 'Neutral — let them use it, can\'t control anyway', scores: { explore: 0, apply: 0, create: 0 } },
+      { text: 'Neutral — let them use it, can\'t control anyway', scores: { explore: 1, apply: 0, create: 0 } },
     ]
   },
   {
@@ -450,7 +450,7 @@ const QUESTIONS = [
     options: [
       { text: '"I don\'t know AI, I don\'t know how to guide my child"', scores: { explore: 1, apply: 0, create: 0 } },
       { text: '"My child is already exposed to AI, I want more systematic guidance"', scores: { explore: 0, apply: 2, create: 0 } },
-      { text: '"My child isn\'t interested in AI, should I push it?"', scores: { explore: 0, apply: 0, create: 0 } },
+      { text: '"My child isn\'t interested in AI, should I push it?"', scores: { explore: 0, apply: 0, create: 0.5 } },
     ]
   }
 ];
@@ -539,7 +539,7 @@ function renderStart() {
   progressBar.innerHTML = '';
   cardArea.innerHTML = `
     <div class="card fade-in" style="padding:32px 24px;">
-      <div class="hero-icon">🔍🧠🎨</div>
+      <div class="hero-icon">🧠</div>
       <div class="hero-desc">
         <strong>10 quick questions</strong> to answer that question keeping you up at night:
         <br/>
@@ -547,7 +547,7 @@ function renderStart() {
       </div>
 
       <div class="child-nickname-area" style="margin:16px 0;padding:14px;background:#f0f7ff;border-radius:10px;">
-        <label style="font-size:13px;font-weight:600;color:#0F2B46;display:block;margin-bottom:6px;">👶 Child's nickname (helpful for families with multiple children)</label>
+        <label style="font-size:13px;font-weight:600;color:#0F2B46;display:block;margin-bottom:6px;">Child's nickname (helpful for families with multiple children)</label>
         <input type="text" id="childNicknameInput" placeholder="e.g., Emma, Leo" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;" />
         <p style="font-size:11px;color:#999;margin-top:4px;">Optional. For families with multiple kids, use different nicknames each time and history will be saved separately.</p>
       </div>
@@ -565,14 +565,10 @@ function renderStart() {
           <span class="feature-icon">⚡</span>
           <span><strong>30-Second Result</strong> — Instant personalized learning suggestions</span>
         </div>
-        <div class="feature-item">
-          <span class="feature-icon">📊</span>
-          <span><strong>Visual Score</strong> — Percentage comparison across three dimensions, not just a label</span>
-        </div>
       </div>
 
       <button class="start-btn" onclick="startQuiz()">
-        🚀 Start Diagnosis
+        Start Diagnosis
       </button>
       <p style="text-align:center;font-size:12px;color:#999;">Complete the quiz to receive the "2025 Global AI Education Policy Report" PDF</p>
     </div>
@@ -781,7 +777,7 @@ function renderResult() {
             </div>
           `).join('')}
         </div>
-        <p style="font-size:12px;color:#999;margin-top:4px;">ℹ️ Percentages reflect each dimension raw score as proportion of the total. Sum = 100%</p>
+        <p style="font-size:12px;color:#666;margin-top:6px;">Explorer ${scores.find(s => s.key === 'explore').pct}% · Practitioner ${scores.find(s => s.key === 'apply').pct}% · Creator ${scores.find(s => s.key === 'create').pct}% — Higher percentage indicates stronger tendency in that dimension.</p>
       </div>
 
       <hr class="sep" />
@@ -835,33 +831,11 @@ function renderResult() {
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div>
               <span style="font-weight:600;font-size:15px;">AI Literacy In-Depth Report</span>
-              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e8f5e9;color:#2e7d32;border-radius:10px;font-size:11px;">Lifetime Access</span>
+              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#1a73e8;color:white;border-radius:10px;font-size:11px;">Best Pick</span>
             </div>
-            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥49</span>
+            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥9.9</span>
           </div>
           <p style="font-size:13px;color:#666;margin:6px 0 0;">10-page personalized report based on diagnosis with learning roadmap and age-appropriate tool list</p>
-        </div>
-
-        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div>
-              <span style="font-weight:600;font-size:15px;">AI Learner Family Plan (Quarterly)</span>
-              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#fff3e0;color:#e65100;border-radius:10px;font-size:11px;">Popular</span>
-            </div>
-            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥199/quarter</span>
-          </div>
-          <p style="font-size:13px;color:#666;margin:6px 0 0;">Age-specific AI courses + monthly Q&A + progress tracking, updated quarterly</p>
-        </div>
-
-        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div>
-              <span style="font-weight:600;font-size:15px;">1-on-1 Education Consultant</span>
-              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e3f2fd;color:#1565c0;border-radius:10px;font-size:11px;">Deep Customization</span>
-            </div>
-            <span style="font-weight:700;color:#0F2B46;font-size:16px;">From ¥599</span>
-          </div>
-          <p style="font-size:13px;color:#666;margin:6px 0 0;">45-min deep consultation, tailored AI learning path for the next 6 months</p>
         </div>
 
         <!-- 限时优惠横幅 -->
@@ -870,13 +844,13 @@ function renderResult() {
           <p style="color:white;font-size:13px;opacity:0.9;">Free planet trial with any purchase · Limited to first<span style="color:#C9A96E;font-weight:700;">50 spots</span></p>
         </div>
 
-        <button onclick="showPayment('49')" style="display:block;width:100%;margin-top:12px;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥49 Buy Report →</button>
+        <button onclick="showPayment('9.9')" style="display:block;width:100%;margin-top:12px;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥9.9 Buy Report →</button>
         <p style="font-size:12px;color:#888;margin-top:4px;text-align:center;">🎁 🎁 +1 week free planet access</p>
 
-        <button onclick="showPayment('199')" style="display:block;width:100%;margin-top:8px;padding:12px;background:#C9A96E;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥199 Buy Family Plan →</button>
+        <button onclick="showPayment('19.9')" style="display:block;width:100%;margin-top:8px;padding:12px;background:#C9A96E;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥19.9/mo Subscribe →</button>
         <p style="font-size:12px;color:#888;margin-top:4px;text-align:center;">🎁 🎁 +1 month free planet access</p>
 
-        <button onclick="showPayment('599')" style="display:block;width:100%;margin-top:8px;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥599 Buy 1-on-1 Consultation →</button>
+        <button onclick="showPayment('199annual')" style="display:block;width:100%;margin-top:8px;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥199/yr Buy Annual Plan →</button>
         <p style="font-size:12px;color:#888;margin-top:4px;text-align:center;">🎁 🎁 +2 months free planet access</p>
       </div>
 
@@ -885,10 +859,10 @@ function renderResult() {
         <p style="font-size:13px;color:#555;margin:0 0 6px;font-weight:600;">📚 Recommended for ${r.label}</p>
         ${
           result.type === 'explore'
-            ? '<a href="/en/blog/behavioral_economics_human_ai/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🔍 Explore · Behavioral Economics of AI Collaboration</a><a href="/en/blog/ai_education_future/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">📖 How Should Children Learn AI to Stay Ahead?</a><a href="/en/blog/ai_anxiety_three_steps_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">💡 AI Anxiety? 3 Steps to Rekindle Your Child Curiosity</a>'
+            ? '<a href="/en/blog/ai_education_future/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">📖 How Should Children Learn AI to Stay Ahead?</a><a href="/en/blog/ai_anxiety_three_steps_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">💡 AI Anxiety? 3 Steps to Rekindle Your Child Curiosity</a><a href="/en/blog/is_ai_dulling_minds_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🧠 Is AI Making Us Dumber? Three Independent Studies Weigh In</a>'
           : result.type === 'apply'
-            ? '<a href="/en/blog/ai_tutor_real_world_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🛠️ Kids Using AI Tutors — Does It Actually Work?</a><a href="/en/blog/ai_efficiency_org_mismatch_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">⚡ AI Efficiency ≠ Org Efficiency — Boundaries of Practical Learning</a><a href="/en/blog/ai_education_policy_2025/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">📋 2025 Global AI Education Policy Guide (Resource)</a>'
-            : '<a href="/en/blog/ai_knowledge_meaning/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🎨 From Knowledge to Meaning — Creative AI Education</a><a href="/en/blog/ai_child_creativity_tools/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🎭 AI-Powered Art Tools: Creative Toolkit for Kids</a><a href="/en/blog/ai_art_machine_feelings/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🎨 Can AI Truly Create? Machine Feelings and Art</a>'
+            ? '<a href="/en/blog/jiwa_to_dongwa/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">👨‍👩‍👧‍👦 From Tiger Parenting to True Understanding — AI for Kids, Not Instead of Kids</a><a href="/en/blog/cognitive_judgment_ai_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🧠 How to Judge Someone\'s Cognition? AI Has Changed the Question</a><a href="/en/blog/ai_education_policy_2025/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">📋 2025 Global AI Education Policy Guide (Resource)</a>'
+            : '<a href="/en/blog/ai_knowledge_meaning/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🎓 Is Knowledge Still Meaningful in the Age of AI?</a><a href="/en/blog/sharing_ideas_with_ai_originality_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">💡 Should You Share Your Research Ideas with AI?</a><a href="/en/blog/ai_us_education_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🏫 How AI Is Reshaping US Education: From Tools to a New Ecosystem</a>'
         }
         <div style="margin-top:6px;text-align:center;">
           <a href="/en/blog/" style="font-size:12px;color:#999;">📚 More AI Literacy Articles ></a>
@@ -1101,9 +1075,9 @@ renderStart();
 // ===== 支付弹窗 =====
 function showPayment(tier) {
   const plans = {
-    '49': { price: '49', name: 'AI Literacy In-Depth Report', planet: '+1 week free planet access' },
-    '199': { price: '199', name: 'AI Learner Family Plan (Quarterly)', planet: '+1 month free planet access' },
-    '599': { price: '599', name: '1-on-1 Education Consultant', planet: '+2 months free planet access' }
+    '9.9': { price: '9.9', name: 'AI Literacy In-Depth Report', planet: '+1 week free planet access' },
+    '19.9': { price: '19.9', name: 'Monthly Subscription', planet: '+1 month free planet access' },
+    '199annual': { price: '199', name: 'Annual Family Plan', planet: '+2 months free planet access' }
   };
   const p = plans[tier];
   
@@ -1145,12 +1119,3 @@ function showPayment(tier) {
 
 </body>
 </html>
-              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#e8f5e9;color:#2e7d32;border-radius:10px;font-size:11px;">Lifetime Access</span>
-            </div>
-            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥49</span>
-          </div>
-          <p style="font-size:13px;color:#666;margin:6px 0 0;">10-page personalized report based on diagnosis with learning roadmap and age-appropriate tool list</p>
-        </div>
-
-        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
-          <div style="display:flex;justify-content:space-between;
