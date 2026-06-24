@@ -67,6 +67,23 @@ for f in _cta_reviewed_*.md; do
   echo "   ✅ CTA 审查已通过: $f"
 done
 
+echo "📋 Step 0b: 英文标题完整性校验..."
+SHORT_TITLES=$(grep -oP '(?<=title: ")[^"]+' src/pages/en/blog.astro | awk 'length < 20 {print}' | head -5)
+if [ -n "$SHORT_TITLES" ]; then
+  echo "   ❌ 发现短标题（<20字符），疑似截断:"
+  echo "$SHORT_TITLES" | while IFS= read -r t; do
+    echo "      ⚠️  \"$t\""
+  done
+  echo "   ⏸️ 部署中止。请先在 en/blog.astro 中修复完整标题。"
+  exit 1
+fi
+
+# 中文标题校验（<6字符视为异常）
+python3 scripts/check_title_length.py || exit 1
+
+echo "   ✅ 所有标题长度正常"
+
+echo ""
 echo "📦 Step 1: 构建..."
 npm run build 2>&1 | tail -3
 
