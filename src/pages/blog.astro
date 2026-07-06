@@ -2,12 +2,24 @@
 import Base from '../layouts/Base.astro';
 
 const pinned = [
-  { date: "2026-05-03", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同", tags: "公司动态, 人机契合" },
   { date: "2026-05-31", slug: "lingnan_daily_61_tales", title: "岭南日常 — 61个来自南中国的故事", tags: "岭南文化, Lingnan, 民间故事, 系列文章" },
+{ date: "2026-05-03", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同", tags: "公司动态, 人机契合" },
   { date: "2026-06-07", slug: "privacy_policy_2026", title: "隐私政策发布公告", tags: "隐私政策, 数据保护, 合规, CBAM, AI素养诊断, 知识星球" },
 ];
 
 const articles = [
+{ date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM碳关税正式生效——中国出口企业绕不开的一课", tags: "全球化, 经济" },
+{ date: "2026-05-03", slug: "ai_knowledge_management_2026", title: "AI知识管理2026：当知识库变成AI的\"上下文\"", tags: "知识管理, 人机契合" },
+{ date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026报告：企业的AI部署正在加速，但治理在\"掉队\"", tags: "人机契合, 前沿科技" },
+{ date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI指数：中美AI差距真的在缩小吗？", tags: "全球化, 人机契合" },
+{ date: "2026-05-03", slug: "humanoid_robot_half_marathon", title: "人形机器人跑赢人类半马——这意味着什么？", tags: "前沿科技" },
+{ date: "2026-05-03", slug: "MERICS_China_humanoid_path", title: "两种路径，一个目标——MERICS报告解读中美机器人产业路线", tags: "全球化, 前沿科技" },
+{ date: "2026-05-03", slug: "humanoid_supply_chain_China", title: "人形机器人供应链：中国的\"十亿美元级\"机遇与瓶颈", tags: "前沿科技, 全球化" },
+{ date: "2026-05-03", slug: "human_AI_workforce_China", title: "\"人机劳动力\"崛起——中国如何在全球AI劳动力转型中定位自己", tags: "人机契合, 全球化" },
+{ date: "2026-05-03", slug: "Australia_AI_moment_China", title: "澳大利亚的\"AI时刻\"：中国在亚太算力竞赛中的站位", tags: "全球化, 前沿科技" },
+{ date: "2026-05-03", slug: "GEI_China_opportunities", title: "全球经济的\"阴云\"与中国的\"亮光\"——解读McKinsey 2026年3月全球经济情报", tags: "经济, 全球化" },
+{ date: '2026-07-06', slug: 'ai_equal_humans_unequal_2026', title: '六条战线告诉你AI在抹平什么？又在放大什么？', tags: 'AI分化, 人机契合, BCG, McKinsey, PwC, WEF, 生产力, 培训陷阱, 全球南方, 组织效能' },
+{ date: '2026-07-02', slug: 'tokens_meaning_when_ovtp_meets_opc_2026', title: '词元即货币，意义即资产——当OVTP遇见OPC', tags: '人机契合, OPC, OVTP, 词元革命, 意义产权, 一人公司, AI经济' },
 { date: '2026-07-01', slug: 'opc_globalization_individual_competitiveness_2026', title: 'OPC × 全球化：当一人公司成为全球化的基本单元，"个体全球竞争力"的本质正在被重新定义', tags: '全球化, OPC, 一人公司, 人机协同, 个体竞争力, Human-AI Fit' },
 { date: '2026-06-30', slug: 'ai_emotional_tax_2026', title: 'AI省下来的时间，正在变成新的\u201c情绪税\u201d', tags: '人机契合, AI, 认知负荷, 情绪税, Human-AI Fit' },
 { date: '2026-06-29', slug: 'education_skills_mismatch_2026', title: '未来产业十大赛道同时缺人，教育跟上节奏了吗？', tags: '人机契合, AI教育, 产业错配' },
@@ -92,16 +104,6 @@ const articles = [
 { date: "2026-05-04", slug: "us_semiconductor_export_controls_2026", title: "美国半导体出口管制2026：规则升级与边界", tags: "全球化, 前沿科技" },
 { date: "2026-05-04", slug: "eu_ai_act_reality_2026", title: "EU AI Act的实施延迟：合规压力退潮还是风暴前的平静？", tags: "人机契合, AI治理" },
 { date: "2026-05-04", slug: "meta_consumer_ai_2026", title: "Meta消费者AI：AI从\"工具\"走向\"日常伴侣\"", tags: "前沿科技, AI应用" },
-{ date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM碳关税正式生效——中国出口企业绕不开的一课", tags: "全球化, 经济" },
-{ date: "2026-05-03", slug: "ai_knowledge_management_2026", title: "AI知识管理2026：当知识库变成AI的\"上下文\"", tags: "知识管理, 人机契合" },
-{ date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026报告：企业的AI部署正在加速，但治理在\"掉队\"", tags: "人机契合, 前沿科技" },
-{ date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI指数：中美AI差距真的在缩小吗？", tags: "全球化, 人机契合" },
-{ date: "2026-05-03", slug: "humanoid_robot_half_marathon", title: "人形机器人跑赢人类半马——这意味着什么？", tags: "前沿科技" },
-{ date: "2026-05-03", slug: "MERICS_China_humanoid_path", title: "两种路径，一个目标——MERICS报告解读中美机器人产业路线", tags: "全球化, 前沿科技" },
-{ date: "2026-05-03", slug: "humanoid_supply_chain_China", title: "人形机器人供应链：中国的\"十亿美元级\"机遇与瓶颈", tags: "前沿科技, 全球化" },
-{ date: "2026-05-03", slug: "human_AI_workforce_China", title: "\"人机劳动力\"崛起——中国如何在全球AI劳动力转型中定位自己", tags: "人机契合, 全球化" },
-{ date: "2026-05-03", slug: "Australia_AI_moment_China", title: "澳大利亚的\"AI时刻\"：中国在亚太算力竞赛中的站位", tags: "全球化, 前沿科技" },
-{ date: "2026-05-03", slug: "GEI_China_opportunities", title: "全球经济的\"阴云\"与中国的\"亮光\"——解读McKinsey 2026年3月全球经济情报", tags: "经济, 全球化" },
 { date: "2026-05-02", slug: "global_localization", title: "从Mixue到NIO：中国品牌全球化的\"本地化悖论\"", tags: "全球化, 商业" },
 { date: "2026-05-02", slug: "digital_leadership", title: "当AI能替代70%的管理工作，领导者的价值在哪里？", tags: "人机契合, 商业" },
 { date: "2026-05-02", slug: "AI_productivity_paradox", title: "当投入AI\"看不到效果\"——对生产力悖论的深度分析", tags: "人机契合, 知识管理" },
