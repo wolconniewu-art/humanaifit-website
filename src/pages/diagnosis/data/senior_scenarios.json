@@ -1,0 +1,54 @@
+[
+  {
+    "id": "SC-PH-RE-001",
+    "version": "senior",
+    "dimension": "photo_restore",
+    "difficulty": "easy",
+    "stem": "修照片",
+    "options": [
+      { "id": "A", "text": "我有老照片想修复，想学", "score": 4 },
+      { "id": "B", "text": "好像用不上，但我可以试试", "score": 2 },
+      { "id": "C", "text": "照片都是电子版，不需要修", "score": 0 }
+    ],
+    "theoreticalBasis": "老年人AI使用动机：可见产出+社交分享驱动"
+  },
+  {
+    "id": "SC-FR-DE-001",
+    "version": "senior",
+    "dimension": "fraud_defense",
+    "difficulty": "easy",
+    "stem": "防骗",
+    "options": [
+      { "id": "A", "text": "我经常接到可疑电话，想学怎么防", "score": 4 },
+      { "id": "B", "text": "子女总担心我上当，学一下让他们放心", "score": 3 },
+      { "id": "C", "text": "我不会上当，不需要学", "score": 0 }
+    ],
+    "theoreticalBasis": "老年人科技焦虑：防骗是子女最关心的刚需场景"
+  },
+  {
+    "id": "SC-HE-IN-001",
+    "version": "senior",
+    "dimension": "health_inquiry",
+    "difficulty": "easy",
+    "stem": "健康查询",
+    "options": [
+      { "id": "A", "text": "我经常查药品/挂号信息，想学用AI查", "score": 4 },
+      { "id": "B", "text": "有点兴趣，但怕查错了", "score": 2 },
+      { "id": "C", "text": "身体还行，暂时不需要", "score": 0 }
+    ],
+    "theoreticalBasis": "老年人AI使用动机：健康焦虑驱动，使用频率高"
+  },
+  {
+    "id": "SC-VO-CH-001",
+    "version": "senior",
+    "dimension": "voice_chat",
+    "difficulty": "easy",
+    "stem": "语音聊天",
+    "options": [
+      { "id": "A", "text": "打字不太方便，想学用语音和AI聊天", "score": 4 },
+      { "id": "B", "text": "会打字，但想试试跟AI说话是什么感觉", "score": 2 },
+      { "id": "C", "text": "不需要跟AI聊天", "score": 0 }
+    ],
+    "theoreticalBasis": "老年人AI交互偏好：语音交互门槛最低"
+  }
+]
