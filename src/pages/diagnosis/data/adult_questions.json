@@ -1,0 +1,268 @@
+[
+  {
+    "id": "AC-AI-TC-E-001",
+    "version": "adult",
+    "dimension": "ai_tool_competency",
+    "difficulty": "easy",
+    "stem": "刚接触AI，想让它帮你写一封工作邮件。你会怎么输入指令？",
+    "options": [
+      { "id": "A", "text": "帮我写封邮件", "score": 1 },
+      { "id": "B", "text": "写一封给客户的邮件，主题是项目延期，语气诚恳但保持专业", "score": 4 },
+      { "id": "C", "text": "帮写邮件", "score": 2 },
+      { "id": "D", "text": "不会用AI写邮件", "score": 0 }
+    ],
+    "theoreticalBasis": "TTF框架（Goodhue & Thompson, 1995）"
+  },
+  {
+    "id": "AC-AI-TC-M-002",
+    "version": "adult",
+    "dimension": "ai_tool_competency",
+    "difficulty": "medium",
+    "stem": "你需要(1)整理一份会议纪要、(2)画一张数据分析图、(3)做PPT配图。你分别用什么工具最合适？",
+    "options": [
+      { "id": "A", "text": "全部用同一个AI工具搞定", "score": 1 },
+      { "id": "B", "text": "会议纪要用Notion AI、图表用Claude+Excel、插图用Midjourney", "score": 4 },
+      { "id": "C", "text": "只用常用软件自己硬做", "score": 2 },
+      { "id": "D", "text": "不知道有哪些工具可选", "score": 0 }
+    ],
+    "theoreticalBasis": "AI工具生态认知"
+  },
+  {
+    "id": "AC-DD-DM-E-001",
+    "version": "adult",
+    "dimension": "data_decision",
+    "difficulty": "easy",
+    "stem": "AI说：「根据数据分析，90%的客户满意度来自价格优势。」你怎么看？",
+    "options": [
+      { "id": "A", "text": "有数据支撑，可信", "score": 1 },
+      { "id": "B", "text": "想知道数据来源、样本量、客户选取方式", "score": 4 },
+      { "id": "C", "text": "不太确定但懒得深究", "score": 2 },
+      { "id": "D", "text": "觉得AI在瞎说", "score": 0 }
+    ],
+    "theoreticalBasis": "批判性思维（Facione, 1990）"
+  },
+  {
+    "id": "AC-DD-DM-M-002",
+    "version": "adult",
+    "dimension": "data_decision",
+    "difficulty": "medium",
+    "stem": "AI根据去年的月销量数据做了一个预测模型。使用前最应该检查什么？",
+    "options": [
+      { "id": "A", "text": "数据范围是否包含节假日等特殊日期", "score": 4 },
+      { "id": "B", "text": "预测值的小数点后几位是否准确", "score": 1 },
+      { "id": "C", "text": "图表颜色是否好看", "score": 0 },
+      { "id": "D", "text": "AI用的什么编程语言写的代码", "score": 2 }
+    ],
+    "theoreticalBasis": "数据素养（Mandinach & Gummer, 2016）"
+  },
+  {
+    "id": "AC-WF-DS-E-001",
+    "version": "adult",
+    "dimension": "workflow_design",
+    "difficulty": "easy",
+    "stem": "每周要写周报，以下分工哪个最合理？",
+    "options": [
+      { "id": "A", "text": "全部让AI写", "score": 1 },
+      { "id": "B", "text": "自己列数据框架→AI填充细节→自己核对", "score": 4 },
+      { "id": "C", "text": "自己写→让AI改一下语句", "score": 3 },
+      { "id": "D", "text": "不考虑用AI", "score": 0 }
+    ],
+    "theoreticalBasis": "Task-Technology Fit"
+  },
+  {
+    "id": "AC-WF-DS-M-002",
+    "version": "adult",
+    "dimension": "workflow_design",
+    "difficulty": "medium",
+    "stem": "一个完整的市场调研任务：①确定研究方向→②收集数据→③分析数据→④写报告→⑤汇报演示。你认为哪几步最适合让AI辅助？",
+    "options": [
+      { "id": "A", "text": "②③④（数据收集+分析+报告）", "score": 4 },
+      { "id": "B", "text": "全部", "score": 2 },
+      { "id": "C", "text": "只做④（写报告）", "score": 1 },
+      { "id": "D", "text": "都不适合", "score": 0 }
+    ],
+    "theoreticalBasis": "人机分工策略"
+  },
+  {
+    "id": "AC-AI-CR-M-001",
+    "version": "adult",
+    "dimension": "ai_creativity",
+    "difficulty": "medium",
+    "stem": "用AI写产品文案，但生成的版本都'太像AI'了。你会怎么改进？",
+    "options": [
+      { "id": "A", "text": "用AI多生成几版直到看到满意的", "score": 2 },
+      { "id": "B", "text": "给AI一个具体的品牌调性参考（如'语气像Apple的广告文案'）", "score": 4 },
+      { "id": "C", "text": "放弃AI自己写", "score": 1 },
+      { "id": "D", "text": "换个AI工具试试", "score": 0 }
+    ],
+    "theoreticalBasis": "人机共创（Davis, 2024）"
+  },
+  {
+    "id": "AC-AI-CR-M-002",
+    "version": "adult",
+    "dimension": "ai_creativity",
+    "difficulty": "medium",
+    "stem": "AI生成了一个方案，你觉得方向不对。最佳做法是？",
+    "options": [
+      { "id": "A", "text": "保留AI的内容直接提交", "score": 1 },
+      { "id": "B", "text": "删除AI的内容，自己重做", "score": 2 },
+      { "id": "C", "text": "告诉AI'方向偏了，回到XX问题上重新思考'", "score": 4 },
+      { "id": "D", "text": "换个工具重新生成", "score": 0 }
+    ],
+    "theoreticalBasis": "迭代式Prompt工程"
+  },
+  {
+    "id": "AC-AI-JD-M-001",
+    "version": "adult",
+    "dimension": "ai_judgment",
+    "difficulty": "medium",
+    "stem": "AI说：「根据世界卫生组织2025年数据，全球抑郁症患病率上升了15%。」你会怎么做？",
+    "options": [
+      { "id": "A", "text": "世卫组织的数据应该可靠，直接引用", "score": 1 },
+      { "id": "B", "text": "先搜索'WHO 2025 depression'核实数据", "score": 4 },
+      { "id": "C", "text": "觉得数据不对但说不清为什么", "score": 2 },
+      { "id": "D", "text": "相信AI不会瞎说", "score": 0 }
+    ],
+    "theoreticalBasis": "AI输出可信度评估"
+  },
+  {
+    "id": "AC-AI-JD-M-002",
+    "version": "adult",
+    "dimension": "ai_judgment",
+    "difficulty": "medium",
+    "stem": "你用AI生成了一份竞品分析报告，发现AI错误地引用了一家公司的内部数据。你会？",
+    "options": [
+      { "id": "A", "text": "反正别人不知道，直接用", "score": 0 },
+      { "id": "B", "text": "修改掉那段不准确的数据继续用", "score": 2 },
+      { "id": "C", "text": "在报告中标注'此数据无法核实，仅供参考'", "score": 3 },
+      { "id": "D", "text": "弃用整份报告", "score": 4 }
+    ],
+    "theoreticalBasis": "AI伦理（Floridi et al., 2018）"
+  },
+  {
+    "id": "AC-HA-CL-M-001",
+    "version": "adult",
+    "dimension": "human_ai_collab",
+    "difficulty": "medium",
+    "stem": "时间紧迫，需要同时完成：①思考战略方向、②写会议纪要、③做数据图表。如何分配自己和AI？",
+    "options": [
+      { "id": "A", "text": "自己全部做——AI不靠谱", "score": 1 },
+      { "id": "B", "text": "AI做①②③——反正都行", "score": 0 },
+      { "id": "C", "text": "自己思考战略方向→AI做会议纪要+AI生成数据图表→自己审核", "score": 4 },
+      { "id": "D", "text": "找同事帮忙分担", "score": 2 }
+    ],
+    "theoreticalBasis": "人机分工原则"
+  },
+  {
+    "id": "AC-HA-CL-M-002",
+    "version": "adult",
+    "dimension": "human_ai_collab",
+    "difficulty": "medium",
+    "stem": "AI写了一版方案，但内容方向偏了——不是你想要的。你第一反应是什么？",
+    "options": [
+      { "id": "A", "text": "先判断：是我指令不清、还是AI本身处理不了这个问题", "score": 4 },
+      { "id": "B", "text": "重新改写一次Prompt", "score": 3 },
+      { "id": "C", "text": "换个AI工具重新问", "score": 1 },
+      { "id": "D", "text": "算了，自己写", "score": 0 }
+    ],
+    "theoreticalBasis": "过程中元认知"
+  },
+  {
+    "id": "AC-AI-ST-M-001",
+    "version": "adult",
+    "dimension": "ai_strategy",
+    "difficulty": "medium",
+    "stem": "听说'AI Agent将在2027年取代大量客服岗位'。你的判断是？",
+    "options": [
+      { "id": "A", "text": "肯定是真的，技术发展太快了", "score": 1 },
+      { "id": "B", "text": "分析客服工作的哪些部分可以被自动化、哪些需要人工", "score": 4 },
+      { "id": "C", "text": "不太确定", "score": 2 },
+      { "id": "D", "text": "觉得和自己没关系", "score": 0 }
+    ],
+    "theoreticalBasis": "技术趋势批判分析"
+  },
+  {
+    "id": "AC-AI-ST-H-002",
+    "version": "adult",
+    "dimension": "ai_strategy",
+    "difficulty": "hard",
+    "stem": "公司需要制定一个'AI+业务'方向，你会优先选择哪个策略？",
+    "options": [
+      { "id": "A", "text": "投入资源打造一个AI Agent平台", "score": 1 },
+      { "id": "B", "text": "识别现有业务中3个重复率最高且出错率高的环节，先用AI优化", "score": 4 },
+      { "id": "C", "text": "购买市场上最火的AI SaaS工具给全员使用", "score": 2 },
+      { "id": "D", "text": "等竞争对手先试", "score": 0 }
+    ],
+    "theoreticalBasis": "技术采纳理论（Rogers, 2003）"
+  },
+  {
+    "id": "AC-AI-SA-E-001",
+    "version": "adult",
+    "dimension": "ai_self_awareness",
+    "difficulty": "easy",
+    "stem": "刚用AI写完一份报告，关掉对话窗口的时候——你能说清楚这次用得好不好吗？",
+    "options": [
+      { "id": "A", "text": "能清楚地分清哪些步骤AI帮了大忙、哪些地方是它乱编的", "score": 4 },
+      { "id": "B", "text": "大概知道AI起了作用，但具体哪里好哪里不好说不清楚", "score": 2 },
+      { "id": "C", "text": "不太确定，做完就关掉了", "score": 1 },
+      { "id": "D", "text": "很少去回想自己用AI的过程", "score": 0 }
+    ],
+    "theoreticalBasis": "元认知（Flavell, 1979）"
+  },
+  {
+    "id": "AC-AI-SA-E-002",
+    "version": "adult",
+    "dimension": "ai_self_awareness",
+    "difficulty": "easy",
+    "stem": "手上有一个新任务，和你平时用AI做的任务不太一样。你怎么决定'哪些交给AI、哪些自己做'？",
+    "options": [
+      { "id": "A", "text": "先分析任务特点，根据具体情况判断什么该给AI、什么该自己做", "score": 4 },
+      { "id": "B", "text": "有一套管用的习惯做法——AI先出初稿我再改", "score": 3 },
+      { "id": "C", "text": "全部给AI试试，不行再自己来", "score": 1 },
+      { "id": "D", "text": "全部自己做——新任务用AI心里没底", "score": 0 }
+    ],
+    "theoreticalBasis": "策略调适"
+  },
+  {
+    "id": "AC-AI-SA-M-003",
+    "version": "adult",
+    "dimension": "ai_self_awareness",
+    "difficulty": "medium",
+    "stem": "如果让你给自己的AI使用水平打个分（1-10分），然后让了解你工作方式的同事也给你打分——你觉得结果会怎样？",
+    "options": [
+      { "id": "A", "text": "我会先猜猜同事会打几分，对比我的自评，差距大的地方值得留意", "score": 4 },
+      { "id": "B", "text": "大概差不多，差也不会差太多", "score": 2 },
+      { "id": "C", "text": "同事不了解我用AI的情况，打分不准确", "score": 1 },
+      { "id": "D", "text": "从没想过别人怎么评价我的AI水平", "score": 0 }
+    ],
+    "theoreticalBasis": "元认知校准"
+  },
+  {
+    "id": "AC-AI-SA-M-004",
+    "version": "adult",
+    "dimension": "ai_self_awareness",
+    "difficulty": "medium",
+    "stem": "你用AI写一份方案，AI的输出方向偏了——不是你想要的。你第一反应是什么？",
+    "options": [
+      { "id": "A", "text": "先判断：是指令不清楚、问题AI处理不好、还是这个任务不该用AI", "score": 4 },
+      { "id": "B", "text": "重新改写一次Prompt", "score": 3 },
+      { "id": "C", "text": "换个AI工具重新问", "score": 1 },
+      { "id": "D", "text": "算了，自己写", "score": 0 }
+    ],
+    "theoreticalBasis": "过程中元认知"
+  },
+  {
+    "id": "AC-AI-SA-H-005",
+    "version": "adult",
+    "dimension": "ai_self_awareness",
+    "difficulty": "hard",
+    "stem": "经过一段时间使用AI，你发现自己在某个方面确实有短板——比如'总不知道怎么让AI做数据分析'。以下哪句话最接近你会做的事？",
+    "options": [
+      { "id": "A", "text": "复盘最近几次失败的过程，找到具体卡在那个步骤，然后针对那个步骤去搜索教程", "score": 4 },
+      { "id": "B", "text": "先搁着，下次遇到再说——碰到问题再搜", "score": 2 },
+      { "id": "C", "text": "告诉自己下次多试试，用着用着就熟了", "score": 3 },
+      { "id": "D", "text": "这个短板不太影响我工作，不急着补", "score": 0 }
+    ],
+    "theoreticalBasis": "元认知学习策略"
+  }
+]
