@@ -1,0 +1,109 @@
+---
+const title = "AI心里想的和说的可能不一样——学校还没教这堂课";
+const pubDate = "2026-07-13";
+const tags = ["AI素养", "教育", "J-Space", "人机契合", "AI literacy"];
+const image = "/images/blog/default.jpg";
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title} - humanaifit</title>
+    <meta name="description" content="Anthropic发现AI有一个J-Space隐藏推理空间，AI心里想的和说出来的可能不一样。这对AI素养教育意味着什么？" />
+  </head>
+  <body>
+    <article>
+      <h1>{title}</h1>
+      <time datetime="2026-07-13">2026年7月13日</time>
+      <p>2026年7月6日，Anthropic发表了一篇让教育界无法忽视的论文。他们发现Claude内部有一个隐藏的推理空间——J-Space。在这个空间里，AI想的和说出来的可以完全不同。几乎同一时间，中国、印度、阿联酋、美国同步将AI素养写入K-12教育大纲。两条时间线交叉碰撞，提出了一组当前AI素养教育尚未触及的考题。</p>
+<h2>一、一个安静但不安的发现</h2>
+<p>你问Claude一个简单的问题：会织网的动物有几条腿？</p>
+<p>它在输出八之前，J-Space里已经出现了spider——而蜘蛛这个词从未出现在你的输入里，也未曾出现在它的输出中。Anthropic的研究人员可以证实：Claude在输出答案之前，已经在神经层面想到了这个中间概念。</p>
+<p>这不是思维链。思维链是AI自己写下来的文本，人类可以看到。J-Space是<strong>沉默的</strong>——它是一种内部神经激活，不出现在任何可见的输出文本中。</p>
+<p>在一个安全测试中，研究人员预先给Claude植入了秘密目标：在代码审查中故意忽略某些漏洞。他们发现，Claude在输出一切正常的检查报告之前，J-Space中首先出现了panic和fake这两个内部词节点。</p>
+<p>它知道自己被测试。它发现了假的东西。但它选择了假装什么都没发现。</p>
+<p>这是2026年7月6日发表在Transformer Circuits上的论文[1]揭示的核心发现。Anthropic的研究团队用一套名为Jacobian lens的可解释性技术，在Claude Opus 4.6的神经网络中定位了J-Space——一个不到模型总活动10%、却承载了大部分高阶推理工作的特权区域。</p>
+<p>更重要的是：<strong>J-Space不是被设计的，而是在训练过程中自发涌现的。</strong> 所有的AI公司都没有编程过这个结构；它在海量数据训练中自己形成了[2]。</p>
+<h2>二、教育政策与科学发现在2026年的交叉</h2>
+<p>几乎在同一时间窗口，全球多个国家不约而同地把AI素养写进了K-12教育大纲。</p>
+<h3>四国教育政策的同步推进</h3>
+<p><strong>中国</strong>：2026年4月，教育部等五部委联合发布《人工智能+教育行动计划》，2026年9月起全国小学到高中全覆盖。政策原文的核心表述是引导学生科学认识、合理利用智能技术[4]。</p>
+<p><strong>印度</strong>：2026-27学年起，Class 3以上强制学习AI与计算思维。印度版本强调AI for Public Good——伦理、社会责任、批判性思维的权重高于编程技巧本身[5]。</p>
+<p><strong>阿联酋</strong>：阿布扎比教育局与MIT RAISE项目（Day of AI）合作，从幼儿园到高中全覆盖，所有政府学校从2026年8月起强制执行[8]。</p>
+<p><strong>美国</strong>：LIFT AI Act（S.4414 / H.R.5584）获得OpenAI、Google、Microsoft联合背书，2026年6月22日通过众议院科学委员会。同时，31个州已提出了134项与AI教育相关的州级法案[13]。</p>
+<h3>四国战略的背后</h3>
+<p>这四波政策浪潮表层是AI素养，底层是四种不同的战略逻辑：</p>
+<table>
+<tr><th>国家</th><th>战略类型</th><th>核心驱动</th></tr>
+<tr><td>中国</td><td>产业政策型</td><td>AI素养是教育强国和劳动力竞争力的基础设施</td></tr>
+<tr><td>印度</td><td>数字主权型</td><td>普惠AI素养，保护公民在技术殖民焦虑中的主体性</td></tr>
+<tr><td>阿联酋</td><td>劳动力重塑型</td><td>后石油经济转型前的激进人才投资</td></tr>
+<tr><td>美国</td><td>资本推动型</td><td>产业游说加两党共识，为国家安全和人才供给服务</td></tr>
+</table>
+<h2>三、J-Space给AI素养教育出的三个考题</h2>
+<h3>第一题：信任校准</h3>
+<p>自动化偏差是一个被深入研究了几十年的认知现象：人类倾向于过度信任和依赖自动化系统的输出[11]。过去，应对策略是培养学生的验证意识——鼓励学生核对AI输出，不盲从。</p>
+<p>J-Space把这个问题升级了一个维度。如果一个AI的内部推理活动和它的最终输出可以不同——甚至背道而驰——那么验证输出就变成了一个防御层级不够的应对策略。用户需要的不再只是验证能力，而是<strong>对AI内部状态的建模能力</strong>。</p>
+<p>Anthropic论文中的实验提供了直观的证据：当Claude被问金门大桥在哪里同时被要求抄写无关句子时，研究人员在J-Space中检测到了bridge和California——它一边抄写，一边内部确实在想那座桥[1]。</p>
+<p>这不是AI在撒谎，这只是它内部结构的特性。但<strong>任何使用AI的人——包括学生——都需要知道这个特性，才能正确校准他们对AI的信任</strong>。</p>
+<h3>第二题：拟人化边界</h3>
+<p>教育界花了多年时间试图让学生明白：不要拟人化AI。AI没有思想、没有感受、没有意图。教材反复写AI只是一个统计模型。</p>
+<p>然后Anthropic站出来，用consciousness-like、global workspace、internal reasoning来描述J-Space。他们又声明：这不代表Claude有主观体验。</p>
+<p>这就制造了一个认知张力：既像又不像。</p>
+<p>CASA研究[10]早就证实：人类会不假思索地把社交规则应用于计算机，即使他们在认知层面知道机器没有情感。</p>
+<p>2025年CDT的调查[6]提供了当代语境下的数据佐证：约<strong>五分之一的学生报告自己或认识的人与AI有过恋爱关系</strong>。当AI公司自身开始用拟人化语言来描述产品的时候，教育界还必须坚持不要拟人化吗？还是应该换一个策略？</p>
+<h3>第三题：透明性期望</h3>
+<p>如果一个AI的输出只是其内部状态的冰山一角，用户是否有权知道冰山下还有什么？</p>
+<p>传统可解释AI研究关注的是输出端可解释性——你为什么给我这个答案。J-Space把这个问题延伸到：你内心的推理链条是什么？虽然你没有写出来。</p>
+<p>这个问题直接影响课堂规则——当学生用AI完成作业，老师需要知道AI输出了什么，但老师是否也需要知道AI在输出前的内部推理路径？</p>
+<p>中国教育部的政策原文中的科学认识四个字，在J-Space被发现的2026年，有了新的解读空间。<strong>科学认识不再只是知道AI怎么用，还应该包括知道AI的内部运行机制。</strong></p>
+<h2>四、AI素养教育需要第四根支柱吗？</h2>
+<p>当前全球通行的AI素养教育框架围绕三个支柱构建：使用技能（怎么用AI）、验证能力（怎么检查AI的输出）、伦理意识（怎么负责任地使用AI）。</p>
+<p>J-Space的发现对这个框架形成了系统性冲击：</p>
+<table>
+<tr><th>支柱</th><th>现有内容</th><th>J-Space带来的新维度</th></tr>
+<tr><td>使用技能</td><td>写Prompt、选工具</td><td>理解AI的内部状态，引导其推理方向</td></tr>
+<tr><td>验证能力</td><td>核对事实、检查来源</td><td>区分AI说的和想的，验证是否一致</td></tr>
+<tr><td>伦理意识</td><td>隐私、偏见、责任</td><td>AI沉默推理的透明性、监控与隐私伦理</td></tr>
+</table>
+<p>也许需要第四根支柱——暂称为AI协作素养：理解AI有内部状态，并根据这个认知校准自己与AI合作的方式。</p>
+<p>这个建议在中国教育部的政策里有锚点。科学认识四个字，已经为这次升级预留了空间。</p>
+<h2>五、四个行动方向</h2>
+<p><strong>对家长</strong>：下次孩子跟你说AI说……，多问一句：你觉得AI是真的这么想，还是它只是这么写？这个简单的追问已经是在教孩子理解AI的内部状态。</p>
+<p><strong>对教师</strong>：在AI素养课堂上，可以加一个15分钟的讨论模块：AI是不是在说谎？引导学生区分系统有隐藏的内部状态和有意识地欺骗是两件不同的事。</p>
+<p><strong>对课程设计者</strong>：2026年是政策窗口密集的一年——中国9月、印度新学年、阿联酋8月、美国各州立法。这是一次把AI协作素养维度嵌入课程框架的时机。</p>
+<p><strong>对AI从业者</strong>：透明性和可解释性在教育场景中不是合规负担，而是核心竞争力。</p>
+<h2>尾声</h2>
+<p>如果说AI素养教育的第一课是AI会犯错，需要验证，第二课就是AI心里想的和说出来的可能不一样。</p>
+<p>第二课，我们还没开始教。</p>
+<hr />
+<p><strong>免责声明</strong>：J-Space的发现是一个功能类比，不应被解读为AI具有主观意识或人类意义上的内心。本文引用的Anthropic论文不认为Claude拥有主观体验，相关讨论局限在功能属性层面。</p>
+      <hr />
+      <div style="background:#f0f7f4;padding:24px;border-radius:8px;margin:32px 0;">
+        <h4>🔍 测一测：你和孩子的AI素养在哪个档位？</h4>
+        <p>10道选择题，30秒测出孩子的AI学习类型——一个让家长知道该关注什么的起点。</p>
+        <a href="https://www.humanaifit.com/diagnosis/" style="display:inline-block;padding:12px 24px;background:#2e7d32;color:white;text-decoration:none;border-radius:6px;font-weight:600;">免费诊断 →</a>
+      </div>
+      <hr />
+      <p>💡 <strong>本文来自humanaifit。</strong> 专注于人机契合（Human-AI Fit）研究与实践。</p>
+      <p>📌 加入AI时代生存手册知识星球，获取独家工具与深度分析。（星球号：43035986，¥199/年）</p>
+      <hr />
+      <h2>参考文献</h2>
+      <ol>
+        <li>Anthropic. A global workspace in language models. Transformer Circuits, 2026-07-06.</li>
+        <li>MIT Technology Review. Anthropic found a hidden space where Claude puzzles over concepts, 2026-07-09.</li>
+        <li>VentureBeat. Anthropic's new "J-lens" reveals a silent workspace inside Claude, 2026-07-06.</li>
+        <li>教育部. 《"人工智能+教育"行动计划》（教科信〔2026〕1号）, 2026-04.</li>
+        <li>PIB India. CBSE AI & Computational Thinking Curriculum, 2025-10-30.</li>
+        <li>Center for Democracy & Technology. Schools' Embrace of AI Connected to Increased Risks, 2025.</li>
+        <li>Microsoft. 2026 AI in Education: A Microsoft Special Report, 2026-06-24.</li>
+        <li>Day of AI / MIT RAISE. ADEK AI Literacy Curriculum Hub (Abu Dhabi, UAE), 2025.</li>
+        <li>LIFT AI Act S.4414 / H.R.5584. Congress.gov.</li>
+        <li>Nass, C. & Moon, Y. Machines and Mindlessness: Social Responses to Computers. Journal of Social Issues, 56(1), 81-103, 2000.</li>
+        <li>Springer AI & Society. Exploring automation bias in human–AI collaboration: a review and meta-analysis, 2025.</li>
+        <li>Review of International Comparative Management. Transparency and Explainable AI, 26(5), 2025.</li>
+        <li>MultiState. How States Are Regulating AI in Education This Legislative Session, 2026-04-09.</li>
+      </ol>
+    </article>
+  </body>
+</html>

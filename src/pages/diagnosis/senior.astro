@@ -1,0 +1,283 @@
+---
+// English Senior "AI生活伴侣" — Scenario selection page
+// Needs-based selection (no exam): 4 scenarios → pick one → step-by-step guide
+//
+
+export const prerender = true;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI生活伴侣 — 老年人AI素养 | humanaifit</title>
+  <meta name="description" content="不考试，不打分。选择一个场景来学习。60秒步骤指引。适合60岁以上人群。" />
+  <style>
+    :root { --primary: #0F2B46; --accent: #C9A96E; --bg: #fafafa; --text: #1a1a1a; --muted: #888; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+    .container { max-width: 500px; margin: 0 auto; padding: 20px 16px; }
+    .welcome { text-align: center; padding: 24px 0 8px; }
+    .welcome-icon { font-size: 56px; }
+    .welcome h1 { font-size: 28px; color: var(--primary); margin: 8px 0; font-weight: 700; }
+    .welcome p { font-size: 18px; color: #555; max-width: 360px; margin: 0 auto 20px; line-height: 1.6; }
+    .welcome-note { font-size: 16px; color: var(--muted); margin: 0 0 16px; }
+    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 20px; }
+    .scenario-card { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; border: 2px solid #e5e7eb; border-radius: 16px; padding: 20px 12px; cursor: pointer; transition: all 0.2s; min-height: 130px; user-select: none; }
+    .scenario-card:active { transform: scale(0.97); }
+    .scenario-card:hover { border-color: #3b82f6; box-shadow: 0 2px 12px rgba(59,130,246,0.15); }
+    .scenario-card.selected { border-color: #3b82f6; background: #eff6ff; }
+    .scenario-icon { font-size: 44px; margin-bottom: 6px; }
+    .scenario-title { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .scenario-desc { font-size: 13px; color: var(--muted); margin-top: 4px; text-align: center; }
+    .confirm-page { display: none; text-align: center; padding: 20px 0; }
+    .confirm-icon { font-size: 56px; margin-bottom: 8px; }
+    .confirm-title { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .confirm-desc { font-size: 18px; color: #555; margin-bottom: 24px; }
+    .confirm-btn { display: block; width: 100%; padding: 18px 24px; background: linear-gradient(135deg, #0F2B46, #1a3f64); color: #fff; border: none; border-radius: 12px; font-size: 22px; font-weight: 700; cursor: pointer; transition: transform 0.15s; margin: 0 0 12px; }
+    .confirm-btn:active { transform: scale(0.97); }
+    .back-btn { display: block; width: 100%; padding: 12px; background: transparent; border: none; font-size: 16px; color: #3b82f6; cursor: pointer; text-decoration: underline; }
+    .video-page { display: none; text-align: center; padding: 16px 0; }
+    .video-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .done-btn { display: block; width: 100%; padding: 18px; background: #22c55e; color: #fff; border: none; border-radius: 12px; font-size: 20px; font-weight: 700; cursor: pointer; margin: 20px 0 8px; opacity: 1; }
+    .done-btn:active { transform: scale(0.97); }
+    .complete-page { display: none; text-align: center; padding: 24px 0; }
+    .complete-icon { font-size: 64px; margin-bottom: 12px; }
+    .complete-title { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .complete-desc { font-size: 18px; color: #555; margin-bottom: 20px; }
+    .complete-action { display: block; width: 100%; padding: 16px; background: #fff; border: 2px solid #3b82f6; border-radius: 12px; font-size: 18px; color: #3b82f6; font-weight: 600; cursor: pointer; margin: 0 0 12px; transition: all 0.2s; }
+    .complete-action:active { background: #eff6ff; }
+    .next-scenario { display: block; width: 100%; padding: 16px; background: #f0f0f0; border: none; border-radius: 12px; font-size: 16px; color: #555; cursor: pointer; margin: 0 0 12px; }
+    .complete-note { font-size: 14px; color: var(--muted); margin: 16px 0; }
+    @media (max-width: 400px) { .scenario-grid { gap: 10px; } .scenario-card { padding: 14px 8px; min-height: 110px; } }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <!-- Welcome / Selection -->
+    <div id="welcome-page">
+      <div class="welcome">
+        <div class="welcome-icon">👋</div>
+<p style="text-align:center;font-size:13px;color:#999;margin:12px 0 4px;">🎬 每个场景的视频教程即将上线</p>
+
+        <h1>AI生活伴侣</h1>
+        <p>选一个你感兴趣的，<br>60秒学会。</p>
+        <div class="welcome-note">不考试，不评分，跟着做就行。</div>
+      </div>
+      <div class="scenario-grid" id="scenario-grid"></div>
+      <div id="confirm-area" class="confirm-page">
+        <div class="confirm-icon" id="confirm-icon">📸</div>
+        <div class="confirm-title" id="confirm-title">修照片</div>
+        <div class="confirm-desc" id="confirm-desc">准备好一张老照片，马上开始</div>
+        <button class="confirm-btn" id="start-learn-btn">开始学 →</button>
+        <button class="back-btn" id="back-select-btn">← Let me see other options</button>
+      </div>
+    </div>
+
+    <!-- Guide Page (图文指引替代视频) -->
+    <div id="video-page" class="video-page">
+      <div class="video-title" id="video-title">📸 修照片</div>
+      <div id="video-guide" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;margin-bottom:16px;"></div>
+      <button class="done-btn" id="done-btn" style="opacity:1;">✅ 我做完了</button>
+    </div>
+
+    <!-- Completion Page -->
+    <div id="complete-page" class="complete-page">
+      <div class="complete-icon">🎉</div>
+      <div class="complete-title">太棒了！</div>
+      <div class="complete-desc" id="complete-desc">你刚刚学会了用AI修复老照片</div>
+      <button class="complete-action" id="share-family-btn">📱 Share to family group</button>
+      <button class="complete-action" id="ai-praise-btn">💬 AI says nice things</button>
+      <button class="next-scenario" id="next-scenario-btn">🚫 防诈骗（3天后开放）</button>
+      <div class="complete-note">系统已通知您的家人您今天学会了什么</div>
+    </div>
+  </div>
+
+  <!-- Scenario data -->
+  <script id="senior-scenario-data" type="application/json">[{"id": "SC-PH-RE-001", "version": "senior", "dimension": "photo_restore", "difficulty": "easy", "stem": "修复老照片", "options": [{"id": "A", "text": "我有老照片想修复，想学怎么弄", "score": 4}, {"id": "B", "text": "可能用不上，但可以试试", "score": 2}, {"id": "C", "text": "我的照片都是数码的，不用修复", "score": 0}], "theoreticalBasis": "老年人AI使用动机：可见产出+社交分享驱动"}, {"id": "SC-FR-DE-001", "version": "senior", "dimension": "fraud_defense", "difficulty": "easy", "stem": "防诈骗", "options": [{"id": "A", "text": "我经常接到可疑电话，想学怎么保护自己", "score": 4}, {"id": "B", "text": "孩子总担心我被骗，学了让他们放心", "score": 3}, {"id": "C", "text": "我不会被骗，不用学", "score": 0}], "theoreticalBasis": "老年人科技焦虑：防骗是子女最关心的刚需场景"}, {"id": "SC-HE-IN-001", "version": "senior", "dimension": "health_inquiry", "difficulty": "easy", "stem": "健康查询", "options": [{"id": "A", "text": "我常查药品和预约信息，想学用AI查", "score": 4}, {"id": "B", "text": "有点兴趣，但怕查到错误信息", "score": 2}, {"id": "C", "text": "身体很好，暂时不需要", "score": 0}], "theoreticalBasis": "老年人AI使用动机：健康焦虑驱动，使用频率高"}, {"id": "SC-VO-CH-001", "version": "senior", "dimension": "voice_chat", "difficulty": "easy", "stem": "语音聊天", "options": [{"id": "A", "text": "打字不方便，想学用语音和AI聊天", "score": 4}, {"id": "B", "text": "能打字，但好奇和AI聊天是什么感觉", "score": 2}, {"id": "C", "text": "不需要和AI聊天", "score": 0}], "theoreticalBasis": "老年人AI交互偏好：语音交互门槛最低"}]</script>
+  <script id="senior-config-data" type="application/json">[{"id": "photo_restore", "title": "修复老照片", "icon": "📸", "description": "让旧照片变清晰"}, {"id": "fraud_defense", "title": "防诈骗", "icon": "🚫", "description": "识别诈骗电话和短信"}, {"id": "health_inquiry", "title": "健康查询", "icon": "🏥", "description": "查询药品和预约信息"}, {"id": "voice_chat", "title": "语音聊天", "icon": "💬", "description": "开口说就行，AI会回答"}]</script>
+
+  <script is:inline>
+(function() {
+  const SCENARIOS = JSON.parse(document.getElementById('senior-scenario-data').textContent);
+  const CONFIGS = JSON.parse(document.getElementById('senior-config-data').textContent);
+
+  const STEP_INSTRUCTIONS = {
+    photo_restore: {
+      steps: ['打开AI工具 + 上传照片', '输入「让这张照片变清晰」', '保存到相册'],
+      stepDetails: [
+        '打开AI工具（如豆包或Kimi）。点击上传按钮，选择一张旧照片。',
+        '在输入框中输入：<div style="background:#f5f5f5;border-radius:8px;padding:8px 12px;margin-top:4px;font-size:15px;color:#333;">「让这张照片变清晰」</div>',
+        'AI处理完成后，点击保存到手机相册。'
+      ],
+      title: '📸 修照片',
+      icon: '📸',
+      confirmDesc: '准备一张老照片',
+      desc: '让旧照片变清晰',
+    },
+    fraud_defense: {
+      steps: ['打开AI工具', '输入可疑信息', '查看AI判断'],
+      stepDetails: [
+        '打开AI工具（如豆包或Kimi）',
+        '输入：<div style="background:#f5f5f5;border-radius:8px;padding:8px 12px;margin-top:4px;font-size:15px;color:#333;">「这段文字像诈骗吗？」<br>然后粘贴可疑信息</div>',
+        'AI会分析并告诉你这是不是诈骗。'
+      ],
+      title: '🚫 防骗',
+      icon: '🚫',
+      confirmDesc: '准备一条可疑信息或通话记录',
+      desc: '识别诈骗电话和短信',
+    },
+    health_inquiry: {
+      steps: ['打开AI工具', '输入药品名称', '查看AI回复'],
+      stepDetails: [
+        '打开AI工具',
+        '输入： <div style="background:#f5f5f5;border-radius:8px;padding:8px 12px;margin-top:4px;font-size:15px;color:#333;">"药X和药Y可以一起吃吗？"<br>替换为你想查的药品名称</div>',
+        'AI会告诉你相关信息。你可以截图保存。'
+      ],
+      title: '🏥 健康查询',
+      icon: '🏥',
+      confirmDesc: '找一种你想查询的药品名称',
+      desc: '查询药品信息 and health info',
+    },
+    voice_chat: {
+      steps: ['打开AI工具', '点麦克风说话', '听AI回答'],
+      stepDetails: [
+        '打开AI工具。找到麦克风图标。',
+        '点一下麦克风图标，说：「今天天气怎么样？」',
+        'AI会回答你。你还可以问更多问题！'
+      ],
+      title: '💬 语音聊天',
+      icon: '💬',
+      confirmDesc: '找个安静的地方，试试和AI说话',
+      desc: '和AI聊天 with your voice',
+    },
+  };
+
+  const SCENE_INFO = {
+    photo_restore: { icon: '📸', title: '修照片', desc: '让旧照片变清晰' },
+    fraud_defense: { icon: '🚫', title: '防骗', desc: '识别诈骗电话' },
+    health_inquiry: { icon: '🏥', title: '健康查询', desc: '查询药品信息' },
+    voice_chat: { icon: '💬', title: '语音聊天', desc: '和AI聊天' },
+  };
+
+  let selectedScenario = null;
+
+  function renderScenarios() {
+    const grid = document.getElementById('scenario-grid');
+    grid.innerHTML = SCENARIOS.map(s => {
+      const info = SCENE_INFO[s.dimension] || { icon: '📌', title: s.stem, desc: '' };
+      return '<div class="scenario-card" data-id="'+s.dimension+'">' +
+        '<div class="scenario-icon">'+info.icon+'</div>' +
+        '<div class="scenario-title">'+info.title+'</div>' +
+        '<div class="scenario-desc">'+info.desc+'</div></div>';
+    }).join('');
+    grid.querySelectorAll('.scenario-card').forEach(card => {
+      card.addEventListener('click', () => selectScenario(card.dataset.id));
+    });
+  }
+
+  function selectScenario(id) {
+    selectedScenario = id;
+    const info = SCENE_INFO[id] || SCENE_INFO['photo_restore'];
+    document.getElementById('confirm-icon').textContent = info.icon;
+    document.getElementById('confirm-title').textContent = info.title;
+    document.getElementById('confirm-desc').textContent = (STEP_INSTRUCTIONS[id] || STEP_INSTRUCTIONS['photo_restore']).confirmDesc;
+    document.querySelectorAll('.scenario-card').forEach(c => c.classList.toggle('selected', c.dataset.id === id));
+    document.getElementById('confirm-area').style.display = 'block';
+    document.getElementById('confirm-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  document.getElementById('start-learn-btn').addEventListener('click', () => {
+    if (!selectedScenario) return;
+    const info = STEP_INSTRUCTIONS[selectedScenario] || STEP_INSTRUCTIONS['photo_restore'];
+    document.getElementById('video-title').textContent = info.title;
+    const guide = document.getElementById('video-guide');
+    if (guide) {
+      guide.innerHTML = info.steps.map((stepText, i) => {
+        const details = info.stepDetails ? info.stepDetails[i] : '';
+        return '<div style="display:flex;align-items:flex-start;gap:14px;background:#f0f7ff;border-radius:12px;padding:14px;">' +
+          '<div style="width:36px;height:36px;background:#3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:700;flex-shrink:0;">' + (i+1) + '</div>' +
+          '<div><div style="font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:2px;">' + stepText + '</div>' +
+          (details ? '<div style="font-size:14px;color:#666;">' + details + '</div>' : '') + '</div></div>';
+      }).join('<div style="height:8px;"></div>');
+    }
+    document.getElementById('welcome-page').style.display = 'none';
+    document.getElementById('video-page').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('back-select-btn').addEventListener('click', () => {
+    selectedScenario = null;
+    document.getElementById('confirm-area').style.display = 'none';
+    document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('selected'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('done-btn').addEventListener('click', () => {
+    const info = SCENE_INFO[selectedScenario] || SCENE_INFO['photo_restore'];
+    document.getElementById('complete-desc').textContent = 'You just learned '+info.title;
+    const ids = ['photo_restore','fraud_defense','health_inquiry','voice_chat'];
+    const nextId = ids.find(id => id !== selectedScenario) || 'fraud_defense';
+    const nextInfo = SCENE_INFO[nextId] || SCENE_INFO['fraud_defense'];
+    document.getElementById('next-scenario-btn').innerHTML = nextInfo.icon+' '+nextInfo.title+' (available in 3 days)';
+    document.getElementById('video-page').style.display = 'none';
+    document.getElementById('complete-page').style.display = 'block';
+    saveCompletion(selectedScenario);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('share-family-btn').addEventListener('click', () => {
+    const info = SCENE_INFO[selectedScenario] || SCENE_INFO['photo_restore'];
+    navigator.clipboard.writeText('I just learned to '+info.title+' with AI! Try it: https://www.humanaifit.com/en/diagnosis/senior/').then(() => alert('Copied! Share it with your family.'));
+  });
+
+  document.getElementById('ai-praise-btn').addEventListener('click', () => {
+    const praises = ["太棒了！你跟上AI时代了！","真厉害！你已经超过了同龄人！","真不错！AI比你想的简单吧？","你可以的！继续探索！"];
+    alert('AI says: '+praises[Math.floor(Math.random()*praises.length)]);
+  });
+
+  document.getElementById('next-scenario-btn').addEventListener('click', () => {
+    const ids = ['photo_restore','fraud_defense','health_inquiry','voice_chat'];
+    selectedScenario = ids.find(id => id !== selectedScenario && !isCompleted(id)) || 'fraud_defense';
+    document.getElementById('complete-page').style.display = 'none';
+    document.getElementById('welcome-page').style.display = 'block';
+    selectScenario(selectedScenario);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  function saveCompletion(scenarioId) {
+    const data = JSON.parse(localStorage.getItem('senior_completions') || '{}');
+    data[scenarioId] = { completedAt: new Date().toISOString(), count: (data[scenarioId]?.count||0)+1 };
+    localStorage.setItem('senior_completions', JSON.stringify(data));
+  }
+
+  function isCompleted(scenarioId) {
+    const data = JSON.parse(localStorage.getItem('senior_completions') || '{}');
+    return !!data[scenarioId];
+  }
+
+  renderScenarios();
+})();
+</script>
+
+<!-- Video guide placeholder -->
+<div class="video-fallback" style="background:#fff8e1;border:2px dashed #f0c040;border-radius:16px;padding:24px;margin:16px 0;text-align:center;">
+<div style="font-size:32px;margin-bottom:8px;">📱</div>
+<h3 style="margin:0 0 4px;font-size:16px;">实操指引</h3>
+<p style="font-size:13px;color:#666;margin:0 0 12px;">按照步骤操作</p>
+<div style="text-align:left;max-width:320px;margin:0 auto;">
+<div style="background:#fff;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;">
+<span style="background:#4CAF50;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">1</span>
+<span style="font-size:14px;">打开AI工具（如豆包、Kimi）</span></div>
+<div style="background:#fff;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;">
+<span style="background:#4CAF50;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">2</span>
+<span style="font-size:14px;">上传照片 / 输入问题</span></div>
+<div style="background:#fff;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;">
+<span style="background:#4CAF50;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">3</span>
+<span style="font-size:14px;">看AI的回答，自己判断对不对</span></div>
+</div>
+<p style="font-size:12px;color:#999;margin:10px 0 0;">🎬 视频教程即将上线</p>
+</div>
+</body>
+</html>

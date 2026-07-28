@@ -1,0 +1,139 @@
+---
+layout: "@/layouts/BlogLayout.astro"
+pubDate: "2026-07-20"
+title: "从读论文到\"吃\"原始科学数据：WAIC 2026正在重新定义AI4S"
+---
+
+<article class="article-body">
+
+<h2 id="lead">一、一个会让AI工程师失眠的问题</h2>
+
+<p>大模型已经很厉害了。</p>
+
+<p>AlphaFold 2在2020年解决了蛋白质结构预测这个困扰生物学50年的难题。2024年，它的两位核心开发者Demis Hassabis和John Jumper拿下了诺贝尔化学奖（与计算蛋白质设计的David Baker共享）。<sup class="ref"><a href="#ref1">[1]</a></sup></p>
+
+<p>但中国工程院院士王坚在WAIC 2026上提出了一个会让很多AI工程师失眠的问题：</p>
+
+<p><strong>今天的大模型，到底在"吃"什么？</strong></p>
+
+<p>答案是——文本。只有文本。</p>
+
+<p>ChatGPT能写论文、能编代码、能陪你谈天说地。给它一篇科学论文，它读得比任何人类都快。但问题来了：<strong>科学的核心从来不是论文，而是实验数据。</strong></p>
+
+<p>王坚院士在演讲中说，当前AI for Science仅停留在"让AI阅读论文文本"阶段，训练素材是"二手归纳型数据"——科学家用自己的理解、偏好和偏见过滤过的知识成品。今天所有号称"AI for Science"的大模型，其实并非直接吸收、理解和分析原始科学数据。它们吸收和使用的，不过是人类知识的二次加工品。</p>
+
+<p>这就像只靠别人的转述来了解一个人。你能知道他的大概轮廓，但你永远不可能真正认识他。</p>
+
+<h2 id="literature">二、一篇学术文献早就点明了方向</h2>
+
+<p>2023年，一篇发表在arXiv上的综述论文系统梳理了"地球科学基础模型"（Geoscience Foundation Models, GFMs）的发展方向。<sup class="ref"><a href="#ref2">[2]</a></sup> 论文指出：地球系统数据涵盖光谱、重力场、气象、地震等多种模态，传统AI模型难以有效处理这些异构数据。GFMs的独特优势在于灵活的任务规范、多样的输入输出能力以及多模态知识表征。</p>
+
+<p>这与王坚院士在WAIC上提出的SFM（Scientific Foundation Model）构想高度契合——两者指向同一个核心洞察：通用的语言模型无法直接处理驱动真实科学发现的原始、多模态数据。</p>
+
+<h2 id="geologist">三、一张地质图的呐喊</h2>
+
+<p>让我们把这个抽象问题具象化。</p>
+
+<p>想象你是一位地质学家。你站在一块几亿年前的岩石前面，你能看到它的颜色、纹理、颗粒感。你用光谱仪扫描它，拿到电磁场数据，你用钻机取出岩芯，分析沉积层序。几千份报告、数万张照片、持续几十年的观察记录——这才是你作为科学家真正关心的"原始数据"。</p>
+
+<p>那么，今天的大模型能"理解"这些数据吗？</p>
+
+<p>不能。因为大模型天生就是设计来处理文本的。你把一张地质图喂给GPT——它看到的不是地层的语言，而是被压缩成JPEG后的像素排列。你把一段地震波数据塞给它，它看到的只是一串意义不明的数字。</p>
+
+<p>NASA地球科学部门在2023年12月的一篇博客中谈到了一个类似的困境。<sup class="ref"><a href="#ref3">[3]</a></sup> 他们正在尝试将AI系统地融入科学数据生命周期的各个阶段——从数据采集、处理到分析。但核心挑战在于：科学数据本身的多样性和异构性，使得通用的AI模型难以直接应用。NASA的做法是逐步构建特定于地球科学的基础模型。</p>
+
+<p><strong>AI for Science真正缺的不是算法，而是数据层面的基础设施。</strong></p>
+
+<h2 id="tokenization">四、Tokenization的革命</h2>
+
+<p>公元七世纪，拉丁文和古汉语一样是没有标点没有空格的。要读懂一篇文章，你得大声朗读出来，靠音节停顿判断断句。那时候，阅读不是视觉活动，是听觉活动。</p>
+
+<p>几百年后，爱尔兰僧侣把空格插进了单词之间。这个现在看来微不足道的改变，把阅读从"发声辨认"变成了"默视理解"。读一本书的时间从天缩短到小时。可以说，这一改变催生了大学的诞生。</p>
+
+<p>王坚院士用了一个精妙的比喻：大模型的核心技术——<strong>tokenization（分词）</strong>——本质上就是在给文字加空格。只不过这一次，空格加在字节之间，而不是单词之间。</p>
+
+<p>有了tokenization，LLM能够理解语言。有了代码tokenization，AI能够编程。</p>
+
+<p><strong>那科学数据呢？</strong></p>
+
+<p>2025年11月，Collins词典将"Vibe Coding"评为年度词汇。Collins的定义是："使用自然语言提示人工智能来辅助编写计算机代码"。<sup class="ref"><a href="#ref4">[4]</a></sup> 这个词由AI先驱、OpenAI联合创始人Andrej Karpathy于2025年2月创造，描述的是"你甚至不需要知道代码存在"的编程方式。</p>
+
+<p>王坚院士在演讲中引述了这件事，并给出了一个更深层的判断：<strong>当代码可以像说话一样被写出来，写代码这件事正在从专业职业变成一种基本素养。</strong>就像几百年前书写从抄写员的职业变成了每个人的技能一样。</p>
+
+<p>而科学基础模型要做的事，就是把同样的"tokenization革命"推广到科学数据领域——通过统一的高维Token表征，将语言、代码和科学数据在同一个空间中对齐，使AI能够发现人类用肉眼永远看不到的跨学科关联。</p>
+
+<h2 id="product">五、不是空想：ScienceOne Omni 2.0已经发布</h2>
+
+<p>王坚院士搭框架，中科院的研究团队已经交作业了。</p>
+
+<p>2026年7月17日，WAIC开幕式当天，中国科学院发布了ScienceOne Omni科学基础模型的2.0升级版。<sup class="ref"><a href="#ref5">[5]</a></sup> 据人民网报道，该模型由中科院领衔的联合研发团队打造，已在力学、天文学、化学等多个研究领域落地应用。基于这一基础模型，研发团队还构建了集成化科研智能平台，支持研究人员按需定制专用模型和科学智能体。</p>
+
+<p>一个常被忽略的细节：研发团队构建了800万条高质量科学推理数据，覆盖200多项任务，同时搭建了"超算+智算+快算"异构计算系统，可快速执行分子动力学、量子化学等模拟任务。基于该模型开发的多个智能体已大规模部署并持续升级。</p>
+
+<p>ScienceOne Omni的首次发布是在2025年7月——正好一年前。一年后升级到2.0版本，说明它不是一个概念演示，而是一个正在迭代的产品。</p>
+
+<p><strong>科学基础模型（SFM）正在从构想走向工程化。</strong></p>
+
+<h2 id="golab">六、"超级科研工厂"：5天135项任务，超99%完成率</h2>
+
+<p>在同一个论坛上，上海科学智能研究院（上智院）及其孵化企业格物智研发布了更硬核的实物——<strong>Golab物质科学智能研发工厂</strong>，一个已经跑通的自驱动实验室。</p>
+
+<p>什么叫自驱动实验室？</p>
+
+<p>2025年4月，北卡罗来纳州立大学Abolhasani课题组在《Nature Communications》上发表了一篇蓝图论文。<sup class="ref"><a href="#ref6">[6]</a></sup> 核心观点：自驱动实验室（Self-Driving Labs, SDLs）将成为人类研究人员的"协作者"，通过AI驱动的机器人实验系统，大幅缩短从实验设计到结论的周期。</p>
+
+<p>Golab团队把这个愿景变成了现实。</p>
+
+<p>他们的方案是"干湿实验全自动闭环"——干实验（计算、模拟、预测）和湿实验（试管、培养皿、实际反应）由AI自主串联。传统科研中，一个计算科学家做完预测，发邮件给实验室研究员，几周后拿结果，再反馈——循环周期以月为单位。Golab把这个过程压缩到了小时级。</p>
+
+<p>他们做了一次公开的"百题马拉松"：5天时间，自主完成<strong>135项真实科研任务</strong>，覆盖能源、材料、药物等领域。100个干实验任务并行运行，并选取部分课题进入物理实验。工具调用正确率100%，总体完成率超99%。</p>
+
+<p>催化剂优化是最精彩的案例。第一轮，AI预测的反应方案将催化剂活性提升约15%。AI自己记下了这个结果，自动调整分子设计方案。第二轮优化后，反应活性达到文献方案的约6倍。AI用两轮迭代完成了人类通常需要数月的优化工作。</p>
+
+<p>2025年7月，ScienceDaily报道了北卡罗来纳州立大学的另一项成果：一种新型自驱动实验室采用动态流动系统，数据产出比传统稳态实验方法高出10倍以上，且能在第一轮训练后即找到最优材料候选。<sup class="ref"><a href="#ref7">[7]</a></sup> AI驱动的自驱动实验室已成为全球科研竞赛的新赛道。</p>
+
+<h2 id="disciplines">七、"交叉学科正在消失"</h2>
+
+<p>在7月18日的WAIC科学智能开放论坛上，王坚院士提出了一个更宏大的命题。<sup class="ref"><a href="#ref9">[9]</a></sup></p>
+
+<p>让"科学作为一个整体，而不是被分割得支离破碎"。</p>
+
+<p>如果AI能够同时在物理、化学、生物学的底层数据中找到共通模式，那"交叉学科"这个词本身就多余了。就像你不会说"交叉语言学家"——因为语言学家本来就要懂多种语言。</p>
+
+<p>王坚院士重新定义了STEM：<strong>STEM → STE + MAP</strong>（Science, Technology, Engineering + Math, AI, Public Facilities）。他说，"AI正在变得和数学一样基础。"<sup class="ref"><a href="#ref9">[9]</a></sup> AI不再是一个你需要"学习"的技能，而是一个你默认拥有的能力。</p>
+
+<h2 id="human">八、人还在，只是角色变了</h2>
+
+<p>技术越往前走，问题越尖锐。</p>
+
+<p>圆桌讨论中，两个维度的观点碰撞尤为精彩：</p>
+
+<p>观点一："AI到底能不能'think out of box'？"目前AI能做的，是在已有框架内验证假设、优化方案。但提出一个全新的理论范式——像爱因斯坦那样——它显然还做不到。</p>
+
+<p>观点二："人类也是在已有知识基础上创新的。既然机器可以学习已有知识，为什么不能创新？"关键区别在于：人类能够主动选择"什么问题值得问"，而AI目前只能回答已经被问出的问题。但AlphaFold的成功也说明——AI可以从已有的数据中找到人类从未注意到的关联。这到底算不算一种"新的发问"？答案可能没有非黑即白的定论。</p>
+
+<p>这场辩论的中间地带，是王坚院士从一开始就定下的基调：<strong>增强智能（Amplified Intelligence）</strong>。</p>
+
+<p>王坚反复强调，人工智能不是替代人，而是服务人。<sup class="ref"><a href="#ref9">[9]</a></sup> AI不是来做科学家能做的事情——它是来做科学家做不到的事情。</p>
+
+<p>科学家做不到的事情是什么？——在同一个高维空间里，同时处理基因数据、天文图像、地质剖面和气象雷达，然后从中找出人类永远找不到的相关性。</p>
+
+<p>Abolhasani在Nature Communications上提出了同样的观点："自驱动实验室将作为人类研究人员的协作者，显著缩短达到科学解决方案所需的时间和成本。"<sup class="ref"><a href="#ref6">[6]</a></sup></p>
+
+<p><strong>AI是增强版的研究搭档，不是替代者。</strong></p>
+
+<h2 id="conclusion">九、2026年7月，上海：方向已经明确</h2>
+
+<p>WAIC 2026还有一个值得注意的背景。据上海市经信委副主任潘焱公布的数据，上海2025年AI规上企业（年营收2000万元以上）总数达394家，产业规模达6370亿元，同比增长39.5%。<sup class="ref"><a href="#ref8">[8]</a></sup></p>
+
+<p>这不再是一个学术概念的讨论，而是一场已经在铺开的建设。</p>
+
+<p>从ScienceOne Omni 2.0的上线到Golab超99%的完成率，从Vibe Coding的全民化到自驱动实验室的全球竞赛，WAIC 2026发出的信号非常清晰：</p>
+
+<p><strong>AI重新定义科学的时刻，比所有人想象的都要近。</strong></p>
+
+<p>而这一次，AI不再读论文了。</p>
+
+<h2 id="refs">参考文献</h2> <ol class="ref-list">   <li id="ref1"><strong>Computational protein design and protein structure prediction win Nobel Prize in Chemistry</strong> — European Molecular Biology Laboratory (EMBL)，2024-10（来源：<a href="https://www.embl.org/news/science-technology/alphafold-wins-nobel-prize-chemistry-2024">embl.org</a>）；<strong>Jumper, J. et al., "Highly accurate protein structure prediction with AlphaFold"</strong> — <em>Nature</em>，2021，Vol. 596，pp. 583–589（DOI: <a href="https://doi.org/10.1038/s41586-021-03819-2">10.1038/s41586-021-03819-2</a>）；<strong>Nobel Prize in Chemistry 2024</strong> — NobelPrize.org，2024-10-09（<a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/">nobelprize.org</a>）。说明：该年度诺贝尔化学奖由David Baker（计算蛋白质设计）与Demis Hassabis、John Jumper（蛋白质结构预测）共同获得。</li>   <li id="ref2"><strong>Zhang, H. et al., "When Geoscience Meets Foundation Models: Towards General Geoscience Artificial Intelligence System"</strong> — arXiv:2309.06799，2023-09（<a href="https://arxiv.org/abs/2309.06799">arxiv.org</a>）。</li>   <li id="ref3"><strong>Ramachandran, R., "AI Foundation Models to Augment Scientific Data and the Research Lifecycle"</strong> — NASA Earthdata Blog，2023-12-07（<a href="https://www.earthdata.nasa.gov/news/blog/ai-foundation-models-augment-scientific-data-research-lifecycle">earthdata.nasa.gov</a>）。</li>   <li id="ref4"><strong>"'Vibe coding' named Collins Dictionary's Word of the Year"</strong> — CNN Business，2025-11-06（<a href="https://www.cnn.com/2025/11/06/tech/vibe-coding-collins-word-of-the-year">cnn.com</a>）。该词由Andrej Karpathy于2025年2月创造。</li>   <li id="ref5"><strong>"China launches upgraded ScienceOne Omni scientific foundation model"</strong> — People's Daily Online（新华社），2026-07-18（<a href="https://en.people.cn/n3/2026/0718/c90000-20479272.html">en.people.cn</a>）。</li>   <li id="ref6"><strong>Canty, R.B., Abolhasani, M. et al., "Science acceleration and accessibility with self-driving labs"</strong> — <em>Nature Communications</em>，2025-04-24，Vol. 16，Article 3856（DOI: <a href="https://doi.org/10.1038/s41467-025-59231-1">10.1038/s41467-025-59231-1</a>）。</li>   <li id="ref7"><strong>"This AI-powered lab runs itself—and discovers new materials faster than ever"</strong> — ScienceDaily / North Carolina State University，2025-07-14（<a href="https://www.sciencedaily.com/releases/2025/07/250714052105.htm">sciencedaily.com</a>）。</li>   <li id="ref8"><strong>"Shanghai Aims to 'Unlock' Big Ideas of AI"</strong> — CityNewsService，2026-04-29（<a href="https://www.citynewsservice.cn/articles/cns/city-news/shanghai-aims-to-unlock-big-ideas-of-ai-5nq5o08n">citynewsservice.cn</a>）。上海市经信委副主任潘焱公布数据。</li>   <li id="ref9">WAIC 2026主论坛（2026-07-17）及科学智能开放论坛（2026-07-18），由复旦大学和上海科学智能研究院联合主办。王坚发表题为"科学基础模型：科学作为一个整体"的演讲，提出"STEM走向STE+MAP"等观点。参见上观新闻/新浪科技报道（<a href="https://finance.sina.cn/stock/jdts/2026-07-19/detail-iniihzch1178759.d.html">sina.cn</a>）。</li> </ol>
+
+</article>

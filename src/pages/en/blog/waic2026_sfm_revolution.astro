@@ -1,0 +1,147 @@
+---
+layout: "@/layouts/BlogLayout.astro"
+pubDate: "2026-07-20"
+title: "From Reading Papers to 'Eating' Raw Scientific Data: How WAIC 2026 Is Redefining AI for Science"
+---
+
+<article class="article-body">
+
+<h2 id="lead">1. The Question That Keeps AI Engineers Awake</h2>
+
+<p>Large language models are already impressive.</p>
+
+<p>AlphaFold 2 solved a grand challenge that had baffled biologists for over 50 years — protein structure prediction — when it debuted at CASP14 in November 2020. In 2024, two of its core developers, Demis Hassabis and John Jumper, shared the Nobel Prize in Chemistry with David Baker for computational protein design.<sup class="ref"><a href="#ref1">[1]</a></sup></p>
+
+<p>But at WAIC 2026 in Shanghai, Chinese Academy of Engineering academician Wang Jian posed a question that should keep every AI engineer awake at night:</p>
+
+<p><strong>What is today's large language model actually "eating"?</strong></p>
+
+<p>The answer: text. Only text.</p>
+
+<p>ChatGPT can write papers, generate code, and converse on any topic. Feed it a scientific paper, and it reads it faster than any human. But here is the fundamental problem: <strong>The core of science has never been papers — it has always been experimental data.</strong></p>
+
+<p>Wang Jian argued that current AI for Science remains stuck at "having AI read published papers." The training material is what he called "second-hand processed data" — knowledge that scientists have already interpreted, filtered, and written down. In his words, the AI community's deepest blind spot is this: today's models do not absorb, understand, or analyze raw scientific data. They only consume the finished products of human comprehension.</p>
+
+<p>It is like trying to know a person solely through someone else's description. You might grasp their outline, but you will never truly meet them.</p>
+
+<h2 id="literature">2. This Is Not Just Talk — A Paper Already Showed the Direction</h2>
+
+<p>In September 2023, a comprehensive survey paper posted on arXiv systematically reviewed the development of Geoscience Foundation Models (GFMs).<sup class="ref"><a href="#ref2">[2]</a></sup> The paper noted that Earth system data spans spectral, gravity, meteorological, and seismic modalities — heterogeneous data types that traditional AI models struggle to handle. GFMs' unique advantages lie in flexible task specification, diverse input-output capabilities, and multi-modal knowledge representation.</p>
+
+<p>The conceptual alignment with Wang Jian's vision of a Scientific Foundation Model (SFM) — which he presented at WAIC 2026 — is striking. Both point toward the same insight: general-purpose language models cannot directly process the raw, multi-modal data that drives real scientific discovery.</p>
+
+<h2 id="geologist">3. A Geologist's Map, A Language Model's Blind Spot</h2>
+
+<p>Let's make this abstract problem concrete.</p>
+
+<p>Imagine you are a geologist standing in front of a billion-year-old rock formation. You see color, texture, grain patterns. You scan it with a spectrometer, take electromagnetic readings, drill cores to analyze sedimentary layers — thousands of reports, tens of thousands of photographs, decades of observation records. This is the "raw data" you actually care about as a scientist.</p>
+
+<p>Can today's large language model "understand" this data?</p>
+
+<p>No. Because LLMs are fundamentally designed for text. Feed an LLM a geological map — it sees not the language of strata, but pixel arrays in a JPEG compression. Feed it seismic wave data — it sees a string of meaningless numbers.</p>
+
+<p>NASA's Earth Science Data Systems faced the same dilemma. In a blog post published in December 2023, NASA's IMPACT team described efforts to systematically integrate AI into every phase of the scientific data lifecycle — acquisition, processing, and analysis.<sup class="ref"><a href="#ref3">[3]</a></sup> The core challenge: the diversity and heterogeneity of scientific data makes general-purpose AI models difficult to apply directly. NASA's approach has been to build domain-specific foundation models for Earth science, rather than retrofitting general-purpose LLMs.</p>
+
+<p><strong>What AI for Science really lacks is not algorithms — it is data-level infrastructure.</strong></p>
+
+<h2 id="tokenization">4. The Tokenization Revolution</h2>
+
+<p>In the 7th century, Latin and classical Chinese had neither punctuation nor spaces between words. To read a text, you had to read it aloud, relying on syllable rhythm to infer where words and sentences began and ended. Reading was an auditory activity, not a visual one.</p>
+
+<p>Centuries later, Irish monks inserted spaces between words. This seemingly trivial innovation transformed reading from "vocal deciphering" to "silent comprehension." The time to read a book shrank from days to hours. It is no exaggeration to say that this single change enabled the birth of the university.</p>
+
+<p>Wang Jian's metaphor: the core technology behind large language models — <strong>tokenization</strong> — is essentially the same act of adding spaces. This time, the spaces are added between bytes rather than between words.</p>
+
+<p>Tokenization enabled LLMs to understand language. Code tokenization enabled AI to program.</p>
+
+<p><strong>What about scientific data?</strong></p>
+
+<p>In November 2025, Collins Dictionary named "Vibe Coding" its Word of the Year. Collins' official definition: "the use of artificial intelligence prompted by natural language to assist with the writing of computer code."<sup class="ref"><a href="#ref4">[4]</a></sup> The term was coined by AI pioneer and OpenAI co-founder Andrej Karpathy in February 2025, describing a mode of programming where "you fully give in to the vibes, embrace exponentials, and forget that the code even exists."</p>
+
+<p>Wang Jian referenced this during his WAIC speech and drew a deeper conclusion: <strong>when code can be "written" as naturally as speech, programming is transitioning from a professional vocation into a universal literacy.</strong> Just as writing itself evolved from a scribe's trade to everyone's basic skill centuries ago.</p>
+
+<p>The mission of a Scientific Foundation Model is to bring the same tokenization revolution to scientific data. By unifying Language, Code, and Scientific Data within a shared high-dimensional token representation space, AI can begin to identify cross-disciplinary correlations that no human eye could ever see.</p>
+
+<h2 id="product">5. ScienceOne Omni 2.0: The Framework Is Already Here</h2>
+
+<p>Wang Jian laid out the vision. The Chinese Academy of Sciences delivered the product.</p>
+
+<p>On July 17, 2026 — the opening day of WAIC 2026 — the CAS released the 2.0 upgrade of its ScienceOne Omni scientific foundation model.<sup class="ref"><a href="#ref5">[5]</a></sup> According to People's Daily (via Xinhua), the model was developed by a joint CAS-led team as a specialized intelligent foundation model for scientific tasks, and has already been deployed in mechanics, astronomy, and chemistry.</p>
+
+<p>Based on this foundation model, the R&D team built an integrated scientific research intelligent platform that provides common intelligent services across application scenarios and supports researchers in customizing specialized models and scientific intelligent agents on demand. Multiple intelligent agents developed from the model have been deployed at scale and are undergoing iterative upgrades.</p>
+
+<p>The team also constructed 8 million high-quality scientific reasoning data points covering over 200 tasks, and built a heterogeneous computing system combining "supercomputing + intelligent computing + fast computing" that can rapidly execute molecular dynamics, quantum chemistry, and other simulation tasks.</p>
+
+<p>ScienceOne Omni was first launched in July 2025 — exactly one year earlier. The 2.0 upgrade within twelve months signals that this is not a proof-of-concept demo, but an actively iterating product.</p>
+
+<p><strong>The Scientific Foundation Model is transitioning from vision to engineering reality.</strong></p>
+
+<h2 id="golab">6. The "Super Research Factory": 135 Tasks in 5 Days, 99% Completion</h2>
+
+<p>In a parallel session at WAIC, the Shanghai Academy of Scientific Intelligence (Shanghai Key Lab) and its spin-off firm Gewuzhiyan unveiled something even more tangible: <strong>Golab</strong>, a self-driving materials science research factory.</p>
+
+<p>What is a self-driving lab?</p>
+
+<p>In April 2025, the Abolhasani group at North Carolina State University published a perspective paper in <em>Nature Communications</em> outlining the vision for Self-Driving Labs (SDLs).<sup class="ref"><a href="#ref6">[6]</a></sup> The core thesis: SDLs will serve as collaborators for human researchers, using AI-driven robotic experimental systems to dramatically shorten the cycle from experimental design to conclusion.</p>
+
+<p>The Golab team turned this vision into reality.</p>
+
+<p>Their approach: a fully automated "dry-wet lab closed loop." Dry lab work (computation, simulation, prediction) and wet lab work (test tubes, culture dishes, actual chemical reactions) are linked autonomously by AI. In traditional research, a computational scientist makes a prediction, emails the lab team, waits weeks for results, iterates through feedback — cycle times measured in months. Golab compressed this to hours.</p>
+
+<p>During a public "100-Marathon" demo, the system autonomously completed <strong>135 real scientific research tasks in five days</strong>, covering energy, materials, and pharmaceutical domains. 100 dry lab tasks ran in parallel, with selected tasks transitioning to physical experiments.</p>
+
+<p>AI tool invocation accuracy reached 100%, and overall completion rate exceeded 99%.</p>
+
+<p>The catalyst optimization case was most striking. In Round One, the AI-predicted reaction scheme yielded approximately 15% improvement in catalyst activity — the AI recorded this result and automatically adjusted molecular designs. In Round Two, the optimized reaction achieved roughly six times the activity reported in prior literature. The AI learned, iterated, and improved with almost no human involvement.</p>
+
+<p>Earlier in July 2025, ScienceDaily reported a related breakthrough from North Carolina State University: a novel self-driving lab using dynamic flow experiments generated at least 10 times more data than steady-state alternatives, and identified the best material candidates on the very first try after training.<sup class="ref"><a href="#ref7">[7]</a></sup></p>
+
+<p>AI-driven self-driving labs are becoming a global race — and the results shown at WAIC 2026 place China near the front of the pack.</p>
+
+<h2 id="disciplines">7. "Interdisciplinary Research Is Disappearing"</h2>
+
+<p>During the Scientific Open Forum on AI for Science held on July 18 — the second day of WAIC — Wang Jian presented a bolder proposition.<sup class="ref"><a href="#ref9">[9]</a></sup></p>
+
+<p>"Science as a whole — not carved into fragmented disciplines."</p>
+
+<p>If AI can simultaneously find common latent patterns across the underlying data of physics, chemistry, and biology, then the term "interdisciplinary" itself becomes redundant. Just as we do not say "inter-linguist" — because linguists inherently work with multiple languages.</p>
+
+<p>Wang Jian proposed reframing STEM as <strong>STE + MAP</strong>: Science, Technology, Engineering + Mathematics, AI, and Public Facilities. AI, he argued, "is becoming as foundational as mathematics."<sup class="ref"><a href="#ref9">[9]</a></sup> It is no longer a separate skill to acquire — it is a default capability, like using a calculator.</p>
+
+<h2 id="human">8. Humans Are Still Here — But Roles Are Shifting</h2>
+
+<p>The deeper technology advances, the sharper the questions become.</p>
+
+<p>During the roundtable discussion, two contrasting views emerged:</p>
+
+<p><strong>View One:</strong> "Can AI truly 'think out of the box'?" Currently, AI can verify hypotheses and optimize solutions within established frameworks. But proposing a fundamentally new theoretical paradigm — like Einstein's relativity — remains something AI cannot yet do.</p>
+
+<p><strong>View Two:</strong> "Humans also innovate by building on existing knowledge. If machines can learn existing knowledge, why can't they innovate?" The real difference may lie in what question to ask — humans can choose which questions are worth pursuing, while AI can only answer questions already posed. But AlphaFold's success also shows that AI can discover correlations from existing data that humans never noticed — is that already a form of "new questioning"? The answer is not binary.</p>
+
+<p>The middle ground of this debate is the framework Wang Jian established from the start: <strong>Amplified Intelligence</strong>.</p>
+
+<p>Wang Jian has repeatedly emphasized that "AI is not replacing humans — it is serving humans."<sup class="ref"><a href="#ref9">[9]</a></sup> AI is not here to do what scientists can already do — it is here to do what scientists cannot do.</p>
+
+<p>What can't scientists do?</p>
+
+<p>Process genetic sequences, astronomical images, geological cross-sections, and weather radar data simultaneously in a single high-dimensional space, then identify correlations that no human could ever find.</p>
+
+<p>Abolhasani made the same point in his April 2025 <em>Nature Communications</em> paper: "Self-driving labs will serve as collaborators for human researchers, significantly reducing the time and cost required to reach scientific solutions."<sup class="ref"><a href="#ref6">[6]</a></sup></p>
+
+<p><strong>AI is an amplified research partner — not a replacement.</strong></p>
+
+<h2 id="conclusion">9. July 2026, Shanghai: The Direction Is Clear</h2>
+
+<p>WAIC 2026 carried additional strategic weight. According to data released by Pan Yan, deputy director of the Shanghai Commission of Economy and Informatization, Shanghai's AI sector reached 394 designated AI enterprises (each with annual revenue above 20 million yuan) in 2025, with a combined industry scale of 637 billion yuan, up 39.5% year-on-year.<sup class="ref"><a href="#ref8">[8]</a></sup></p>
+
+<p>This is no longer an academic concept under discussion. It is a construction project already underway.</p>
+
+<p>From the launch of ScienceOne Omni 2.0 to Golab's >99% completion rate in the 100-Marathon, from the mainstreaming of Vibe Coding to the global competition in self-driving labs — the signal from WAIC 2026 could not be clearer:</p>
+
+<p><strong>The moment AI redefines science is closer than anyone expects.</strong></p>
+
+<p>And this time, AI is no longer reading papers.</p>
+
+<h2 id="refs">References</h2> <ol class="ref-list">   <li id="ref1"><strong>Computational protein design and protein structure prediction win Nobel Prize in Chemistry</strong> — European Molecular Biology Laboratory (EMBL), 2024-10 (<a href="https://www.embl.org/news/science-technology/alphafold-wins-nobel-prize-chemistry-2024">embl.org</a>); <strong>Jumper, J. et al., "Highly accurate protein structure prediction with AlphaFold"</strong> — <em>Nature</em>, 2021, Vol. 596, pp. 583–589 (DOI: <a href="https://doi.org/10.1038/s41586-021-03819-2">10.1038/s41586-021-03819-2</a>); <strong>Nobel Prize in Chemistry 2024</strong> — NobelPrize.org, 2024-10-09 (<a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/">nobelprize.org</a>). Note: the prize was shared by David Baker (computational protein design) and jointly by Demis Hassabis and John Jumper (protein structure prediction).</li>   <li id="ref2"><strong>Zhang, H. et al., "When Geoscience Meets Foundation Models: Towards General Geoscience Artificial Intelligence System"</strong> — arXiv:2309.06799, 2023-09 (<a href="https://arxiv.org/abs/2309.06799">arxiv.org</a>).</li>   <li id="ref3"><strong>Ramachandran, R., "AI Foundation Models to Augment Scientific Data and the Research Lifecycle"</strong> — NASA Earthdata Blog, 2023-12-07 (<a href="https://www.earthdata.nasa.gov/news/blog/ai-foundation-models-augment-scientific-data-research-lifecycle">earthdata.nasa.gov</a>).</li>   <li id="ref4"><strong>"'Vibe coding' named Collins Dictionary's Word of the Year"</strong> — CNN Business, 2025-11-06 (<a href="https://www.cnn.com/2025/11/06/tech/vibe-coding-collins-word-of-the-year">cnn.com</a>). The term was coined by Andrej Karpathy in February 2025.</li>   <li id="ref5"><strong>"China launches upgraded ScienceOne Omni scientific foundation model"</strong> — People's Daily Online (Xinhua), 2026-07-18 (<a href="https://en.people.cn/n3/2026/0718/c90000-20479272.html">en.people.cn</a>).</li>   <li id="ref6"><strong>Canty, R.B., Abolhasani, M. et al., "Science acceleration and accessibility with self-driving labs"</strong> — <em>Nature Communications</em>, 2025-04-24, Vol. 16, Article 3856 (DOI: <a href="https://doi.org/10.1038/s41467-025-59231-1">10.1038/s41467-025-59231-1</a>).</li>   <li id="ref7"><strong>"This AI-powered lab runs itself—and discovers new materials faster than ever"</strong> — ScienceDaily / North Carolina State University, 2025-07-14 (<a href="https://www.sciencedaily.com/releases/2025/07/250714052105.htm">sciencedaily.com</a>).</li>   <li id="ref8"><strong>"Shanghai Aims to 'Unlock' Big Ideas of AI"</strong> — CityNewsService, 2026-04-29 (<a href="https://www.citynewsservice.cn/articles/cns/city-news/shanghai-aims-to-unlock-big-ideas-of-ai-5nq5o08n">citynewsservice.cn</a>). Data released by Pan Yan, Deputy Director of Shanghai Commission of Economy and Informatization.</li>   <li id="ref9">WAIC 2026 main forum (2026-07-17) and Scientific Open Forum on AI for Science (2026-07-18), co-hosted by Fudan University and Shanghai Academy of Scientific Intelligence. Wang Jian's keynote: "Scientific Foundation Model: Science as a Whole," with the proposal of "STEM to STE+MAP." See Xinmin Evening News / Sina Tech reporting (<a href="https://finance.sina.cn/stock/jdts/2026-07-19/detail-iniihzch1178759.d.html">sina.cn</a>).</li> </ol>
+
+</article>

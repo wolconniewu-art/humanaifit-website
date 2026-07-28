@@ -1,4 +1,3 @@
-# SKIP_BUILD=true
 #!/bin/bash
 # deploy_humanaifit.sh — 一键构建 + Wrangler部署 + Purge Cache + 线上验证
 # 
@@ -96,7 +95,7 @@ python3 scripts/auto_sync_check.py || true
 # ---- Step 1: 构建 ----
 echo ""
 echo "Step 1: 构建..."
-true # skip
+npm run build
 echo "   ✅ 构建成功"
 
 # ---- Step 2: Wrangler 部署 ----

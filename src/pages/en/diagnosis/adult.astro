@@ -1,0 +1,512 @@
+---
+// English Adult "AI Workplace Diagnosis"
+// 26-question quiz → 8-dimension 3-tier scoring → "Action of the Day" → Paywall
+// Pure frontend, no API dependency
+//
+
+export const prerender = true;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Workplace Diagnosis — humanaifit</title>
+  <meta name="description" content="27 questions, 8 dimensions: assess your true AI competitiveness at work. Free, no registration." />
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f8f7f4; color:#1a1a1a; }
+    .container { max-width:640px; margin:0 auto; padding:20px 16px; }
+    .page { animation:fadeIn 0.25s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .hero-icon { font-size:48px; text-align:center; margin:40px 0 12px; }
+    .hero-desc { text-align:center; font-size:15px; color:#555; line-height:1.8; margin-bottom:24px; }
+    .feature-list { margin:20px 0; }
+    .feature-item { display:flex; align-items:center; gap:10px; margin-bottom:14px; font-size:14px; color:#444; line-height:1.5; }
+    .feature-item span strong { color:#0F2B46; }
+    .btn-start {
+      display:block; width:100%; padding:16px; background:linear-gradient(135deg,#0F2B46,#1a3f64); color:#fff;
+      border:none; border-radius:12px; font-size:18px; font-weight:700; cursor:pointer; transition:transform .15s;
+      margin:24px 0 12px;
+    }
+    .btn-start:hover { transform:scale(1.02); }
+    .btn-start:active { transform:scale(0.98); }
+    .free-tag { text-align:center; font-size:13px; color:#999; }
+    .quiz-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+    .q-progress-text { font-size:14px; color:#666; flex-shrink:0; }
+    .progress-track { flex:1; height:6px; background:#e5e7eb; border-radius:3px; overflow:hidden; }
+    .progress-fill { height:100%; background:#3b82f6; border-radius:3px; transition:width .3s; }
+    .q-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; margin-bottom:16px; }
+    .stem { font-size:18px; line-height:1.6; margin:0 0 24px; font-weight:500; color:#1a1a1a; }
+    .options { display:flex; flex-direction:column; gap:8px; }
+    .option {
+      display:flex; align-items:center; gap:12px; padding:12px 16px; border:1px solid #e5e7eb;
+      border-radius:8px; cursor:pointer; transition:all .15s; font-size:16px; color:#333;
+    }
+    .option:hover { background:#f5f5f5; }
+    .option.selected { background:#e8f4fd; border-color:#3b82f6; border-left:3px solid #3b82f6; }
+    .option-radio { font-size:20px; color:#3b82f6; width:20px; text-align:center; }
+    .q-footer-text { text-align:center; font-size:12px; color:#999; margin-top:12px; }
+    .nav-btns { display:flex; justify-content:space-between; gap:12px; }
+    .btn { padding:12px 24px; border-radius:8px; border:none; font-size:16px; font-weight:600; cursor:pointer; transition:all .15s; }
+    .btn:disabled { opacity:0.4; cursor:not-allowed; }
+    .btn-pri { background:#3b82f6; color:#fff; }
+    .btn-pri:hover:not(:disabled) { background:#2563eb; }
+    .btn-sec { background:#f5f5f5; color:#333; }
+    .btn-sec:hover:not(:disabled) { background:#e5e7eb; }
+    .result-container { padding-bottom:60px; }
+    .result-title { font-size:22px; text-align:center; margin:20px 0; color:#0F2B46; }
+    .layer-block { margin-bottom:24px; }
+    .layer-header {
+      padding:8px 12px; background:#f0f0f0; border-radius:6px;
+      font-size:13px; color:#666; font-weight:600; margin-bottom:8px;
+    }
+    .dim-row {
+      display:flex; align-items:center; gap:10px; padding:6px 8px; margin-bottom:4px;
+    }
+    .dim-name { width:90px; font-size:14px; color:#333; font-weight:500; flex-shrink:0; }
+    .dim-bar-bg { flex:1; height:14px; background:#e5e7eb; border-radius:7px; overflow:hidden; }
+    .dim-bar-fill { height:100%; border-radius:7px; transition:width .8s ease; }
+    .dim-score { width:44px; text-align:right; font-size:14px; font-weight:600; color:#1a1a1a; flex-shrink:0; }
+    .dim-badge { font-size:11px; width:24px; text-align:center; flex-shrink:0; }
+    .layer-total { font-size:13px; color:#888; text-align:right; margin-bottom:6px; }
+    .layer-total strong { color:#333; }
+    .weakness-box {
+      background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:16px; margin:20px 0;
+      text-align:center;
+    }
+    .weakness-box h3 { font-size:16px; color:#0F2B46; margin-bottom:4px; }
+    .weakness-box p { font-size:14px; color:#555; }
+    .cta-box {
+      background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:20px; margin:20px 0; text-align:center;
+    }
+    .cta-box h3 { font-size:16px; margin-bottom:6px; color:#0F2B46; }
+    .cta-box p { font-size:14px; color:#555; margin-bottom:12px; line-height:1.6; }
+    .cta-prompt-box {
+      background:#fff; border:1px solid #d1d5db; border-radius:8px; padding:12px; margin:12px 0;
+      font-size:14px; color:#333; text-align:left;
+    }
+    .cta-btn { padding:12px 24px; border-radius:8px; border:none; font-size:15px; font-weight:600; cursor:pointer; margin:4px; }
+    .cta-btn-blue { background:#3b82f6; color:#fff; }
+    .cta-btn-blue:hover { background:#2563eb; }
+    .cta-btn-green { background:#22c55e; color:#fff; }
+    .cta-btn-green:hover { background:#16a34a; }
+    .cta-btn-ghost { background:transparent; color:#3b82f6; border:1px solid #3b82f6; }
+    .paywall {
+      background:#fff; border:2px solid #C9A96E; border-radius:12px; padding:20px; margin:20px 0; text-align:center;
+    }
+    .paywall h3 { font-size:18px; color:#0F2B46; margin-bottom:4px; }
+    .paywall .price { font-size:28px; font-weight:700; color:#C9A96E; margin:8px 0; }
+    .paywall ul { list-style:none; padding:0; margin:12px 0; font-size:13px; color:#555; text-align:left; }
+    .paywall ul li { padding:4px 0; padding-left:20px; position:relative; }
+    .paywall ul li::before { content:'✅'; position:absolute; left:0; }
+    .feedback-ring { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin:16px 0; }
+    .feedback-ring h4 { font-size:15px; margin-bottom:8px; }
+    .feedback-btn { display:block; width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; margin:6px 0; font-size:14px; cursor:pointer; background:#f9fafb; text-align:left; }
+    .feedback-btn:hover { background:#f0f0f0; }
+    .transition-page { text-align:center; padding:40px 16px; }
+    .transition-page h2 { font-size:22px; color:#0F2B46; margin:16px 0; }
+    .transition-page p { font-size:15px; color:#555; line-height:1.8; margin-bottom:20px; }
+    @media(max-width:480px) {
+      .dim-name { width:70px; font-size:12px; }
+      .dim-score { width:36px; font-size:12px; }
+      .stem { font-size:16px; }
+      .option { font-size:14px; }
+    }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <!-- Start Page -->
+    <div id="start-page" class="page">
+      <div class="container">
+        <div class="hero-icon">📊</div>
+        <h1>AI Workplace Diagnosis</h1>
+        <p class="hero-desc"><strong>26 multiple-choice questions</strong> across 8 dimensions to assess your true AI competitiveness at work.</p>
+        <div class="feature-list">
+          <div class="feature-item">🧩 <span><strong>8D Assessment</strong> — From Tool Competency to Self-Awareness</span></div>
+          <div class="feature-item">📊 <span><strong>3-Tier Visualization</strong> — Base / Advanced / Leadership</span></div>
+          <div class="feature-item">⚡ <span><strong>10 min to complete</strong> — Instant feedback at every step</span></div>
+          <div class="feature-item">🎯 <span><strong>First Action</strong> — Know what to do today after seeing results</span></div>
+          <div class="feature-item">🎓 <span><strong>3-Step Action</strong> — Copy → Try → Share</span></div>
+        </div>
+        <button id="start-btn" class="btn-start">Start Diagnosis →</button>
+        <p class="free-tag">Free · No registration</p>
+      </div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quiz-page" class="page" style="display:none">
+      <div class="container">
+        <div class="quiz-header">
+          <span id="q-progress" class="q-progress-text">Q 1</span>
+          <div class="progress-track"><div id="q-progress-fill" class="progress-fill" style="width:5%"></div></div>
+        </div>
+        <div id="q-card" class="q-card"></div>
+        <div class="nav-btns">
+          <button id="prev-btn" class="btn btn-sec" disabled>← Prev</button>
+          <button id="next-btn" class="btn btn-pri" disabled>Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Page -->
+    <div id="result-page" class="page" style="display:none">
+      <div class="container result-container">
+        <h2 class="result-title">📊 Your AI Workplace Diagnosis Report</h2>
+        <div id="result-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Payment modal -->
+  <div id="payment-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10000;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:16px;padding:24px;max-width:380px;width:90%;text-align:center;position:relative;">
+      <button onclick="closeAdultPayment()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#999;">✕</button>
+      
+      <!-- Tier selection -->
+      <div id="pay-tier-selection">
+        <!-- Tier 1: $29 Report -->
+        <div onclick="showAdultPayTier('report')" style="border:2px solid #e5e7eb;border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#e5e7eb'">
+          <h3 style="font-size:16px;color:#0F2B46;margin:0 0 4px;">📋 Full Diagnosis Report</h3>
+          <p style="font-size:28px;font-weight:700;color:#C9A96E;margin:4px 0;">$29</p>
+          <ul style="list-style:none;padding:0;margin:4px 0;font-size:12px;color:#555;text-align:left;display:inline-block;">
+            <li>✅ Complete 8D scores + analysis</li>
+            <li>✅ W1-W4 full action cards</li>
+            <li>✅ Peer comparison</li>
+            <li>✅ Improvement plan</li>
+          </ul>
+        </div>
+
+        <!-- Tier 2: $199/year Knowledge Planet -->
+        <div onclick="showAdultPayTier('planet')" style="border:2px solid #C9A96E;border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;background:#fffbf0;transition:all 0.2s;" onmouseover="this.style.borderColor='#0F2B46'" onmouseout="this.style.borderColor='#C9A96E'">
+          <h3 style="font-size:16px;color:#0F2B46;margin:0 0 4px;">🌟 《AI Era Survival Guide》Knowledge Planet</h3>
+          <p style="font-size:28px;font-weight:700;color:#C9A96E;margin:4px 0;">$199<span style="font-size:14px;font-weight:400;color:#888;">/year</span></p>
+          <ul style="list-style:none;padding:0;margin:4px 0;font-size:12px;color:#555;text-align:left;display:inline-block;">
+            <li>✅ Full diagnosis report included</li>
+            <li>📌 Planet ID: 43035986</li>
+            <li>✅ Year-round action card pushes</li>
+            <li>✅ Monthly online workshops</li>
+            <li>✅ Community + expert Q&A</li>
+            <li>🎁 Beta: first 50 members</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment detail -->
+      <div id="pay-tier-detail" style="display:none;">
+        <h3 id="pay-detail-title" style="font-size:18px;color:#0F2B46;margin:0 0 4px;"></h3>
+        <p id="pay-detail-price" style="font-size:28px;font-weight:700;color:#C9A96E;margin:12px 0 4px;"></p>
+        <p style="font-size:13px;color:#666;margin-bottom:8px;">Scan WeChat to pay</p>
+        <img src="/images/wechat_pay.jpg" alt="WeChat Pay QR code" style="width:180px;height:180px;object-fit:cover;border-radius:8px;" />
+        <p style="font-size:12px;color:#e65100;margin:8px 0 4px;">💬 Contact us on WeChat after payment</p>
+        <p style="font-size:12px;color:#555;margin-bottom:4px;">Long-press to copy WeChat ID:</p>
+        <div style="background:#f5f5f5;padding:8px;border-radius:6px;font-size:14px;font-weight:600;color:#0F2B46;margin:4px 0;text-align:center;cursor:pointer;" onclick="navigator.clipboard.writeText('blurblurfish');alert('WeChat ID copied')">blurblurfish</div>
+        <p style="font-size:11px;color:#999;margin-top:8px;">After scanning, add us on WeChat with payment screenshot. We will activate manually.</p>
+        <button onclick="showAdultPayBack()" style="margin-top:8px;padding:6px 16px;background:none;border:none;font-size:13px;color:#3b82f6;cursor:pointer;">← Back to selection</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question bank data -->
+  <script id="adult-questions-data" type="application/json">[{"id": "AD-TC-E-001", "version": "adult_v2", "dimension": "ai_tool_competency", "difficulty": "easy", "stem": "You're new to AI and want it to help you write a work email. How would you phrase your instruction?", "options": [{"id": "A", "text": "Help me write an email", "score": 1}, {"id": "B", "text": "Write a client email about project delay, sincere yet professional", "score": 4}, {"id": "C", "text": "Write email", "score": 2}, {"id": "D", "text": "I don't use AI to write emails", "score": 0}], "theoreticalBasis": "TTF Framework (Goodhue & Thompson, 1995)——提示词越具体，任务-工具匹配度越高"}, {"id": "AD-TC-M-002", "version": "adult_v2", "dimension": "ai_tool_competency", "difficulty": "medium", "stem": "You need to (1) organize meeting minutes, (2) create charts, and (3) make PPT illustrations. Which tools for each?", "options": [{"id": "A", "text": "Use one AI tool for everything", "score": 1}, {"id": "B", "text": "Feishu docs for minutes, Kimi/Doubao + spreadsheets for charts, Yixin Yige/Tongyi Wanxiang for illustrations", "score": 4}, {"id": "C", "text": "Use regular software, do it all manually", "score": 2}, {"id": "D", "text": "Don't know what tools are available", "score": 0}], "theoreticalBasis": "AI Tool Ecosystem Awareness——了解工具的差异化优势是高效使用的起点"}, {"id": "AD-TC-H-003", "version": "adult_v2", "dimension": "ai_tool_competency", "difficulty": "hard", "stem": "Finish a competitive research report in 2 hours covering 10 competitors. How do you combine AI tools?", "options": [{"id": "A", "text": "Let one AI do everything", "score": 1}, {"id": "B", "text": "One AI for data → another for comparison table → yourself for conclusion", "score": 4}, {"id": "C", "text": "Mostly yourself, AI only for polish", "score": 2}, {"id": "D", "text": "No AI, search and write manually", "score": 0}], "theoreticalBasis": "AI Tool Chain——分步式工具链（pipeline）可提升复杂任务效率"}, {"id": "AD-DD-E-001", "version": "adult_v2", "dimension": "data_decision", "difficulty": "easy", "stem": "AI says: \"90% customer satisfaction comes from price advantage.\" What do you do?", "options": [{"id": "A", "text": "Data-backed, so it's trustworthy", "score": 1}, {"id": "B", "text": "Verify data source, sample size, and selection method first", "score": 4}, {"id": "C", "text": "Not sure, can't be bothered", "score": 2}, {"id": "D", "text": "AI is making things up", "score": 0}], "theoreticalBasis": "Critical Thinking (Facione, 1990)——对数据结论的源头质疑是批判性思维的核心"}, {"id": "AD-DD-M-002", "version": "adult_v2", "dimension": "data_decision", "difficulty": "medium", "stem": "AI built a prediction model on 3 years of monthly sales data. What should you check most before using it?", "options": [{"id": "A", "text": "Whether data covers holidays and special dates", "score": 4}, {"id": "B", "text": "Whether decimal places are accurate", "score": 1}, {"id": "C", "text": "Whether chart colors look good", "score": 0}, {"id": "D", "text": "What programming language AI used", "score": 2}], "theoreticalBasis": "Data Literacy (Mandinach & Gummer, 2016)——数据覆盖面的完整性比模型精度更关键"}, {"id": "AD-DD-H-003", "version": "adult_v2", "dimension": "data_decision", "difficulty": "hard", "stem": "AI predicts 30% growth next quarter based on 3 years of data. What do you do?", "options": [{"id": "A", "text": "Trust and stock up 30%", "score": 1}, {"id": "B", "text": "Check if data includes recent market changes", "score": 4}, {"id": "C", "text": "Ask AI to build a more complex model", "score": 3}, {"id": "D", "text": "Completely ignore the prediction", "score": 0}], "theoreticalBasis": "Data-Driven Decision Validation——历史数据无法完全代表未预料的市场变化"}, {"id": "AD-WF-E-001", "version": "adult_v2", "dimension": "workflow_design", "difficulty": "easy", "stem": "Writing a weekly report. Which division of labor makes most sense?", "options": [{"id": "A", "text": "Let AI do all of it", "score": 1}, {"id": "B", "text": "I set the framework → AI fills details → I review", "score": 4}, {"id": "C", "text": "I write → AI polishes wording", "score": 3}, {"id": "D", "text": "Don't consider AI at all", "score": 0}], "theoreticalBasis": "Task-Technology Fit——人负责创造和决策，AI负责执行和填充"}, {"id": "AD-WF-M-002", "version": "adult_v2", "dimension": "workflow_design", "difficulty": "medium", "stem": "A full market research task: ① define direction → ② collect data → ③ analyze → ④ write report → ⑤ present. Which steps suit AI best?", "options": [{"id": "A", "text": "②③④ (Data collection + analysis + report)", "score": 4}, {"id": "B", "text": "All of them", "score": 2}, {"id": "C", "text": "Only ④ (Report writing)", "score": 1}, {"id": "D", "text": "None are suitable", "score": 0}], "theoreticalBasis": "Human-AI Division Strategy——方向判断和结果汇报仍依赖人的经验"}, {"id": "AD-WF-H-003", "version": "adult_v2", "dimension": "workflow_design", "difficulty": "hard", "stem": "Your daily workflow: emails → messages → slides → coding → meetings. How can AI Agents optimize this?", "options": [{"id": "A", "text": "One Agent handles everything", "score": 1}, {"id": "B", "text": "Design different Agents for different task types, then aggregate", "score": 4}, {"id": "C", "text": "Use AI assistants without automation", "score": 2}, {"id": "D", "text": "Never heard of AI Agent", "score": 0}], "theoreticalBasis": "AI Agent Architecture——任务类型多样化时，多Agent分工优于单Agent全能"}, {"id": "AD-CR-E-001", "version": "adult_v2", "dimension": "ai_creativity", "difficulty": "easy", "stem": "Need a tagline for a new product. What's the simplest approach?", "options": [{"id": "A", "text": "Let AI generate and pick one", "score": 2}, {"id": "B", "text": "Clarify product highlights first, ask AI for 3 directions, pick and refine", "score": 4}, {"id": "C", "text": "Write it myself — AI writing has no soul", "score": 1}, {"id": "D", "text": "Never thought of using AI for creative work", "score": 0}], "theoreticalBasis": "Human-AI Co-Creation (Davis, 2024)——创意工作中AI提供发散，人负责收敛和判断"}, {"id": "AD-CR-M-002", "version": "adult_v2", "dimension": "ai_creativity", "difficulty": "medium", "stem": "AI-written copy feels 'too AI-like.' How do you improve it?", "options": [{"id": "A", "text": "Keep generating until I find one I like", "score": 2}, {"id": "B", "text": "Give AI a specific brand tone reference (e.g., tone like Apple ads)", "score": 4}, {"id": "C", "text": "Give up on AI, write it myself", "score": 1}, {"id": "D", "text": "Try a different AI tool", "score": 0}], "theoreticalBasis": "Iterative Prompt Engineering——调性参照能有效降低AI输出的同质化"}, {"id": "AD-CR-M-003", "version": "adult_v2", "dimension": "ai_creativity", "difficulty": "medium", "stem": "AI generated a proposal but the direction is off. Best course of action?", "options": [{"id": "A", "text": "Keep AI content and submit as is", "score": 1}, {"id": "B", "text": "Delete AI content and redo", "score": 2}, {"id": "C", "text": "Tell AI, 'Wrong direction, rethink from XX angle'", "score": 4}, {"id": "D", "text": "Switch tools and regenerate", "score": 0}], "theoreticalBasis": "Iterative Prompt Engineering——给AI反馈方向比盲目重生成更高效"}, {"id": "AD-JD-E-001", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "easy", "stem": "AI claims to know obscure facts you've never heard of. Most reasonable response?", "options": [{"id": "A", "text": "Trust AI directly", "score": 1}, {"id": "B", "text": "Find it interesting but verify yourself", "score": 4}, {"id": "C", "text": "Uncertain, leave it", "score": 2}, {"id": "D", "text": "AI is lying", "score": 0}], "theoreticalBasis": "AI Output Credibility Assessment——AI可能出现幻觉，交叉验证是基本素养"}, {"id": "AD-JD-M-002", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "medium", "stem": "AI says: \"WHO data shows global depression rates up 15%.\" What do you do?", "options": [{"id": "A", "text": "WHO data should be reliable, cite directly", "score": 1}, {"id": "B", "text": "Search \"WHO depression\" to verify first", "score": 4}, {"id": "C", "text": "Sense something wrong but can't explain", "score": 2}, {"id": "D", "text": "Trust AI wouldn't make things up", "score": 0}], "theoreticalBasis": "AI Output Credibility Assessment——即使引用权威机构，也应验证出处和时效性"}, {"id": "AD-JD-M-004", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "medium", "stem": "You find AI's competitor report wrongly cited internal data. What do you do?", "options": [{"id": "A", "text": "No one will know, just use it", "score": 0}, {"id": "B", "text": "Delete inaccurate data, keep the rest", "score": 2}, {"id": "C", "text": "Note \"cannot be verified, for reference only\"", "score": 3}, {"id": "D", "text": "Discard the entire report", "score": 4}], "theoreticalBasis": "AI Ethics (Floridi et al., 2018)——使用不可核实的数据存在专业和声誉风险"}, {"id": "AD-JD-H-003", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "hard", "stem": "AI ranked employee performance and suggests layoffs. What must you do first?", "options": [{"id": "A", "text": "Adopt directly", "score": 1}, {"id": "B", "text": "Check if ranking dimensions are fair and unbiased", "score": 4}, {"id": "C", "text": "Reference AI but decide yourself", "score": 3}, {"id": "D", "text": "Don't use AI for HR decisions", "score": 0}], "theoreticalBasis": "AI Ethics (Floridi et al., 2018)——涉及人的决策必须检查算法公平性和偏见"}, {"id": "AD-HC-E-001", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "easy", "stem": "Tight timeline: ① strategy ② minutes ③ charts. How do you divide work with AI?", "options": [{"id": "A", "text": "Do it all myself — AI unreliable", "score": 1}, {"id": "B", "text": "AI does ① ② ③ — AI can do anything", "score": 0}, {"id": "C", "text": "I strategize → AI takes minutes + makes charts → I review", "score": 4}, {"id": "D", "text": "Ask colleague to help", "score": 2}], "theoreticalBasis": "Human-AI Division Principles——需要创造力和判断的任务留给人，执行性任务交给AI"}, {"id": "AD-HC-M-002", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "medium", "stem": "AI wrote a plan, direction is off. What do you analyze first?", "options": [{"id": "A", "text": "First figure out: unclear instructions or AI can't handle this problem?", "score": 4}, {"id": "B", "text": "Rewrite the prompt", "score": 3}, {"id": "C", "text": "Switch AI tools and ask again", "score": 1}, {"id": "D", "text": "Forget it, I'll write it myself", "score": 0}], "theoreticalBasis": "In-Process Metacognition——区分【指令问题】和【AI能力边界】是高效协作的前提"}, {"id": "AD-HC-M-005", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "medium", "stem": "Team discussing a new project. AI can quickly gather cases. Best approach?", "options": [{"id": "A", "text": "Gather myself so the team doesn't rely on AI", "score": 1}, {"id": "B", "text": "AI gathers 3-5 cases as discussion starting point, team deepens from there", "score": 4}, {"id": "C", "text": "AI generates full plan, everyone reviews", "score": 2}, {"id": "D", "text": "Team discusses first, AI validates last", "score": 0}], "theoreticalBasis": "Human-AI Collaboration——AI提供信息输入，人的集体智慧负责分析决策"}, {"id": "AD-HC-H-003", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "hard", "stem": "A colleague resists AI but you know it saves time. What do you do?", "options": [{"id": "A", "text": "Use AI yourself, share results without mentioning AI", "score": 2}, {"id": "B", "text": "Pick a small task, demonstrate AI's effect, let them see firsthand", "score": 4}, {"id": "C", "text": "Ask management to mandate AI usage", "score": 1}, {"id": "D", "text": "Respect their choice not to use AI", "score": 0}], "theoreticalBasis": "AI Team Collaboration——小范围实证比行政命令更能改变同事的AI态度"}, {"id": "AD-ST-E-001", "version": "adult_v2", "dimension": "ai_strategy", "difficulty": "easy", "stem": "You hear \"AI Agents will replace many customer service jobs.\" Your assessment?", "options": [{"id": "A", "text": "Must be true — technology is advancing too fast", "score": 1}, {"id": "B", "text": "Analyze which parts of CS can be automated and which need humans", "score": 4}, {"id": "C", "text": "Not sure", "score": 2}, {"id": "D", "text": "Has nothing to do with me", "score": 0}], "theoreticalBasis": "Critical Analysis of Technology Trends——对技术趋势的判断需区分【可自动化】和【应保留人】的边界"}, {"id": "AD-ST-M-002", "version": "adult_v2", "dimension": "ai_strategy", "difficulty": "medium", "stem": "Company needs an AI+business direction. Which strategy do you prioritize?", "options": [{"id": "A", "text": "Invest in building an AI Agent platform", "score": 1}, {"id": "B", "text": "Find top 3 repetitive/error-prone processes, optimize with AI first", "score": 4}, {"id": "C", "text": "Buy the hottest AI SaaS tools for everyone", "score": 2}, {"id": "D", "text": "Wait for competitors to try first", "score": 0}], "theoreticalBasis": "Technology Adoption Theory (Rogers, 2003)——从痛点出发的小范围试点优于【先搭平台】的策略"}, {"id": "AD-ST-H-003", "version": "adult_v2", "dimension": "ai_strategy", "difficulty": "hard", "stem": "10-person team, limited budget. Leadership wants 30% efficiency boost via AI. How?", "options": [{"id": "A", "text": "Buy enterprise AI tools, train everyone", "score": 2}, {"id": "B", "text": "Pick 2-3 high-repetition pain points, pilot → verify → scale", "score": 4}, {"id": "C", "text": "Hire an AI expert to lead", "score": 1}, {"id": "D", "text": "Wait for more mature solutions", "score": 0}], "theoreticalBasis": "AI Strategy Evaluation——有限预算下【痛点驱动-小范围验证】优于【工具先行】"}, {"id": "AD-SA-E-001", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "easy", "stem": "Just finished a report with AI. Can you clearly tell what went well and what didn't?", "options": [{"id": "A", "text": "Yes — I can clearly tell where AI helped and where it made things up", "score": 4}, {"id": "B", "text": "Roughly know AI helped but can't specify", "score": 2}, {"id": "C", "text": "Not sure — just closed it when done", "score": 1}, {"id": "D", "text": "Rarely reflect on how I use AI", "score": 0}], "theoreticalBasis": "Metacognition (Flavell, 1979)——对AI辅助过程的元认知反思是持续提升的基础"}, {"id": "AD-SA-E-002", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "easy", "stem": "How do you decide if a task suits AI? What's your usual approach?", "options": [{"id": "A", "text": "Analyze task characteristics first (repetitive, creative, risky), then decide", "score": 4}, {"id": "B", "text": "Fixed routine — AI drafts, I polish", "score": 3}, {"id": "C", "text": "Let AI try everything — I take over if it fails", "score": 1}, {"id": "D", "text": "Do it all myself — not confident with AI for new tasks", "score": 0}], "theoreticalBasis": "Strategy Adaptation——优秀的AI用户会动态判断任务与AI能力的匹配度"}, {"id": "AD-SA-M-003", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "medium", "stem": "Rate your AI proficiency (1-10). A colleague rates you too. What happens?", "options": [{"id": "A", "text": "Guess colleague's score, compare with self-assessment, note large gaps", "score": 4}, {"id": "B", "text": "Probably close — not far off", "score": 2}, {"id": "C", "text": "Colleague doesn't know my AI usage, score inaccurate", "score": 1}, {"id": "D", "text": "Never thought about how others rate my AI skills", "score": 0}], "theoreticalBasis": "Metacognitive Calibration——通过他人视角校准自我评估是元认知能力的体现"}, {"id": "AD-SA-M-004", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "medium", "stem": "After using AI, you find a weak spot. What do you actually do?", "options": [{"id": "A", "text": "Review recent failures, pinpoint the bottleneck, search targeted tutorials", "score": 4}, {"id": "B", "text": "Set aside — deal with it when it comes up again", "score": 2}, {"id": "C", "text": "Tell myself to try more — practice makes perfect", "score": 3}, {"id": "D", "text": "This weakness doesn't affect work much, no rush", "score": 0}], "theoreticalBasis": "Metacognitive Learning Strategies——定向诊断和聚焦练习比泛泛【多练】更有效"}]</script>
+
+  <script is:inline>
+(function() {
+  const QUESTIONS = JSON.parse(document.getElementById('adult-questions-data').textContent);
+
+  const DIMENSIONS = [
+    { id:'ai_tool_competency', name:'AI Tool Competency', layer:'base', color:'#3b82f6' },
+    { id:'data_decision', name:'Data-Driven Decision', layer:'base', color:'#3b82f6' },
+    { id:'workflow_design', name:'Workflow Design', layer:'base', color:'#3b82f6' },
+    { id:'ai_creativity', name:'AI Creativity', layer:'advanced', color:'#3b82f6' },
+    { id:'ai_judgment', name:'AI Judgment', layer:'advanced', color:'#3b82f6' },
+    { id:'human_ai_collab', name:'Human-AI Collab', layer:'advanced', color:'#3b82f6' },
+    { id:'ai_strategy', name:'AI Strategy', layer:'leadership', color:'#3b82f6' },
+    { id:'ai_self_awareness', name:'AI Self-Awareness', layer:'leadership', color:'#8b5cf6' },
+  ];
+  const LAYER_NAMES = { base:'Base Layer — AI-Enabled', advanced:'Advanced Layer — Co-creating with AI', leadership:'Leadership Layer — Steering AI' };
+  const LAYER_ORDER = ['base','advanced','leadership'];
+
+  let currentIndex = 0;
+  const answers = {};
+  let resultData = null;
+
+  const $ = id => document.getElementById(id);
+  const startPage = $('start-page');
+  const quizPage = $('quiz-page');
+  const resultPage = $('result-page');
+  const qCard = $('q-card');
+  const qProgress = $('q-progress');
+  const qFill = $('q-progress-fill');
+  const prevBtn = $('prev-btn');
+  const nextBtn = $('next-btn');
+
+  $('start-btn').addEventListener('click', () => {
+    startPage.style.display = 'none';
+    quizPage.style.display = 'block';
+    currentIndex = 0;
+    renderQuestion(0);
+    updateButtons();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  function renderQuestion(idx) {
+    const q = QUESTIONS[idx];
+    qCard.innerHTML = `<div class="stem">${q.stem}</div>
+      <div class="options">${q.options.map(o =>
+        `<div class="option ${answers[q.id]===o.id?'selected':''}" data-q="${q.id}" data-opt="${o.id}">
+          <span class="option-radio">${answers[q.id]===o.id?'●':'○'}</span>
+          <span>${o.text}</span>
+        </div>`
+      ).join('')}</div>
+      <div class="q-footer-text">${QUESTIONS.length - idx - 1} more questions</div>`;
+    qCard.querySelectorAll('.option').forEach(el => {
+      el.addEventListener('click', () => {
+        answers[el.dataset.q] = el.dataset.opt;
+        renderQuestion(idx);
+        updateButtons();
+      });
+    });
+  }
+
+  function updateButtons() {
+    const q = QUESTIONS[currentIndex];
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = !answers[q.id];
+    nextBtn.textContent = currentIndex < QUESTIONS.length - 1 ? 'Next →' : 'See Results';
+    qProgress.textContent = `Q ${currentIndex + 1} / ${QUESTIONS.length}`;
+    qFill.style.width = `${((currentIndex + 1) / QUESTIONS.length) * 100}%`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) { currentIndex--; renderQuestion(currentIndex); updateButtons(); window.scrollTo({top:0,behavior:'smooth'}); }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < QUESTIONS.length - 1) {
+      currentIndex++; renderQuestion(currentIndex); updateButtons(); window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      calculateAndShowResult();
+    }
+  });
+
+  function calculateAndShowResult() {
+    const dimScores = {};
+    DIMENSIONS.forEach(d => { dimScores[d.id] = { total:0, weight:0 }; });
+
+    QUESTIONS.forEach(q => {
+      const optId = answers[q.id];
+      if (!optId) return;
+      const opt = q.options.find(o => o.id === optId);
+      if (!opt) return;
+      const weight = q.difficulty === 'hard' ? 2.0 : q.difficulty === 'medium' ? 1.5 : 1.0;
+      const dim = q.dimension;
+      if (dimScores[dim]) {
+        dimScores[dim].total += opt.score * weight;
+        dimScores[dim].weight += 4 * weight;
+      }
+    });
+
+    const dimQuestionCount = {};
+    QUESTIONS.forEach(q => {
+      if (answers[q.id]) dimQuestionCount[q.dimension] = (dimQuestionCount[q.dimension]||0) + 1;
+    });
+
+    const dimensions = DIMENSIONS.map(d => {
+      const raw = dimScores[d.id];
+      let score = 0;
+      if (raw && raw.weight > 0) score = Math.round((raw.total / raw.weight) * 100);
+      score = Math.max(0, Math.min(100, score));
+      const label = score >= 76 ? 'excellent' : score >= 56 ? 'good' : 'needs_improvement';
+      return { dimensionId: d.id, name: d.name, score, label, color: d.color, layer: d.layer };
+    });
+
+    const overallScore = Math.round(dimensions.reduce((s,d) => s + d.score, 0) / dimensions.length);
+    const sorted = [...dimensions].sort((a,b) => a.score - b.score);
+    const weakest = sorted[0];
+    const strongest = sorted[sorted.length - 1];
+    resultData = { dimensions, overallScore, weakest, strongest };
+    quizPage.style.display = 'none';
+    resultPage.style.display = 'block';
+    renderResult();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function renderResult() {
+    const rc = $('result-content');
+    const d = resultData;
+    let html = '';
+
+    html += `<div style="text-align:center;margin-bottom:16px;">
+      <div style="font-size:40px;font-weight:700;color:#0F2B46;">${d.overallScore}</div>
+      <div style="font-size:14px;color:#888;">Overall Score (out of 100)</div>
+    </div>`;
+
+    LAYER_ORDER.forEach(layer => {
+      const dims = d.dimensions.filter(dm => dm.layer === layer);
+      if (dims.length === 0) return;
+      const avgScore = Math.round(dims.reduce((s,dm) => s + dm.score, 0) / dims.length);
+      html += `<div class="layer-block">
+        <div class="layer-header">${LAYER_NAMES[layer]}  ${avgScore}/100</div>`;
+      dims.forEach(dm => {
+        const barColor = dm.score <= 30 ? '#ef4444' : dm.score <= 55 ? '#f59e0b' : dm.score <= 75 ? '#3b82f6' : '#22c55e';
+        const isWeakest = dm.dimensionId === d.weakest.dimensionId;
+        const isD08 = dm.dimensionId === 'ai_self_awareness';
+        const barStyle = isD08
+          ? `width:${dm.score}%;background:repeating-linear-gradient(0deg,${barColor},${barColor} 3px,transparent 3px,transparent 6px);`
+          : `width:${dm.score}%;background:${barColor};`;
+        html += `<div class="dim-row">
+          <div class="dim-name">${isD08 ? '⭐ ' : ''}${dm.name}</div>
+          <div class="dim-bar-bg"><div class="dim-bar-fill" style="${barStyle}"></div></div>
+          <div class="dim-score">${dm.score}</div>
+          <div class="dim-badge">${isWeakest ? '⚠️' : dm.score >= 76 ? '⭐' : ''}</div>
+        </div>`;
+      });
+      html += '</div>';
+    });
+
+    html += `<div class="weakness-box">
+      <h3>⚠️ Your biggest growth area: ${d.weakest.name} (${d.weakest.score})</h3>
+      <p>Start with "Action of the Day" — only 1 minute.</p>
+    </div>`;
+
+    html += `<div class="cta-box">
+      <h3>📋 Action of the Day (1 min)</h3>
+      <p>Your biggest growth area: ${d.weakest.name}<br>Try this first:</p>
+      <div class="cta-prompt-box">
+        <strong>Copy this and paste into your AI tool:</strong><br>
+        "Summarize in one sentence what AI means for my career in 2026"
+        <button id="copy-prompt-btn" class="cta-btn cta-btn-blue" style="display:block;width:100%;margin-top:8px;">📋 Copy</button>
+      </div>
+      <button id="step1-done-btn" class="cta-btn cta-btn-green" style="opacity:0.5;">✅ I did it</button>
+      <button id="feedback-trigger-btn" class="cta-btn cta-btn-ghost">💬 Not happy with the result?</button>
+      <p style="font-size:12px;color:#999;margin-top:8px;">After completing, the system will unlock W1 action cards to improve your weaker areas.</p>
+    </div>`;
+
+    html += `<div class="paywall">
+      <h3>🔒 Full Diagnosis Report</h3>
+      <div class="price">$29</div>
+      <ul>
+        <li>Complete 8D scores + comparative analysis</li>
+        <li>W1-W4 full action cards</li>
+        <li>Peer comparison (same industry & role)</li>
+        <li>Personalized improvement plan</li>
+      </ul>
+      <button class="cta-btn cta-btn-blue" onclick="showAdultPayment()">Buy Now $29</button>
+      <p style="font-size:12px;color:#999;margin-top:6px;">Scan WeChat to pay · Contact us after payment</p>
+    </div>`;
+
+    rc.innerHTML = html;
+    bindResultEvents();
+  }
+
+  function bindResultEvents() {
+    const copyBtn = $('copy-prompt-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('Summarize in one sentence what AI means for my career in 2026').then(() => {
+          copyBtn.textContent = '✅ Copied';
+          copyBtn.style.background = '#22c55e';
+          $('step1-done-btn').style.opacity = '1';
+        });
+      });
+    }
+    const step1Btn = $('step1-done-btn');
+    if (step1Btn) step1Btn.addEventListener('click', showTransition);
+    const fbBtn = $('feedback-trigger-btn');
+    if (fbBtn) fbBtn.addEventListener('click', showFeedback);
+  }
+
+  function showTransition() {
+    const rc = $('result-content');
+    rc.innerHTML = `
+      <div class="transition-page">
+        <div style="font-size:64px;margin-bottom:16px;">🎉</div>
+        <h2>Great start! You've taken the first step in your AI growth journey</h2>
+        <p>You just copied a prompt and saw how AI responds.<br>
+        Want to know:<br>
+        <strong>"How do I make AI understand me better?"</strong><br>
+        <strong>"How do I write better prompts?"</strong></p>
+        <p>Next, you'll love this 👇</p>
+        <div style="background:#f0f0f0;border-radius:12px;padding:20px;margin:24px 0;text-align:left;">
+          <h3 style="font-size:16px;margin-bottom:8px;">📋 W1 Task: Write a "4-Element Prompt Template"</h3>
+          <p style="font-size:13px;color:#666;margin-top:8px;">Do it today (10 min):<br>Open your AI tool, type:<br><strong>Role + Format + Constraints + Example → Generate</strong></p>
+        </div>
+        <div style="background:#fff8e1;border-radius:12px;padding:16px;margin:16px 0;">
+          <p style="font-size:13px;color:#333;">🔒 Full guide in the paid report ($29)<br>Or the system will push to you tomorrow</p>
+        </div>
+        <button id="back-to-result-btn" class="cta-btn cta-btn-blue">Back to Report</button>
+        <button id="try-another-btn" class="cta-btn cta-btn-ghost" style="display:block;width:100%;margin-top:8px;">▼ Try a different prompt</button>
+        <div id="try-another-area" style="display:none;margin-top:12px;">
+          <div class="cta-prompt-box">
+            <strong>Try this:</strong><br>
+            "Describe AI's impact on my career in 3 words, each with an example"
+            <button id="copy2-btn" class="cta-btn cta-btn-blue" style="display:block;width:100%;margin-top:8px;">📋 Copy</button>
+          </div>
+        </div>
+        <button id="share-btn" class="cta-btn cta-btn-ghost" style="display:block;width:100%;margin-top:8px;">📤 Share to social (anonymous radar)</button>
+      </div>`;
+    $('back-to-result-btn').addEventListener('click', renderResult);
+    $('try-another-btn').addEventListener('click', () => {
+      const area = $('try-another-area');
+      area.style.display = area.style.display === 'none' ? 'block' : 'none';
+    });
+    const copy2 = $('copy2-btn');
+    if (copy2) copy2.addEventListener('click', () => {
+      navigator.clipboard.writeText("Describe AI's impact on my career in 3 words, each with an example").then(() => copy2.textContent = '✅ Copied');
+    });
+    const shareBtn = $('share-btn');
+    if (shareBtn) shareBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('I just completed the AI Workplace Diagnosis — 27 questions across 8 dimensions. Try it: https://www.humanaifit.com/en/diagnosis/adult/').then(() => alert('Copied! Share it on social.'));
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  let feedbackLevel = 0;
+  function showFeedback() {
+    const rc = $('result-content');
+    rc.innerHTML = '<div class="feedback-ring"><h4>Try a different approach</h4><p style="font-size:13px;color:#555;margin-bottom:12px;">Add this to your prompt:<br><strong>"Explain in detail with a concrete example"</strong></p><button id="fb-retry-btn" class="cta-btn cta-btn-blue">✅ Auto-add and copy</button><button id="fb-level2-btn" class="cta-btn cta-btn-ghost" style="display:block;width:100%;margin-top:8px;">↓ Still not right? Other options</button></div>';
+    $('fb-retry-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText('Explain in detail with a concrete example').then(() => alert('Copied! Paste into your AI tool.'));
+    });
+    $('fb-level2-btn').addEventListener('click', () => {
+      rc.innerHTML = '<div class="feedback-ring"><h4>What went wrong?</h4><div><button class="feedback-btn" onclick="alert(\'Try DeepSeek/ChatGPT/Claude\')">🔧 AI tool not working</button><button class="feedback-btn" onclick="alert(\'Copy this and ask AI to explain\')">🔧 Output is confusing</button><button class="feedback-btn" onclick="alert(\'Here are more examples to try\')">🔧 Not sure what to do next</button><button class="feedback-btn" onclick="showLevel3()">🔧 Other issues</button></div></div>';
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  window.showLevel3 = function() {
+    const rc = $('result-content');
+    rc.innerHTML = '<div class="feedback-ring" style="text-align:center;"><h4>💬 Still stuck?</h4><p style="font-size:13px;color:#555;margin:12px 0;">Join the AI Workplace community<br>Contact WeChat blurblurfish</p><div style="background:#f0f0f0;border-radius:8px;padding:24px;margin:16px 0;font-size:12px;color:#888;">[QR code placeholder - WeChat: blurblurfish]</div><p style="font-size:12px;color:#999;font-style:italic;">"Your biggest competitive advantage is not in AI. It is between you and AI."</p><button class="cta-btn cta-btn-ghost" onclick="renderResult()" style="margin-top:12px;">Back to Report</button></div>';
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  window.showAdultPayment = function() {
+    document.getElementById('payment-overlay').style.display = 'flex';
+    document.getElementById('pay-tier-selection').style.display = 'block';
+    document.getElementById('pay-tier-detail').style.display = 'none';
+  };
+  window.closeAdultPayment = function() {
+    document.getElementById('payment-overlay').style.display = 'none';
+  };
+  window.showAdultPayTier = function(tier) {
+    document.getElementById('pay-tier-selection').style.display = 'none';
+    document.getElementById('pay-tier-detail').style.display = 'block';
+    if (tier === 'report') {
+      document.getElementById('pay-detail-title').textContent = '📋 Full Diagnosis Report';
+      document.getElementById('pay-detail-price').innerHTML = '$29';
+    } else {
+      document.getElementById('pay-detail-title').textContent = '🌟 《AI Era Survival Guide》Knowledge Planet';
+      document.getElementById('pay-detail-price').innerHTML = '$199<span style="font-size:14px;font-weight:400;color:#888;">/year</span>';
+    }
+  };
+  window.showAdultPayBack = function() {
+    document.getElementById('pay-tier-selection').style.display = 'block';
+    document.getElementById('pay-tier-detail').style.display = 'none';
+  };
+})();
+</script>
+</body>
+</html>
