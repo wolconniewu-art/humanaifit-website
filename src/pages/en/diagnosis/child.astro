@@ -714,6 +714,29 @@ let leadSubmitted = false;
 // Type label mapping (global)
 const TYPE_LABELS_EN = { explore: '🔍Explorer', apply: '🛠️Practitioner', create: '🎨Creator' };
 
+const DIM_LABELS_EN = {
+  cognitive: 'Cognitive',
+  practice: 'Practice',
+  social: 'Social',
+  critical: 'Critical',
+  digital: 'Digital'
+};
+const DIM_COLORS = {
+  cognitive: '#4A90D9',
+  practice: '#27AE60',
+  social: '#E74C3C',
+  critical: '#8E44AD',
+  digital: '#F39C12'
+};
+const TYPE_ICONS = {
+  explore: '🔍',
+  apply: '🛠️',
+  create: '🎨'
+};
+const DIM_ORDER = ['cognitive', 'practice', 'social', 'critical', 'digital'];
+const TYPE_ORDER = ['explore', 'apply', 'create'];
+
+
 let childNickname = ''; // child nickname, for multi-child differentiation
 
 // ===== DOM引用 =====
