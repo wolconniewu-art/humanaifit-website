@@ -1,0 +1,152 @@
+---
+// English — AI Literacy Diagnosis Entry Page
+//
+
+export const prerender = true;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Literacy Diagnosis — humanaifit</title>
+  <meta name="description" content="Three versions covering all ages: Children's AI Future Star, Adult AI Workplace, and Senior AI Life Companion" />
+  <style>
+    :root {
+      --primary: #0F2B46;
+      --accent: #C9A96E;
+      --bg: #f8f7f4;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --muted: #888888;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 640px; margin: 0 auto; padding: 20px 16px; }
+    .header {
+      text-align: center;
+      padding: 40px 0 8px;
+    }
+    .header h1 { font-size: 28px; color: var(--primary); font-weight: 700; }
+    .header p { color: var(--muted); font-size: 14px; margin-top: 4px; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .lang-switch { text-align: right; font-size: 13px; margin-bottom: 8px; }
+    .lang-switch a { color: var(--accent); text-decoration: none; }
+    .lang-switch a:hover { text-decoration: underline; }
+    .version-grid { margin: 28px 0 20px; }
+    .version-card {
+      display: block;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 0 0 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e5e7eb;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .version-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .version-card:active { transform: translateY(0); }
+    .card-icon { font-size: 40px; margin-bottom: 8px; }
+    .card-title { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .card-subtitle { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+    .card-desc { font-size: 14px; color: #555; line-height: 1.6; }
+    .card-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .card-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-green { background: #e8f5e9; color: #2e7d32; }
+    .tag-blue { background: #e3f2fd; color: #1565c0; }
+    .tag-orange { background: #fff3e0; color: #e65100; }
+    .tag-purple { background: #f3e5f5; color: #7b1fa2; }
+    .version-card.child { border-left: 4px solid #22c55e; }
+    .version-card.adult { border-left: 4px solid #3b82f6; }
+    .version-card.senior { border-left: 4px solid #f97316; }
+    .comming-soon { font-size: 11px; color: #bbb; font-style: italic; }
+    .footer { text-align: center; padding: 24px 0 40px; font-size: 12px; color: #bbb; }
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-switch">
+      <a href="/diagnosis/">中文</a>
+    </div>
+    <div class="header">
+      <h1>🧪 AI Literacy Diagnosis</h1>
+      <p>Three versions for all ages. Free diagnosis to understand your AI capabilities.</p>
+    </div>
+
+    <div class="version-grid">
+      <!-- Children -->
+      <a href="/en/diagnosis/child/" class="version-card child">
+        <div class="card-icon">🧒</div>
+        <div class="card-title">AI Future Star — Children</div>
+        <div class="card-subtitle">Ages 6-18 · 22 questions · ~10 min</div>
+        <div class="card-desc">
+          5-dimension assessment: Cognitive Core, Practice & Innovation, Social & Emotional, Aesthetic & Humanity, Digital Basics.
+        </div>
+        <div class="card-tags">
+          <span class="card-tag tag-green">Free</span>
+          <span class="card-tag tag-blue">5D Radar Chart</span>
+          <span class="card-tag tag-purple">30-Day Action Plan</span>
+        </div>
+        <div>Full Report ¥9.9 →</div>
+      </a>
+
+      <!-- Adult (placeholder) -->
+      <a href="/en/diagnosis/adult/" class="version-card adult">
+        <div class="card-icon">📊</div>
+        <div class="card-title">AI Workplace — Adult</div>
+        <div class="card-subtitle">Professionals · 27 questions · ~10 min</div>
+        <div class="card-desc">
+          8-dimension assessment: from AI Tool Competency to AI Self-Awareness. Three-tier visualization.
+        </div>
+        <div class="card-tags">
+          <span class="card-tag tag-green">Free</span>
+          <span class="card-tag tag-blue">8D Radar</span>
+          <span class="card-tag tag-purple">3-Step Action</span>
+        </div>
+        <div>Full Report $29 →</div>
+      </a>
+
+      <!-- Senior -->
+      <a href="/en/diagnosis/senior/" class="version-card senior">
+        <div class="card-icon">👴</div>
+        <div class="card-title">AI Life Companion — Senior</div>
+        <div class="card-subtitle">Ages 60-80 · 4 scenarios · 60s each</div>
+        <div class="card-desc">
+          No exams, no scores. Pick a scenario to learn: photo restoration, fraud prevention, health inquiry, or voice chat.
+        </div>
+        <div class="card-tags">
+          <span class="card-tag tag-green">Free</span>
+          <span class="card-tag tag-orange">Large Font</span>
+          <span class="card-tag tag-purple">60s Tutorial</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer">
+      <p><a href="/en/">humanaifit.com</a> · Empowering human-AI synergy for everyone</p>
+    </div>
+  </div>
+</body>
+</html>
