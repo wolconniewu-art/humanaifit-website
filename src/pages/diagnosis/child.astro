@@ -1,0 +1,1343 @@
+---
+// 孩子AI素养诊断 — v2.0 完善版
+// 改进点：增加开始页面、得分雷达百分比、留资环节、社交分享、知识星球联动
+// 路径: /diagnosis/
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>孩子AI素养诊断 — 30秒测出你孩子的AI学习风格</title>
+  <meta name="description" content="22道快速题，30秒测出。发现你的孩子是探索型🧐、应用型🛠️还是创作型🎨——附带个性化学习建议。" />
+  <meta property="og:title" content="孩子AI素养诊断 — 免费评估" />
+  <meta property="og:description" content="30秒免费诊断，发现你的孩子应该学什么AI。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.humanaifit.com/en/diagnosis/" />
+  <style>
+    :root {
+      --primary: #0F2B46;
+      --accent: #C9A96E;
+      --bg: #f8f7f4;
+      --card-bg: #ffffff;
+      --text: #2d2d2d;
+      --muted: #888888;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 640px; margin: 0 auto; padding: 20px 16px; }
+    .header { text-align: center; padding: 32px 0 8px; }
+    .header h1 { font-size: 24px; color: var(--primary); font-weight: 700; }
+    .header p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .badge.green { background: #e8f5e9; color: #2e7d32; }
+    .badge.gold { background: #fff8e1; color: #f57f17; }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .progress-bar {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 16px 0;
+    }
+    .dot {
+      width: 24px;
+      height: 6px;
+      border-radius: 3px;
+      background: #e0e0e0;
+      transition: background 0.3s;
+    }
+    .dot.active { background: var(--primary); }
+    .dot.done { background: var(--accent); }
+    .q-number {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .q-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option {
+      padding: 14px 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      background: white;
+      text-align: left;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .option:hover { border-color: var(--accent); background: #fefcf6; }
+    .option.selected {
+      border-color: var(--primary);
+      background: #eef3f8;
+      font-weight: 500;
+    }
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover { background: #1a3f64; }
+    .btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #666;
+    }
+    .btn-secondary:hover { background: #e0e0e0; }
+    .result-type { font-size: 48px; text-align: center; margin: 8px 0; }
+    .result-label {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .result-sub {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .result-section { margin-top: 20px; }
+    .result-section h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .result-section p { font-size: 14px; color: #444; line-height: 1.7; }
+    .result-section ul { padding-left: 18px; margin-top: 6px; }
+    .result-section li { margin-bottom: 4px; font-size: 14px; color: #444; }
+    .sep { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+    .share-area { text-align: center; margin-top: 12px; }
+    .share-description { font-size: 13px; color: #888; }
+    .footer-note {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer-note a { color: var(--muted); }
+    .loading-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loading-overlay.hidden { display: none; }
+    .loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #e0e0e0;
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* 开始页 */
+    .hero-icon { font-size: 56px; text-align: center; margin-bottom: 16px; }
+    .hero-desc { text-align: center; font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 24px; }
+    .hero-desc strong { color: var(--primary); }
+    .feature-list { margin: 20px 0; }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #444;
+    }
+    .feature-icon { font-size: 18px; flex-shrink: 0; }
+    .start-btn {
+      display: block; width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary) 0%, #1a3f64 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s;
+      margin: 24px 0 12px;
+    }
+    .start-btn:hover { transform: scale(1.02); }
+    .start-btn:active { transform: scale(0.98); }
+
+    /* 雷达图 - 使用CSS简化版 */
+    .score-bars { margin: 20px 0; }
+    .score-row {
+      display: flex; align-items: center;
+      margin-bottom: 12px;
+    }
+    .score-label {
+      width: 60px;
+      font-size: 13px;
+
+  // 简化5维环形图（免费版可见）+ 付费引导
+  setTimeout(function() {
+    var cardArea = document.getElementById('cardArea');
+    if (!cardArea) return;
+    var dims = [
+      {label:"探索型", color:'#4A90D9'},
+      {label:"创意制造者", color:'#E67E22'},
+      {label:"社交连接者", color:'#27AE60'},
+      {label:"审美思考者", color:'#8E44AD'},
+      {label:"数字原住民", color:'#F39C12'}
+    ];
+    var html = '<div class="card" style="padding:20px;margin-top:16px;background:linear-gradient(135deg,#f8f9fa,#e3f2fd);">' +
+      '<h3 style="margin:0 0 4px;font-size:16px;">🧭 5维AI潜能（免费预览）</h3>' +
+      '<p style="font-size:12px;color:#888;margin:0 0 12px;">简化版预览 — full report shows detailed scores per dimension</p>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;">';
+    dims.forEach(function(d){
+      html += '<div style="text-align:center;width:68px;">' +
+        '<div style="width:52px;height:52px;margin:0 auto;border-radius:50%;border:4px solid ' + d.color + ';display:flex;align-items:center;justify-content:center;">' +
+        '<span style="font-size:20px;color:' + d.color + ';">?</span></div>' +
+        '<div style="font-size:11px;color:#555;margin:3px 0;">' + d.label + '</div></div>';
+    });
+    html += '</div>' +
+      '<div style="background:#fff3e0;border:1px solid #ffe082;border-radius:12px;padding:16px;margin:10px 0;text-align:center;">' +
+      '<p style="font-size:14px;color:#e65100;margin:0 0 8px;font-weight:600;">🔒 解锁完整报告</p>' +
+      '<p style="font-size:12px;color:#555;margin:0 0 10px;">✅ 完整5维雷达图带分数<br>✅ 30天每日行动卡<br>✅ 家长指导手册<br>✅ 复测成长追踪</p>' +
+      '<button onclick="alert('Paid version coming soon! Contact WeChat: humanaifit')" style="padding:10px 20px;background:#FF9800;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;width:100%;">🔓 解锁完整报告  ¥9.9</button>' +
+      '<p style="font-size:11px;color:#999;margin:6px 0 0;">微信扫码支付 · Contact us after payment</p></div></div>';
+    cardArea.insertAdjacentHTML('beforeend', html);
+  }, 800);
+      font-weight: 500;
+      color: var(--primary);
+    }
+    .score-track {
+      flex: 1;
+      height: 20px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .score-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+    .score-fill.explore { background: linear-gradient(90deg, #4CAF50, #81C784); }
+    .score-fill.apply { background: linear-gradient(90deg, #2196F3, #64B5F6); }
+    .score-fill.create { background: linear-gradient(90deg, #FF9800, #FFB74D); }
+    .score-pct {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* 留资弹窗 */
+    .lead-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .lead-overlay.active { display: flex; }
+    .lead-modal {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px 20px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .lead-modal h2 { font-size: 18px; margin-bottom: 4px; color: #333; }
+    .lead-modal p { font-size: 13px; color: #666; margin-bottom: 16px; }
+    .lead-modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .lead-modal input:focus { border-color: var(--accent); }
+    .lead-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .lead-btn:hover { background: #1a3f64; }
+    .lead-close {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #999;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 480px) {
+      .header h1 { font-size: 20px; }
+      .q-title { font-size: 16px; }
+      .option { font-size: 14px; padding: 12px 14px; }
+      .result-label { font-size: 22px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "孩子AI素养诊断",
+    "description": "22 questions, 30 seconds. Discover your child's AI learning style: Explorer, Practitioner, or Creator.",
+    "educationalLevel": "Parent",
+    "teaches": "AI Learning Style Assessment for Children",
+    "url": "https://www.humanaifit.com/en/diagnosis/"
+  }
+  </script>
+</head>
+<body>
+
+<div class="container" id="app">
+  <div class="header">
+    <span class="badge green">🎯 免费 · 30秒</span>
+    <h1>孩子AI素养诊断</h1>
+    <p>22道题，帮你回答：「我的孩子应该学什么AI？」</p>
+  </div>
+
+  <div class="progress-bar" id="progressBar"></div>
+  <div id="cardArea">
+    <!-- 初始为空，由JS渲染开始页 -->
+  </div>
+  <div class="footer-note">
+    <a href="https://www.humanaifit.com">www.humanaifit.com</a> · <a href="https://www.humanaifit.com/en/blog/privacy_policy_2026/">隐私政策</a>
+  </div>
+</div>
+
+<!-- 留资弹窗 -->
+<div class="lead-overlay" id="leadOverlay">
+  <div class="lead-modal">
+    <h2>📋 免费诊断报告</h2>
+    <p>输入联系方式，获取完整版诊断报告（含学习建议+适龄工具推荐）</p>
+    <input type="text" id="leadName" placeholder="您的姓名（可选）" />
+    <input type="text" id="leadContact" placeholder="微信号/手机号（必填）" />
+    <p style="font-size:11px;color:#999;margin:-4px 0 12px;">您将收到《2025全球AI教育政策汇编》PDF + 诊断结果</p>
+    <p style="font-size:12px;color:#888;margin:6px 0;">我们尊重您的隐私，不会向第三方分享您或孩子的信息。查看我们的<a href="https://www.humanaifit.com/en/blog/privacy_policy_2026/" target="_blank" style="color:#1a73e8;text-decoration:underline;">隐私政策</a>.</p>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#666;margin:8px 0;cursor:pointer;white-space:nowrap;">
+          <input type="checkbox" id="privacyAgree" style="width:16px;height:16px;flex-shrink:0;" />
+          <span style="line-height:1.4;">我已阅读并同意我们的<a href="https://www.humanaifit.com/en/blog/privacy_policy_2026/" target="_blank" style="color:#1a73e8;text-decoration:underline;">隐私政策</a></span>
+        </label>
+    <button class="lead-btn" onclick="submitLead()">✅ 获取免费报告</button>
+    <button class="lead-close" onclick="closeLead()">跳过，直接看结果</button>
+  </div>
+</div>
+
+<!-- 加载覆盖 -->
+<div id="loadingOverlay" class="loading-overlay hidden">
+  <div class="loading-spinner"></div>
+</div>
+
+<script is:inline>
+// ===== 22道题数据 =====
+const QUESTIONS = [
+  {
+    id: 'ST-AGE-001',
+    title: '你孩子的年龄是？',
+    options: [
+      { text: '6-9岁（小学低年级）', ageGroup: 'A' },
+      { text: '10-12岁（小学高年级）', ageGroup: 'B' },
+      { text: '13-18岁（中学）', ageGroup: 'C' },
+    ],
+    isScreening: true
+  },
+  {
+    id: 'ST-COG-001',
+    title: '当孩子看到AI能回答问题时，他通常会怎样反应？',
+    ageRange: '10-18',
+    dimension: 'cognitive',
+    theoreticalBasis: 'AI4K12 Big Idea #1: Perception/Representation/Reasoning',
+    options: [
+      { text: '好奇地想知道\"它是怎么学会回答的？\"', scores: {cognitive:2}, types: {explore:2} },
+      { text: '直接用它来回答问题，节省自己查书的时间', scores: {practice:2}, types: {apply:2} },
+      { text: '不太关心原理，觉得它能回答问题就很神奇', scores: {digital:1} },
+    ]
+  },
+  {
+    id: 'ST-COG-001B',
+    title: '看到一个机器人能回答问题，孩子会怎么做？',
+    ageRange: '6-9',
+    dimension: 'cognitive',
+    theoreticalBasis: 'AI4K12 Big Idea #1 - 低龄版场景式提问',
+    options: [
+      { text: '会问\"它怎么知道答案的？\"，想弄明白', scores: {cognitive:2}, types: {explore:2} },
+      { text: '会继续问它别的问题，觉得挺好玩的', scores: {practice:1}, types: {apply:2} },
+      { text: '不太在意，看看就走了' },
+    ]
+  },
+  {
+    id: 'ST-COG-002',
+    title: '孩子是否理解\"AI也有可能犯错\"这个事实？',
+    ageRange: '10-18',
+    dimension: 'cognitive',
+    theoreticalBasis: 'AI4K12 Big Idea #3: Learning/Decision Making/Limitations',
+    options: [
+      { text: '知道AI会犯错，并且能说出一些AI犯错的具体例子', scores: {cognitive:2,critical:1}, types: {explore:2} },
+      { text: '知道AI可能错，但说不清楚具体怎么错', scores: {cognitive:1}, types: {explore:1} },
+      { text: '直接采用AI的答案，不管它是不是对的' },
+    ]
+  },
+  {
+    id: 'ST-PRA-001',
+    title: '当需要用AI完成一个学习任务（如写作文、做研究），你会怎么做？',
+    ageRange: '10-18',
+    dimension: 'practice',
+    theoreticalBasis: 'Task-Technology Fit (Goodhue & Thompson, 1995)',
+    options: [
+      { text: '清楚地告诉AI自己想要什么，并根据AI的回答追问或调整', scores: {cognitive:1,practice:2,critical:1}, types: {explore:1,apply:2} },
+      { text: '让AI直接做，做完直接用，不做修改', types: {apply:1} },
+      { text: '不太会用AI来做学习任务' },
+    ]
+  },
+  {
+    id: 'ST-PRA-001B',
+    title: '学习App里有一个AI功能可以帮忙读故事，孩子会怎么做？',
+    ageRange: '6-9',
+    dimension: 'practice',
+    theoreticalBasis: 'Task-Technology Fit - 低龄版场景式',
+    options: [
+      { text: '会尝试让AI读不同故事，还会问AI问题', scores: {cognitive:1,practice:2}, types: {explore:1,apply:2} },
+      { text: '让AI读一遍，听完就算了' },
+      { text: '不太会用这个功能' },
+    ]
+  },
+  {
+    id: 'ST-PRA-002',
+    title: '当孩子需要使用AI画画、写故事或做视频时，通常会怎样？',
+    ageRange: 'all',
+    dimension: 'practice',
+    theoreticalBasis: 'Human-AI Co-Creation (Davis, 2024)',
+    options: [
+      { text: '会主动用AI工具把想法变成作品，并反复修改直到满意', scores: {practice:2,digital:1}, types: {apply:1,create:2} },
+      { text: '愿意试一下，但需要大人在旁边指导操作' },
+      { text: '对用AI创作没兴趣，更喜欢手工或传统方式', types: {create:1} },
+    ]
+  },
+  {
+    id: 'ST-SOC-001',
+    title: '当孩子听到\"AI会取代人的工作\"这种说法，他的反应是？',
+    ageRange: '10-18',
+    dimension: 'social',
+    theoreticalBasis: 'AI Ethics + CASEL Social Awareness (Floridi et al., 2018)',
+    options: [
+      { text: '会认真讨论什么工作AI能做、什么必须人来做', scores: {social:2,critical:1}, types: {explore:2} },
+      { text: '会和同学讨论这件事，但说不清具体怎么办', scores: {social:1} },
+      { text: '听到就算了，不和孩子讨论这个话题' },
+    ]
+  },
+  {
+    id: 'ST-SOC-001B',
+    title: '如果机器人说它比爸爸妈妈还聪明，孩子会怎么想？',
+    ageRange: '6-9',
+    dimension: 'social',
+    theoreticalBasis: 'AI Ethics - 低龄版拟人化场景',
+    options: [
+      { text: '会争论说爸爸妈妈更厉害，人和机器人不一样', scores: {social:2,critical:1}, types: {explore:1} },
+      { text: '会问\"那机器人能做饭吗？\"，想比较人和机器的不同', scores: {cognitive:1,social:1}, types: {explore:2} },
+      { text: '觉得机器人说的就是对的' },
+    ]
+  },
+  {
+    id: 'ST-SOC-002',
+    title: '如果同学直接用AI做完作业并交了，孩子觉得这合适吗？',
+    ageRange: '10-18',
+    dimension: 'social',
+    theoreticalBasis: 'AI Ethics + Academic Integrity',
+    options: [
+      { text: '觉得不合适——用AI代替自己思考是作弊', scores: {social:2} },
+      { text: '有点纠结——用AI帮助学习可以，但完全让AI做就不行', scores: {cognitive:1,social:1,critical:1}, types: {explore:1} },
+      { text: '觉得没什么——AI就是工具，用工具做作业很正常', types: {apply:1} },
+    ]
+  },
+  {
+    id: 'ST-SOC-003',
+    title: '如果AI App要求填写真实姓名、家庭住址和学校名字才能使用，你会怎么做？',
+    ageRange: 'all',
+    dimension: 'social',
+    theoreticalBasis: 'AI Ethics: Data Privacy + DigComp 2.2 Safety',
+    options: [
+      { text: '会先问家长这个App能不能用，不会自己填信息', scores: {social:2,critical:1,digital:1} },
+      { text: '有点犹豫但可能还是会填，因为想用这个App' },
+      { text: '直接填，没什么好担心的' },
+    ]
+  },
+  {
+    id: 'ST-SOC-004',
+    title: 'AI生成了一份排名，说某个国家的孩子不如另一个国家的孩子聪明。你会怎么看待这个结果？',
+    ageRange: '10-18',
+    dimension: 'social',
+    theoreticalBasis: 'AI Ethics: Algorithmic Bias (Floridi et al., 2018)',
+    options: [
+      { text: '会质疑AI的结论，觉得AI可能有偏见或数据不全面', scores: {cognitive:1,social:2,critical:2}, types: {explore:2} },
+      { text: '有点怀疑但说不清问题在哪' },
+      { text: '相信AI的结论——AI应该不会骗人' },
+    ]
+  },
+  {
+    id: 'ST-CRI-001',
+    title: '如果AI说了一个答案，但孩子觉得这个答案不太对，他会怎么做？',
+    ageRange: 'all',
+    dimension: 'critical',
+    theoreticalBasis: 'Critical Thinking (Facione, 1990)',
+    options: [
+      { text: '自己再查其他资料确认，不相信AI的一面之词', scores: {cognitive:1,critical:2}, types: {explore:2} },
+      { text: '心里怀疑，但不做进一步核实' },
+      { text: '选择相信AI——AI应该不会错' },
+    ]
+  },
+  {
+    id: 'ST-CRI-002',
+    title: '孩子是否注意到AI给出的信息需要验证？',
+    ageRange: '10-18',
+    dimension: 'critical',
+    theoreticalBasis: 'AI Output Credibility Assessment',
+    options: [
+      { text: '会主动核对重要信息，比如查AI说的日期、数字是否准确', scores: {cognitive:1,critical:2,digital:1}, types: {explore:2} },
+      { text: '偶尔会怀疑，但很少去验证' },
+      { text: '从没想过AI信息还需要验证' },
+    ]
+  },
+  {
+    id: 'ST-DIG-001',
+    title: '当孩子使用电子设备或网络时，对待安全问题的态度是？',
+    ageRange: 'all',
+    dimension: 'digital',
+    theoreticalBasis: 'DigComp 2.2 Safety (EU, 2022)',
+    options: [
+      { text: '知道不泄露个人信息，会识别可疑链接和消息', scores: {critical:1,digital:2}, types: {apply:1} },
+      { text: '收到可疑链接时会停下来想想，但有时还是会点进去', scores: {digital:1} },
+      { text: '不太关注网络安全问题' },
+    ]
+  },
+  {
+    id: 'ST-DIG-002',
+    title: '孩子平时使用电子设备（手机/平板/电脑）需要大人监督吗？',
+    ageRange: '6-12',
+    dimension: 'digital',
+    theoreticalBasis: 'DigComp 2.2 Digital Safety',
+    options: [
+      { text: '能独立使用，知道什么时候该用、什么时候该停', scores: {practice:1,digital:2}, types: {apply:2} },
+      { text: '能在指导下使用，但自控力还不够', scores: {digital:1} },
+      { text: '基本不接触或完全需要大人监督' },
+    ]
+  },
+  {
+    id: 'ST-TYP-001',
+    title: '当遇到一个不会的问题时，孩子通常怎么做？',
+    ageRange: 'all',
+    dimension: 'style',
+    theoreticalBasis: 'Learning Style Assessment',
+    options: [
+      { text: '自己查书或上网研究，喜欢自己搞明白', scores: {cognitive:1,digital:1}, types: {explore:2} },
+      { text: '直接问大人或AI，快速找到答案', scores: {practice:1}, types: {apply:2} },
+      { text: '试试不同的方法解决问题，不按常规思路来', types: {create:2} },
+    ]
+  },
+  {
+    id: 'ST-TYP-002',
+    title: '孩子在空闲时间更喜欢做什么？',
+    ageRange: 'all',
+    dimension: 'style',
+    theoreticalBasis: 'Creative Expression Assessment',
+    options: [
+      { text: '看书、看科普视频、探索新事物', scores: {cognitive:1}, types: {explore:2} },
+      { text: '搭积木、做手工、解决问题类的游戏', scores: {practice:1}, types: {apply:2} },
+      { text: '画画、写故事、编曲子、做小视频', types: {create:2} },
+    ]
+  },
+  {
+    id: 'ST-ADV-001',
+    title: '你是否理解AI的推荐机制（比如短视频推荐）背后的原理？',
+    ageRange: '13-18',
+    dimension: 'cognitive',
+    theoreticalBasis: 'AI4K12 Big Idea #4: Natural Interaction + Algorithmic Awareness',
+    options: [
+      { text: '理解AI会根据我的行为数据推荐内容，有时会特意不看推荐内容来测试', scores: {cognitive:2,critical:2}, types: {explore:2} },
+      { text: '大概知道有推荐算法，但没有深入思考过', scores: {cognitive:1} },
+      { text: '觉得推荐什么就看什么，没想过背后原理' },
+    ]
+  },
+  {
+    id: 'ST-SIM-001',
+    title: '孩子在家会不会主动打开平板/手机上的学习App？',
+    ageRange: '6-9',
+    dimension: 'practice',
+    theoreticalBasis: 'DigComp 2.2 Digital Engagement',
+    options: [
+      { text: '会主动打开App学习或玩游戏，不需要大人提醒', scores: {practice:1,digital:2}, types: {explore:1,apply:1} },
+      { text: '大人叫了才会去用', scores: {digital:1} },
+      { text: '基本不碰这些设备' },
+    ]
+  },
+  {
+    id: 'ST-MID-001',
+    title: 'AI生成了一张逼真的假照片，孩子能看出是假的吗？',
+    ageRange: '10-12',
+    dimension: 'social',
+    theoreticalBasis: 'AI Literacy: Deepfake Detection',
+    options: [
+      { text: '能注意到图片中不自然的细节（如手指数量、光影异常），怀疑是AI生成的', scores: {cognitive:1,critical:2}, types: {explore:2} },
+      { text: '觉得有点怪但说不清哪里不对' },
+      { text: '认为照片就是真实的，看不出问题' },
+    ]
+  },
+  {
+    id: 'ST-PAR-001',
+    title: '家长对孩子的AI工具使用习惯了解多少？',
+    ageRange: '6-12',
+    dimension: 'digital',
+    theoreticalBasis: 'Parental Digital Mediation Strategies',
+    options: [
+      { text: '清楚地知道孩子用过哪些AI工具、用它们做什么', scores: {practice:1,social:1,digital:1}, types: {apply:1} },
+      { text: '大概知道孩子在用，但不清楚具体用哪些工具' },
+      { text: '孩子没接触过AI工具，或不确定' },
+    ]
+  },
+];
+
+// 5维名称映射
+const DIM_LABELS_ZH = {
+  cognitive: '认知理解',
+  practice: '实践应用',
+  social: '社会情感',
+  critical: '批判思维',
+  digital: '数字基础'
+};
+
+const DIM_COLORS = {
+  cognitive: '#4A90D9',
+  practice: '#27AE60',
+  social: '#E74C3C',
+  critical: '#8E44AD',
+  digital: '#F39C12'
+};
+
+const TYPE_LABELS_ZH = {
+  explore: '探索型',
+  apply: '应用型',
+  create: '创作型'
+};
+
+const TYPE_ICONS = {
+  explore: '\uD83D\uDD0D',
+  apply: '\uD83D\uDEE0\uFE0F',
+  create: '\uD83C\uDFA8'
+};
+
+const DIM_ORDER = ['cognitive', 'practice', 'social', 'critical', 'digital'];
+const TYPE_ORDER = ['explore', 'apply', 'create'];
+
+// ===== 结果模板 =====
+const RESULTS = {
+  explore: {
+    icon: '\uD83D\uDD0D',
+    label: '探索型',
+    badge: '好奇心驱动',
+    desc: '这个小发明家充满好奇心——总爱问"为什么"和"如果...会怎样"。你的孩子是天生的探索者，喜欢自己发现事物。',
+    mva: '打开一个免费AI聊天工具（如豆包或文心一言），让孩子问三个"为什么"。观察：孩子是相信答案还是质疑它？零准备，今晚就能做。',
+    direction: 'AI基础原理、ChatGPT对话实验、AI伦理讨论',
+    ageAdvice: {
+      '6-9': 'AI故事 + AI小实验 + 简单因果游戏',
+      '10-12': 'AI原理（机器学习入门）+ 数据可视化小项目',
+      '13-18': 'AI伦理 + Python+AI入门 + 职业探索',
+    },
+    service: '我们提供"AI探索型家庭学习方案"，包含AI基础课程、亲子对话指南和分龄学习路径。从孩子的第一次AI实验开始，系统构建科学思维。',
+    parentNote: 'In the AI era, curiosity is your child\'最宝贵的资产。你的角色不是回答每个问题，而是帮他们找到探索AI的起点。'
+  },
+  apply: {
+    icon: '\uD83D\uDEE0\uFE0F',
+    label: '应用型',
+    badge: '实用导向',
+    desc: 'This little pragmatist doesn\'t like empty talk — they care about "what can this do for me?" Your child values efficiency and results, and is good at using tools to solve real problems.',
+    mva: '让孩子用AI帮做一周的学习任务（如作文提纲、学习笔记）。之后问："AI帮了多少？AI哪些做不到？"——这能帮孩子理解AI是工具，不是替代品。',
+    direction: 'AI写作辅助、AI绘图工具、AI+学习效率',
+    ageAdvice: {
+      '6-9': '可视化AI工具 + AI辅助绘画/讲故事',
+      '10-12': 'AI学习工具 + 无代码AI项目入门',
+      '13-18': 'AI学习技巧 + 项目实践（用AI搭建作品）',
+    },
+    service: '我们提供"AI应用型能力提升方案"，包含适龄AI工具清单、学习效率指南和项目模板。帮孩子从"认识AI"到"用AI解决问题"。',
+    parentNote: 'You\'ve already seen AI\'作为实用工具的价值。下一步，帮助孩子聚焦一个具体问题，用AI来搞定它。'
+  },
+  create: {
+    icon: '\uD83C\uDFA8',
+    label: '创作型',
+    badge: '表达冲动',
+    desc: '这个小创作者有表达冲动——他们需要工具把想法变成作品。你的孩子擅长将想象变为现实，有强烈的自我表达欲望。',
+    mva: '让孩子用AI绘画工具输入想象中的场景，然后一起创作故事。目标："把脑子里的画面变成能看到的东西"——零技术门槛。',
+    direction: 'AI音乐创作、AI视频制作、AI故事/绘本生成',
+    ageAdvice: {
+      '6-9': 'AI绘画 + AI绘本制作 + 基础AI音乐',
+      '10-12': 'AI视频入门 + AI音乐制作 + 数字艺术',
+      '13-18': '完整创作项目 + 专业工具链 + 作品集构建',
+    },
+    service: '我们提供"AI创作型成长方案"，包含AI创作工具指南、从创意到作品的流程，以及作品集构建建议。释放孩子在AI时代的表达力。',
+    parentNote: '创作是孩子理解世界的方式。AI能帮助跨越技术鸿沟，把想法变成真正的作品。'
+  }
+};
+
+// ===== 状态 =====
+let currentStep = -1; // -1 = 开始页
+let answers = {};
+let result = null;
+let leadSubmitted = false;
+// Type label mapping (global)
+const TYPE_LABELS_EN = { explore: '🔍探索型', apply: '🛠️应用型', create: '🎨创作型' };
+
+let childNickname = ''; // child nickname, for multi-child differentiation
+
+// ===== DOM引用 =====
+const cardArea = document.getElementById('cardArea');
+const progressBar = document.getElementById('progressBar');
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+// ===== 渲染 =====
+
+function renderProgress() {
+  if (currentStep < 0) {
+    progressBar.innerHTML = '';
+    return;
+  }
+  progressBar.innerHTML = QUESTIONS.map((q, i) => {
+    let cls = 'dot';
+    if (i < currentStep) cls += ' done';
+    else if (i === currentStep) cls += ' active';
+    return `<div class="${cls}"></div>`;
+  }).join('');
+}
+
+function renderStart() {
+  currentStep = -1;
+  progressBar.innerHTML = '';
+  cardArea.innerHTML = `
+    <div class="card fade-in" style="padding:32px 24px;">
+      <div class="hero-icon">🧠</div>
+      <div class="hero-desc">
+        <strong>22道快速题</strong>，回答那个让你夜不能寐的问题:
+        <br/>
+        「<strong>我的孩子该学什么AI</strong>？」
+      </div>
+
+      <div class="child-nickname-area" style="margin:16px 0;padding:14px;background:#f0f7ff;border-radius:10px;">
+        <label style="font-size:13px;font-weight:600;color:#0F2B46;display:block;margin-bottom:6px;">孩子昵称 (多孩家庭可区分不同孩子的记录)</label>
+        <input type="text" id="childNicknameInput" placeholder="例如：小明、朵朵" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;box-sizing:border-box;" />
+        <p style="font-size:11px;color:#999;margin-top:4px;">选填。多孩家庭每次用不同昵称，系统将分别保存历史记录。</p>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-icon">🔬</span>
+          <span><strong>科学分型</strong> — 基于认知行为特征，三种AI学习类型</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🎯</span>
+          <span><strong>分龄适配</strong> — 6-9 / 10-12 / 13-18, 每阶段专属建议</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">⚡</span>
+          <span><strong>30秒出结果</strong> — 立刻获得个性化学习建议</span>
+        </div>
+      </div>
+
+      <button class="start-btn" onclick="startQuiz()">
+        开始诊断
+      </button>
+      <p style="text-align:center;font-size:12px;color:#999;">完成测评可获取《2025全球AI教育政策汇编》PDF</p>
+    </div>
+  `;
+}
+
+function startQuiz() {
+  const nickInput = document.getElementById('childNicknameInput');
+  childNickname = (nickInput ? nickInput.value.trim() : '') || 'Default';
+  currentStep = 0;
+  answers = {};
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderQuestion(step) {
+  if (step >= QUESTIONS.length) {
+    showResult();
+    return;
+  }
+  const q = QUESTIONS[step];
+  const selected = answers[q.id];
+
+  renderProgress();
+
+  cardArea.innerHTML = `
+    <div class="card fade-in">
+      <div class="q-number">Q${step + 1} / 22</div>
+      <div class="q-title">${q.title}</div>
+      <div class="options">
+        ${q.options.map((opt, i) => `
+          <button class="option ${selected === i ? 'selected' : ''}" 
+                  data-opt-index="${i}"
+                  onclick="selectOption(${step}, ${i})">
+            ${opt.text}
+          </button>
+        `).join('')}
+      </div>
+      <div class="btn-row">
+        ${step > 0 ? '<button class="btn btn-secondary" onclick="prevStep()">\u2190 上一题</button>' : '<div></div>'}
+        <button class="btn btn-primary" id="nextBtn" ${selected === undefined ? 'disabled' : ''} 
+                onclick="nextStep()">
+          ${step < QUESTIONS.length - 1 ? '下一题 \u2192' : '\uD83D\uDCCA 查看结果'}
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+// ===== 逻辑 =====
+
+function selectOption(step, optIndex) {
+  const q = QUESTIONS[step];
+  answers[q.id] = optIndex;
+
+  document.querySelectorAll('.option').forEach((btn, i) => {
+    btn.classList.toggle('selected', i === optIndex);
+  });
+
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextStep() {
+  if (currentStep < QUESTIONS.length - 1) {
+    currentStep++;
+    renderQuestion(currentStep);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    // 查看结果前，先弹出留资（如果还没提交过）
+    if (!leadSubmitted) {
+      showLead();
+    } else {
+      calculateResult();
+    }
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    renderQuestion(currentStep);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function calculateResult() {
+  loadingOverlay.classList.remove('hidden');
+
+  // 双轴评分
+  // 轴1：5维度能力分（用于雷达图）
+  let dimScores = { cognitive: 0, practice: 0, social: 0, critical: 0, digital: 0 };
+  // 轴2：3类型风格分（用于学习类型）
+  let typeScores = { explore: 0, apply: 0, create: 0 };
+  
+  // 获取年龄
+  let ageGroup = '10-12';
+  const screeningQ = QUESTIONS.find(q => q.isScreening);
+  if (screeningQ) {
+    const ageAns = answers[screeningQ.id];
+    if (ageAns !== undefined) {
+      const opt = screeningQ.options[ageAns];
+      if (opt && opt.ageGroup) ageGroup = opt.ageGroup;
+    }
+  }
+
+  // 遍历所有诊断题
+  QUESTIONS.forEach(q => {
+    if (q.isScreening) return;
+    const ansIdx = answers[q.id];
+    if (ansIdx === undefined) return;
+    const opt = q.options[ansIdx];
+    
+    // 累加维度分
+    if (opt.scores) {
+      DIM_ORDER.forEach(dim => {
+        if (opt.scores[dim]) dimScores[dim] += opt.scores[dim];
+      });
+    }
+    // 累加类型分
+    if (opt.types) {
+      TYPE_ORDER.forEach(typ => {
+        if (opt.types[typ]) typeScores[typ] += opt.types[typ];
+      });
+    }
+  });
+
+  // 归一化维度分到0-100
+  const maxDim = Math.max(...DIM_ORDER.map(d => dimScores[d]), 1);
+  const dimPct = {};
+  DIM_ORDER.forEach(d => {
+    dimPct[d] = maxDim > 0 ? Math.round((dimScores[d] / maxDim) * 100) : 0;
+  });
+
+  // 归一化类型分到百分比
+  const totalType = typeScores.explore + typeScores.apply + typeScores.create;
+  let typePct = { explore: 33, apply: 33, create: 33 };
+  if (totalType > 0) {
+    typePct.explore = Math.round((typeScores.explore / totalType) * 100);
+    typePct.apply = Math.round((typeScores.apply / totalType) * 100);
+    typePct.create = Math.max(0, 100 - typePct.explore - typePct.apply);
+  }
+
+  // 判定主要类型
+  let mainType = 'explore';
+  if (typeScores.apply >= typeScores.explore && typeScores.apply >= typeScores.create) mainType = 'apply';
+  if (typeScores.create >= typeScores.explore && typeScores.create >= typeScores.apply) mainType = 'create';
+
+  // 判定副类型
+  let secondaryType = null;
+  const sorted = TYPE_ORDER.map(t => ({ key: t, pct: typePct[t] })).sort((a, b) => b.pct - a.pct);
+  if (sorted[1].pct >= sorted[0].pct * 0.7 && sorted[1].pct > 35) {
+    secondaryType = sorted[1].key;
+  }
+
+  result = { 
+    mainType, secondaryType, ageGroup, 
+    dimScores, typeScores, 
+    dimPct, typePct 
+  };
+
+  setTimeout(() => {
+    loadingOverlay.classList.add('hidden');
+    renderResult();
+  }, 400);
+}function renderResult() {
+  const r = result;
+  const ageGroup = r.ageGroup;
+  const ageLabel = { '6-9': '6-9岁', '10-12': '10-12岁', '13-18': '13-18岁' }[ageGroup] || '10-12岁';
+  
+  // 进度条全部点亮
+  progressBar.innerHTML = (QUESTIONS.filter(q => !q.isScreening)).map(() => `<div class="dot done"></div>`).join('');
+
+  // 构建5维得分条
+  let dimBars = '';
+  DIM_ORDER.forEach(dim => {
+    const label = DIM_LABELS_ZH[dim];
+    const color = DIM_COLORS[dim];
+    const pct = r.dimPct[dim];
+    const dimScore = r.dimScores[dim];
+    dimBars += `
+      <div class="score-row">
+        <div class="score-label">${label}</div>
+        <div class="score-track">
+          <div class="score-fill" style="width:0%;background:${color};"></div>
+          <span class="score-pct">${pct}%</span>
+        </div>
+        <div style="width:30px;text-align:right;font-size:12px;color:#888;flex-shrink:0;">${dimScore}</div>
+      </div>`;
+  });
+
+  // 构建3类型得分条
+  let typeBars = '';
+  TYPE_ORDER.forEach(typ => {
+    const label = TYPE_LABELS_ZH[typ];
+    const icon = TYPE_ICONS[typ];
+    const pct = r.typePct[typ];
+    const colors = { explore: '#4A90D9', apply: '#E67E22', create: '#8E44AD' };
+    typeBars += `
+      <div class="score-row">
+        <div class="score-label">${icon} ${label}</div>
+        <div class="score-track">
+          <div class="score-fill" style="width:0%;background:${colors[typ]};"></div>
+          <span class="score-pct">${pct}%</span>
+        </div>
+      </div>`;
+  });
+
+  // 主类型信息
+  const mainTypeKey = r.mainType;
+  const mainLabel = TYPE_LABELS_ZH[mainTypeKey];
+  const mainIcon = TYPE_ICONS[mainTypeKey];
+  
+  // 类型描述
+  const typeDescriptions = {
+    explore: '好奇心驱动，喜欢探究原理——你的孩子是天生的探索者。建议多尝试AI实验和原理探究类活动。',
+    apply: '实用导向，关注效率与结果——你的孩子善于用工具解决问题。建议多尝试AI辅助学习和效率提升类实践。',
+    create: '表达冲动，喜欢创造原创内容——你的孩子有丰富的想象力。建议多尝试AI创作类活动，把想法变成作品。'
+  };
+  const mainDesc = typeDescriptions[mainTypeKey] || '';
+
+  // 混合类型提示
+  let mixNote = '';
+  if (r.secondaryType) {
+    mixNote = '<div class="result-section" style="background:#fff8e1;padding:12px;border-radius:8px;margin:8px 0;">' +
+      '<h3 style="margin-top:0;">💡 不止一个类型</h3>' +
+      '<p style="font-size:14px;margin:4px 0;">你的孩子偏向 <strong>' + mainLabel + '</strong>，但也显示出明显的 <strong>' + TYPE_LABELS_ZH[r.secondaryType] + '</strong> 特征。可以两方向引导。</p></div>';
+  }
+
+  // 年龄建议
+  const ageAdvice = {
+    '6-9': 'AI故事 + AI小实验 + 简单因果游戏',
+    '10-12': 'AI原理入门 + 数据可视化 + AI工具实践',
+    '13-18': 'AI伦理 + Python入门 + AI创作项目'
+  };
+  const adviceText = ageAdvice[ageGroup] || ageAdvice['10-12'];
+
+  cardArea.innerHTML = `
+    <div class="card fade-in" style="text-align:left;">
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="font-size:56px;margin-bottom:8px;">${mainIcon}</div>
+        <div style="font-size:28px;font-weight:700;color:#0F2B46;">${mainLabel}</div>
+        <div style="font-size:14px;color:#888;">${ageLabel}</div>
+      </div>
+
+      <hr class="sep"/>
+
+      <!-- 5维能力雷达图 -->
+      <div class="result-section">
+        <h3>📊 5维能力雷达图</h3>
+        <div class="score-bars">${dimBars}</div>
+      </div>
+
+      <hr class="sep"/>
+
+      <!-- 3类型学习风格 -->
+      <div class="result-section">
+        <h3>🧭 学习风格类型</h3>
+        <div class="score-bars">${typeBars}</div>
+        <p style="font-size:12px;color:#666;margin-top:6px;">百分比越高，表示该类型倾向越强。</p>
+      </div>
+
+      <hr class="sep"/>
+
+      <!-- 类型描述 -->
+      <div class="result-section">
+        <h3>📝 类型解读</h3>
+        <p style="font-size:14px;color:#444;line-height:1.7;">${mainDesc}</p>
+      </div>
+
+      ${mixNote}
+
+      <!-- 今晚就能做的一件事 -->
+      <div class="result-section" style="background:#f0f7ff;padding:16px;border-radius:10px;margin:12px 0;">
+        <h3 style="margin-top:0;">🌙 今晚就能做的一件事</h3>
+        <p style="font-size:14px;color:#444;">${
+          mainTypeKey === 'explore' ? '打开一个免费AI工具（如豆包），让孩子问三个"为什么"。观察孩子是相信答案还是质疑它。零准备，今晚就能做。' :
+          mainTypeKey === 'apply' ? '让孩子用AI帮做一周的学习任务（如作文提纲）。之后问"AI帮了多少？AI哪些做不到？"这能帮孩子理解AI是工具不是替代品。' :
+          '让孩子用AI绘画工具输入想象中的场景，然后一起创作故事。目标：把脑子里的画面变成能看到的东西。'
+        }</p>
+      </div>
+
+      <!-- ${ageLabel}学习建议 -->
+      <div class="result-section">
+        <h3>🎯 ${ageLabel}学习建议</h3>
+        <p style="font-size:14px;color:#444;">${adviceText}</p>
+      </div>
+
+      <hr class="sep"/>
+
+      <!-- 付费升级 -->
+      <div class="result-section">
+        <h3>选择学习路径</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px;padding:8px 16px;background:#f0f7ff;border-radius:20px;">
+          <span style="font-size:12px;color:#0F2B46;font-weight:600;">⚡ 从报告开始</span>
+          <span style="font-size:10px;color:#999;">→</span>
+          <span style="font-size:12px;color:#666;">🧱 深度学习</span>
+          <span style="font-size:10px;color:#999;">→</span>
+          <span style="font-size:12px;color:#666;">✍️ 一对一定制</span>
+        </div>
+        
+        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="font-weight:600;font-size:15px;">AI素养深度报告</span>
+              <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#1a73e8;color:white;border-radius:10px;font-size:11px;">最佳选择</span>
+            </div>
+            <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥9.9</span>
+          </div>
+          <p style="font-size:13px;color:#666;margin:6px 0 0;">基于诊断的10页个性化报告，含学习路线图和适龄工具清单</p>
+        </div>
+
+        <button onclick="showPayment('9.9')" style="display:block;width:100%;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥9.9 购买报告 →</button>
+      </div>
+
+      <hr class="sep"/>
+
+      <!-- 分享 -->
+      <div class="share-area" style="text-align:center;margin-top:12px;">
+        <p style="font-size:13px;color:#888;">👋 分享给朋友，看看他们的孩子是什么类型！</p>
+        <button class="btn btn-primary" onclick="shareResult()">📤 分享到微信</button>
+        <button class="btn btn-secondary" onclick="restart()" style="margin-top:8px;">🔄 重新诊断</button>
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 延迟触发动画
+  setTimeout(() => {
+    document.querySelectorAll('.score-fill').forEach(el => {
+      const pct = el.parentElement.querySelector('.score-pct');
+      if (pct) el.style.width = pct.textContent;
+    });
+  }, 100);
+}// ===== 分享 =====
+function shareResult() {
+  const r = result;
+  const text = [
+    '我的孩子是' + r.icon + r.label + '型！',
+    '',
+    '22 questions, 30 seconds free diagnosis. Find your child AI learning style.',
+    'https://www.humanaifit.com/diagnosis/'
+  ].join('\n');
+
+  // 先复制文案
+  navigator.clipboard.writeText(text).then(() => {
+    // 再生成截图保存到手机
+    screenshotShare();
+  }).catch(() => {
+    alert('📸 复制文案失败！\n\n请手动复制↓\n' + text);
+  });
+}
+
+function screenshotShare() {
+  if (typeof html2canvas !== 'undefined') {
+    const card = document.querySelector('.card');
+    if (card) {
+      html2canvas(card, { backgroundColor: '#ffffff' }).then(canvas => {
+        const dataUrl = canvas.toDataURL('image/png');
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;animation:fadeIn 0.2s;';
+        overlay.innerHTML = '<div style="background:white;border-radius:16px;padding:20px;max-width:360px;width:100%;text-align:center;position:relative;">' +
+          '<button onclick="this.parentElement.parentElement.remove()" style="position:absolute;top:8px;left:8px;border:none;background:rgba(0,0,0,0.5);color:white;font-size:20px;width:30px;height:30px;border-radius:50%;cursor:pointer;line-height:30px;z-index:10;">x</button>' +
+          '<p style="font-size:14px;color:#333;margin:0 0 12px;"><strong>长按保存到相册</strong></p>' +
+          '<p style="font-size:12px;color:#888;margin:0 0 12px;">你也可以在微信中分享此图片</p>' +
+          '<img src="' + dataUrl + '" style="width:100%;border-radius:8px;" />' +
+          '<button onclick="this.parentElement.parentElement.remove()" style="margin-top:12px;padding:10px 24px;border:none;background:#0F2B46;color:white;border-radius:8px;font-size:14px;cursor:pointer;">关闭</button>' +
+          '</div>';
+        document.body.appendChild(overlay);
+      });
+    }
+  } else {
+    alert('📸 请截图保存你的诊断结果！');
+  }
+}
+
+function restart() {
+  // 记录本次结果到localStorage（按孩子昵称区分）
+  if (result) {
+    try {
+      saveChildHistory({ type: result.mainType, scores: result.typeScores, pct: result.dimPct, date: new Date().toISOString() });
+    } catch(e) {}
+  }
+  currentStep = 0;
+  answers = {};
+  result = null;
+  leadSubmitted = false;
+  renderStart();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== 留资 =====
+function showLead() {
+  document.getElementById('leadOverlay').classList.add('active');
+}
+
+function closeLead() {
+  document.getElementById('leadOverlay').classList.remove('active');
+  leadSubmitted = true;
+  calculateResult();
+}
+
+function submitLead() {
+  const name = document.getElementById('leadName').value.trim();
+  const contact = document.getElementById('leadContact').value.trim();
+  
+  if (!contact) {
+    alert('请输入微信号或手机号以获取诊断报告');
+    return;
+  }
+  
+  const privacyCheck = document.getElementById('privacyAgree');
+  if (!privacyCheck || !privacyCheck.checked) {
+    alert('请同意隐私政策。我们保护您和孩子的数据安全');
+    return;
+  }
+  
+  // Store locally
+  try {
+    const leads = JSON.parse(localStorage.getItem('diagnosis_leads') || '[]');
+    leads.push({ name, contact, result, timestamp: new Date().toISOString() });
+    localStorage.setItem('diagnosis_leads', JSON.stringify(leads));
+  } catch(e) {}
+
+  // Send to Feishu via Cloudflare Pages Function proxy
+  fetch('/api/lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nickname: childNickname || 'Default',
+      name: name,
+      contact: contact,
+      result: result ? {
+        type: result.mainType,
+        typeLabel: TYPE_LABELS_ZH[result.mainType],
+        pct: result.pct,
+      } : null,
+    }),
+  }).catch(function(err) {
+    console.error('Feishu notification failed:', err);
+  });
+
+  leadSubmitted = true;
+  document.getElementById('leadOverlay').classList.remove('active');
+  calculateResult();
+}
+
+// ===== 键盘支持 =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn && !nextBtn.disabled) nextBtn.click();
+  }
+  if (['1','2','3'].includes(e.key)) {
+    const opts = document.querySelectorAll('.option');
+    const idx = parseInt(e.key) - 1;
+    if (opts[idx]) opts[idx].click();
+  }
+});
+
+// ===== 启动 =====
+renderStart();
+
+// ===== 支付弹窗 =====
+function showPayment(tier) {
+  const plans = {
+    '9.9': { price: '9.9', name: 'AI素养深度分析报告', planet: '+1周免费星球权限' },
+    '19.9': { price: '19.9', name: '月度订阅', planet: '+1个月免费星球权限' },
+    '199annual': { price: '199', name: '年度家庭计划', planet: '+2个月免费星球权限' }
+  };
+  const p = plans[tier];
+  
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+  
+  overlay.innerHTML = `
+    <div style="background:white;border-radius:16px;padding:28px;max-width:380px;width:100%;text-align:center;animation:fadeIn 0.2s;">
+      <button onclick="this.closest('[style*=\"z-index:9999\"]').remove()" style="float:right;border:none;background:none;font-size:20px;cursor:pointer;color:#999;">×</button>
+      <h3 style="margin:8px 0 4px;font-size:18px;">${p.name}</h3>
+      <p style="font-size:28px;font-weight:700;color:#0F2B46;margin:12px 0 4px;">¥${p.price}</p>
+      <p style="font-size:13px;color:#C9A96E;font-weight:600;margin-bottom:16px;">🎁 ${p.planet}</p>
+      <div style="background:#f5f5f5;padding:16px;border-radius:12px;margin-bottom:16px;">
+        <div style="background:#fff8e1;padding:12px;border-radius:8px;margin-bottom:16px;">
+        <p style="font-size:13px;color:#666;margin-bottom:8px;">微信扫码支付</p>
+        <img src="/images/wechat_pay.jpg" alt="微信扫码支付 QR Code" style="width:180px;height:180px;object-fit:cover;border-radius:8px;" />
+        <p style="font-size:12px;color:#e65100;margin-bottom:4px;">💬 Contact via WeChat to Purchase</p>
+        <p style="font-size:12px;color:#555;margin-bottom:4px;">长按复制微信ID：</p>
+        <div style="background:#f5f5f5;padding:8px;border-radius:6px;font-size:14px;font-weight:600;color:#0F2B46;margin:4px 0;text-align:center;cursor:pointer;" onclick="navigator.clipboard.writeText('blurblurfish');alert('WeChat ID copied')">blurblurfish</div>
+        <p style="font-size:12px;color:#666;margin-top:6px;">备注"孩子诊断"，Connie会激活你的报告和免费星球权限</p>
+      </div>
+      <button onclick="this.closest('[style*=\"z-index:9999\"]').remove()" style="padding:10px 28px;background:#f5f5f5;border:none;border-radius:8px;cursor:pointer;font-size:14px;color:#666;">关闭</button>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+}
+</script>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<script>
+  // 5-dim ring after results appear
+  setTimeout(function(){
+    var el=document.getElementById('cardArea');
+    if(!el||el.querySelector('.fdr'))return;
+    var d=[
+      {l:"探索型",c:'#4A90D9'},
+      {l:"创意制造者",c:'#E67E22'},
+      {l:"社交连接者",c:'#27AE60'},
+      {l:"审美思考者",c:'#8E44AD'},
+      {l:"数字原住民",c:'#F39C12'}
+    ];
+    var h='<div class="card fdr" style="padding:20px;margin-top:16px;background:linear-gradient(135deg,#f8f9fa,#e3f2fd);">'+
+      '<h3 style="margin:0 0 4px;font-size:16px;">🧭 5维AI潜能（免费预览）</h3>'+
+      '<p style="font-size:12px;color:#888;margin:0 0 12px;">简化版预览</p>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;">';
+    d.forEach(function(x){
+      h+='<div style="text-align:center;width:68px;"><div style="width:52px;height:52px;margin:0 auto;border-radius:50%;border:4px solid '+x.c+';display:flex;align-items:center;justify-content:center;">'+
+      '<span style="font-size:20px;color:'+x.c+';">?</span></div>'+
+      '<div style="font-size:11px;color:#555;margin:3px 0;">'+x.l+'</div></div>';
+    });
+    h+='</div><div style="background:#fff3e0;border:1px solid #ffe082;border-radius:12px;padding:16px;margin:10px 0;text-align:center;">'+
+      '<p style="font-size:14px;color:#e65100;margin:0 0 8px;font-weight:600;">🔒 解锁完整报告</p>'+
+      '<p style="font-size:12px;color:#555;margin:0 0 10px;">✅ 完整5维雷达图<br>✅ 30天行动卡<br>✅ 家长指南<br>✅ 复测追踪</p>'+
+      '<button onclick="alert(&apos;Paid version coming soon! WeChat: humanaifit&apos;)" style="padding:10px 20px;background:#FF9800;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;width:100%;">🔓 解锁完整报告 ¥9.9</button>'+
+      '<p style="font-size:11px;color:#999;margin:6px 0 0;">微信扫码支付</p></div></div>';
+    el.insertAdjacentHTML('beforeend',h);
+  },1200);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" 
+        onerror="console.log('html2canvas not loaded')"></script>
+
+</body>
+</html>
