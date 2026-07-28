@@ -868,176 +868,218 @@ function prevStep() {
 function calculateResult() {
   loadingOverlay.classList.remove('hidden');
 
-  let scores = { explore: 0, apply: 0, create: 0 };
+  // 双轴评分
+  // 轴1：5维度能力分（用于雷达图）
+  let dimScores = { cognitive: 0, practice: 0, social: 0, critical: 0, digital: 0 };
+  // 轴2：3类型风格分（用于学习类型）
+  let typeScores = { explore: 0, apply: 0, create: 0 };
+  
+  // 获取年龄
   let ageGroup = '10-12';
+  const screeningQ = QUESTIONS.find(q => q.isScreening);
+  if (screeningQ) {
+    const ageAns = answers[screeningQ.id];
+    if (ageAns !== undefined) {
+      const opt = screeningQ.options[ageAns];
+      if (opt && opt.ageGroup) ageGroup = opt.ageGroup;
+    }
+  }
 
-  QUESTIONS.forEach((q, i) => {
+  // 遍历所有诊断题
+  QUESTIONS.forEach(q => {
+    if (q.isScreening) return;
     const ansIdx = answers[q.id];
     if (ansIdx === undefined) return;
     const opt = q.options[ansIdx];
-    if (opt.ageGroup) ageGroup = opt.ageGroup;
-    scores.explore += (opt.scores.explore || 0);
-    scores.apply += (opt.scores.apply || 0);
-    scores.create += (opt.scores.create || 0);
+    
+    // 累加维度分
+    if (opt.scores) {
+      DIM_ORDER.forEach(dim => {
+        if (opt.scores[dim]) dimScores[dim] += opt.scores[dim];
+      });
+    }
+    // 累加类型分
+    if (opt.types) {
+      TYPE_ORDER.forEach(typ => {
+        if (opt.types[typ]) typeScores[typ] += opt.types[typ];
+      });
+    }
   });
 
-  // 计算百分比（基于总得分）
-  const totalScores = scores.explore + scores.apply + scores.create;
-  let pctExplore, pctApply, pctCreate;
-  if (totalScores > 0) {
-    // Calculate first two, third rounds to 100%, Math.max(0) prevents negative overflow
-    pctExplore = Math.max(0, Math.round((scores.explore / totalScores) * 100));
-    pctApply = Math.max(0, Math.round((scores.apply / totalScores) * 100));
-    pctCreate = Math.max(0, 100 - pctExplore - pctApply);
-  } else {
-    pctExplore = pctApply = pctCreate = 33;
+  // Normalize dimension scores to 0-100
+  const maxDim = Math.max(...DIM_ORDER.map(d => dimScores[d]), 1);
+  const dimPct = {};
+  DIM_ORDER.forEach(d => {
+    dimPct[d] = maxDim > 0 ? Math.round((dimScores[d] / maxDim) * 100) : 0;
+  });
+
+  // Normalize type scores to percentages
+  const totalType = typeScores.explore + typeScores.apply + typeScores.create;
+  let typePct = { explore: 33, apply: 33, create: 33 };
+  if (totalType > 0) {
+    typePct.explore = Math.round((typeScores.explore / totalType) * 100);
+    typePct.apply = Math.round((typeScores.apply / totalType) * 100);
+    typePct.create = Math.max(0, 100 - typePct.explore - typePct.apply);
   }
 
-  // 判定主要类型（基于原始分，不依赖百分比）
-  let type;
-  if (scores.explore >= scores.apply && scores.explore >= scores.create) type = 'explore';
-  else if (scores.apply >= scores.create) type = 'apply';
-  else type = 'create';
+  // Determine main type
+  let mainType = 'explore';
+  if (typeScores.apply >= typeScores.explore && typeScores.apply >= typeScores.create) mainType = 'apply';
+  if (typeScores.create >= typeScores.explore && typeScores.create >= typeScores.apply) mainType = 'create';
 
-  // 副类型检测
+  // Determine secondary type
   let secondaryType = null;
-  const sorted = [
-    { key: 'explore', pct: pctExplore },
-    { key: 'apply', pct: pctApply },
-    { key: 'create', pct: pctCreate },
-  ].sort((a, b) => b.pct - a.pct);
+  const sorted = TYPE_ORDER.map(t => ({ key: t, pct: typePct[t] })).sort((a, b) => b.pct - a.pct);
   if (sorted[1].pct >= sorted[0].pct * 0.7 && sorted[1].pct > 35) {
     secondaryType = sorted[1].key;
   }
 
-  result = { type, secondaryType, ageGroup, scores, pct: { explore: pctExplore, apply: pctApply, create: pctCreate } };
+  result = { 
+    mainType, secondaryType, ageGroup, 
+    dimScores, typeScores, 
+    dimPct, typePct 
+  };
 
   setTimeout(() => {
     loadingOverlay.classList.add('hidden');
     renderResult();
   }, 400);
-}
+}function renderResult() {
+  const r = result;
+  const ageGroup = r.ageGroup;
+  const ageLabel = { '6-9': '6-9 years', '10-12': '10-12 years', '13-18': '13-18 years' }[ageGroup] || '10-12 years';
+  
+  // 进度条全部点亮
+  progressBar.innerHTML = (QUESTIONS.filter(q => !q.isScreening)).map(() => `<div class="dot done"></div>`).join('');
 
-// 获取该孩子的历史记录
-function getChildHistory() {
-  const key = 'diagnosis_history_' + childNickname;
-  try {
-    return JSON.parse(localStorage.getItem(key) || '[]');
-  } catch(e) { return []; }
-}
+  // 构建5维得分条
+  let dimBars = '';
+  DIM_ORDER.forEach(dim => {
+    const label = DIM_LABELS_ZH[dim];
+    const color = DIM_COLORS[dim];
+    const pct = r.dimPct[dim];
+    const dimScore = r.dimScores[dim];
+    dimBars += `
+      <div class="score-row">
+        <div class="score-label">${label}</div>
+        <div class="score-track">
+          <div class="score-fill" style="width:0%;background:${color};"></div>
+          <span class="score-pct">${pct}%</span>
+        </div>
+        <div style="width:30px;text-align:right;font-size:12px;color:#888;flex-shrink:0;">${dimScore}</div>
+      </div>`;
+  });
 
-function saveChildHistory(entry) {
-  const key = 'diagnosis_history_' + childNickname;
-  try {
-    var hist = JSON.parse(localStorage.getItem(key) || '[]');
-    hist.push(entry);
-    localStorage.setItem(key, JSON.stringify(hist.slice(-5)));
-  } catch(e) {}
-}
+  // 构建3类型得分条
+  let typeBars = '';
+  TYPE_ORDER.forEach(typ => {
+    const label = TYPE_LABELS_ZH[typ];
+    const icon = TYPE_ICONS[typ];
+    const pct = r.typePct[typ];
+    const colors = { explore: '#4A90D9', apply: '#E67E22', create: '#8E44AD' };
+    typeBars += `
+      <div class="score-row">
+        <div class="score-label">${icon} ${label}</div>
+        <div class="score-track">
+          <div class="score-fill" style="width:0%;background:${colors[typ]};"></div>
+          <span class="score-pct">${pct}%</span>
+        </div>
+      </div>`;
+  });
 
-// 显示历史对比（如果有）
-function renderComparison() {
-  try {
-    var histData = getChildHistory();
-    if (histData.length < 2) return '';
-    var last = histData[histData.length - 2];
-    // labelMap replaced by global TYPE_LABELS_EN
-    return '<div class="result-section" style="background:#fff8e1;padding:16px;border-radius:10px;margin:12px 0;">' +
-      '<h3 style="margin-top:0;">🔄 Compared to Last Time</h3>' +
-      '<p style="font-size:13px;color:#555;">Last result: ' + (TYPE_LABELS_EN[last.type] || last.type) + ' | ' +
-      'Explore' + last.pct.explore + '% / Apply' + last.pct.apply + '% / Create' + last.pct.create + '%</p>' +
-      '<p style="font-size:13px;color:#555;margin:4px 0 0;">📈 A child\'s AI learning tendency evolves as they interact with AI tools. Re-diagnose every 3 months to track progress.</p>' +
-      '</div>';
-  } catch(e) { return ''; }
-}
+  // 主类型信息
+  const mainTypeKey = r.mainType;
+  const mainLabel = TYPE_LABELS_ZH[mainTypeKey];
+  const mainIcon = TYPE_ICONS[mainTypeKey];
+  
+  // 类型描述
+  const typeDescriptions = {
+    explore: 'Curiosity-driven, loves exploring. Your child is a natural explorer. Try AI experiments and principle-exploration activities.',
+    apply: 'Utility-oriented, cares about efficiency. Your child is good at solving problems with tools. Try AI-assisted learning.',
+    create: 'Expressive impulse, loves creating. Your child has a rich imagination. Try AI creative activities to turn ideas into work.'
+  };
+  const mainDesc = typeDescriptions[mainTypeKey] || '';
 
-function renderResult() {
-  const r = RESULTS[result.type];
-  const ageKey = result.ageGroup;
-  const ageAdviceText = r.ageAdvice[ageKey] || r.ageAdvice['10-12'];
-  const ageLabel = { '6-9': 'Age 6-9', '10-12': 'Age 10-12', '13-18': 'Age 13-18' }[ageKey] || 'Age 10-12';
+  // 混合类型提示
+  let mixNote = '';
+  if (r.secondaryType) {
+    mixNote = '<div class="result-section" style="background:#fff8e1;padding:12px;border-radius:8px;margin:8px 0;">' +
+      '<h3 style="margin-top:0;">💡 More than one type</h3>' +
+      '<p style="font-size:14px;margin:4px 0;">Your child leans toward <strong>' + mainLabel + '</strong> but also shows clear <strong>' + TYPE_LABELS_ZH[r.secondaryType] + '</strong> traits. Consider guiding both directions.</p></div>';
+  }
 
-  progressBar.innerHTML = QUESTIONS.map(() => `<div class="dot done"></div>`).join('');
-
-  // 构建分数条
-  const scores = [
-    { key: 'explore', label: 'Explorer ' + RESULTS.explore.icon, pct: result.pct.explore },
-    { key: 'apply', label: 'Practitioner ' + RESULTS.apply.icon, pct: result.pct.apply },
-    { key: 'create', label: 'Creator ' + RESULTS.create.icon, pct: result.pct.create },
-  ];
+  // 年龄建议
+  const ageAdvice = {
+    '6-9': 'AI stories + AI experiments + simple cause-effect games',
+    '10-12': 'AI principles + data visualization + AI tool practice',
+    '13-18': 'AI ethics + Python intro + AI creative projects'
+  };
+  const adviceText = ageAdvice[ageGroup] || ageAdvice['10-12'];
 
   cardArea.innerHTML = `
     <div class="card fade-in" style="text-align:left;">
-      <div class="result-type">${r.icon}</div>
-      <div class="result-label">${r.label}</div>
-      <div class="result-sub">${r.badge} \u00B7 ${ageLabel}</div>
-
-      <hr class="sep" />
-
-      <!-- 分数可视化 -->
-      <div class="result-section">
-        <h3>Score Matrix</h3>
-        <div class="score-bars">
-          ${scores.map(s => `
-            <div class="score-row">
-              <div class="score-label">${s.label}</div>
-              <div class="score-track">
-                <div class="score-fill ${s.key}" style="width: 0%;"></div>
-                <span class="score-pct">${s.pct}%</span>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-        <p style="font-size:12px;color:#666;margin-top:6px;">Explorer ${scores.find(s => s.key === 'explore').pct}% · Practitioner ${scores.find(s => s.key === 'apply').pct}% · Creator ${scores.find(s => s.key === 'create').pct}% — Higher percentage indicates stronger tendency in that dimension.</p>
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="font-size:56px;margin-bottom:8px;">${mainIcon}</div>
+        <div style="font-size:28px;font-weight:700;color:#0F2B46;">${mainLabel}</div>
+        <div style="font-size:14px;color:#888;">${ageLabel}</div>
       </div>
 
-      <hr class="sep" />
+      <hr class="sep"/>
 
+      <!-- 5-Dimension Radar Chart -->
       <div class="result-section">
-        <h3>Your Child</h3>
-        <p>${r.desc}</p>
+        <h3>📊 5-Dimension Radar Chart</h3>
+        <div class="score-bars">${dimBars}</div>
       </div>
 
-      <!-- MVA：今晚就能做的一件事 -->
+      <hr class="sep"/>
+
+      <!-- 3类型学习风格 -->
+      <div class="result-section">
+        <h3>🧭 Learning Style Type</h3>
+        <div class="score-bars">${typeBars}</div>
+        <p style="font-size:12px;color:#666;margin-top:6px;">百分比越高，表示该类型倾向越强。</p>
+      </div>
+
+      <hr class="sep"/>
+
+      <!-- 类型描述 -->
+      <div class="result-section">
+        <h3>📝 Type Assessment</h3>
+        <p style="font-size:14px;color:#444;line-height:1.7;">${mainDesc}</p>
+      </div>
+
+      ${mixNote}
+
+      <!-- One Thing You Can Do Tonight -->
       <div class="result-section" style="background:#f0f7ff;padding:16px;border-radius:10px;margin:12px 0;">
         <h3 style="margin-top:0;">🌙 One Thing You Can Do Tonight</h3>
-        <p>${r.mva}</p>
+        <p style="font-size:14px;color:#444;">${
+          mainTypeKey === 'explore' ? 'Open a free AI tool (like Doubao). Let your child ask three "why" questions. Zero prep - do it tonight.' :
+          mainTypeKey === 'apply' ? 'Ask child to use AI for weekly tasks. Then ask "How much did AI help? What could AI NOT do?"' :
+          'Ask child to use AI drawing to create scenes from imagination. Goal: turn mental pictures into visible work.'
+        }</p>
       </div>
 
-      <!-- 混合型判定 -->
-      ${
-        result.secondaryType ? `<div class="result-section">
-          <h3>💡 More Than One Type</h3>
-          <p style="background:#fff8e1;padding:12px;border-radius:8px;font-size:14px;margin:8px 0;">
-            Your child leans toward <strong>${r.label}</strong> but also shows clear <strong>${
-              RESULTS[result.secondaryType].label
-            }</strong> traits. Consider guiding both directions to let your child find what suits them best.
-          </p>
-        </div>` : ''
-      }
-
+      <!-- ${ageLabel}Learning Advice -->
       <div class="result-section">
-        <h3>📝 Recommended Learning Directions</h3>
-        <p>${r.direction}</p>
+        <h3>🎯 ${ageLabel}Learning Advice</h3>
+        <p style="font-size:14px;color:#444;">${adviceText}</p>
       </div>
 
+      <hr class="sep"/>
+
+      <!-- 付费升级 -->
       <div class="result-section">
-        <h3>${ageLabel} Learning Advice</h3>
-        <p>${ageAdviceText}</p>
-      </div>
-
-      <div class="result-section" style="margin-top:8px;">
-        <h3>Choose a learning path for your child</h3>
-
-        <!-- 进度指引 -->
+        <h3>Choose a Learning Path</h3>
         <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px;padding:8px 16px;background:#f0f7ff;border-radius:20px;">
-          <span style="font-size:12px;color:#0F2B46;font-weight:600;">⚡ Start with report</span>
+          <span style="font-size:12px;color:#0F2B46;font-weight:600;">⚡ Start with Report</span>
           <span style="font-size:10px;color:#999;">→</span>
-          <span style="font-size:12px;color:#666;">🧱 Deep learning</span>
+          <span style="font-size:12px;color:#666;">🧱 Deep Learning</span>
           <span style="font-size:10px;color:#999;">→</span>
-          <span style="font-size:12px;color:#666;">✍️ 1-on-1 custom</span>
+          <span style="font-size:12px;color:#666;">✍️ 1-on-1 Coaching</span>
         </div>
-
+        
         <div style="border:1px solid #e0e0e0;border-radius:10px;padding:14px;margin-bottom:10px;background:#f9fafb;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div>
@@ -1046,115 +1088,32 @@ function renderResult() {
             </div>
             <span style="font-weight:700;color:#0F2B46;font-size:16px;">¥9.9</span>
           </div>
-          <p style="font-size:13px;color:#666;margin:6px 0 0;">10-page personalized report based on diagnosis with learning roadmap and age-appropriate tool list</p>
+          <p style="font-size:13px;color:#666;margin:6px 0 0;">10-page personalized report with learning roadmap and tool list.</p>
         </div>
 
-        <!-- 限时优惠横幅 -->
-        <div style="background:linear-gradient(135deg,#0F2B46,#1A3F64);border-radius:10px;padding:14px;text-align:center;">
-          <p style="color:#C9A96E;font-size:14px;font-weight:600;margin-bottom:4px;">🎁 Free access to "AI Era Survival Guide" knowledge planet</p>
-          <p style="color:white;font-size:13px;opacity:0.9;">Free planet trial with any purchase · Limited to first<span style="color:#C9A96E;font-weight:700;">50 spots</span></p>
-        </div>
-
-        <button onclick="showPayment('9.9')" style="display:block;width:100%;margin-top:12px;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥9.9 Buy Report →</button>
-        <p style="font-size:12px;color:#888;margin-top:4px;text-align:center;">🎁 🎁 +1 week free planet access</p>
-
-        <button onclick="showPayment('19.9')" style="display:block;width:100%;margin-top:8px;padding:12px;background:#C9A96E;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥19.9/mo Subscribe →</button>
-        <p style="font-size:12px;color:#888;margin-top:4px;text-align:center;">🎁 🎁 +1 month free planet access</p>
-
-        <button onclick="showPayment('199annual')" style="display:block;width:100%;margin-top:8px;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥199/yr Buy Annual Plan →</button>
-        <p style="font-size:12px;color:#888;margin-top:4px;text-align:center;">🎁 🎁 +2 months free planet access</p>
+        <button onclick="showPayment('9.9')" style="display:block;width:100%;padding:12px;background:#0F2B46;color:white;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">¥9.9 Buy Report →</button>
       </div>
 
-      <!-- 分文章链接 -->
-      <div style="margin:12px 0;padding:14px;background:#f9fafb;border-radius:10px;">
-        <p style="font-size:13px;color:#555;margin:0 0 6px;font-weight:600;">📚 Recommended for ${r.label}</p>
-        ${
-          result.type === 'explore'
-            ? '<a href="/en/blog/ai_education_future/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">📖 How Should Children Learn AI to Stay Ahead?</a><a href="/en/blog/ai_anxiety_three_steps_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">💡 AI Anxiety? 3 Steps to Rekindle Your Child Curiosity</a><a href="/en/blog/is_ai_dulling_minds_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🧠 Is AI Making Us Dumber? Three Independent Studies Weigh In</a>'
-          : result.type === 'apply'
-            ? '<a href="/en/blog/jiwa_to_dongwa/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">👨‍👩‍👧‍👦 From Tiger Parenting to True Understanding — AI for Kids, Not Instead of Kids</a><a href="/en/blog/cognitive_judgment_ai_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🧠 How to Judge Someone\'s Cognition? AI Has Changed the Question</a><a href="/en/blog/ai_education_policy_2025/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">📋 2025 Global AI Education Policy Guide (Resource)</a>'
-            : '<a href="/en/blog/ai_knowledge_meaning/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🎓 Is Knowledge Still Meaningful in the Age of AI?</a><a href="/en/blog/sharing_ideas_with_ai_originality_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">💡 Should You Share Your Research Ideas with AI?</a><a href="/en/blog/ai_us_education_2026/" style="display:block;font-size:13px;color:#0F2B46;margin:4px 0;">🏫 How AI Is Reshaping US Education: From Tools to a New Ecosystem</a>'
-        }
-        <div style="margin-top:6px;text-align:center;">
-          <a href="/en/blog/" style="font-size:12px;color:#999;">📚 More AI Literacy Articles ></a>
-        </div>
-      </div>
+      <hr class="sep"/>
 
-      <div class="result-section" style="background:#f0f7ff;padding:16px;border-radius:10px;margin-top:16px;">
-        <h3 style="margin-top:0;">A Note for Parents</h3>
-        <p style="font-weight:500; color:#0F2B46; font-size:14px;">${r.parentNote}</p>
-      </div>
-
-      <!-- 全球化对标 -->
-      <div class="result-section" style="background:#f5f5f5;padding:16px;border-radius:10px;margin-top:12px;">
-        <h3 style="margin-top:0;">🌍 🌍 Global Perspective</h3>
-        <p style="font-size:13px;color:#555;margin:4px 0;">
-          Globally, AI education experts (such as the US AI4K12 framework and EU DigCompEdu) also categorize AI learners into explorers, practitioners, and creators. Your child's classification aligns with mainstream AI education frameworks worldwide. Global AI literacy education is rapidly expanding — the earlier you guide your child, the better their future prospects.
-        </p>
-      </div>
-
-      <hr class="sep" />
-
-      <div class="share-area">
-              ${renderComparison()}
-
-      <!-- 行为解读 -->
-      <details style="margin:12px 0;">
-        <summary style="cursor:pointer;font-weight:600;font-size:14px;color:#0F2B46;padding:8px 0;">🔍 Detailed interpretation of each question</summary>
-        <div style="padding:8px;background:#fafafa;border-radius:8px;margin-top:4px;max-height:400px;overflow-y:auto;">
-          ${
-            QUESTIONS.map((q, qi) => {
-              const ansIdx = answers[q.id];
-              if (ansIdx === undefined) return '';
-              const opt = q.options[ansIdx];
-              const es = opt.scores.explore || 0;
-              const aa = opt.scores.apply || 0;
-              const cc = opt.scores.create || 0;
-              const maxS = Math.max(es, aa, cc);
-              let note = '';
-              if (maxS > 0) {
-                if (es === maxS && es > 0) note = '➕ Increased "Explorer" tendency';
-                else if (aa === maxS && aa > 0) note = '➕ Increased "Practitioner" tendency';
-                else if (cc === maxS && cc > 0) note = '➕ Increased "Creator" tendency';
-              } else {
-                note = '— Background info, not scored for tendency';
-              }
-              return `<div style="padding:6px 0;border-bottom:1px solid #eee;font-size:12px;color:#555;">
-                <strong>Q${qi+1}:</strong> ${q.title}<br/>
-                <span style="color:#888;">Your choice:</span> ${opt.text}<br/>
-                <span style="color:#888;">Interpretation:</span> ${note}
-              </div>`;
-            }).join('')
-          }
-        </div>
-      </details>
-
-      <div class="share-area">
-        <p class="share-description">👋 👋 Share with friends and see their child's type!</p>
-        <button class="btn btn-primary" onclick="shareResult()">
-          📤 Share via WeChat
-        </button>
-        <button class="btn btn-secondary" onclick="screenshotShare()" style="margin-top:8px;">
-          📸 Save Screenshot
-        </button>
-        <button class="btn btn-secondary" onclick="restart()" style="margin-top:8px;">
-          🔄 Diagnose Again
-        </button>
+      <!-- 分享 -->
+      <div class="share-area" style="text-align:center;margin-top:12px;">
+        <p style="font-size:13px;color:#888;">👋 Share with friends to see their child type!</p>
+        <button class="btn btn-primary" onclick="shareResult()">📤 Share via WeChat</button>
+        <button class="btn btn-secondary" onclick="restart()" style="margin-top:8px;">🔄 Diagnose Again</button>
       </div>
     </div>
   `;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // 延迟触发分数条动画
+  // 延迟触发动画
   setTimeout(() => {
     document.querySelectorAll('.score-fill').forEach(el => {
       const pct = el.parentElement.querySelector('.score-pct');
       if (pct) el.style.width = pct.textContent;
     });
   }, 100);
-}
-
-// ===== 分享 =====
+}// ===== 分享 =====
 function shareResult() {
   const r = RESULTS[result.type];
   const text = [
