@@ -7,8 +7,6 @@ const pinned = [
   { date: "2026-06-07", slug: "privacy_policy_2026", title: "隐私政策发布公告", tags: "Privacy Policy, Data Protection, Compliance, CBAM, AI Literacy, Knowledge Planet" },
 ];
 const articles = [
-
-  { date: "2026-07-24", slug: "nike_apec_dtc_chengdu_2026", title: "成都声明开源背后，藏着中国出海的底牌", tags: "前沿科技, 人机契合" },
   { date: "2026-07-20", slug: "waic2026_sfm_revolution", title: "从读论文到\"吃\"原始科学数据：WAIC 2026正在重新定义AI4S", tags: "前沿科技, 人机契合" },
 
 
@@ -122,7 +120,6 @@ const articles = [
   { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "当自动化偏见遇上算法厌恶：行为经济学视角下的人机协同", tags: "" },
   { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "让人机关系“对“——Deloitte 2026报告的深度解读", tags: "" },
 ];
-
 
 
 

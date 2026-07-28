@@ -8,11 +8,10 @@ const pinned = [
 ];
 const articles = [
 
-  { date: "2026-07-24", slug: "nike_apec_dtc_chengdu_2026", title: "The &apos;Open Source&apos; Clause in the Chengdu Statement", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-20", slug: "waic2026_sfm_revolution", title: "From Reading Papers to 'Eating' Raw Scientific Data: How WAIC 2026 Is Redefining AI for Science", tags: "Frontier Tech, Human-AI Fit" },
+
 
   { date: "2026-07-17", slug: "china-ai-governance-waic-2026", title: "July 17: China Places Its Piece on the AI Governance Chessboard", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-16", slug: "waic2026_ai_partner", title: "When AI Becomes a Colleague: Deep Takeaways from WAIC 2026", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-17", slug: "waic2026_ai_partner", title: "When AI Becomes a Colleague: Deep Takeaways from WAIC 2026", tags: "前沿科技, 人机契合" },
   { date: "2026-07-13", slug: "jspe_ai_literacy_2026", title: "AI Can Think One Thing and Say Another — And That Changes How We Should Teach Kids About AI", tags: "AI literacy, education, Human-AI Fit" },
   { date: "2026-07-12", slug: "100x-output-diff", title: "The 100x Output Gap: What Your AI Won&apos;t Tell You", tags: "前沿科技, 人机契合" },
   { date: "2026-07-08", slug: "arena_judge", title: "AI&apos;s $100M Referee: How LMArena Became the Judge of the AI Industry", tags: "Frontier Tech, AI Efficiency" },
@@ -120,8 +119,6 @@ const articles = [
   { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "When Automation Bias Meets Algorithm Aversion: Human-AI Collaboration Through the Lens of Behavioral Economics", tags: "Behavioral Economics, Human-AI Fit, Automation Bias, Nudge Theory, AI Adoption" },
   { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "Getting Human-Machine Relationships &quot;Right&quot; — A Deep Dive into Deloitte 2026", tags: "Deloitte, Human-Machine Relationships, Human-AI Collaboration, AI Adoption, Industry Trends" },
 ];
-
-
 
 
 

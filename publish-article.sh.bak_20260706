@@ -1,0 +1,353 @@
+#!/bin/bash
+# publish-article.sh — 一键发布文章（创建 .astro + 注册 blog.astro + 部署）
+# 
+# 用法:
+#   bash publish-article.sh <slug> <中文标题> <英文标题> <日期> <场景>
+# 示例:
+#   bash publish-article.sh ai_trend_2026 "AI趋势2026" "AI Trends 2026" "2026-07-06" B
+#
+# 要求:
+#   - /mnt/c/Connie/临时文件夹/<slug>_zh.md 存在（中文文稿）
+#   - /mnt/c/Connie/临时文件夹/<slug>_en.md 存在（英文文稿）
+#   或通过 --zh=路径 --en=路径 指定
+
+set -euo pipefail
+
+SITE_DIR="/home/connie/.openclaw/workspace/humanaifit-website"
+TEMP_DIR="/mnt/c/Connie/临时文件夹"
+REFERENCE_FILE="published_topics.json"
+
+if [ $# -lt 5 ]; then
+  echo "用法: bash publish-article.sh <slug> <中文标题> <英文标题> <日期(YYYY-MM-DD)> <场景(A|B|C|D|M)>"
+  echo "可选: --zh=文件路径  --en=文件路径  --skip-preflight  --skip-cta"
+  exit 1
+fi
+
+SLUG="$1"
+TITLE_ZH="$2"
+TITLE_EN="$3"
+DATE="$4"
+SCENE="$5"
+shift 5
+
+ZH_FILE=""
+EN_FILE=""
+SKIP_PREFLIGHT=false
+SKIP_CTA=false
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --zh=*) ZH_FILE="${1#--zh=}";;
+    --en=*) EN_FILE="${1#--en=}";;
+    --skip-preflight) SKIP_PREFLIGHT=true;;
+    --skip-cta) SKIP_CTA=true;;
+    *) echo "未知参数: $1"; exit 1;;
+  esac
+  shift
+done
+
+# 文稿路径
+if [ -z "$ZH_FILE" ]; then
+  ZH_FILE="${TEMP_DIR}/${SLUG}_zh.md"
+fi
+if [ -z "$EN_FILE" ]; then
+  EN_FILE="${TEMP_DIR}/${SLUG}_en.md"
+fi
+
+echo "========================================="
+echo "  一键发布 — $SLUG"
+echo "  中文标题: $TITLE_ZH"
+echo "  英文标题: $TITLE_EN"
+echo "  日期:     $DATE"
+echo "  场景:     $SCENE"
+echo "========================================="
+
+# Step 0: 开工预检
+echo ""
+echo "■ Step 0: 开工预检..."
+cd "$SITE_DIR"
+if [ "$SKIP_PREFLIGHT" = false ]; then
+  python3 ../scripts/preflight_check.py "$SLUG" "$SCENE"
+  echo "  ✅ 预检通过"
+else
+  echo "  ⏭️  预检已跳过"
+fi
+
+# Step 0b: 话题重复检查
+echo ""
+echo "■ Step 0b: 话题重复检查..."
+cd "$SITE_DIR/.."
+python3 check_topic_repeat.py --create-silent "$TITLE_ZH" "$SLUG" || true
+echo "  ✅ 话题检查完成"
+
+# Step 0c: 验证文稿是否存在
+echo ""
+echo "■ Step 0c: 验证文稿文件..."
+if [ ! -f "$ZH_FILE" ]; then
+  echo "  ❌ 中文文稿不存在: $ZH_FILE"
+  echo "     请先写入文稿到该路径，或使用 --zh= 指定"
+  exit 1
+fi
+if [ ! -f "$EN_FILE" ]; then
+  echo "  ❌ 英文文稿不存在: $EN_FILE"
+  echo "     请先写入文稿到该路径，或使用 --en= 指定"
+  exit 1
+fi
+echo "  ✅ 中文文稿: $ZH_FILE"
+echo "  ✅ 英文文稿: $EN_FILE"
+
+# Step 1: 生成 .astro 文件
+echo ""
+echo "■ Step 1: 生成 .astro 文件..."
+cd "$SITE_DIR"
+
+ZH_ASTRO="src/pages/blog/${SLUG}.astro"
+EN_ASTRO="src/pages/en/blog/${SLUG}.astro"
+
+# 将 MD 转换为 HTML 标签的 .astro 内容
+python3 -c "
+import sys
+
+def md_to_astro_body(md_path, slug, title, lang):
+    '''将 Markdown 转换为 .astro 可用的 HTML-body 字符串'''
+    with open(md_path, 'r', encoding='utf-8') as f:
+        md = f.read()
+    
+    # 简化的 MD→HTML 转换（处理标题、段落、列表、引用、表格）
+    lines = md.split('\n')
+    body_parts = []
+    in_list = False
+    list_type = None
+    
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        
+        # 空行 - 段落分隔
+        if not stripped:
+            if in_list:
+                body_parts.append('</li></ul>')
+                in_list = False
+            continue
+        
+        # 处理引用 blockquote
+        if stripped.startswith('> '):
+            body_parts.append(f'<blockquote>{stripped[2:]}</blockquote>')
+            continue
+        
+        # 处理标题（## → h2, ### → h3）
+        if stripped.startswith('## '):
+            body_parts.append(f'<h2>{stripped[3:]}</h2>')
+            continue
+        if stripped.startswith('### '):
+            body_parts.append(f'<h3>{stripped[4:]}</h3>')
+            continue
+        
+        # 处理无序列表项
+        if stripped.startswith('- ') or stripped.startswith('* '):
+            content = stripped[2:] if stripped.startswith('- ') else stripped[2:]
+            if not in_list or list_type != 'ul':
+                if in_list:
+                    body_parts.append('</li></ul>')
+                body_parts.append('<ul>')
+                list_type = 'ul'
+                in_list = True
+            body_parts.append(f'<li>{content}</li>')
+            continue
+        
+        # 处理有序列表项
+        if stripped[0].isdigit() and stripped[1:3] == '. ':
+            content = stripped[3:]
+            if not in_list or list_type != 'ol':
+                if in_list:
+                    body_parts.append('</li></ol>')
+                body_parts.append('<ol>')
+                list_type = 'ol'
+                in_list = True
+            body_parts.append(f'<li>{content}</li>')
+            continue
+        
+        # 处理表格行
+        if stripped.startswith('|') and stripped.endswith('|'):
+            cells = [c.strip() for c in stripped.split('|')[1:-1]]
+            row_html = '<tr>' + ''.join(f'<td>{c}</td>' for c in cells) + '</tr>'
+            # 跳过表头分隔行 (|---|)
+            if all(c == '-' or c == ':' or c == '|' or c == ' ' for c in stripped):
+                continue
+            body_parts.append(row_html)
+            continue
+        
+        # 处理分隔线
+        if stripped == '---' or stripped == '***' or stripped == '___':
+            body_parts.append('<hr />')
+            continue
+        
+        # 默认：段落（且非空行）
+        if not in_list:
+            body_parts.append(f'<p>{stripped}</p>')
+    
+    if in_list:
+        body_parts.append('</li></ul>')
+    
+    # 构建 body
+    body = '\n\n'.join(body_parts)
+    
+    # 构建 .astro 文件内容
+    layout_import = 'BlogLayout' if lang == 'zh' else '@/layouts/BlogLayout.astro'
+    
+    astro_content = f'''---
+import {{ BlogLayout }} from \"@/layouts/BlogLayout.astro\";
+import Article from \"@/layouts/Article.astro\";
+---
+
+<BlogLayout title=\"{title}\">
+<article class=\"article-body\">
+
+{body}
+
+</article>
+</BlogLayout>
+'''
+    return astro_content
+
+# 主逻辑
+slug = sys.argv[1]
+title_zh = sys.argv[2]
+title_en = sys.argv[3]
+date = sys.argv[4]
+zh_path = sys.argv[5]
+en_path = sys.argv[6]
+
+zh_out = f'src/pages/blog/{slug}.astro'
+en_out = f'src/pages/en/blog/{slug}.astro'
+
+zh_body = md_to_astro_body(zh_path, slug, title_zh, 'zh')
+en_body = md_to_astro_body(en_path, slug, title_en, 'en')
+
+with open(zh_out, 'w', encoding='utf-8') as f:
+    f.write(zh_body)
+with open(en_out, 'w', encoding='utf-8') as f:
+    f.write(en_body)
+
+print(f'  中文 .astro: {zh_out}')
+print(f'  英文 .astro: {en_out}')
+" "$SLUG" "$TITLE_ZH" "$TITLE_EN" "$DATE" "$ZH_FILE" "$EN_FILE"
+
+echo "  ✅ .astro 文件创建完成"
+
+# Step 2: CTA 审查
+echo ""
+echo "■ Step 2: CTA 审查..."
+cd "$SITE_DIR"
+if [ "$SKIP_CTA" = false ]; then
+  python3 ../scripts/cta_review.py start "$SLUG"
+  echo "  ⏳ CTA 审查文件已创建，请完成审查后继续..."
+  echo "     审查命令: python3 ../scripts/cta_review.py status $SLUG"
+  echo "     跳过命令: python3 ../scripts/cta_review.py skip $SLUG <原因>"
+  echo "     完成审查后重新运行: bash deploy_humanaifit.sh"
+  echo ""
+  echo "   ✅ .astro 已创建，CTA 审查待处理。"
+  echo "   部署将在 CTA 审查通过后自动进行。"
+  exit 0
+else
+  echo "  ⏭️  CTA 审查已跳过"
+  # 生成跳过标记
+  python3 ../scripts/cta_review.py skip "$SLUG" "publish-article.sh --skip-cta"
+fi
+
+# Step 3: 注册到 blog.astro（自动化）
+echo ""
+echo "■ Step 3: 注册到 blog.astro..."
+cd "$SITE_DIR"
+
+python3 -c "
+import re
+
+slug = '$SLUG'
+title_zh = '$TITLE_ZH'
+title_en = '$TITLE_EN'
+date = '$DATE'
+
+# 中文 blog.astro
+zh_path = 'src/pages/blog.astro'
+with open(zh_path, 'r', encoding='utf-8') as f:
+    zh_content = f.read()
+
+# 检查是否已存在
+if slug in zh_content:
+    print(f'  ⚠️  {slug} 已存在于中文 blog.astro，跳过')
+else:
+    # 在 data array 末尾追加（按日期降序需要手动确认）
+    insert_pos = zh_content.rfind(']')
+    if insert_pos > 0:
+        new_entry = f'  {{ slug: \"{slug}\", title: \"{title_zh}\", date: \"{date}\" }}'
+        zh_content = zh_content[:insert_pos] + new_entry + ',\n' + zh_content[insert_pos:]
+        with open(zh_path, 'w', encoding='utf-8') as f:
+            f.write(zh_content)
+        print(f'  ✅ 已注册到中文 blog.astro')
+    else:
+        print(f'  ❌ 无法找到 blog.astro 的 data array 结束位置')
+        exit(1)
+
+# 英文 blog.astro
+en_path = 'src/pages/en/blog.astro'
+with open(en_path, 'r', encoding='utf-8') as f:
+    en_content = f.read()
+
+if slug in en_content:
+    print(f'  ⚠️  {slug} 已存在于英文 blog.astro，跳过')
+else:
+    insert_pos = en_content.rfind(']')
+    if insert_pos > 0:
+        new_entry = f'  {{ slug: \"{slug}\", title: \"{title_en}\", date: \"{date}\" }}'
+        en_content = en_content[:insert_pos] + new_entry + ',\n' + en_content[insert_pos:]
+        with open(en_path, 'w', encoding='utf-8') as f:
+            f.write(en_content)
+        print(f'  ✅ 已注册到英文 blog.astro')
+    else:
+        print(f'  ❌ 无法找到英文 blog.astro 的 data array 结束位置')
+        exit(1)
+
+# 排序提醒
+print(f'  ⚠️  请确认 blog.astro 中的日期排序。同日期时，slug 较新的应排前面。')
+print(f'  ✅ blog.astro 注册完成')
+"
+
+echo "  ✅ blog.astro 注册完成"
+
+# Step 4: 部署
+echo ""
+echo "■ Step 4: 部署..."
+cd "$SITE_DIR"
+bash deploy_humanaifit.sh
+
+# Step 5: 线上验证
+echo ""
+echo "■ Step 5: 线上验证..."
+ZH_URL="https://www.humanaifit.com/blog/${SLUG}/"
+EN_URL="https://www.humanaifit.com/en/blog/${SLUG}/"
+
+ZH_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$ZH_URL" 2>/dev/null || echo "000")
+EN_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$EN_URL" 2>/dev/null || echo "000")
+
+echo "  中文: $ZH_CODE $ZH_URL"
+echo "  英文: $EN_CODE $EN_URL"
+
+if [ "$ZH_CODE" = "200" ] && [ "$EN_CODE" = "200" ]; then
+  echo "  ✅ 中英文皆 200 OK，发布成功！"
+else
+  echo "  ⚠️  线上验证异常（中文=$ZH_CODE 英文=$EN_CODE）"
+  echo "     请手动检查，可能原因：CF 缓存未清除 / 部署失败"
+fi
+
+# Step 6: pipeline_log 记录
+echo ""
+echo "■ Step 6: 发布记录..."
+cd "$SITE_DIR/.."
+python3 scripts/pipeline_log.py record "$SLUG" --stage=post
+
+echo ""
+echo "========================================="
+echo "  发布流程完成 — $SLUG"
+echo "  $ZH_URL"
+echo "  $EN_URL"
+echo "========================================="

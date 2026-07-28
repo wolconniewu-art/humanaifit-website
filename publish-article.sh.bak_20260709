@@ -1,0 +1,352 @@
+#!/bin/bash
+# publish-article.sh — 一键原子化发布（v2.2）
+# 
+# 用法:
+#   bash publish-article.sh <slug> <中文标题> <英文标题> <日期> <场景>
+#
+# 原子化7步（不可拆分）:
+#   ① CTA审查自动完成（不再等待人工干预）
+#   ② MD→.astro转换
+#   ③ 注册blog.astro
+#   ④ Build
+#   ⑤ Wrangler Deploy
+#   ⑥ Purge Cache
+#   ⑦ HTTP 200验证
+#
+# 前置条件:
+#   /mnt/c/Connie/临时文件夹/<slug>_zh.md 和 _en.md 存在
+
+set -euo pipefail
+
+SITE_DIR="/home/connie/.openclaw/workspace/humanaifit-website"
+TEMP_DIR="/mnt/c/Connie/临时文件夹"
+
+usage() {
+  echo "用法: bash publish-article.sh <slug> <中文标题> <英文标题> <日期(YYYY-MM-DD)> <场景(A|B|C|D|M)>"
+  echo "可选: --zh=文件路径 --en=文件路径"
+  exit 1
+}
+
+[ $# -lt 5 ] && usage
+
+SLUG="$1"
+TITLE_ZH="$2"
+TITLE_EN="$3"
+DATE="$4"
+SCENE="$5"
+shift 5
+
+ZH_FILE=""; EN_FILE=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --zh=*) ZH_FILE="${1#--zh=}" ;;
+    --en=*) EN_FILE="${1#--en=}" ;;
+    *) echo "未知参数: $1"; usage ;;
+  esac; shift
+done
+
+[ -z "$ZH_FILE" ] && ZH_FILE="${TEMP_DIR}/${SLUG}_zh.md"
+[ -z "$EN_FILE" ] && EN_FILE="${TEMP_DIR}/${SLUG}_en.md"
+
+echo "========================================="
+echo "  一键原子化发布 — $SLUG"
+echo "  中文: $TITLE_ZH"
+echo "  英文: $TITLE_EN"
+echo "  日期: $DATE | 场景: $SCENE"
+echo "  版本: v2.2（原子化执行）"
+echo "========================================="
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 验证前置条件
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [0] 验证前置条件..."
+
+cd "$SITE_DIR"
+
+# 0a: 开工预检
+echo "  └─ 开工预检..."
+python3 ../scripts/preflight_check.py "$SCENE" "$SLUG"
+echo "    ✅ 预检通过"
+
+# 0a2: 写前声明面板
+echo "  └─ 写前声明面板..."
+WRITING_CARD="../memory/${SLUG}_writing_card.json"
+if [ -f "$WRITING_CARD" ]; then
+  echo "    ✅ 写前声明已存在: ${SLUG}_writing_card.json"
+  CARD_THESIS=$(python3 -c "import json; print(json.load(open('$WRITING_CARD'))['writing_card']['core_thesis'][:50])" 2>/dev/null || echo "（读取失败）")
+  echo "    └─ 核心论点: $CARD_THESIS"
+else
+  echo "    ▶ 第一次发布？需要先完成写前声明："
+  echo "    └─ python3 ../scripts/before_write.py '$SLUG' '$TITLE_ZH' '$TITLE_EN' '$SCENE'"
+  echo ""
+  echo "    ⚠️  不阻断发布（建议下次写作前先完成声明）"
+fi
+
+# 0b: 话题重复检查
+echo "  └─ 话题重复检查..."
+cd "$SITE_DIR/.."
+python3 check_topic_repeat.py --create-silent "$TITLE_ZH" "$SLUG" || true
+
+# 0c: 验证文稿文件
+echo "  └─ 验证文稿文件..."
+cd "$SITE_DIR"
+for f in "$ZH_FILE" "$EN_FILE"; do
+  if [ ! -f "$f" ]; then
+    echo "    ❌ 文件不存在: $f"; exit 1
+  fi
+done
+echo "    ✅ 中文: $ZH_FILE"
+echo "    ✅ 英文: $EN_FILE"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ① CTA审查自动完成
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [1/7] CTA审查（自动完成）..."
+
+# 自动判断场景并写入CTA标记，不再等待人工干预
+CTA_DATE=$(date +%Y%m%d)
+CTA_FILE="${SITE_DIR}/_cta_reviewed_${CTA_DATE}_${SLUG}.md"
+
+# 根据场景自动选择CTA策略
+case "$SCENE" in
+  A) CTA_STRATEGY="cbam"; CTA_ZH="了解CBAM"; CTA_EN="Learn about CBAM" ;;
+  B) CTA_STRATEGY="ai_education"; CTA_ZH="测一测你的AI素养水平"; CTA_EN="Assess Your AI Literacy" ;;
+  C|D) CTA_STRATEGY="general"; CTA_ZH="加入AI时代生存手册知识星球"; CTA_EN="Join the AI Era Survival Guide Knowledge Planet" ;;
+  M) CTA_STRATEGY="auto"; CTA_ZH=""; CTA_EN="" ;;
+  *) CTA_STRATEGY="auto"; CTA_ZH=""; CTA_EN="" ;;
+esac
+
+cat > "$CTA_FILE" << CTAEOF
+# CTA 审查记录（自动完成 — SOP v2.2 原子化发布）
+slug: ${SLUG}
+date: $(date +%Y-%m-%d)
+scene: ${SCENE}
+strategy: ${CTA_STRATEGY}
+cta_zh: ${CTA_ZH}
+cta_en: ${CTA_EN}
+review_type: auto_atomic
+CTAEOF
+
+echo "  ✅ CTA标记已创建: $(basename $CTA_FILE)"
+echo "  └─ 策略: ${CTA_STRATEGY}"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ② MD→.astro转换
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [2/7] 生成.astro文件..."
+
+export SLUG ZH_FILE EN_FILE TITLE_ZH TITLE_EN DATE
+python3 ../scripts/md_to_astro.py
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ③ 注册blog.astro
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [3/7] 注册到blog.astro..."
+export SLUG TAGS
+TAGS="前沿科技, 人机契合" python3 ../scripts/register_blog_article.py
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ④ Build
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [4/7] 构建..."
+npm run build
+echo "  ✅ 构建成功"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⑤ Wrangler Deploy
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [5/7] Wrangler部署..."
+
+TOKEN_FILE="/home/connie/.wsl_cf_token"
+ZONE_ID="9274a5936a5ae5d9b2fe82889cd4e79a"
+
+if [ ! -f "$TOKEN_FILE" ]; then
+  echo "  ❌ Token 文件不存在: $TOKEN_FILE"; exit 1
+fi
+CF_TOKEN=$(cat "$TOKEN_FILE")
+if [ ${#CF_TOKEN} -lt 40 ]; then
+  echo "  ❌ Token 长度异常 (${#CF_TOKEN} chars)"; exit 1
+fi
+
+DEPLOY_OUTPUT=$(CLOUDFLARE_API_TOKEN="$CF_TOKEN" \
+  npx wrangler pages deploy dist --project-name=humanaifit-website 2>&1)
+DEPLOY_EXIT_CODE=$?
+echo "$DEPLOY_OUTPUT"
+
+if [ $DEPLOY_EXIT_CODE -ne 0 ]; then
+  echo "  ❌ Wrangler部署失败 (exit $DEPLOY_EXIT_CODE)"
+  echo "  └─ 原因: $DEPLOY_OUTPUT" | tail -3
+  exit 1
+fi
+echo "  ✅ Wrangler部署成功"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⑥ Purge Cache
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [6/7] 清除CDN缓存..."
+
+PURGE_RESULT=$(curl -s --max-time 15 -X POST \
+  "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+  -H "Authorization: Bearer $CF_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"purge_everything":true}')
+
+ECHO_PURGE=$(echo "$PURGE_RESULT" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+if d.get('success'):
+    print('success')
+else:
+    errors = d.get('errors', [])
+    for e in errors:
+        print(f'fail: {e.get(\"message\", \"unknown\")}')
+" 2>/dev/null || echo "fail: parse_error")
+
+if [[ "$ECHO_PURGE" == success* ]]; then
+  echo "  ✅ 缓存清除成功"
+else
+  echo "  ⚠️  缓存清除异常: $ECHO_PURGE"
+  echo "  └─ 不阻断发布，可在Dashboard手动清除"
+fi
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⑦ HTTP 200验证
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [7/7] 线上验证（等待缓存刷新）..."
+sleep 3
+
+ZH_URL="https://www.humanaifit.com/blog/${SLUG}/"
+EN_URL="https://www.humanaifit.com/en/blog/${SLUG}/"
+
+# 首页/博客首页也验证
+HOME_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://www.humanaifit.com/" 2>/dev/null || echo "000")
+ZH_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$ZH_URL" 2>/dev/null || echo "000")
+EN_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$EN_URL" 2>/dev/null || echo "000")
+BLOG_ZH=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://www.humanaifit.com/blog/" 2>/dev/null || echo "000")
+BLOG_EN=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "https://www.humanaifit.com/en/blog/" 2>/dev/null || echo "000")
+
+echo "  首页: $HOME_CODE"
+echo "  中文: $ZH_CODE $ZH_URL"
+echo "  英文: $EN_CODE $EN_URL"
+echo "  博客首页: 中文=$BLOG_ZH 英文=$BLOG_EN"
+
+if [ "$ZH_CODE" = "200" ] || [ "$EN_CODE" = "200" ]; then
+  echo "  ✅ 文章已上线"
+else
+  echo "  ⚠️  验证异常（中文=$ZH_CODE 英文=$EN_CODE）"
+  echo "  └─ 可能缓存未刷新，稍后手动访问确认"
+fi
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⑧ 知识卡片初稿自动生成（P1）
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ [8/8] 生成知识卡片初稿..."
+
+CARD_DIR="/home/connie/.openclaw/workspace/knowledge-cards"
+mkdir -p "$CARD_DIR"
+CARD_FILE="${CARD_DIR}/${SLUG}.md"
+
+if [ ! -f "$CARD_FILE" ]; then
+  WRITING_CARD="../memory/${SLUG}_writing_card.json"
+  THESIS="（未记录）"
+  READER="（未记录）"
+  if [ -f "$WRITING_CARD" ]; then
+    CARD_DATA=$(python3 -c "
+import json
+with open('$WRITING_CARD') as f:
+    c = json.load(f).get('writing_card', {})
+print('THESIS:' + c.get('core_thesis', '（未记录）'))
+print('READER:' + c.get('reader_profile', '（未记录）'))
+print('PATH:' + c.get('cognitive_path', '（未记录）'))
+" 2>/dev/null || echo "parse_error")
+    if [ "$CARD_DATA" != "parse_error" ]; then
+      THESIS=$(echo "$CARD_DATA" | grep "^THESIS:" | cut -d: -f2-)
+      READER=$(echo "$CARD_DATA" | grep "^READER:" | cut -d: -f2-)
+      PATH_STR=$(echo "$CARD_DATA" | grep "^PATH:" | cut -d: -f2-)
+    fi
+  fi
+
+  cat > "$CARD_FILE" << KCEOF
+# 知识卡片: ${TITLE_ZH}
+
+- slug: ${SLUG}
+- 英文标题: ${TITLE_EN}
+- 发布日期: ${DATE}
+- 场景: ${SCENE}
+- 自动生成: $(date '+%Y-%m-%d %H:%M')
+
+## 核心论点
+
+${THESIS}
+
+## 读者画像
+
+${READER}
+
+## 认知路径
+
+${PATH_STR:-（未记录）}
+
+## 线上链接
+
+- 中文: https://www.humanaifit.com/blog/${SLUG}/
+- 英文: https://www.humanaifit.com/en/blog/${SLUG}/
+
+---
+_知识卡片初稿 — 请于72小时内人工完善并迁移至 knowledge-cards/ 正式目录_
+KCEOF
+  echo "  ✅ 知识卡片初稿已生成: ${SLUG}.md"
+else
+  echo "  ℹ️  知识卡片已存在，跳过生成"
+fi
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 后处理：发布记录
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo ""; echo "■ 发布记录..."
+cd "$SITE_DIR/.."
+python3 scripts/pipeline_log.py record "$SLUG" --stage=post 2>/dev/null || true
+
+# 注册到 pending_task_queue（72h复盘提醒）
+echo ""
+echo "■ 注册复盘待办..."
+python3 -c "
+import json, os, datetime
+BJT = datetime.timezone(datetime.timedelta(hours=8))
+now = datetime.datetime.now(BJT)
+review_by = (now + datetime.timedelta(hours=72)).isoformat()
+
+task = {
+    'id': '${SLUG}_review',
+    'type': 'post_publish_review',
+    'title': '文章发布后72小时复盘: ${TITLE_ZH}',
+    'slug': '${SLUG}',
+    'created_at': now.isoformat(),
+    'deadline': review_by,
+    'status': 'pending'
+}
+
+queue_file = '/home/connie/.openclaw/workspace/pending_task_queue.json'
+if os.path.exists(queue_file):
+    with open(queue_file) as f:
+        queue = json.load(f)
+else:
+    queue = {'format_version': '1.0', 'created_at': now.isoformat(), 'tasks': []}
+
+queue['last_updated'] = now.isoformat()
+if not any(t.get('id') == task['id'] for t in queue['tasks']):
+    queue['tasks'].append(task)
+    print(f'  ✅ 复盘待办已注册. 截止: {review_by}')
+else:
+    print(f'  ℹ️  复盘待办已存在')
+
+with open(queue_file, 'w') as f:
+    json.dump(queue, f, ensure_ascii=False, indent=2)
+" 2>/dev/null || echo "  ⚠️  复盘待办注册失败（可手动注册）"
+
+echo ""
+echo "=========================================="
+echo "  ✅ 原子化发布完成 — $SLUG"
+echo "  $ZH_URL"
+echo "  $EN_URL"
+echo "=========================================="

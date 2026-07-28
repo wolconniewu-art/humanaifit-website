@@ -1,0 +1,283 @@
+---
+// English Senior "AI Life Companion" — Scenario selection page
+// Needs-based selection (no exam): 4 scenarios → pick one → step-by-step guide
+//
+
+export const prerender = true;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Life Companion — Senior AI Literacy | humanaifit</title>
+  <meta name="description" content="No exams, no scores. Pick a scenario to learn. 60-second step-by-step guide. Suitable for ages 60+." />
+  <style>
+    :root { --primary: #0F2B46; --accent: #C9A96E; --bg: #fafafa; --text: #1a1a1a; --muted: #888; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+    .container { max-width: 500px; margin: 0 auto; padding: 20px 16px; }
+    .welcome { text-align: center; padding: 24px 0 8px; }
+    .welcome-icon { font-size: 56px; }
+    .welcome h1 { font-size: 28px; color: var(--primary); margin: 8px 0; font-weight: 700; }
+    .welcome p { font-size: 18px; color: #555; max-width: 360px; margin: 0 auto 20px; line-height: 1.6; }
+    .welcome-note { font-size: 16px; color: var(--muted); margin: 0 0 16px; }
+    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 20px; }
+    .scenario-card { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; border: 2px solid #e5e7eb; border-radius: 16px; padding: 20px 12px; cursor: pointer; transition: all 0.2s; min-height: 130px; user-select: none; }
+    .scenario-card:active { transform: scale(0.97); }
+    .scenario-card:hover { border-color: #3b82f6; box-shadow: 0 2px 12px rgba(59,130,246,0.15); }
+    .scenario-card.selected { border-color: #3b82f6; background: #eff6ff; }
+    .scenario-icon { font-size: 44px; margin-bottom: 6px; }
+    .scenario-title { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .scenario-desc { font-size: 13px; color: var(--muted); margin-top: 4px; text-align: center; }
+    .confirm-page { display: none; text-align: center; padding: 20px 0; }
+    .confirm-icon { font-size: 56px; margin-bottom: 8px; }
+    .confirm-title { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .confirm-desc { font-size: 18px; color: #555; margin-bottom: 24px; }
+    .confirm-btn { display: block; width: 100%; padding: 18px 24px; background: linear-gradient(135deg, #0F2B46, #1a3f64); color: #fff; border: none; border-radius: 12px; font-size: 22px; font-weight: 700; cursor: pointer; transition: transform 0.15s; margin: 0 0 12px; }
+    .confirm-btn:active { transform: scale(0.97); }
+    .back-btn { display: block; width: 100%; padding: 12px; background: transparent; border: none; font-size: 16px; color: #3b82f6; cursor: pointer; text-decoration: underline; }
+    .video-page { display: none; text-align: center; padding: 16px 0; }
+    .video-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .done-btn { display: block; width: 100%; padding: 18px; background: #22c55e; color: #fff; border: none; border-radius: 12px; font-size: 20px; font-weight: 700; cursor: pointer; margin: 20px 0 8px; opacity: 1; }
+    .done-btn:active { transform: scale(0.97); }
+    .complete-page { display: none; text-align: center; padding: 24px 0; }
+    .complete-icon { font-size: 64px; margin-bottom: 12px; }
+    .complete-title { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .complete-desc { font-size: 18px; color: #555; margin-bottom: 20px; }
+    .complete-action { display: block; width: 100%; padding: 16px; background: #fff; border: 2px solid #3b82f6; border-radius: 12px; font-size: 18px; color: #3b82f6; font-weight: 600; cursor: pointer; margin: 0 0 12px; transition: all 0.2s; }
+    .complete-action:active { background: #eff6ff; }
+    .next-scenario { display: block; width: 100%; padding: 16px; background: #f0f0f0; border: none; border-radius: 12px; font-size: 16px; color: #555; cursor: pointer; margin: 0 0 12px; }
+    .complete-note { font-size: 14px; color: var(--muted); margin: 16px 0; }
+    @media (max-width: 400px) { .scenario-grid { gap: 10px; } .scenario-card { padding: 14px 8px; min-height: 110px; } }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <!-- Welcome / Selection -->
+    <div id="welcome-page">
+      <div class="welcome">
+        <div class="welcome-icon">👋</div>
+<p style="text-align:center;font-size:13px;color:#999;margin:12px 0 4px;">🎬 Video tutorials for each scenario coming soon</p>
+
+        <h1>AI Life Companion</h1>
+        <p>Pick what interests you,<br>60 seconds to learn.</p>
+        <div class="welcome-note">No exams, no scores. Just follow along.</div>
+      </div>
+      <div class="scenario-grid" id="scenario-grid"></div>
+      <div id="confirm-area" class="confirm-page">
+        <div class="confirm-icon" id="confirm-icon">📸</div>
+        <div class="confirm-title" id="confirm-title">Restore Old Photos</div>
+        <div class="confirm-desc" id="confirm-desc">Get an old photo ready, let's start</div>
+        <button class="confirm-btn" id="start-learn-btn">Start Learning →</button>
+        <button class="back-btn" id="back-select-btn">← Let me see other options</button>
+      </div>
+    </div>
+
+    <!-- Guide Page (图文指引替代视频) -->
+    <div id="video-page" class="video-page">
+      <div class="video-title" id="video-title">📸 Restore Old Photos</div>
+      <div id="video-guide" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;margin-bottom:16px;"></div>
+      <button class="done-btn" id="done-btn" style="opacity:1;">✅ I'm done</button>
+    </div>
+
+    <!-- Completion Page -->
+    <div id="complete-page" class="complete-page">
+      <div class="complete-icon">🎉</div>
+      <div class="complete-title">Amazing!</div>
+      <div class="complete-desc" id="complete-desc">You just learned to restore old photos with AI</div>
+      <button class="complete-action" id="share-family-btn">📱 Share to family group</button>
+      <button class="complete-action" id="ai-praise-btn">💬 AI says nice things</button>
+      <button class="next-scenario" id="next-scenario-btn">🚫 Fraud Prevention (available in 3 days)</button>
+      <div class="complete-note">Your family has been notified about what you learned today</div>
+    </div>
+  </div>
+
+  <!-- Scenario data -->
+  <script id="senior-scenario-data" type="application/json">[{"id": "SC-PH-RE-001", "version": "senior", "dimension": "photo_restore", "difficulty": "easy", "stem": "Restore Old Photos", "options": [{"id": "A", "text": "I have old photos I want to restore and learn how", "score": 4}, {"id": "B", "text": "Probably won't need it, but I can give it a try", "score": 2}, {"id": "C", "text": "My photos are all digital, no need to restore", "score": 0}], "theoreticalBasis": "老年人AI使用动机：可见产出+社交分享驱动"}, {"id": "SC-FR-DE-001", "version": "senior", "dimension": "fraud_defense", "difficulty": "easy", "stem": "Fraud Prevention", "options": [{"id": "A", "text": "I often get suspicious calls and want to learn how to protect myself", "score": 4}, {"id": "B", "text": "My kids worry about me getting scammed, so I'll learn to put them at ease", "score": 3}, {"id": "C", "text": "I won't get scammed, no need to learn", "score": 0}], "theoreticalBasis": "老年人科技焦虑：防骗是子女最关心的刚需场景"}, {"id": "SC-HE-IN-001", "version": "senior", "dimension": "health_inquiry", "difficulty": "easy", "stem": "Health Inquiries", "options": [{"id": "A", "text": "I often look up medication/appointment info and want to learn using AI", "score": 4}, {"id": "B", "text": "I'm a bit interested, but afraid of getting wrong information", "score": 2}, {"id": "C", "text": "I'm in good health, no need for now", "score": 0}], "theoreticalBasis": "老年人AI使用动机：健康焦虑驱动，使用频率高"}, {"id": "SC-VO-CH-001", "version": "senior", "dimension": "voice_chat", "difficulty": "easy", "stem": "Voice Chat", "options": [{"id": "A", "text": "Typing is inconvenient for me, I want to learn voice chatting with AI", "score": 4}, {"id": "B", "text": "I can type, but I'm curious what it's like to talk to AI", "score": 2}, {"id": "C", "text": "I don't need to chat with AI", "score": 0}], "theoreticalBasis": "老年人AI交互偏好：语音交互门槛最低"}]</script>
+  <script id="senior-config-data" type="application/json">[{"id": "photo_restore", "title": "Restore Old Photos", "icon": "📸", "description": "Make old photos look clear again"}, {"id": "fraud_defense", "title": "Fraud Prevention", "icon": "🚫", "description": "Identify scam calls and SMS"}, {"id": "health_inquiry", "title": "Health Inquiries", "icon": "🏥", "description": "Look up medications and appointments"}, {"id": "voice_chat", "title": "Voice Chat", "icon": "💬", "description": "Just speak to ask AI"}]</script>
+
+  <script is:inline>
+(function() {
+  const SCENARIOS = JSON.parse(document.getElementById('senior-scenario-data').textContent);
+  const CONFIGS = JSON.parse(document.getElementById('senior-config-data').textContent);
+
+  const STEP_INSTRUCTIONS = {
+    photo_restore: {
+      steps: ['Open AI tool + upload photo', 'Type "Make this photo clear"', 'Save to album'],
+      stepDetails: [
+        'Open an AI tool (like Doubao or Kimi). Tap the upload button and select an old photo.',
+        'In the input box, type: <div style="background:#f5f5f5;border-radius:8px;padding:8px 12px;margin-top:4px;font-size:15px;color:#333;">"Make this photo clear"</div>',
+        'When the AI finishes, tap Save to save to your phone album.'
+      ],
+      title: '📸 Restore Old Photos',
+      icon: '📸',
+      confirmDesc: 'Get an old photo ready',
+      desc: 'Make old photos clear again',
+    },
+    fraud_defense: {
+      steps: ['Open AI tool', 'Type a suspicious message', 'Read AI assessment'],
+      stepDetails: [
+        'Open an AI tool (like Doubao or Kimi)',
+        'Type: <div style="background:#f5f5f5;border-radius:8px;padding:8px 12px;margin-top:4px;font-size:15px;color:#333;">"Does this text look like a scam?"<br>Then paste the suspicious message</div>',
+        'AI will analyze it and tell you if it is fraud.'
+      ],
+      title: '🚫 Fraud Prevention',
+      icon: '🚫',
+      confirmDesc: 'Prepare a suspicious message or phone record',
+      desc: 'Identify scam calls and texts',
+    },
+    health_inquiry: {
+      steps: ['Open AI tool', 'Type a medicine name', 'Read AI response'],
+      stepDetails: [
+        'Open an AI tool',
+        'Type: <div style="background:#f5f5f5;border-radius:8px;padding:8px 12px;margin-top:4px;font-size:15px;color:#333;">"Can I take Medicine X and Medicine Y together?"<br>Replace with the medicines you want to check</div>',
+        'AI will tell you the information. You can screenshot to save.'
+      ],
+      title: '🏥 Health Inquiries',
+      icon: '🏥',
+      confirmDesc: 'Find a medicine name you want to check',
+      desc: 'Look up medicine and health info',
+    },
+    voice_chat: {
+      steps: ['Open AI tool', 'Tap the mic and speak', 'Listen to AI reply'],
+      stepDetails: [
+        'Open an AI tool. Look for the microphone icon.',
+        'Tap the mic icon and say: "What is the weather like today?"',
+        'AI will answer. You can ask more questions!'
+      ],
+      title: '💬 Voice Chat',
+      icon: '💬',
+      confirmDesc: 'Find a quiet place and try talking to AI',
+      desc: 'Talk to AI with your voice',
+    },
+  };
+
+  const SCENE_INFO = {
+    photo_restore: { icon: '📸', title: 'Restore Old Photos', desc: 'Make old photos clear again' },
+    fraud_defense: { icon: '🚫', title: 'Fraud Prevention', desc: 'Identify scam calls' },
+    health_inquiry: { icon: '🏥', title: 'Health Inquiries', desc: 'Look up medicine' },
+    voice_chat: { icon: '💬', title: 'Voice Chat', desc: 'Talk to AI' },
+  };
+
+  let selectedScenario = null;
+
+  function renderScenarios() {
+    const grid = document.getElementById('scenario-grid');
+    grid.innerHTML = SCENARIOS.map(s => {
+      const info = SCENE_INFO[s.dimension] || { icon: '📌', title: s.stem, desc: '' };
+      return '<div class="scenario-card" data-id="'+s.dimension+'">' +
+        '<div class="scenario-icon">'+info.icon+'</div>' +
+        '<div class="scenario-title">'+info.title+'</div>' +
+        '<div class="scenario-desc">'+info.desc+'</div></div>';
+    }).join('');
+    grid.querySelectorAll('.scenario-card').forEach(card => {
+      card.addEventListener('click', () => selectScenario(card.dataset.id));
+    });
+  }
+
+  function selectScenario(id) {
+    selectedScenario = id;
+    const info = SCENE_INFO[id] || SCENE_INFO['photo_restore'];
+    document.getElementById('confirm-icon').textContent = info.icon;
+    document.getElementById('confirm-title').textContent = info.title;
+    document.getElementById('confirm-desc').textContent = (STEP_INSTRUCTIONS[id] || STEP_INSTRUCTIONS['photo_restore']).confirmDesc;
+    document.querySelectorAll('.scenario-card').forEach(c => c.classList.toggle('selected', c.dataset.id === id));
+    document.getElementById('confirm-area').style.display = 'block';
+    document.getElementById('confirm-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  document.getElementById('start-learn-btn').addEventListener('click', () => {
+    if (!selectedScenario) return;
+    const info = STEP_INSTRUCTIONS[selectedScenario] || STEP_INSTRUCTIONS['photo_restore'];
+    document.getElementById('video-title').textContent = info.title;
+    const guide = document.getElementById('video-guide');
+    if (guide) {
+      guide.innerHTML = info.steps.map((stepText, i) => {
+        const details = info.stepDetails ? info.stepDetails[i] : '';
+        return '<div style="display:flex;align-items:flex-start;gap:14px;background:#f0f7ff;border-radius:12px;padding:14px;">' +
+          '<div style="width:36px;height:36px;background:#3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:700;flex-shrink:0;">' + (i+1) + '</div>' +
+          '<div><div style="font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:2px;">' + stepText + '</div>' +
+          (details ? '<div style="font-size:14px;color:#666;">' + details + '</div>' : '') + '</div></div>';
+      }).join('<div style="height:8px;"></div>');
+    }
+    document.getElementById('welcome-page').style.display = 'none';
+    document.getElementById('video-page').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('back-select-btn').addEventListener('click', () => {
+    selectedScenario = null;
+    document.getElementById('confirm-area').style.display = 'none';
+    document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('selected'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('done-btn').addEventListener('click', () => {
+    const info = SCENE_INFO[selectedScenario] || SCENE_INFO['photo_restore'];
+    document.getElementById('complete-desc').textContent = 'You just learned '+info.title;
+    const ids = ['photo_restore','fraud_defense','health_inquiry','voice_chat'];
+    const nextId = ids.find(id => id !== selectedScenario) || 'fraud_defense';
+    const nextInfo = SCENE_INFO[nextId] || SCENE_INFO['fraud_defense'];
+    document.getElementById('next-scenario-btn').innerHTML = nextInfo.icon+' '+nextInfo.title+' (available in 3 days)';
+    document.getElementById('video-page').style.display = 'none';
+    document.getElementById('complete-page').style.display = 'block';
+    saveCompletion(selectedScenario);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('share-family-btn').addEventListener('click', () => {
+    const info = SCENE_INFO[selectedScenario] || SCENE_INFO['photo_restore'];
+    navigator.clipboard.writeText('I just learned to '+info.title+' with AI! Try it: https://www.humanaifit.com/en/diagnosis/senior/').then(() => alert('Copied! Share it with your family.'));
+  });
+
+  document.getElementById('ai-praise-btn').addEventListener('click', () => {
+    const praises = ["Amazing! You're keeping up with AI!","Great job! You're ahead of most people your age!","Awesome! AI is easier than you thought, right?","You've got this! Keep exploring!"];
+    alert('AI says: '+praises[Math.floor(Math.random()*praises.length)]);
+  });
+
+  document.getElementById('next-scenario-btn').addEventListener('click', () => {
+    const ids = ['photo_restore','fraud_defense','health_inquiry','voice_chat'];
+    selectedScenario = ids.find(id => id !== selectedScenario && !isCompleted(id)) || 'fraud_defense';
+    document.getElementById('complete-page').style.display = 'none';
+    document.getElementById('welcome-page').style.display = 'block';
+    selectScenario(selectedScenario);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  function saveCompletion(scenarioId) {
+    const data = JSON.parse(localStorage.getItem('senior_completions') || '{}');
+    data[scenarioId] = { completedAt: new Date().toISOString(), count: (data[scenarioId]?.count||0)+1 };
+    localStorage.setItem('senior_completions', JSON.stringify(data));
+  }
+
+  function isCompleted(scenarioId) {
+    const data = JSON.parse(localStorage.getItem('senior_completions') || '{}');
+    return !!data[scenarioId];
+  }
+
+  renderScenarios();
+})();
+</script>
+
+<!-- Video guide placeholder -->
+<div class="video-fallback" style="background:#fff8e1;border:2px dashed #f0c040;border-radius:16px;padding:24px;margin:16px 0;text-align:center;">
+<div style="font-size:32px;margin-bottom:8px;">📱</div>
+<h3 style="margin:0 0 4px;font-size:16px;">Step-by-Step Guide</h3>
+<p style="font-size:13px;color:#666;margin:0 0 12px;">Follow these steps</p>
+<div style="text-align:left;max-width:320px;margin:0 auto;">
+<div style="background:#fff;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;">
+<span style="background:#4CAF50;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">1</span>
+<span style="font-size:14px;">Open AI tool (e.g. Doubao, Kimi)</span></div>
+<div style="background:#fff;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;">
+<span style="background:#4CAF50;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">2</span>
+<span style="font-size:14px;">Upload photo / type your question</span></div>
+<div style="background:#fff;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;">
+<span style="background:#4CAF50;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">3</span>
+<span style="font-size:14px;">Read AI&apos;s answer and decide for yourself</span></div>
+</div>
+<p style="font-size:12px;color:#999;margin:10px 0 0;">🎬 Video tutorial coming soon</p>
+</div>
+</body>
+</html>

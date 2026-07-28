@@ -6,22 +6,25 @@ const pinned = [
   { date: "2026-05-31", slug: "lingnan_daily_61_tales", title: "Lingnan Daily — 61 Tales from South China", tags: "Lingnan, Chinese Culture, Folk Tales, Heritage, Series" },
   { date: "2026-06-07", slug: "privacy_policy_2026", title: "Privacy Policy Announcement", tags: "Privacy Policy, Data Protection, Compliance, CBAM, AI Literacy, Knowledge Planet" },
 ];
+
 const articles = [
-
-  { date: "2026-07-24", slug: "nike_apec_dtc_chengdu_2026", title: "The &apos;Open Source&apos; Clause in the Chengdu Statement", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-20", slug: "waic2026_sfm_revolution", title: "From Reading Papers to 'Eating' Raw Scientific Data: How WAIC 2026 Is Redefining AI for Science", tags: "Frontier Tech, Human-AI Fit" },
-
-  { date: "2026-07-17", slug: "china-ai-governance-waic-2026", title: "July 17: China Places Its Piece on the AI Governance Chessboard", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-16", slug: "waic2026_ai_partner", title: "When AI Becomes a Colleague: Deep Takeaways from WAIC 2026", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-13", slug: "jspe_ai_literacy_2026", title: "AI Can Think One Thing and Say Another — And That Changes How We Should Teach Kids About AI", tags: "AI literacy, education, Human-AI Fit" },
-  { date: "2026-07-12", slug: "100x-output-diff", title: "The 100x Output Gap: What Your AI Won&apos;t Tell You", tags: "前沿科技, 人机契合" },
   { date: "2026-07-08", slug: "arena_judge", title: "AI&apos;s $100M Referee: How LMArena Became the Judge of the AI Industry", tags: "Frontier Tech, AI Efficiency" },
   { date: "2026-07-08", slug: "minimax_m3_workflow_2026", title: "From Selling Intelligence to Selling Workflows", tags: "前沿科技, 人机契合" },
   { date: "2026-07-06", slug: "two_way_distillation", title: "The Two-Way Distillation: How AI Is Eating Your Skills and Your Company&apos;s Secrets at the Same Time", tags: "Frontier Tech, Human-AI Fit" },
+  { date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM Carbon Tariff Takes Effect — A Lesson China&apos;s Exporters Can&apos;t Skip", tags: "Globalization, Economy" },
+  { date: "2026-05-03", slug: "ai_knowledge_management_2026", title: "AI Knowledge Management 2026: When Your Knowledge Base Becomes AI&apos;s Context", tags: "Knowledge Management, Human-AI Fit" },
+  { date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026 Report: Enterprise AI Deployment Is Accelerating, But Governance Is Falling Behind", tags: "Human-AI Fit, Frontier Tech" },
+  { date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI Index: Is the US-China AI Gap Really Closing?", tags: "Globalization, Human-AI Fit" },
+  { date: "2026-05-03", slug: "humanoid_robot_half_marathon", title: "Humanoid Robots Beat Humans in a Half Marathon — What Does This Mean?", tags: "Frontier Tech" },
+  { date: "2026-05-03", slug: "MERICS_China_humanoid_path", title: "Two Paths, One Goal — MERICS Report Analyzes US-China Humanoid Robot Strategies", tags: "Globalization, Frontier Tech" },
+  { date: "2026-05-03", slug: "humanoid_supply_chain_China", title: "Humanoid Robot Supply Chain: China&apos;s Billion-Dollar Opportunities and Bottlenecks", tags: "Frontier Tech, Globalization" },
+  { date: "2026-05-03", slug: "human_AI_workforce_China", title: "The Rise of the &apos;Human-AI Workforce&apos; — How China Positions Itself in the Global AI Labor Transformation", tags: "Human-AI Fit, Globalization" },
+  { date: "2026-05-03", slug: "Australia_AI_moment_China", title: "Australia&apos;s &quot;AI Moment&quot;: China&apos;s Position in the Asia-Pacific Computing Power Race", tags: "Globalization, Frontier Tech" },
+  { date: "2026-05-03", slug: "GEI_China_opportunities", title: "Global Economy&apos;s &quot;Storm Clouds&quot; and China&apos;s &quot;Bright Spots&quot; — Decoding McKinsey&apos;s March 2026 Global Economics Intelligence", tags: "Economy, Globalization" },
   { date: "2026-07-06", slug: "ai_equal_humans_unequal_2026", title: "Six Battlefronts Tell Us: What Is AI Leveling? What Is AI Amplifying?", tags: "AI Differentiation, Human-AI Fit, BCG, McKinsey, PwC, WEF, Productivity, Training Trap, Global South, Organizational Capability" },
   { date: "2026-07-02", slug: "tokens_meaning_when_ovtp_meets_opc_2026", title: "Tokens Are Currency, Meaning Is Asset — When OVTP Meets OPC", tags: "Human-AI Fit, OPC, OVTP, Token Revolution, Meaning Property, One-Person Company, AI Economy" },
   { date: "2026-07-01", slug: "opc_globalization_individual_competitiveness_2026", title: "OPC × Globalization: When One-Person Companies Become the Building Block of Global Commerce, Individual Global Competitiveness Is Being Redefined", tags: "Globalization, OPC, One-Person Company, Human-AI Collaboration, Individual Competitiveness, Human-AI Fit" },
-  { date: "2026-06-30", slug: "ai_emotional_tax_2026", title: "The Time AI Saves Is Becoming a New &apos;Emotional Tax&apos;", tags: "Human-AI Fit, Cognitive Load, AI Adoption, Work Redesign, Emotional Tax" },
+  { date: "2026-06-30", slug: "ai_emotional_tax_2026", title: "The Time AI Saves Is Becoming a New ", tags: "Human-AI Fit, Cognitive Load, AI Adoption, Work Redesign, Emotional Tax" },
   { date: "2026-06-29", slug: "education_skills_mismatch_2026", title: "Ten Future Industries Are All Starving for Talent. Is Education Keeping Pace?", tags: "Human-AI Fit, AI Education, Skills Mismatch" },
   { date: "2026-06-26", slug: "ai_anthropomorphism_trap_2026", title: "The AI Confessed and You Believed It? — The Most Dangerous Cognitive Trap in the PocketOS Incident", tags: "Human-AI Fit, AI Governance, AI Cognition" },
   { date: "2026-06-23", slug: "three_questions_company_survive_2026", title: "Three Questions to Know If Your Company Will Survive 2026", tags: "Human-AI Fit, AI Adoption, Organizational Judgment" },
@@ -104,28 +107,12 @@ const articles = [
   { date: "2026-05-04", slug: "us_semiconductor_export_controls_2026", title: "US Semiconductor Export Controls 2026: Rule Escalation and the Boundaries of Control", tags: "Globalization, Frontier Tech, Semiconductors, Export Controls, Supply Chain" },
   { date: "2026-05-04", slug: "eu_ai_act_reality_2026", title: "EU AI Act Implementation Delays: Compliance Pressure Easing or the Calm Before the Storm?", tags: "Human-AI Fit, AI Governance, EU Regulation, Compliance" },
   { date: "2026-05-04", slug: "meta_consumer_ai_2026", title: "Meta&apos;s Consumer AI Product Line: AI Shifts from &apos;Tool&apos; to &apos;Everyday Companion&apos;", tags: "Frontier Tech, AI Applications, Consumer Tech, Business Models" },
-  { date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM Carbon Tariff Takes Effect — A Lesson China&apos;s Exporters Can&apos;t Skip", tags: "Globalization, Economy" },
-  { date: "2026-05-03", slug: "ai_knowledge_management_2026", title: "AI Knowledge Management 2026: When Your Knowledge Base Becomes AI&apos;s Context", tags: "Knowledge Management, Human-AI Fit" },
-  { date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026 Report: Enterprise AI Deployment Is Accelerating, But Governance Is Falling Behind", tags: "Human-AI Fit, Frontier Tech" },
-  { date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI Index: Is the US-China AI Gap Really Closing?", tags: "Globalization, Human-AI Fit" },
-  { date: "2026-05-03", slug: "humanoid_robot_half_marathon", title: "Humanoid Robots Beat Humans in a Half Marathon — What Does This Mean?", tags: "Frontier Tech" },
-  { date: "2026-05-03", slug: "MERICS_China_humanoid_path", title: "Two Paths, One Goal — MERICS Report Analyzes US-China Humanoid Robot Strategies", tags: "Globalization, Frontier Tech" },
-  { date: "2026-05-03", slug: "humanoid_supply_chain_China", title: "Humanoid Robot Supply Chain: China&apos;s Billion-Dollar Opportunities and Bottlenecks", tags: "Frontier Tech, Globalization" },
-  { date: "2026-05-03", slug: "human_AI_workforce_China", title: "The Rise of the &apos;Human-AI Workforce&apos; — How China Positions Itself in the Global AI Labor Transformation", tags: "Human-AI Fit, Globalization" },
-  { date: "2026-05-03", slug: "Australia_AI_moment_China", title: "Australia&apos;s &quot;AI Moment&quot;: China&apos;s Position in the Asia-Pacific Computing Power Race", tags: "Globalization, Frontier Tech" },
-  { date: "2026-05-03", slug: "GEI_China_opportunities", title: "Global Economy&apos;s &quot;Storm Clouds&quot; and China&apos;s &quot;Bright Spots&quot; — Decoding McKinsey&apos;s March 2026 Global Economics Intelligence", tags: "Economy, Globalization" },
   { date: "2026-05-02", slug: "global_localization", title: "From Mixue to NIO: The &apos;Localization Paradox&apos; of Chinese Brands Going Global", tags: "Globalization, Localization Strategy, Chinese Brands Going Global, CBAM Carbon Compliance" },
   { date: "2026-05-02", slug: "digital_leadership", title: "When AI Can Replace 70% of Management Work, Where Is the Leader&apos;s Value?", tags: "Digital Leadership, Human-AI Fit, AI Maturity, Human-AI Collaboration, Augmentation" },
   { date: "2026-05-02", slug: "AI_productivity_paradox", title: "The AI Productivity Paradox — When AI Investment Shows &quot;No Results&quot;", tags: "AI Productivity Paradox, Solow Paradox, AI ROI, Deep Analysis, Digital Transformation" },
   { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "When Automation Bias Meets Algorithm Aversion: Human-AI Collaboration Through the Lens of Behavioral Economics", tags: "Behavioral Economics, Human-AI Fit, Automation Bias, Nudge Theory, AI Adoption" },
   { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "Getting Human-Machine Relationships &quot;Right&quot; — A Deep Dive into Deloitte 2026", tags: "Deloitte, Human-Machine Relationships, Human-AI Collaboration, AI Adoption, Industry Trends" },
 ];
-
-
-
-
-
-
 
 const tagGroups = ["All", "Company News", "Human-AI Fit", "Globalization", "Tech Frontiers", "Business", "Economy", "AI Education", "Carbon Compliance"];
 const months = articles.reduce((acc, a) => {

@@ -8,13 +8,10 @@ const pinned = [
 ];
 const articles = [
 
-  { date: "2026-07-24", slug: "nike_apec_dtc_chengdu_2026", title: "成都声明开源背后，藏着中国出海的底牌", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-20", slug: "waic2026_sfm_revolution", title: "从读论文到\"吃\"原始科学数据：WAIC 2026正在重新定义AI4S", tags: "前沿科技, 人机契合" },
-
 
 
   { date: "2026-07-17", slug: "china-ai-governance-waic-2026", title: "7月17日，中国在AI棋盘上落了一颗子", tags: "前沿科技, 人机契合" },
-  { date: "2026-07-16", slug: "waic2026_ai_partner", title: "WAIC 2026释放了哪些关键信号？", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-17", slug: "waic2026_ai_partner", title: "WAIC 2026释放了哪些关键信号？", tags: "前沿科技, 人机契合" },
   { date: "2026-07-13", slug: "jspe_ai_literacy_2026", title: "AI心里想的和说的可能不一样——学校还没教这堂课", tags: "AI素养, 教育, 人机契合" },
   { date: "2026-07-12", slug: "100x-output-diff", title: "100倍产出差的秘密：OPC创业者的认知天花板", tags: "前沿科技, 人机契合" },
   { date: "2026-07-08", slug: "arena_judge", title: "不造AI，年入1亿美元：LMArena 如何成为AI行业的裁判？", tags: "Frontier Tech, AI Efficiency" },
@@ -122,8 +119,6 @@ const articles = [
   { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "当自动化偏见遇上算法厌恶：行为经济学视角下的人机协同", tags: "" },
   { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "让人机关系“对“——Deloitte 2026报告的深度解读", tags: "" },
 ];
-
-
 
 
 

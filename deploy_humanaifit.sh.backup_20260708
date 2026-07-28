@@ -1,4 +1,3 @@
-# SKIP_BUILD=true
 #!/bin/bash
 # deploy_humanaifit.sh — 一键构建 + Wrangler部署 + Purge Cache + 线上验证
 # 
@@ -14,11 +13,9 @@ TOKEN_FILE="/home/connie/.wsl_cf_token"
 
 # ---- 参数解析 ----
 SITE_UPDATE=false
-CI_MODE=false
 for arg in "$@"; do
   case "$arg" in
     --site-update) SITE_UPDATE=true;;
-    --ci-mode) CI_MODE=true;;
   esac
 done
 
@@ -36,10 +33,7 @@ fi
 cd "$SITE_DIR"
 
 # ---- Step 0: CTA 审查检查 ----
-if [ "$CI_MODE" = true ]; then
-  echo ""
-  echo "  CI模式：跳过 CTA/审阅检查（由 publish-article 在阶段二完成）"
-elif [ "$SITE_UPDATE" = false ]; then
+if [ "$SITE_UPDATE" = false ]; then
   echo ""
   echo "Step 0: CTA 审查检查..."
   CTA_FLAGS=$(ls _cta_reviewed_*.md 2>/dev/null || true)
@@ -53,16 +47,6 @@ elif [ "$SITE_UPDATE" = false ]; then
   for f in _cta_reviewed_*.md; do
     echo "   CTA 审查已通过: $f"
   done
-
-  echo ""
-  echo "Step 0a: 审阅完成标记检查..."
-  if [[ -f "../memory/_review_completed_${SLUG:-*}.md" ]]; then
-    echo "   ✅ 审阅完成标记已存在"
-  else
-    echo "   警告: 未找到审阅完成标记 (memory/_review_completed_*.md)"
-    echo "   建议在部署前完成多AGENT审阅 + 运行 scripts/review_completed.py"
-    echo "   （此警告暂不阻断，未来将升级为硬门禁）"
-  fi
 else
   echo ""
   echo "  站点更新模式（跳过 CTA 审查）"
@@ -96,7 +80,7 @@ python3 scripts/auto_sync_check.py || true
 # ---- Step 1: 构建 ----
 echo ""
 echo "Step 1: 构建..."
-true # skip
+npm run build
 echo "   ✅ 构建成功"
 
 # ---- Step 2: Wrangler 部署 ----

@@ -1,0 +1,512 @@
+---
+// English Adult "AI职场力诊断"
+// 26-question quiz → 8-dimension 3-tier scoring → "Action of the Day" → Paywall
+// Pure frontend, no API dependency
+//
+
+export const prerender = true;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI职场力诊断 — humanaifit</title>
+  <meta name="description" content="27道题，8个维度：评估你在工作中真正的AI竞争力。免费，无需注册。" />
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f8f7f4; color:#1a1a1a; }
+    .container { max-width:640px; margin:0 auto; padding:20px 16px; }
+    .page { animation:fadeIn 0.25s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .hero-icon { font-size:48px; text-align:center; margin:40px 0 12px; }
+    .hero-desc { text-align:center; font-size:15px; color:#555; line-height:1.8; margin-bottom:24px; }
+    .feature-list { margin:20px 0; }
+    .feature-item { display:flex; align-items:center; gap:10px; margin-bottom:14px; font-size:14px; color:#444; line-height:1.5; }
+    .feature-item span strong { color:#0F2B46; }
+    .btn-start {
+      display:block; width:100%; padding:16px; background:linear-gradient(135deg,#0F2B46,#1a3f64); color:#fff;
+      border:none; border-radius:12px; font-size:18px; font-weight:700; cursor:pointer; transition:transform .15s;
+      margin:24px 0 12px;
+    }
+    .btn-start:hover { transform:scale(1.02); }
+    .btn-start:active { transform:scale(0.98); }
+    .free-tag { text-align:center; font-size:13px; color:#999; }
+    .quiz-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+    .q-progress-text { font-size:14px; color:#666; flex-shrink:0; }
+    .progress-track { flex:1; height:6px; background:#e5e7eb; border-radius:3px; overflow:hidden; }
+    .progress-fill { height:100%; background:#3b82f6; border-radius:3px; transition:width .3s; }
+    .q-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; margin-bottom:16px; }
+    .stem { font-size:18px; line-height:1.6; margin:0 0 24px; font-weight:500; color:#1a1a1a; }
+    .options { display:flex; flex-direction:column; gap:8px; }
+    .option {
+      display:flex; align-items:center; gap:12px; padding:12px 16px; border:1px solid #e5e7eb;
+      border-radius:8px; cursor:pointer; transition:all .15s; font-size:16px; color:#333;
+    }
+    .option:hover { background:#f5f5f5; }
+    .option.selected { background:#e8f4fd; border-color:#3b82f6; border-left:3px solid #3b82f6; }
+    .option-radio { font-size:20px; color:#3b82f6; width:20px; text-align:center; }
+    .q-footer-text { text-align:center; font-size:12px; color:#999; margin-top:12px; }
+    .nav-btns { display:flex; justify-content:space-between; gap:12px; }
+    .btn { padding:12px 24px; border-radius:8px; border:none; font-size:16px; font-weight:600; cursor:pointer; transition:all .15s; }
+    .btn:disabled { opacity:0.4; cursor:not-allowed; }
+    .btn-pri { background:#3b82f6; color:#fff; }
+    .btn-pri:hover:not(:disabled) { background:#2563eb; }
+    .btn-sec { background:#f5f5f5; color:#333; }
+    .btn-sec:hover:not(:disabled) { background:#e5e7eb; }
+    .result-container { padding-bottom:60px; }
+    .result-title { font-size:22px; text-align:center; margin:20px 0; color:#0F2B46; }
+    .layer-block { margin-bottom:24px; }
+    .layer-header {
+      padding:8px 12px; background:#f0f0f0; border-radius:6px;
+      font-size:13px; color:#666; font-weight:600; margin-bottom:8px;
+    }
+    .dim-row {
+      display:flex; align-items:center; gap:10px; padding:6px 8px; margin-bottom:4px;
+    }
+    .dim-name { width:90px; font-size:14px; color:#333; font-weight:500; flex-shrink:0; }
+    .dim-bar-bg { flex:1; height:14px; background:#e5e7eb; border-radius:7px; overflow:hidden; }
+    .dim-bar-fill { height:100%; border-radius:7px; transition:width .8s ease; }
+    .dim-score { width:44px; text-align:right; font-size:14px; font-weight:600; color:#1a1a1a; flex-shrink:0; }
+    .dim-badge { font-size:11px; width:24px; text-align:center; flex-shrink:0; }
+    .layer-total { font-size:13px; color:#888; text-align:right; margin-bottom:6px; }
+    .layer-total strong { color:#333; }
+    .weakness-box {
+      background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:16px; margin:20px 0;
+      text-align:center;
+    }
+    .weakness-box h3 { font-size:16px; color:#0F2B46; margin-bottom:4px; }
+    .weakness-box p { font-size:14px; color:#555; }
+    .cta-box {
+      background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:20px; margin:20px 0; text-align:center;
+    }
+    .cta-box h3 { font-size:16px; margin-bottom:6px; color:#0F2B46; }
+    .cta-box p { font-size:14px; color:#555; margin-bottom:12px; line-height:1.6; }
+    .cta-prompt-box {
+      background:#fff; border:1px solid #d1d5db; border-radius:8px; padding:12px; margin:12px 0;
+      font-size:14px; color:#333; text-align:left;
+    }
+    .cta-btn { padding:12px 24px; border-radius:8px; border:none; font-size:15px; font-weight:600; cursor:pointer; margin:4px; }
+    .cta-btn-blue { background:#3b82f6; color:#fff; }
+    .cta-btn-blue:hover { background:#2563eb; }
+    .cta-btn-green { background:#22c55e; color:#fff; }
+    .cta-btn-green:hover { background:#16a34a; }
+    .cta-btn-ghost { background:transparent; color:#3b82f6; border:1px solid #3b82f6; }
+    .paywall {
+      background:#fff; border:2px solid #C9A96E; border-radius:12px; padding:20px; margin:20px 0; text-align:center;
+    }
+    .paywall h3 { font-size:18px; color:#0F2B46; margin-bottom:4px; }
+    .paywall .price { font-size:28px; font-weight:700; color:#C9A96E; margin:8px 0; }
+    .paywall ul { list-style:none; padding:0; margin:12px 0; font-size:13px; color:#555; text-align:left; }
+    .paywall ul li { padding:4px 0; padding-left:20px; position:relative; }
+    .paywall ul li::before { content:'✅'; position:absolute; left:0; }
+    .feedback-ring { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin:16px 0; }
+    .feedback-ring h4 { font-size:15px; margin-bottom:8px; }
+    .feedback-btn { display:block; width:100%; padding:12px; border:1px solid #ddd; border-radius:8px; margin:6px 0; font-size:14px; cursor:pointer; background:#f9fafb; text-align:left; }
+    .feedback-btn:hover { background:#f0f0f0; }
+    .transition-page { text-align:center; padding:40px 16px; }
+    .transition-page h2 { font-size:22px; color:#0F2B46; margin:16px 0; }
+    .transition-page p { font-size:15px; color:#555; line-height:1.8; margin-bottom:20px; }
+    @media(max-width:480px) {
+      .dim-name { width:70px; font-size:12px; }
+      .dim-score { width:36px; font-size:12px; }
+      .stem { font-size:16px; }
+      .option { font-size:14px; }
+    }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <!-- Start Page -->
+    <div id="start-page" class="page">
+      <div class="container">
+        <div class="hero-icon">📊</div>
+        <h1>AI职场力诊断</h1>
+        <p class="hero-desc"><strong>27道选择题</strong>，覆盖8个维度，评估你在工作中真正的AI竞争力。</p>
+        <div class="feature-list">
+          <div class="feature-item">🧩 <span><strong>8维全面评估</strong> — 从工具力到元认知</span></div>
+          <div class="feature-item">📊 <span><strong>三层可视化</strong> — 基础层 / 进阶层 / 领导层</span></div>
+          <div class="feature-item">⚡ <span><strong>10分钟完成</strong> — 每步即时反馈</span></div>
+          <div class="feature-item">🎯 <span><strong>首次行动</strong> — 看完结果就知道今天做什么</span></div>
+          <div class="feature-item">🎓 <span><strong>三步行动</strong> — 复制 → 尝试 → 分享</span></div>
+        </div>
+        <button id="start-btn" class="btn-start">开始诊断 →</button>
+        <p class="free-tag">免费 · 无需注册</p>
+      </div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quiz-page" class="page" style="display:none">
+      <div class="container">
+        <div class="quiz-header">
+          <span id="q-progress" class="q-progress-text">Q 1</span>
+          <div class="progress-track"><div id="q-progress-fill" class="progress-fill" style="width:5%"></div></div>
+        </div>
+        <div id="q-card" class="q-card"></div>
+        <div class="nav-btns">
+          <button id="prev-btn" class="btn btn-sec" disabled>← 上一题</button>
+          <button id="next-btn" class="btn btn-pri" disabled>下一题 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Page -->
+    <div id="result-page" class="page" style="display:none">
+      <div class="container result-container">
+        <h2 class="result-title">📊 Your AI职场力诊断 Report</h2>
+        <div id="result-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Payment modal -->
+  <div id="payment-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10000;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:16px;padding:24px;max-width:380px;width:90%;text-align:center;position:relative;">
+      <button onclick="closeAdultPayment()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#999;">✕</button>
+      
+      <!-- Tier selection -->
+      <div id="pay-tier-selection">
+        <!-- Tier 1: $29 Report -->
+        <div onclick="showAdultPayTier('report')" style="border:2px solid #e5e7eb;border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#e5e7eb'">
+          <h3 style="font-size:16px;color:#0F2B46;margin:0 0 4px;">📋 完整诊断报告</h3>
+          <p style="font-size:28px;font-weight:700;color:#C9A96E;margin:4px 0;">$29</p>
+          <ul style="list-style:none;padding:0;margin:4px 0;font-size:12px;color:#555;text-align:left;display:inline-block;">
+            <li>✅ 8维完整得分 + 对比分析</li>
+            <li>✅ W1-W4完整行动卡</li>
+            <li>✅ 同龄同行业对比</li>
+            <li>✅ 具体短板提升方案</li>
+          </ul>
+        </div>
+
+        <!-- Tier 2: $199/year 知识星球 -->
+        <div onclick="showAdultPayTier('planet')" style="border:2px solid #C9A96E;border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;background:#fffbf0;transition:all 0.2s;" onmouseover="this.style.borderColor='#0F2B46'" onmouseout="this.style.borderColor='#C9A96E'">
+          <h3 style="font-size:16px;color:#0F2B46;margin:0 0 4px;">🌟 《AI时代生存手册》知识星球</h3>
+          <p style="font-size:28px;font-weight:700;color:#C9A96E;margin:4px 0;">$199<span style="font-size:14px;font-weight:400;color:#888;">/year</span></p>
+          <ul style="list-style:none;padding:0;margin:4px 0;font-size:12px;color:#555;text-align:left;display:inline-block;">
+            <li>✅ 送完整诊断报告</li>
+            <li>📌 Planet ID: 43035986</li>
+            <li>✅ 全年行动卡持续推送</li>
+            <li>✅ 每月线上工作坊</li>
+            <li>✅ 社群交流 + 专家答疑</li>
+            <li>🎁 试运营限50人</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment detail -->
+      <div id="pay-tier-detail" style="display:none;">
+        <h3 id="pay-detail-title" style="font-size:18px;color:#0F2B46;margin:0 0 4px;"></h3>
+        <p id="pay-detail-price" style="font-size:28px;font-weight:700;color:#C9A96E;margin:12px 0 4px;"></p>
+        <p style="font-size:13px;color:#666;margin-bottom:8px;">微信扫码支付</p>
+        <img src="/images/wechat_pay.jpg" alt="WeChat Pay QR code" style="width:180px;height:180px;object-fit:cover;border-radius:8px;" />
+        <p style="font-size:12px;color:#e65100;margin:8px 0 4px;">💬 付款后联系微信</p>
+        <p style="font-size:12px;color:#555;margin-bottom:4px;">长按复制微信ID：</p>
+        <div style="background:#f5f5f5;padding:8px;border-radius:6px;font-size:14px;font-weight:600;color:#0F2B46;margin:4px 0;text-align:center;cursor:pointer;" onclick="navigator.clipboard.writeText('blurblurfish');alert('WeChat ID copied')">blurblurfish</div>
+        <p style="font-size:11px;color:#999;margin-top:8px;">扫码付款后加微信发送付款截图，人工开通。</p>
+        <button onclick="showAdultPayBack()" style="margin-top:8px;padding:6px 16px;background:none;border:none;font-size:13px;color:#3b82f6;cursor:pointer;">← 返回选择</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question bank data -->
+  <script id="adult-questions-data" type="application/json">[{"id": "AD-TC-E-001", "version": "adult_v2", "dimension": "ai_tool_competency", "difficulty": "easy", "stem": "刚接触AI，想让AI帮你写一封工作邮件。你会怎么说？", "options": [{"id": "A", "text": "帮我写一封邮件", "score": 1}, {"id": "B", "text": "写一封给客户的邮件，关于项目延期，语气真诚且保持专业", "score": 4}, {"id": "C", "text": "写邮件", "score": 2}, {"id": "D", "text": "我不会用AI写邮件", "score": 0}], "theoreticalBasis": "TTF Framework (Goodhue & Thompson, 1995)——提示词越具体，任务-工具匹配度越高"}, {"id": "AD-TC-M-002", "version": "adult_v2", "dimension": "ai_tool_competency", "difficulty": "medium", "stem": "你需要(1)整理会议纪要、(2)做数据分析图表、(3)给PPT配图。每项任务分别用什么工具？", "options": [{"id": "A", "text": "用一个AI工具搞定全部", "score": 1}, {"id": "B", "text": "用飞书智能文档做会议纪要，Kimi/豆包配合表格处理做图表，文心一格/通义万相做配图", "score": 4}, {"id": "C", "text": "用常规软件，全部手工做", "score": 2}, {"id": "D", "text": "不知道有哪些工具可以用", "score": 0}], "theoreticalBasis": "AI Tool Ecosystem Awareness——了解工具的差异化优势是高效使用的起点"}, {"id": "AD-TC-H-003", "version": "adult_v2", "dimension": "ai_tool_competency", "difficulty": "hard", "stem": "要在2小时内完成一份竞品市场调研报告，覆盖10家竞争对手。你怎么组合AI工具？", "options": [{"id": "A", "text": "让一个AI搞定全部", "score": 1}, {"id": "B", "text": "一个AI搜数据→另一个AI做对比表→自己写结论", "score": 4}, {"id": "C", "text": "大部分自己做，AI只用来润色", "score": 2}, {"id": "D", "text": "不用AI，手动搜索和撰写", "score": 0}], "theoreticalBasis": "AI Tool Chain——分步式工具链（pipeline）可提升复杂任务效率"}, {"id": "AD-DD-E-001", "version": "adult_v2", "dimension": "data_decision", "difficulty": "easy", "stem": "AI说：\"根据数据分析，90%的客户满意度来自价格优势。\"你会怎么做？", "options": [{"id": "A", "text": "有数据支撑，可信", "score": 1}, {"id": "B", "text": "先核实数据来源、样本量和客户筛选方式", "score": 4}, {"id": "C", "text": "不确定，但懒得深究", "score": 2}, {"id": "D", "text": "觉得AI在瞎说", "score": 0}], "theoreticalBasis": "Critical Thinking (Facione, 1990)——对数据结论的源头质疑是批判性思维的核心"}, {"id": "AD-DD-M-002", "version": "adult_v2", "dimension": "data_decision", "difficulty": "medium", "stem": "AI根据过去三年每月的销售数据做了一个预测模型，使用前最该检查什么？", "options": [{"id": "A", "text": "数据范围是否覆盖了节假日等特殊日期", "score": 4}, {"id": "B", "text": "预测结果的小数位数准不准", "score": 1}, {"id": "C", "text": "图表的颜色好不好看", "score": 0}, {"id": "D", "text": "AI用什么编程语言写的代码", "score": 2}], "theoreticalBasis": "Data Literacy (Mandinach & Gummer, 2016)——数据覆盖面的完整性比模型精度更关键"}, {"id": "AD-DD-H-003", "version": "adult_v2", "dimension": "data_decision", "difficulty": "hard", "stem": "AI基于过去3年的数据，预测下季度增长30%并建议备货。你会怎么做？", "options": [{"id": "A", "text": "相信预测，多备30%的货", "score": 1}, {"id": "B", "text": "先核实数据是否包含了近期市场变化", "score": 4}, {"id": "C", "text": "让AI建一个更复杂的模型", "score": 3}, {"id": "D", "text": "完全不理会这个预测", "score": 0}], "theoreticalBasis": "Data-Driven Decision Validation——历史数据无法完全代表未预料的市场变化"}, {"id": "AD-WF-E-001", "version": "adult_v2", "dimension": "workflow_design", "difficulty": "easy", "stem": "要写周报了，哪种分工最合理？", "options": [{"id": "A", "text": "让AI全部代劳", "score": 1}, {"id": "B", "text": "我搭数据框架→AI填充细节→我来审核", "score": 4}, {"id": "C", "text": "我写→AI润色措辞", "score": 3}, {"id": "D", "text": "完全不考虑用AI", "score": 0}], "theoreticalBasis": "Task-Technology Fit——人负责创造和决策，AI负责执行和填充"}, {"id": "AD-WF-M-002", "version": "adult_v2", "dimension": "workflow_design", "difficulty": "medium", "stem": "一次完整的市场调研任务：①确定调研方向→②收集数据→③分析数据→④写报告→⑤汇报结果。哪些步骤最适合AI辅助？", "options": [{"id": "A", "text": "②③④（数据收集+分析+写报告）", "score": 4}, {"id": "B", "text": "全部", "score": 2}, {"id": "C", "text": "只有④（写报告）", "score": 1}, {"id": "D", "text": "都不适合", "score": 0}], "theoreticalBasis": "Human-AI Division Strategy——方向判断和结果汇报仍依赖人的经验"}, {"id": "AD-WF-H-003", "version": "adult_v2", "dimension": "workflow_design", "difficulty": "hard", "stem": "你每天的工作流程包括：查邮件→回消息→做PPT→写代码→排会议。AI Agent（能自动执行任务的智能程序）可以如何优化？", "options": [{"id": "A", "text": "一个Agent统管全部", "score": 1}, {"id": "B", "text": "针对不同任务类型设计不同Agent，然后汇总", "score": 4}, {"id": "C", "text": "用AI助手但不建自动化", "score": 2}, {"id": "D", "text": "没听说过AI Agent", "score": 0}], "theoreticalBasis": "AI Agent Architecture——任务类型多样化时，多Agent分工优于单Agent全能"}, {"id": "AD-CR-E-001", "version": "adult_v2", "dimension": "ai_creativity", "difficulty": "easy", "stem": "需要为一款新产品写一句广告语。最简单的做法是？", "options": [{"id": "A", "text": "让AI直接生成，从中选一个", "score": 2}, {"id": "B", "text": "先想清楚产品亮点和受众，再让AI出3个方向，挑最好的改", "score": 4}, {"id": "C", "text": "自己写——AI写东西没人情味", "score": 1}, {"id": "D", "text": "没想过用AI做创意工作", "score": 0}], "theoreticalBasis": "Human-AI Co-Creation (Davis, 2024)——创意工作中AI提供发散，人负责收敛和判断"}, {"id": "AD-CR-M-002", "version": "adult_v2", "dimension": "ai_creativity", "difficulty": "medium", "stem": "用AI写产品文案，但生成的所有版本都感觉「AI味太重」。怎么改进？", "options": [{"id": "A", "text": "让AI继续生成更多版本，直到看到满意的", "score": 2}, {"id": "B", "text": "告诉AI具体的品牌调性参考（如语气像苹果广告文案）", "score": 4}, {"id": "C", "text": "放弃AI，自己写", "score": 1}, {"id": "D", "text": "换一个AI工具试试", "score": 0}], "theoreticalBasis": "Iterative Prompt Engineering——调性参照能有效降低AI输出的同质化"}, {"id": "AD-CR-M-003", "version": "adult_v2", "dimension": "ai_creativity", "difficulty": "medium", "stem": "AI生成了一份方案，但你觉得方向偏了。最好的做法是？", "options": [{"id": "A", "text": "保留AI内容，直接提交", "score": 1}, {"id": "B", "text": "删掉AI的内容，自己重做", "score": 2}, {"id": "C", "text": "告诉AI「方向偏了，回到XX角度重新思考」", "score": 4}, {"id": "D", "text": "换个工具重新生成", "score": 0}], "theoreticalBasis": "Iterative Prompt Engineering——给AI反馈方向比盲目重生成更高效"}, {"id": "AD-JD-E-001", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "easy", "stem": "AI说它知道一个你从未听说过的冷门知识。你最合理的做法是？", "options": [{"id": "A", "text": "直接相信AI", "score": 1}, {"id": "B", "text": "觉得有趣，但自己再搜索确认一下", "score": 4}, {"id": "C", "text": "不确定，算了不管", "score": 2}, {"id": "D", "text": "AI在骗人", "score": 0}], "theoreticalBasis": "AI Output Credibility Assessment——AI可能出现幻觉，交叉验证是基本素养"}, {"id": "AD-JD-M-002", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "medium", "stem": "AI说：\"根据最新的WHO数据，全球抑郁症发病率上升了15%。\"你会怎么做？", "options": [{"id": "A", "text": "WHO的数据应该可靠，直接引用", "score": 1}, {"id": "B", "text": "搜索「WHO 抑郁症」先核实数据", "score": 4}, {"id": "C", "text": "觉得有问题但说不清", "score": 2}, {"id": "D", "text": "相信AI不会瞎编", "score": 0}], "theoreticalBasis": "AI Output Credibility Assessment——即使引用权威机构，也应验证出处和时效性"}, {"id": "AD-JD-M-004", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "medium", "stem": "你用AI生成了一份竞品分析报告，发现AI错误引用了一家公司的内部数据。你会怎么做？", "options": [{"id": "A", "text": "反正没人知道，直接用", "score": 0}, {"id": "B", "text": "删掉不准确的数据，其余继续用", "score": 2}, {"id": "C", "text": "在报告中标注「此数据无法核实，仅供参考」", "score": 3}, {"id": "D", "text": "整份报告废弃不用", "score": 4}], "theoreticalBasis": "AI Ethics (Floridi et al., 2018)——使用不可核实的数据存在专业和声誉风险"}, {"id": "AD-JD-H-003", "version": "adult_v2", "dimension": "ai_judgment", "difficulty": "hard", "stem": "AI生成了员工绩效排名并给出了裁员建议。你必须首先做什么？", "options": [{"id": "A", "text": "直接采纳建议", "score": 1}, {"id": "B", "text": "检查排名维度是否公平、没有偏见", "score": 4}, {"id": "C", "text": "参考AI建议但自己决策", "score": 3}, {"id": "D", "text": "不用AI来做人事决策", "score": 0}], "theoreticalBasis": "AI Ethics (Floridi et al., 2018)——涉及人的决策必须检查算法公平性和偏见"}, {"id": "AD-HC-E-001", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "easy", "stem": "时间紧迫，同时要做：①想战略方向、②写会议纪要、③做数据图表。你和AI怎么分工？", "options": [{"id": "A", "text": "全部自己做——AI不可靠", "score": 1}, {"id": "B", "text": "AI做①②③——AI什么都能干", "score": 0}, {"id": "C", "text": "我想战略→AI写纪要+AI做图表→我审核", "score": 4}, {"id": "D", "text": "请同事帮忙分担", "score": 2}], "theoreticalBasis": "Human-AI Division Principles——需要创造力和判断的任务留给人，执行性任务交给AI"}, {"id": "AD-HC-M-002", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "medium", "stem": "AI写了一份方案，但内容方向偏了——不是你想要的。你首先会分析什么？", "options": [{"id": "A", "text": "先搞清楚：是我指令不清晰，还是AI本质上处理不了这个问题？", "score": 4}, {"id": "B", "text": "重写提示词", "score": 3}, {"id": "C", "text": "换个AI工具再问", "score": 1}, {"id": "D", "text": "算了，我自己写", "score": 0}], "theoreticalBasis": "In-Process Metacognition——区分【指令问题】和【AI能力边界】是高效协作的前提"}, {"id": "AD-HC-M-005", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "medium", "stem": "团队讨论一个新项目，你注意到AI可以帮大家快速搜集相关案例。最好的做法是？", "options": [{"id": "A", "text": "自己搜集，省得大家依赖AI变懒", "score": 1}, {"id": "B", "text": "让AI搜集3-5个案例，作为讨论起点，大家在此基础上深化", "score": 4}, {"id": "C", "text": "直接让AI生成完整方案，大家评审", "score": 2}, {"id": "D", "text": "大家先讨论，最后再用AI验证", "score": 0}], "theoreticalBasis": "Human-AI Collaboration——AI提供信息输入，人的集体智慧负责分析决策"}, {"id": "AD-HC-H-003", "version": "adult_v2", "dimension": "human_ai_collab", "difficulty": "hard", "stem": "同事对AI有抵触，但你知道AI能帮团队省大量时间。你怎么做？", "options": [{"id": "A", "text": "自己先用AI，分享结果时不说用了AI", "score": 2}, {"id": "B", "text": "挑一个小任务，演示AI的效果，让他们亲眼看到", "score": 4}, {"id": "C", "text": "要求管理层强制使用AI", "score": 1}, {"id": "D", "text": "尊重他们不用AI的选择", "score": 0}], "theoreticalBasis": "AI Team Collaboration——小范围实证比行政命令更能改变同事的AI态度"}, {"id": "AD-ST-E-001", "version": "adult_v2", "dimension": "ai_strategy", "difficulty": "easy", "stem": "你听说「AI Agent将取代大量客服岗位」。你的判断是？", "options": [{"id": "A", "text": "肯定是真的——技术发展太快了", "score": 1}, {"id": "B", "text": "分析客服中哪些部分可以自动化、哪些需要人参与", "score": 4}, {"id": "C", "text": "不确定", "score": 2}, {"id": "D", "text": "跟我没关系", "score": 0}], "theoreticalBasis": "Critical Analysis of Technology Trends——对技术趋势的判断需区分【可自动化】和【应保留人】的边界"}, {"id": "AD-ST-M-002", "version": "adult_v2", "dimension": "ai_strategy", "difficulty": "medium", "stem": "公司需要确定「AI+业务」方向，你优先选择哪个策略？", "options": [{"id": "A", "text": "投入资源搭建AI Agent平台", "score": 1}, {"id": "B", "text": "找出当前业务中最重复、最容易出错的3个流程，先用AI优化", "score": 4}, {"id": "C", "text": "买市场上最火的AI SaaS工具，全员配备", "score": 2}, {"id": "D", "text": "等竞争对手先试", "score": 0}], "theoreticalBasis": "Technology Adoption Theory (Rogers, 2003)——从痛点出发的小范围试点优于【先搭平台】的策略"}, {"id": "AD-ST-H-003", "version": "adult_v2", "dimension": "ai_strategy", "difficulty": "hard", "stem": "10人团队，预算有限。领导要求下季度通过AI提升30%效率。你怎么推进？", "options": [{"id": "A", "text": "购买企业级AI工具，全员培训", "score": 2}, {"id": "B", "text": "选2-3个高重复痛点，小范围试点→验证→推广", "score": 4}, {"id": "C", "text": "招聘AI专家来带队", "score": 1}, {"id": "D", "text": "等更成熟的解决方案", "score": 0}], "theoreticalBasis": "AI Strategy Evaluation——有限预算下【痛点驱动-小范围验证】优于【工具先行】"}, {"id": "AD-SA-E-001", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "easy", "stem": "刚用AI写完一份报告，关掉了聊天窗口。你能清楚判断这个过程中哪些地方顺利、哪些不顺利吗？", "options": [{"id": "A", "text": "能——我能清楚区分哪些步骤AI帮了大忙、哪些地方它在瞎编", "score": 4}, {"id": "B", "text": "大致知道AI帮了忙，但说不清具体哪里好哪里差", "score": 2}, {"id": "C", "text": "不确定——做完就关了", "score": 1}, {"id": "D", "text": "很少反思自己用AI的方式", "score": 0}], "theoreticalBasis": "Metacognition (Flavell, 1979)——对AI辅助过程的元认知反思是持续提升的基础"}, {"id": "AD-SA-E-002", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "easy", "stem": "如何判断一个任务是否适合交给AI来做？你通常怎么做？", "options": [{"id": "A", "text": "先分析任务特征（重复性、创造性、风险等），再根据具体情况判断", "score": 4}, {"id": "B", "text": "我有固定套路——AI出初稿，我来打磨", "score": 3}, {"id": "C", "text": "全部交给AI试试——不行我再接手", "score": 1}, {"id": "D", "text": "全部自己做——对用AI做新任务没信心", "score": 0}], "theoreticalBasis": "Strategy Adaptation——优秀的AI用户会动态判断任务与AI能力的匹配度"}, {"id": "AD-SA-M-003", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "medium", "stem": "如果给自己的AI熟练度打分（1-10分），再请一位了解你工作方式的同事也给你打分——你觉得结果会怎样？", "options": [{"id": "A", "text": "我会猜测同事会打多少分，跟自己的打分做对比，关注差距大的方面", "score": 4}, {"id": "B", "text": "应该差不多——差距不会太大", "score": 2}, {"id": "C", "text": "同事不了解我用AI的方式，评分不准确", "score": 1}, {"id": "D", "text": "从没想过别人会怎么评价我的AI能力", "score": 0}], "theoreticalBasis": "Metacognitive Calibration——通过他人视角校准自我评估是元认知能力的体现"}, {"id": "AD-SA-M-004", "version": "adult_v2", "dimension": "ai_self_awareness", "difficulty": "medium", "stem": "用了一段时间AI后，你发现自己有某个薄弱环节——比如「数据分析的提示词一直写不好」。你会怎么做？", "options": [{"id": "A", "text": "回顾最近的失败尝试，搞清楚具体卡在哪一步，然后针对性找教程", "score": 4}, {"id": "B", "text": "先放着——等下次又碰到这个问题再想办法", "score": 2}, {"id": "C", "text": "告诉自己下次多试试——练多了自然就会了", "score": 3}, {"id": "D", "text": "这个弱点不太影响工作，不急着改善", "score": 0}], "theoreticalBasis": "Metacognitive Learning Strategies——定向诊断和聚焦练习比泛泛【多练】更有效"}]</script>
+
+  <script is:inline>
+(function() {
+  const QUESTIONS = JSON.parse(document.getElementById('adult-questions-data').textContent);
+
+  const DIMENSIONS = [
+    { id:'ai_tool_competency', name:'AI工具能力', layer:'base', color:'#3b82f6' },
+    { id:'data_decision', name:'数据驱动决策', layer:'base', color:'#3b82f6' },
+    { id:'workflow_design', name:'流程设计', layer:'base', color:'#3b82f6' },
+    { id:'ai_creativity', name:'AI创造力', layer:'advanced', color:'#3b82f6' },
+    { id:'ai_judgment', name:'AI判断力', layer:'advanced', color:'#3b82f6' },
+    { id:'human_ai_collab', name:'人机协作', layer:'advanced', color:'#3b82f6' },
+    { id:'ai_strategy', name:'AI战略', layer:'leadership', color:'#3b82f6' },
+    { id:'ai_self_awareness', name:'AI自我认知', layer:'leadership', color:'#8b5cf6' },
+  ];
+  const LAYER_NAMES = { base:'基础层 — AI赋能', advanced:'进阶层 — AI共创', leadership:'领导层 — 驾驭AI' };
+  const LAYER_ORDER = ['base','advanced','leadership'];
+
+  let currentIndex = 0;
+  const answers = {};
+  let resultData = null;
+
+  const $ = id => document.getElementById(id);
+  const startPage = $('start-page');
+  const quizPage = $('quiz-page');
+  const resultPage = $('result-page');
+  const qCard = $('q-card');
+  const qProgress = $('q-progress');
+  const qFill = $('q-progress-fill');
+  const prevBtn = $('prev-btn');
+  const nextBtn = $('next-btn');
+
+  $('start-btn').addEventListener('click', () => {
+    startPage.style.display = 'none';
+    quizPage.style.display = 'block';
+    currentIndex = 0;
+    renderQuestion(0);
+    updateButtons();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  function renderQuestion(idx) {
+    const q = QUESTIONS[idx];
+    qCard.innerHTML = `<div class="stem">${q.stem}</div>
+      <div class="options">${q.options.map(o =>
+        `<div class="option ${answers[q.id]===o.id?'selected':''}" data-q="${q.id}" data-opt="${o.id}">
+          <span class="option-radio">${answers[q.id]===o.id?'●':'○'}</span>
+          <span>${o.text}</span>
+        </div>`
+      ).join('')}</div>
+      <div class="q-footer-text">${QUESTIONS.length - idx - 1} 道题待答</div>`;
+    qCard.querySelectorAll('.option').forEach(el => {
+      el.addEventListener('click', () => {
+        answers[el.dataset.q] = el.dataset.opt;
+        renderQuestion(idx);
+        updateButtons();
+      });
+    });
+  }
+
+  function updateButtons() {
+    const q = QUESTIONS[currentIndex];
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = !answers[q.id];
+    nextBtn.textContent = currentIndex < QUESTIONS.length - 1 ? '下一题 →' : '查看结果';
+    qProgress.textContent = `第${currentIndex + 1}题 / ${QUESTIONS.length}`;
+    qFill.style.width = `${((currentIndex + 1) / QUESTIONS.length) * 100}%`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) { currentIndex--; renderQuestion(currentIndex); updateButtons(); window.scrollTo({top:0,behavior:'smooth'}); }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < QUESTIONS.length - 1) {
+      currentIndex++; renderQuestion(currentIndex); updateButtons(); window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      calculateAndShowResult();
+    }
+  });
+
+  function calculateAndShowResult() {
+    const dimScores = {};
+    DIMENSIONS.forEach(d => { dimScores[d.id] = { total:0, weight:0 }; });
+
+    QUESTIONS.forEach(q => {
+      const optId = answers[q.id];
+      if (!optId) return;
+      const opt = q.options.find(o => o.id === optId);
+      if (!opt) return;
+      const weight = q.difficulty === 'hard' ? 2.0 : q.difficulty === 'medium' ? 1.5 : 1.0;
+      const dim = q.dimension;
+      if (dimScores[dim]) {
+        dimScores[dim].total += opt.score * weight;
+        dimScores[dim].weight += 4 * weight;
+      }
+    });
+
+    const dimQuestionCount = {};
+    QUESTIONS.forEach(q => {
+      if (answers[q.id]) dimQuestionCount[q.dimension] = (dimQuestionCount[q.dimension]||0) + 1;
+    });
+
+    const dimensions = DIMENSIONS.map(d => {
+      const raw = dimScores[d.id];
+      let score = 0;
+      if (raw && raw.weight > 0) score = Math.round((raw.total / raw.weight) * 100);
+      score = Math.max(0, Math.min(100, score));
+      const label = score >= 76 ? '优秀' : score >= 56 ? '良好' : '需提升';
+      return { dimensionId: d.id, name: d.name, score, label, color: d.color, layer: d.layer };
+    });
+
+    const overallScore = Math.round(dimensions.reduce((s,d) => s + d.score, 0) / dimensions.length);
+    const sorted = [...dimensions].sort((a,b) => a.score - b.score);
+    const weakest = sorted[0];
+    const strongest = sorted[sorted.length - 1];
+    resultData = { dimensions, overallScore, weakest, strongest };
+    quizPage.style.display = 'none';
+    resultPage.style.display = 'block';
+    renderResult();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function renderResult() {
+    const rc = $('result-content');
+    const d = resultData;
+    let html = '';
+
+    html += `<div style="text-align:center;margin-bottom:16px;">
+      <div style="font-size:40px;font-weight:700;color:#0F2B46;">${d.overallScore}</div>
+      <div style="font-size:14px;color:#888;">综合得分（满分100）</div>
+    </div>`;
+
+    LAYER_ORDER.forEach(layer => {
+      const dims = d.dimensions.filter(dm => dm.layer === layer);
+      if (dims.length === 0) return;
+      const avgScore = Math.round(dims.reduce((s,dm) => s + dm.score, 0) / dims.length);
+      html += `<div class="layer-block">
+        <div class="layer-header">${LAYER_NAMES[layer]}  ${avgScore}/100</div>`;
+      dims.forEach(dm => {
+        const barColor = dm.score <= 30 ? '#ef4444' : dm.score <= 55 ? '#f59e0b' : dm.score <= 75 ? '#3b82f6' : '#22c55e';
+        const isWeakest = dm.dimensionId === d.weakest.dimensionId;
+        const isD08 = dm.dimensionId === 'ai_self_awareness';
+        const barStyle = isD08
+          ? `width:${dm.score}%;background:repeating-linear-gradient(0deg,${barColor},${barColor} 3px,transparent 3px,transparent 6px);`
+          : `width:${dm.score}%;background:${barColor};`;
+        html += `<div class="dim-row">
+          <div class="dim-name">${isD08 ? '⭐ ' : ''}${dm.name}</div>
+          <div class="dim-bar-bg"><div class="dim-bar-fill" style="${barStyle}"></div></div>
+          <div class="dim-score">${dm.score}</div>
+          <div class="dim-badge">${isWeakest ? '⚠️' : dm.score >= 76 ? '⭐' : ''}</div>
+        </div>`;
+      });
+      html += '</div>';
+    });
+
+    html += `<div class="weakness-box">
+      <h3>⚠️ 你最大的成长空间: ${d.weakest.name} (${d.weakest.score})</h3>
+      <p>从"今日行动"开始——只需1分钟。</p>
+    </div>`;
+
+    html += `<div class="cta-box">
+      <h3>📋 今日行动（1分钟）</h3>
+      <p>你最大的成长空间: ${d.weakest.name}<br>先做这件事试试：</p>
+      <div class="cta-prompt-box">
+        <strong>复制这段文字，粘贴到你的AI工具中：</strong><br>
+        "用一句话总结AI在2026年对我的职业生涯意味着什么"
+        <button id="copy-prompt-btn" class="cta-btn cta-btn-blue" style="display:block;width:100%;margin-top:8px;">📋 复制</button>
+      </div>
+      <button id="step1-done-btn" class="cta-btn cta-btn-green" style="opacity:0.5;">✅ 我做完了</button>
+      <button id="feedback-trigger-btn" class="cta-btn cta-btn-ghost">💬 对结果不满意？</button>
+      <p style="font-size:12px;color:#999;margin-top:8px;">完成后系统会解锁W1行动卡，帮助你提升短板。</p>
+    </div>`;
+
+    html += `<div class="paywall">
+      <h3>🔒 完整诊断报告</h3>
+      <div class="price">$29</div>
+      <ul>
+        <li>8维完整得分 + 对比分析</li>
+        <li>W1-W4完整行动卡</li>
+        <li>同龄同行业对比 (same industry & role)</li>
+        <li>个性化提升方案</li>
+      </ul>
+      <button class="cta-btn cta-btn-blue" onclick="showAdultPayment()">立即购买 ¥29</button>
+      <p style="font-size:12px;color:#999;margin-top:6px;">微信扫码支付 · Contact us after payment</p>
+    </div>`;
+
+    rc.innerHTML = html;
+    bindResultEvents();
+  }
+
+  function bindResultEvents() {
+    const copyBtn = $('copy-prompt-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('用一句话总结AI在2026年对我的职业生涯意味着什么').then(() => {
+          copyBtn.textContent = '✅ 已复制';
+          copyBtn.style.background = '#22c55e';
+          $('step1-done-btn').style.opacity = '1';
+        });
+      });
+    }
+    const step1Btn = $('step1-done-btn');
+    if (step1Btn) step1Btn.addEventListener('click', showTransition);
+    const fbBtn = $('feedback-trigger-btn');
+    if (fbBtn) fbBtn.addEventListener('click', showFeedback);
+  }
+
+  function showTransition() {
+    const rc = $('result-content');
+    rc.innerHTML = `
+      <div class="transition-page">
+        <div style="font-size:64px;margin-bottom:16px;">🎉</div>
+        <h2>太好了！ 你已经迈出了第一步 in your AI growth journey</h2>
+        <p>你刚刚复制了一段Prompt，看到了AI的回复。<br>
+        Want to know:<br>
+        <strong>"How do I make AI understand me better?"</strong><br>
+        <strong>"How do I write better prompts?"</strong></p>
+        <p>接下来，你一定会喜欢这个👇</p>
+        <div style="background:#f0f0f0;border-radius:12px;padding:20px;margin:24px 0;text-align:left;">
+          <h3 style="font-size:16px;margin-bottom:8px;">📋 W1任务：写一个"四要素提示词模板"</h3>
+          <p style="font-size:13px;color:#666;margin-top:8px;">今天就能做（10分钟）:<br>打开AI工具, type:<br><strong>角色+格式+约束+示例 → 生成</strong></p>
+        </div>
+        <div style="background:#fff8e1;border-radius:12px;padding:16px;margin:16px 0;">
+          <p style="font-size:13px;color:#333;">🔒 Full guide in the paid report ($29)<br>或者明天系统自动推送给你</p>
+        </div>
+        <button id="back-to-result-btn" class="cta-btn cta-btn-blue">返回报告</button>
+        <button id="try-another-btn" class="cta-btn cta-btn-ghost" style="display:block;width:100%;margin-top:8px;">▼ 试试不同的提示词</button>
+        <div id="try-another-area" style="display:none;margin-top:12px;">
+          <div class="cta-prompt-box">
+            <strong>试试这个：</strong><br>
+            "Describe AI's impact on my career in 3 words, each with an example"
+            <button id="copy2-btn" class="cta-btn cta-btn-blue" style="display:block;width:100%;margin-top:8px;">📋 复制</button>
+          </div>
+        </div>
+        <button id="share-btn" class="cta-btn cta-btn-ghost" style="display:block;width:100%;margin-top:8px;">📤 分享 to social (anonymous radar)</button>
+      </div>`;
+    $('back-to-result-btn').addEventListener('click', renderResult);
+    $('try-another-btn').addEventListener('click', () => {
+      const area = $('try-another-area');
+      area.style.display = area.style.display === 'none' ? 'block' : 'none';
+    });
+    const copy2 = $('copy2-btn');
+    if (copy2) copy2.addEventListener('click', () => {
+      navigator.clipboard.writeText('用3个词描述AI对我职业的影响，每个词配一个例子').then(() => copy2.textContent = '✅ 已复制');
+    });
+    const shareBtn = $('share-btn');
+    if (shareBtn) shareBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('我刚完成了AI职场力诊断 — 27道题，8个维度。来试试：https://www.humanaifit.com/diagnosis/adult/').then(() => alert('已复制！分享到社交平台。'));
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  let feedbackLevel = 0;
+  function showFeedback() {
+    const rc = $('result-content');
+    rc.innerHTML = '<div class="feedback-ring"><h4>换一种方式试试</h4><p style="font-size:13px;color:#555;margin-bottom:12px;">在你的提示词后面加上：<br><strong>"用具体例子详细说明"</strong></p><button id="fb-retry-btn" class="cta-btn cta-btn-blue">✅ 自动添加并复制</button><button id="fb-level2-btn" class="cta-btn cta-btn-ghost" style="display:block;width:100%;margin-top:8px;">↓ 还是不对？其他选项</button></div>';
+    $('fb-retry-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText('用具体例子详细说明').then(() => alert('已复制！粘贴到你的AI工具中。'));
+    });
+    $('fb-level2-btn').addEventListener('click', () => {
+      rc.innerHTML = '<div class="feedback-ring"><h4>遇到什么问题了？</h4><div><button class="feedback-btn" onclick="alert(\'试试DeepSeek、ChatGPT或Claude\')">🔧 AI工具不好用</button><button class="feedback-btn" onclick="alert(\'复制这段文字，让AI来解释\')">🔧 输出看不懂</button><button class="feedback-btn" onclick="alert(\'这里有一些可以尝试的例子\')">🔧 不确定下一步做什么</button><button class="feedback-btn" onclick="showLevel3()">🔧 其他问题</button></div></div>';
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  window.showLevel3 = function() {
+    const rc = $('result-content');
+    rc.innerHTML = '<div class="feedback-ring" style="text-align:center;"><h4>💬 仍然卡住了？</h4><p style="font-size:13px;color:#555;margin:12px 0;">加入AI职场社群<br>联系微信 blurblurfish</p><div style="background:#f0f0f0;border-radius:8px;padding:24px;margin:16px 0;font-size:12px;color:#888;">[QR code placeholder - WeChat: blurblurfish]</div><p style="font-size:12px;color:#999;font-style:italic;">"你最大的竞争优势不在AI本身。而在你和AI之间。"</p><button class="cta-btn cta-btn-ghost" onclick="renderResult()" style="margin-top:12px;">返回报告</button></div>';
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  window.showAdultPayment = function() {
+    document.getElementById('payment-overlay').style.display = 'flex';
+    document.getElementById('pay-tier-selection').style.display = 'block';
+    document.getElementById('pay-tier-detail').style.display = 'none';
+  };
+  window.closeAdultPayment = function() {
+    document.getElementById('payment-overlay').style.display = 'none';
+  };
+  window.showAdultPayTier = function(tier) {
+    document.getElementById('pay-tier-selection').style.display = 'none';
+    document.getElementById('pay-tier-detail').style.display = 'block';
+    if (tier === 'report') {
+      document.getElementById('pay-detail-title').textContent = '📋 完整诊断报告';
+      document.getElementById('pay-detail-price').innerHTML = '$29';
+    } else {
+      document.getElementById('pay-detail-title').textContent = '🌟 《AI时代生存手册》知识星球';
+      document.getElementById('pay-detail-price').innerHTML = '$199<span style="font-size:14px;font-weight:400;color:#888;">/year</span>';
+    }
+  };
+  window.showAdultPayBack = function() {
+    document.getElementById('pay-tier-selection').style.display = 'block';
+    document.getElementById('pay-tier-detail').style.display = 'none';
+  };
+})();
+</script>
+</body>
+</html>

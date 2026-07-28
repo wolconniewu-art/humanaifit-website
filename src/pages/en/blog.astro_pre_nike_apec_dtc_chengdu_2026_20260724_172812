@@ -7,8 +7,6 @@ const pinned = [
   { date: "2026-06-07", slug: "privacy_policy_2026", title: "Privacy Policy Announcement", tags: "Privacy Policy, Data Protection, Compliance, CBAM, AI Literacy, Knowledge Planet" },
 ];
 const articles = [
-
-  { date: "2026-07-24", slug: "nike_apec_dtc_chengdu_2026", title: "The &apos;Open Source&apos; Clause in the Chengdu Statement", tags: "前沿科技, 人机契合" },
   { date: "2026-07-20", slug: "waic2026_sfm_revolution", title: "From Reading Papers to 'Eating' Raw Scientific Data: How WAIC 2026 Is Redefining AI for Science", tags: "Frontier Tech, Human-AI Fit" },
 
   { date: "2026-07-17", slug: "china-ai-governance-waic-2026", title: "July 17: China Places Its Piece on the AI Governance Chessboard", tags: "前沿科技, 人机契合" },
@@ -120,7 +118,6 @@ const articles = [
   { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "When Automation Bias Meets Algorithm Aversion: Human-AI Collaboration Through the Lens of Behavioral Economics", tags: "Behavioral Economics, Human-AI Fit, Automation Bias, Nudge Theory, AI Adoption" },
   { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "Getting Human-Machine Relationships &quot;Right&quot; — A Deep Dive into Deloitte 2026", tags: "Deloitte, Human-Machine Relationships, Human-AI Collaboration, AI Adoption, Industry Trends" },
 ];
-
 
 
 
