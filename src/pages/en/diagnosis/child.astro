@@ -355,7 +355,7 @@
   <div class="header">
     <span class="badge green">🎯 Free · 30 seconds</span>
     <h1>Child AI Literacy Diagnosis</h1>
-    <p>10 questions to help you answer: "What AI should my child learn?"</p>
+    <p>22 questions to help you answer: "What AI should my child learn?"</p>
   </div>
 
   <div class="progress-bar" id="progressBar"></div>
@@ -807,7 +807,7 @@ function renderQuestion(step) {
 
   cardArea.innerHTML = `
     <div class="card fade-in">
-      <div class="q-number">Q${step + 1} / 10</div>
+      <div class="q-number">Q${step + 1} / 22</div>
       <div class="q-title">${q.title}</div>
       <div class="options">
         ${q.options.map((opt, i) => `
@@ -955,7 +955,7 @@ function calculateResult() {
   // 构建5维得分条
   let dimBars = '';
   DIM_ORDER.forEach(dim => {
-    const label = DIM_LABELS_ZH[dim];
+    const label = DIM_LABELS_EN[dim];
     const color = DIM_COLORS[dim];
     const pct = r.dimPct[dim];
     const dimScore = r.dimScores[dim];
@@ -973,7 +973,7 @@ function calculateResult() {
   // 构建3类型得分条
   let typeBars = '';
   TYPE_ORDER.forEach(typ => {
-    const label = TYPE_LABELS_ZH[typ];
+    const label = TYPE_LABELS_EN[typ];
     const icon = TYPE_ICONS[typ];
     const pct = r.typePct[typ];
     const colors = { explore: '#4A90D9', apply: '#E67E22', create: '#8E44AD' };
@@ -989,7 +989,7 @@ function calculateResult() {
 
   // 主类型信息
   const mainTypeKey = r.mainType;
-  const mainLabel = TYPE_LABELS_ZH[mainTypeKey];
+  const mainLabel = TYPE_LABELS_EN[mainTypeKey];
   const mainIcon = TYPE_ICONS[mainTypeKey];
   
   // 类型描述
@@ -1005,7 +1005,7 @@ function calculateResult() {
   if (r.secondaryType) {
     mixNote = '<div class="result-section" style="background:#fff8e1;padding:12px;border-radius:8px;margin:8px 0;">' +
       '<h3 style="margin-top:0;">💡 More than one type</h3>' +
-      '<p style="font-size:14px;margin:4px 0;">Your child leans toward <strong>' + mainLabel + '</strong> but also shows clear <strong>' + TYPE_LABELS_ZH[r.secondaryType] + '</strong> traits. Consider guiding both directions.</p></div>';
+      '<p style="font-size:14px;margin:4px 0;">Your child leans toward <strong>' + mainLabel + '</strong> but also shows clear <strong>' + TYPE_LABELS_EN[r.secondaryType] + '</strong> traits. Consider guiding both directions.</p></div>';
   }
 
   // 年龄建议
@@ -1115,24 +1115,21 @@ function calculateResult() {
   }, 100);
 }// ===== 分享 =====
 function shareResult() {
-  const r = RESULTS[result.type];
+  const icon = TYPE_ICONS[result.mainType];
+  const label = TYPE_LABELS_EN[result.mainType];
   const text = [
-    'My child is ' + r.icon + r.label + ' type!',
+    'My child is ' + icon + label + ' type!',
     '',
-    '10 questions, 30 seconds free diagnosis. Find your child AI learning style.',
-    'https://www.humanaifit.com/diagnosis/'
+    '22 questions, 30 seconds free diagnosis. Find your child AI learning style.',
+    'https://www.humanaifit.com/en/diagnosis/child/'
   ].join('\n');
 
-  // 先复制文案
   navigator.clipboard.writeText(text).then(() => {
-    // 再生成截图保存到手机
     screenshotShare();
   }).catch(() => {
-    alert('📸 复制文案失败！\n\n请手动复制↓\n' + text);
+    alert('Copy failed. Please copy manually:');
   });
-}
-
-function screenshotShare() {
+}function screenshotShare() {
   if (typeof html2canvas !== 'undefined') {
     const card = document.querySelector('.card');
     if (card) {
@@ -1159,7 +1156,7 @@ function restart() {
   // 记录本次结果到localStorage（按孩子昵称区分）
   if (result) {
     try {
-      saveChildHistory({ type: result.type, scores: result.scores, pct: result.pct, date: new Date().toISOString() });
+      saveChildHistory({ type: result.mainType, scores: result.scores, pct: result.pct, date: new Date().toISOString() });
     } catch(e) {}
   }
   currentStep = 0;
@@ -1212,8 +1209,8 @@ function submitLead() {
       name: name,
       contact: contact,
       result: result ? {
-        type: result.type,
-        typeLabel: TYPE_LABELS_EN[result.type],
+        type: result.mainType,
+        typeLabel: TYPE_LABELS_EN[result.mainType],
         pct: result.pct,
       } : null,
     }),
