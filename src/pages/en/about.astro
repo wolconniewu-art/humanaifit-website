@@ -12,7 +12,7 @@ import Base from '../../layouts/Base.astro';
     <div class="container">
       <p class="section-label">About</p>
       <h1>Beacon Consulting</h1>
-      <p style="font-size:17px;max-width:650px;color:var(--color-text-secondary);">
+      <p style="font-size:17px;color:var(--color-text-secondary);white-space:nowrap;">
         A new kind of consultancy — grounded in Human-AI Fit research, delivered through real-world practice.
       </p>
     </div>
@@ -37,24 +37,20 @@ import Base from '../../layouts/Base.astro';
           Specializing in Human-AI Fit, enterprise globalization, and knowledge management. Combining academic rigor with industry experience to design sustainable human-AI capability systems.
         </p>
 
-        <div style="margin:var(--spacing-xl) 0;text-align:center;">
-          <img src="/images/emlyon_appointment.jpg" alt="Appointment Certificate — emlyon business school BIG Center" style="max-width:50%;border-radius:8px;border:1px solid var(--color-border);box-shadow:0 2px 12px rgba(0,0,0,0.08);" />
-          <p style="font-size:12px;color:var(--color-text-muted);margin-top:8px;">Appointment Certificate — emlyon business school Asia Business Innovation & Globalization Center</p>
-        </div>
-
         <div style="margin:var(--spacing-xl) 0;padding:var(--spacing-lg);background:#f8f6f2;border-radius:8px;border-left:3px solid var(--color-accent);">
           <p style="font-size:12px;color:#8b7355;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:var(--spacing-sm);">Academic Affiliations</p>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <div>
-              <p style="font-size:14px;font-weight:600;color:var(--color-primary);margin-bottom:2px;">🏛️ emlyon business school</p>
+            <div style="font-size:14px;color:var(--color-primary);line-height:1.8;">
+              <p style="font-weight:600;color:var(--color-primary);margin-bottom:6px;">Dr. Chuanjuan Wu (Connie)</p>
               <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--color-text-secondary);">
-                <li>• 法国里昂商学院亚洲商业创新与全球化研究中心 — 专家委员会委员</li>
-                <li>• 法国里昂商学院美好商业中心(Good Business Center) — 行业专家</li>
-                <li>• 法国里昂商学院全球人工智能中心(BIC) — 研究员</li>
+                <li>• Researcher of Global Artificial Intelligence Center, Emlyon Business School (<a href="https://www.em-lyon.com.cn/researchcentre/BIC/bic-academic-members" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">https://www.em-lyon.com.cn/researchcentre/BIC/bic-academic-members</a>)</li>
+                <li>• Expert Committee Member of the hub for Business Innovation & Globalization (<a href="https://www.em-lyon.com.cn/researchcentre/BIG/expert-committee" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">https://www.em-lyon.com.cn/researchcentre/BIG/expert-committee</a>)</li>
+                <li>• Industry Expert of Good Business Center (<a href="https://www.em-lyon.com.cn/researchcentre/good-business-center/industry-experts" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">https://www.em-lyon.com.cn/researchcentre/good-business-center/industry-experts</a>)</li>
+                <li>• Founder, Beacon Consulting Co., Ltd. (<a href="https://www.humanaifit.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">https://www.humanaifit.com</a>)</li>
+                <li>• WOL Coach Since 2019 (<a href="https://www.workingoutloud.com/coaches/connie-wu" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">https://www.workingoutloud.com/coaches/connie-wu</a>)</li>
               </ul>
             </div>
           </div>
-          <p style="font-size:12px;margin-top:8px;"><a href="https://www.em-lyon.com.cn/researchcentre/good-business-center/industry-experts" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">Verify Good Business Center →</a> &nbsp;·&nbsp; <a href="https://www.em-lyon.com.cn/researchcentre/BIC/bic-academic-members" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">Verify BIC →</a></p>
         </div>
 
         <div style="margin:var(--spacing-xl) 0;padding:var(--spacing-lg);background:#f8f6f2;border-radius:8px;border-left:3px solid #2d8cf0;">
@@ -92,6 +88,7 @@ import Base from '../../layouts/Base.astro';
           <li style="padding:8px 0;border-bottom:1px solid var(--color-border);">🏫 AI Teacher — AI-assisted instructional design & personalized learning paths</li>
           <li style="padding:8px 0;border-bottom:1px solid var(--color-border);">📖 AI Student — self-directed learning methodology & personal growth strategy</li>
           <li style="padding:8px 0;border-bottom:1px solid var(--color-border);">🌿 CBAM Carbon Assistant — 30-second self-check for EU carbon tariff impact</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--color-border);">🧪 AI Literacy Diagnosis — quantitative AI capability assessment for all ages</li>
           <li style="padding:8px 0;">🔧 More specialized AI Agents coming soon…</li>
         </ul>
       </div>
@@ -115,4 +112,51 @@ import Base from '../../layouts/Base.astro';
       <a href="/en/contact/" class="btn btn-primary">Contact Us →</a>
     </div>
   </section>
+
+  <!-- Lead form -->
+  <section class="section" style="background:#f8f7f4;">
+    <div class="container">
+      <div class="huma-lead-section">
+        <div class="huma-lead-title">Leave your contact, let's talk</div>
+        <div class="huma-lead-sub">Tell me your direction; I reply personally within 24h. Used only to reply — no ads.</div>
+        <form class="huma-lead-form" id="leadForm-about" onsubmit="return humaSubmitLead(event, 'about')">
+          <label>Your name</label>
+          <input type="text" name="name" required placeholder="Your name or nickname" />
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="you@example.com" />
+          <label>What are you interested in?</label>
+          <select name="intent" required>
+            <option value="">Select</option>
+            <option>Human-AI Fit Consulting</option>
+            <option>AI Literacy Diagnosis</option>
+            <option>CBAM Carbon Compliance</option>
+            <option>Globalization Strategy</option>
+            <option>Content Subscription</option>
+            <option>Other</option>
+          </select>
+          <label>What do you want to solve? (optional)</label>
+          <textarea name="note" placeholder="Briefly describe your need"></textarea>
+          <p class="huma-lead-note">A real person (not a bot). No phone number collected. Erasable anytime.</p>
+          <button type="submit" class="huma-lead-submit">Send</button>
+          <div class="huma-lead-msg" id="leadMsg-about"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    async function humaSubmitLead(e, source) {
+      e.preventDefault();
+      var f = e.target, msg = document.getElementById('leadMsg-' + source), btn = f.querySelector('.huma-lead-submit');
+      var data = { name: f.name.value, email: f.email.value, intent: f.intent.value, note: f.note.value, source: source };
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        msg.className = 'huma-lead-msg ok'; msg.textContent = '✅ Received. I will reply within 24h.';
+        f.reset();
+      } catch (err) { msg.className = 'huma-lead-msg err'; msg.textContent = 'Failed. Please try again.'; }
+      btn.disabled = false; btn.textContent = 'Send';
+    }
+  </script>
+
 </Base>

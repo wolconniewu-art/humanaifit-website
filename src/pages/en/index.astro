@@ -100,7 +100,7 @@ import Base from '../../layouts/Base.astro';
       <p class="section-label" style="color:#3B82F6;">Research · Free Download</p>
       <h2 style="color:#1E3A5F;">China-EU-US EV & Battery Policy Panorama</h2>
       <p style="max-width:550px;margin:var(--spacing-md) auto var(--spacing-xl);font-size:15px;color:#1E40AF;">
-        173 policies spanning 1986–2026. Bilingual (CN/EN), six tables, free to download.
+        172 policies spanning 1986–2026. Bilingual (CN/EN), six tables, free to download.
       </p>
       <div style="display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;">
         <a href="/en/policy-tables/" class="btn btn-primary" style="background:#3B82F6;box-shadow:0 4px 14px rgba(59,130,246,0.25);">📊 View Policy Tables →</a>
@@ -162,13 +162,60 @@ import Base from '../../layouts/Base.astro';
     </div>
   </section>
 
+  <!-- Lead form -->
+  <section class="section" style="background:#f8f7f4;">
+    <div class="container">
+      <div class="huma-lead-section">
+        <div class="huma-lead-title">Leave your contact, let's talk</div>
+        <div class="huma-lead-sub">Tell me your direction; I reply personally within 24h. Used only to reply — no ads.</div>
+        <form class="huma-lead-form" id="leadForm-home" onsubmit="return humaSubmitLead(event, 'home')">
+          <label>Your name</label>
+          <input type="text" name="name" required placeholder="Your name or nickname" />
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="you@example.com" />
+          <label>What are you interested in?</label>
+          <select name="intent" required>
+            <option value="">Select</option>
+            <option>Human-AI Fit Consulting</option>
+            <option>AI Literacy Diagnosis</option>
+            <option>CBAM Carbon Compliance</option>
+            <option>Globalization Strategy</option>
+            <option>Content Subscription</option>
+            <option>Other</option>
+          </select>
+          <label>What do you want to solve? (optional)</label>
+          <textarea name="note" placeholder="Briefly describe your need"></textarea>
+          <p class="huma-lead-note">A real person (not a bot). No phone number collected. Erasable anytime.</p>
+          <button type="submit" class="huma-lead-submit">Send</button>
+          <div class="huma-lead-msg" id="leadMsg-home"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    async function humaSubmitLead(e, source) {
+      e.preventDefault();
+      var f = e.target, msg = document.getElementById('leadMsg-' + source), btn = f.querySelector('.huma-lead-submit');
+      var data = { name: f.name.value, email: f.email.value, intent: f.intent.value, note: f.note.value, source: source };
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        msg.className = 'huma-lead-msg ok'; msg.textContent = '✅ Received. I will reply within 24h.';
+        f.reset();
+      } catch (err) { msg.className = 'huma-lead-msg err'; msg.textContent = 'Failed. Please try again.'; }
+      btn.disabled = false; btn.textContent = 'Send';
+    }
+  </script>
+
+
   <!-- Typewriter animation script -->
   <script is:inline>
     (function() {
       var phrases = [
         "What's your organization's AI maturity level?",
         "30 seconds to check if your product faces CBAM tariffs",
-        "China-EU-US: 173 EV & battery policies compared",
+        "China-EU-US: 172 EV & battery policies compared",
         "From \"using AI\" to being measurably stronger with AI",
         "Your AI literacy level? 10 questions, 30 seconds",
         "This site is bilingual — switch languages to read more!"

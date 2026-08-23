@@ -34,7 +34,7 @@ import Base from '../layouts/Base.astro';
         </div>
         <div style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
           <h3 style="margin-bottom:var(--spacing-lg);">填写表单</h3>
-          <form action="https://formspree.io/f/your-form-id" method="POST" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+          <form id="contactForm" onsubmit="return submitContact(event)" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">姓名 *</label>
               <input type="text" name="name" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="你的名字">
@@ -55,12 +55,43 @@ import Base from '../layouts/Base.astro';
             <p style="font-size:11px;color:var(--color-text-muted);text-align:center;margin:0;">
               * 提交即表示你同意我们根据隐私政策处理你的信息。
             </p>
+            <p id="contactMsg" style="font-size:13px;text-align:center;margin:0;min-height:18px;"></p>
           </form>
-          <div style="margin-top:var(--spacing-md);padding:var(--spacing-md);background:#FFF8E1;border-radius:6px;font-size:12px;color:#856404;">
-            ⚠️ 表单当前通过 Formspree 提交。如未配置，请运行本地测试，或直接发送邮件至 <strong>connie@humanaifit.com</strong>
-          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    async function submitContact(e) {
+      e.preventDefault();
+      var f = e.target;
+      var msg = document.getElementById('contactMsg');
+      var btn = f.querySelector('button[type="submit"]');
+      var data = {
+        name: f.name.value.trim(),
+        email: f.email.value.trim(),
+        company: f.company ? f.company.value.trim() : '',
+        note: (f.message.value.trim() || '') + (f.company && f.company.value.trim() ? '\n\n公司：' + f.company.value.trim() : ''),
+        intent: '合作咨询',
+        source: 'contact',
+      };
+      btn.disabled = true; btn.textContent = '发送中...';
+      var okMsg, errMsg;
+      try {
+        var res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        var json = await res.json();
+        if (json.success) { okMsg = '✅ 已收到，我会在24小时内回复你。'; }
+        else { errMsg = '发送失败，请稍后再试或发邮件至 connie@humanaifit.com。'; }
+      } catch (err) { errMsg = '发送失败，请稍后再试或发邮件至 connie@humanaifit.com。'; }
+      msg.textContent = okMsg || errMsg;
+      msg.style.color = okMsg ? '#2e7d32' : '#c62828';
+      if (okMsg) f.reset();
+      btn.disabled = false; btn.textContent = '发送咨询 →';
+    }
+  </script>
 </Base>
