@@ -32,7 +32,7 @@ const articleDate = '{date}';
     <div class="container" style="max-width:720px;">
       <a href="{back_href}" class="article-back">{back_label}</a>
       <p class="section-label" style="color:var(--color-accent);">{blog_label} · {date}</p>
-      <h1 style="font-size:2rem;line-height:1.35;">{title_html}</h1>
+      <h1>{title_html}</h1>
       <div class="article-meta">
         <span>{date}</span>
         {{tags.filter(Boolean).map(t => <span class="tag">{{t}}</span>)}}
@@ -94,8 +94,9 @@ def main():
     date = fm.get('date', '2026-09-12')
     sources = [s.strip() for s in re.findall(r'^\s*-\s*(.+)$', fm.get('_sources_raw', ''), re.M)]
 
-    # body: drop the top H1 (title is in hero)
-    body_md = re.sub(r'^#\s+.*\n', '', md, count=1)
+    # body: drop the top H1 (title is rendered in the hero section)
+    body_md = md.lstrip('\n')
+    body_md = re.sub(r'^#\s+.*?(\n|$)', '', body_md, count=1)
     body_html = md_body_to_html(body_md).strip()
 
     # tags: take from frontmatter tags block
