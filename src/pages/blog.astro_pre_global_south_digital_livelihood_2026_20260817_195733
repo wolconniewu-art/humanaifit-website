@@ -1,0 +1,293 @@
+---
+import Base from '../layouts/Base.astro';
+
+const pinned = [
+  { date: "2026-05-03", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同", tags: "Company News, Human-AI Fit" },
+  { date: "2026-05-31", slug: "lingnan_daily_61_tales", title: "岭南日常 — 61个来自南中国的故事", tags: "Lingnan, Chinese Culture, Folk Tales, Heritage, Series" },
+  { date: "2026-06-07", slug: "privacy_policy_2026", title: "隐私政策发布公告", tags: "Privacy Policy, Data Protection, Compliance, CBAM, AI Literacy, Knowledge Planet" },
+];
+const articles = [
+
+
+
+  { date: "2026-08-13", slug: "ai_adoption_people_2026", title: "AI落不了地，问题多半不在AI", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-30", slug: "gigafactory-supply-chain", title: "超级工厂交付：从供应链韧性到系统重构", tags: "供应链, 超级工厂, 电池产业, AI" },
+  { date: "2026-07-28", slug: "global_ai_literacy_policy_2026", title: "全球AI素养政策全景：一场正在加速的制度化浪潮", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-24", slug: "nike_apec_dtc_chengdu_2026", title: "成都声明开源背后，藏着中国出海的底牌", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-20", slug: "waic2026_sfm_revolution", title: "从读论文到\"吃\"原始科学数据：WAIC 2026正在重新定义AI4S", tags: "前沿科技, 人机契合" },
+
+
+
+  { date: "2026-07-17", slug: "china-ai-governance-waic-2026", title: "7月17日，中国在AI棋盘上落了一颗子", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-16", slug: "waic2026_ai_partner", title: "WAIC 2026释放了哪些关键信号？", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-13", slug: "jspe_ai_literacy_2026", title: "AI心里想的和说的可能不一样——学校还没教这堂课", tags: "AI素养, 教育, 人机契合" },
+  { date: "2026-07-12", slug: "100x-output-diff", title: "100倍产出差的秘密：OPC创业者的认知天花板", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-08", slug: "arena_judge", title: "不造AI，年入1亿美元：LMArena 如何成为AI行业的裁判？", tags: "Frontier Tech, AI Efficiency" },
+  { date: "2026-07-08", slug: "minimax_m3_workflow_2026", title: "从卖智能到卖工作流", tags: "前沿科技, 人机契合" },
+  { date: "2026-07-06", slug: "two_way_distillation", title: "双向蒸馏：AI同时在吃掉你的技能和你公司的秘密", tags: "Frontier Tech, Human-AI Fit" },
+  { date: "2026-07-06", slug: "ai_equal_humans_unequal_2026", title: "六条战线告诉你AI在抹平什么？又在放大什么？", tags: "" },
+  { date: "2026-07-02", slug: "tokens_meaning_when_ovtp_meets_opc_2026", title: "词元即货币，意义即资产——当OVTP遇见OPC", tags: "" },
+  { date: "2026-07-01", slug: "opc_globalization_individual_competitiveness_2026", title: "OPC × 全球化：当一人公司成为全球化的基本单元，\"个体全球竞争力\"的本质正在被重新定义", tags: "" },
+  { date: "2026-06-30", slug: "ai_emotional_tax_2026", title: "AI省下来的时间，正在变成新的“情绪税”", tags: "Human-AI Fit, Cognitive Load, AI Adoption, Work Redesign, Emotional Tax" },
+  { date: "2026-06-29", slug: "education_skills_mismatch_2026", title: "未来产业十大赛道同时缺人，教育跟上节奏了吗？", tags: "Human-AI Fit, AI Education, Skills Mismatch" },
+  { date: "2026-06-26", slug: "ai_anthropomorphism_trap_2026", title: "AI当场道歉，你居然信了？——PocketOS删库事件中最危险的认知陷阱", tags: "Human-AI Fit, AI Governance, AI Cognition" },
+  { date: "2026-06-23", slug: "three_questions_company_survive_2026", title: "三个问题，测出你的企业能否活过2026年", tags: "Human-AI Fit, AI Adoption, Organizational Judgment" },
+  { date: "2026-06-14", slug: "blackstone_lc3_process_restructure_before_ai", title: "黑石L&C 3.0给中国企业上了一课：上AI之前，先做流程重构", tags: "" },
+  { date: "2026-06-12", slug: "ai_slop_kids_2026", title: "AI垃圾内容正在塑造儿童的认知世界——这不是伤害，是无声的侵蚀", tags: "Human-AI Fit, AI Education, Child Development, AI Governance, Parenting" },
+  { date: "2026-06-12", slug: "carbon_triple_disruption_2026", title: "碳市场的三重变局：欧盟碳价暴跌、中国ETS扩围与全球碳合规的新常态", tags: "" },
+  { date: "2026-06-11", slug: "ai_cant_translate_itself_2026", title: "翻译之维：组织AI部署中不可替代的\"元能力\"", tags: "" },
+  { date: "2026-06-11", slug: "ai_irreplaceability_2026", title: "不可替代性的结构：AI时代个体竞争力的四阶飞轮", tags: "" },
+  { date: "2026-06-09", slug: "family_business_ai_succession_2026", title: "毕业季不是只有找工作：4500万家族企业的AI接班路线图", tags: "" },
+  { date: "2026-06-09", slug: "airport_ai_ten_new_jobs_2026", title: "未来机场的AI转型正在创造10大新职业——2053年1.76亿次起降背后的工作变革", tags: "Tech, AI Transformation, Career Development, Aviation, Globalization" },
+  { date: "2026-06-09", slug: "africa_global_south_ai_2026", title: "当西方援助断崖式下降，非洲找到了比‘等援助’更好的路——AI", tags: "" },
+  { date: "2026-06-08", slug: "three_robot_routes_ai_factory_2026", title: "通用机器人三路线与AI工厂：一场关于硬件、软件与信任的全球竞争", tags: "" },
+  { date: "2026-06-06", slug: "cbam-compliance-roadmap-2026", title: "CBAM应对路线图2026：从HS编码确认到2027年首次申报的全流程实操指南", tags: "" },
+  { date: "2026-06-03", slug: "cbam_carbon_data_verification", title: "不做碳排放认证？碳关税最高多交35%——CBAM碳数据核查深度解读", tags: "CBAM, Carbon Border Tax, Carbon Data Verification, Supply Chain Compliance" },
+  { date: "2026-06-03", slug: "ai_education_policy_2025", title: "2025全球AI教育政策汇编", tags: "AI Education, AI Education Policy, Policy Compilation, Resources" },
+  { date: "2026-06-02", slug: "jiwa_to_dongwa", title: "从“鸡娃”到“懂娃”：一孩家庭如何用AI帮孩子，而不是替孩子", tags: "" },
+  { date: "2026-06-02", slug: "7agents_childrens_day_2026", title: "7位AI AGENT深谈儿童节×少子化×生育意愿：为什么这个话题刷屏了？", tags: "AI, Human-AI Fit, Children" },
+  { date: "2026-06-01", slug: "ev_cockpit_ai_agent", title: "AI Agent上车：中国EV出海的'新武器'还是'新标配'？", tags: "AI, Tech" },
+  { date: "2026-06-01", slug: "enterprise_ai_agent_tipping_point", title: "AI Agent正从Demo走向生产线：2026年，规模化的临界点与治理的悖论", tags: "AI, Tech" },
+  { date: "2026-05-29", slug: "anthropic_opus_48_2026", title: "AI从“一个人干活”到“一个团队干活”——Anthropic这次搞了个大的", tags: "" },
+  { date: "2026-05-29", slug: "ai_agents_chaos_2026", title: "AI Agent正在让硅谷重新洗牌——一个连自己都没想到的局面", tags: "AI, Tech" },
+  { date: "2026-05-29", slug: "amazon_tokenmaxxing_2026", title: "当KPI杀死AI价值：亚马逊员工'Tokenmaxxing'事件的系统分析", tags: "AI, Tech" },
+  { date: "2026-05-29", slug: "huawei_chip_queen_tau_2026", title: "华为'芯片女王'何庭波宣布Tau's Scaling Law：被制裁逼出来的芯片新路", tags: "AI, Tech" },
+  { date: "2026-05-29", slug: "waymo_ojai_2026", title: "中国制造的车身，美国AI的灵魂：Waymo Ojai深度解读", tags: "AI, Tech" },
+  { date: "2026-05-28", slug: "china_multi_industry_export_boom", title: "中国多行业同时爆单，订单排到明年的结构性分析", tags: "Globalization, CBAM, Carbon Compliance" },
+  { date: "2026-05-28", slug: "illinois_ai_safety_bill", title: "伊利诺伊州通过全美最强AI安全法案——SB 315 意味着什么？", tags: "AI Governance, AI Safety" },
+  { date: "2026-05-28", slug: "ai_dark_side_three_events", title: "AI 的暗面：2026 年 5 月的三件事拼出了什么？", tags: "Human-AI Fit, AI Reflection" },
+  { date: "2026-05-28", slug: "duckduckgo_ai_search_28_percent", title: "DuckDuckGo 搜索量暴涨 28%：用户真的热爱 AI 搜索吗？", tags: "Human-AI Fit, AI Search" },
+  { date: "2026-05-27", slug: "hukou_reform_2026", title: "户口不再那么重要", tags: "Hukou Reform, Migrant Workers, OPC, Social Policy" },
+  { date: "2026-05-27", slug: "table_stakes_ai_moat_2026", title: "牌桌入场费（Table Stakes）都必须交，然后呢？谁能赢牌？", tags: "Human-AI Fit, AI Efficiency, Competitive Strategy" },
+  { date: "2026-05-26", slug: "ai_slow_code_quality_2026", title: "AI编程的「慢哲学」：好的代码，从来不是AI一个人写出来的", tags: "Human-AI Fit, AI Productivity, Development Practices" },
+  { date: "2026-05-26", slug: "skills_for_humanity_171_2026", title: "171个推理技能教AI「怎么思考」：人机协同的下一个前沿不是让AI更聪明，而是让人类智慧更结构化地传递给AI", tags: "Human-AI Fit, Knowledge Management, Thinking Methods" },
+  { date: "2026-05-25", slug: "cbam_agent_1_plus_3_x", title: "1+3+X：CBAM合规的Agent架构——从碳合规顾问到AI Agent系统设计者的转型实录", tags: "AI, Tech" },
+  { date: "2026-05-22", slug: "shocked_china_ev_going_global_20260522", title: "从'shocked'到'走进来'——中国智能汽车出海的认知对称困境", tags: "" },
+  { date: "2026-05-21", slug: "ai_brain_fry_2026", title: "AI Brain Fry：当AI承诺解放生产力，最先知先觉的人反而最先'烧脑'", tags: "Human-AI Fit, AI Productivity, Future of Work" },
+  { date: "2026-05-21", slug: "gaokao_2030_career_roadmap_20260521", title: "2026年高考到2030年能力路线图", tags: "Education, Gaokao, AI Era, Career Planning" },
+  { date: "2026-05-20", slug: "cbam_default_values_controversy", title: "CBAM默认排放因子的非对称效应：高效生产商为何承担了不相称的碳成本", tags: "Carbon Compliance, Globalization" },
+  { date: "2026-05-19", slug: "mckinsey_ai_work_agrifood_cleantech_2026", title: "当三份McKinsey报告在同一个5月指向同一件事：AI Agent正在重塑一切", tags: "AI, Tech" },
+  { date: "2026-05-18", slug: "is_ai_dulling_minds_2026", title: "「被AI变笨」是真的吗？——哈佛、ScienceAlert、Frontiers三个独立研究同时说了什么", tags: "Human-AI Fit, AI Literacy, Cognitive Science" },
+  { date: "2026-05-17", slug: "sharing_ideas_with_ai_originality_2026", title: "科研创新的IDEA，到底要不要告诉AI？", tags: "Human-AI Fit, Research, AI Literacy" },
+  { date: "2026-05-16", slug: "life_waste_ai_2026", title: "如果明天不用再为钱发愁，你想把人生「浪费」在哪儿？", tags: "AI, Tech" },
+  { date: "2026-05-16", slug: "ai_us_education_2026", title: "AI如何打进美国教育生态：表层是工具替代，深层是生产关系重构", tags: "AI, Tech" },
+  { date: "2026-05-16", slug: "cognitive_judgment_ai_2026", title: "怎样判断一个人的认知在你之上？AI时代，这个问题的前提已被颠覆", tags: "AI, Tech" },
+  { date: "2026-05-15", slug: "retraining_white_collar_ai_2026", title: "当再培训救不了我们：AI时代白领职业的组织重构", tags: "Human-AI Fit, Tech Frontiers" },
+  { date: "2026-05-15", slug: "parallel_currency_dedollarization_2026", title: "平行货币：多极世界的去美元化新现实", tags: "Globalization, Economy" },
+  { date: "2026-05-14", slug: "ai_efficiency_org_mismatch_2026", title: "AI让工作变快了，但组织为什么没变好？", tags: "Human-AI Fit, Tech Frontiers" },
+  { date: "2026-05-14", slug: "trump_china_summit_16_ceos_2026", title: "当16家美国企业CEO飞往北京：特朗普访华与全球化的「多极竞合」时刻", tags: "Globalization, Tech Frontiers" },
+  { date: "2026-05-13", slug: "servicenow_ai_workforce_2026", title: "ServiceNow说它的AI员工能运行你整个公司——你信吗？", tags: "Human-AI Fit, AI Frontier" },
+  { date: "2026-05-13", slug: "ai_corporate_education_subscription_2026", title: "企业培训正从项目制变成订阅制——一个AI驱动的暗流", tags: "Knowledge Entrepreneurship, Human-AI Fit" },
+  { date: "2026-05-13", slug: "creator_economy_consolidation_2026", title: "创作者经济正在洗牌——Forbes说这是整合期，谁会被洗出去？", tags: "" },
+  { date: "2026-05-12", slug: "china_bci_brain_chip_2026", title: "中国批准全球首个商用脑机接口芯片：不只是「中国的Neuralink」", tags: "Neurotechnology, Frontier Tech, AI Extension" },
+  { date: "2026-05-12", slug: "bcg_gaming_platforms_colliding_2026", title: "BCG 2026游戏报告：平台正在碰撞，55%的玩家玩得更多了", tags: "Gaming, Digital Economy, Frontier Tech" },
+  { date: "2026-05-11", slug: "match_act_institutionalization_2026", title: "MATCH Act来了，但真正可怕的不是制裁本身", tags: "Semiconductor, Globalization, Export Controls, Supply Chain" },
+  { date: "2026-05-11", slug: "china_third_wave_globalization_2026", title: "中国公司出海，正在换打法", tags: "Globalization, China, Technology" },
+  { date: "2026-05-11", slug: "alexa_plus_delay_ai_liability_2026", title: "Alexa+为什么推迟上线？因为AI不能说'不知道'", tags: "AI, Digital Life, Technology" },
+  { date: "2026-05-10", slug: "fed_ai_stagflation_2026", title: "美联储说AI成功要加息，失败就滞胀——两种极端预测背后的同一套逻辑", tags: "" },
+  { date: "2026-05-10", slug: "mothers_day_ai_china_2026", title: "母亲节的另一种叙事：当中国母亲用双手托起AI时代", tags: "Human-AI Fit, Life Style" },
+  { date: "2026-05-09", slug: "eu_china_ev_price_floor_2026", title: "EU与中国电动车关税博弈：'价格下限'正在改写游戏规则", tags: "Globalization, Energy, EV" },
+  { date: "2026-05-09", slug: "eu_ai_act_omnibus_2026", title: "EU AI Act简化方案出台——企业AI合规压力是松了还是变了？", tags: "Human-AI Fit, AI Regulation, EU" },
+  { date: "2026-05-09", slug: "china_solar_overcapacity_2026", title: "中国光伏业大洗牌——低价、产能过剩与全球化的三重角力", tags: "Energy, Globalization, Manufacturing" },
+  { date: "2026-05-09", slug: "alexa_plus_ai_assistant_2026", title: "Alexa+来了，但AI个人助理的战争才刚刚开始", tags: "AI, Consumer Tech, Digital Life" },
+  { date: "2026-05-09", slug: "us_export_controls_2026_may", title: "美国芯片出口管制2026升级：MATCH法案、Micron的游说与中国的算力自主路", tags: "" },
+  { date: "2026-05-09", slug: "ai_anxiety_three_steps_2026", title: "AI 焦虑正在蔓延：该害怕被取代，还是主动进化？", tags: "Human-AI Fit, Future of Work, AI Anxiety" },
+  { date: "2026-05-09", slug: "europe_market_china_companies_2026", title: "中国企业出海，欧洲还是不是好市场？——2026年5月最新评估", tags: "Globalization, China, Europe, Business Strategy" },
+  { date: "2026-05-08", slug: "ai_education_future", title: "AI时代，孩子如何教育才能跑赢未来？", tags: "Human-AI Fit, AI Education" },
+  { date: "2026-05-07", slug: "uk_vs_eu_cbam", title: "英国CBAM与欧盟CBAM的区别——一文看懂两个碳边境调节机制", tags: "Carbon Compliance, Globalization" },
+  { date: "2026-05-07", slug: "ai_knowledge_meaning", title: "AI时代学知识还有意义吗？", tags: "Human-AI Fit, AI Education" },
+  { date: "2026-05-07", slug: "human_competence", title: "AI时代的人类核心竞争力：不是比AI做得好，而是做AI做不了的事", tags: "Human-AI Fit, AI and Workforce" },
+  { date: "2026-05-07", slug: "carbon_price", title: "一块碳到底能卖多少钱——解密碳定价的底层逻辑", tags: "Carbon Compliance, Economics" },
+  { date: "2026-05-06", slug: "mckinsey_rigor_ai_impact_2026", title: "从雄心到影响力：麦肯锡最新研究教你用&quot;严谨&quot;和&quot;数据&quot;把AI落地变真金白银", tags: "Human-AI Fit, Business, Frontier Tech" },
+  { date: "2026-05-05", slug: "digital_tech_reshape_collaboration", title: "当数字技术重塑人类协作方式，管理学的边界正在被重写", tags: "AI, Tech" },
+  { date: "2026-05-04", slug: "china_policy_table_2026", title: "中国新能源汽车与智能网联汽车政策全景：从战略前瞻到全球领先的40年历程", tags: "Policy, Globalization, EV, China" },
+  { date: "2026-05-04", slug: "chinese_evs_tesla_2026", title: "中国电动车出海：从&quot;价格优势&quot;到&quot;价值重构&quot;", tags: "" },
+  { date: "2026-05-04", slug: "deepseek_flagship_2026", title: "DeepSeek V4发布：AI赛道的一个阶段性突破", tags: "Frontier Technology, Artificial Intelligence, Large Language Models, US-China Tech" },
+  { date: "2026-05-04", slug: "deloitte_human_capital_2026", title: "Deloitte 2026全球人力资本趋势：AI时代的&quot;文化负债&quot;谁在偿还？", tags: "" },
+  { date: "2026-05-04", slug: "eu_policy_table_2026", title: "欧盟电动车、电池与CBAM政策框架：监管即竞争策略", tags: "Policy, Globalization, EV, EU, CBAM" },
+  { date: "2026-05-04", slug: "imf_economic_outlook_2026", title: "IMF 2026春季展望：全球经济增长承压，区域分化加剧", tags: "Economy, Globalization, Macro Trends, Geopolitics" },
+  { date: "2026-05-04", slug: "retraining_workers_ai_2026", title: "AI时代的劳动者再培训：从&quot;谁会被替代&quot;到&quot;谁需要新技能&quot;", tags: "" },
+  { date: "2026-05-04", slug: "us_policy_table_2026", title: "美国电动汽车政策：繁荣、衰退与IRA未竟的革命", tags: "Policy, Globalization, EV, US, IRA" },
+  { date: "2026-05-04", slug: "us_semiconductor_export_controls_2026", title: "美国半导体出口管制2026：规则升级与管制的边界", tags: "" },
+  { date: "2026-05-04", slug: "eu_ai_act_reality_2026", title: "EU AI Act的实施延迟：合规压力退潮还是风暴前的平静？", tags: "Human-AI Fit, AI Governance, EU Regulation, Compliance" },
+  { date: "2026-05-04", slug: "meta_consumer_ai_2026", title: "Meta的消费者AI产品线：AI从&quot;工具&quot;走向&quot;日常伴侣&quot;", tags: "" },
+  { date: "2026-05-03", slug: "CBAM_China_exporters", title: "CBAM碳关税正式生效——中国出口企业绕不开的一课", tags: "Globalization, Economy" },
+  { date: "2026-05-03", slug: "ai_knowledge_management_2026", title: "AI知识管理2026：当知识库变成AI的“上下文“", tags: "Knowledge Management, Human-AI Fit" },
+  { date: "2026-05-03", slug: "Deloitte_AI_enterprise_2026", title: "Deloitte 2026报告：企业的AI部署正在加速，但治理在“掉队“", tags: "Human-AI Fit, Frontier Tech" },
+  { date: "2026-05-03", slug: "Stanford_AI_Index_2026", title: "Stanford 2026 AI指数：中美AI差距真的在缩小吗？", tags: "Globalization, Human-AI Fit" },
+  { date: "2026-05-03", slug: "humanoid_robot_half_marathon", title: "人形机器人跑赢人类半马——这意味着什么？", tags: "Frontier Tech" },
+  { date: "2026-05-03", slug: "MERICS_China_humanoid_path", title: "两种路径，一个目标——MERICS报告解读中美机器人产业路线", tags: "Globalization, Frontier Tech" },
+  { date: "2026-05-03", slug: "humanoid_supply_chain_China", title: "人形机器人供应链：中国的“十亿美元级“机遇与瓶颈", tags: "Frontier Tech, Globalization" },
+  { date: "2026-05-03", slug: "human_AI_workforce_China", title: "“人机劳动力“崛起——中国如何在全球AI劳动力转型中定位自己", tags: "Human-AI Fit, Globalization" },
+  { date: "2026-05-03", slug: "Australia_AI_moment_China", title: "澳大利亚的“AI时刻“：中国在亚太算力竞赛中的站位", tags: "Globalization, Frontier Tech" },
+  { date: "2026-05-03", slug: "GEI_China_opportunities", title: "全球经济的“阴云“与中国的“亮光“——解读McKinsey 2026年3月全球经济情报", tags: "" },
+  { date: "2026-05-02", slug: "global_localization", title: "从Mixue到NIO：中国品牌全球化的“本地化悖论“", tags: "" },
+  { date: "2026-05-02", slug: "digital_leadership", title: "当AI能替代70%的管理工作,领导者的价值在哪里?", tags: "" },
+  { date: "2026-05-02", slug: "AI_productivity_paradox", title: "AI生产力悖论——当投入AI“看不到效果“", tags: "" },
+  { date: "2026-05-02", slug: "behavioral_economics_human_ai", title: "当自动化偏见遇上算法厌恶：行为经济学视角下的人机协同", tags: "" },
+  { date: "2026-05-02", slug: "deloitte_human_machine_relationships", title: "让人机关系“对“——Deloitte 2026报告的深度解读", tags: "" },
+];
+
+
+
+
+
+
+
+
+
+const tagGroups = ["All", "Company News", "Human-AI Fit", "Globalization", "Tech Frontiers", "Business", "Economy", "AI Education", "Carbon Compliance"];
+const months = articles.reduce((acc, a) => {
+  const m = a.date.substring(0, 7);
+  if (!acc[m]) acc[m] = [];
+  acc[m].push(a);
+  return acc;
+}, {});
+---
+<Base
+  title="博客 | Insights"
+  description="Human-AI Fit 深度内容"
+  lang="zh-CN"
+  path="/blog/"
+>
+    <div class="container text-center" style="position:relative;z-index:1;">
+      <p class="section-label" style="color:var(--color-accent);font-weight:600;">Blog</p>
+      <h1>Thinking at the Frontier</h1>
+      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);font-size:16px;">
+        Deep dives on Human-AI Fit, carbon compliance, globalization and knowledge management.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tag filter -->
+  <section style="padding:24px 0;border-bottom:1px solid var(--color-border);">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      {tagGroups.map(tag => (
+        <span class="tag-filter {tag === 'All' ? 'tag-active' : ''}" data-tag={tag === 'All' ? 'all' : tag}
+          onclick="filterArticles(this)">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Pinned articles -->
+  <section class="section">
+    <div class="container" id="article-list">
+      {pinned.length > 0 && (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-accent);margin-bottom:24px;font-weight:500;">📌 Featured</h3>
+          <div style="display:grid;gap:20px;">
+            {pinned.map(item => (
+              <a href={`/blog/${item.slug}/`} class="article-card"
+                data-tags="{item.tags}"
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.02));
+                       border:1px solid rgba(201,169,110,0.3);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span style="font-size:13px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;">{item.date}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {Object.entries(months).sort(([a],[b]) => b.localeCompare(a)).map(([month, items]) => (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-text-muted);margin-bottom:24px;font-weight:500;">
+            {month === "2026-05" ? "May 2026" : month}
+          </h3>
+          <div style="display:grid;gap:20px;">
+            {items.map(item => (
+              <a href={`/blog/${item.slug}/`} class="article-card"
+                data-tags="{item.tags}"
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:var(--color-surface);
+                       border:1px solid var(--color-border);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span style="font-size:13px;color:var(--color-text-muted);white-space:nowrap;flex-shrink:0;">
+                  {item.date.substring(5)}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-dark text-center">
+    <div class="container">
+      <h2>Don't want to miss updates?</h2>
+      <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
+        Leave your contact and we'll notify you when new articles are published.
+      </p>
+      <a href="/contact/" class="btn btn-primary">Subscribe →</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .article-card:hover {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 2px 12px rgba(201,169,110,0.12);
+    transform: translateY(-2px);
+  }
+  .tag-filter {
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s;
+    border:1.5px solid var(--color-border);
+    color:var(--color-text-secondary);
+    background:transparent;
+  }
+  .tag-filter:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent-dark) !important;
+  }
+  .tag-filter.tag-active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+</style>
+
+<script>
+  function filterArticles(el) {
+    document.querySelectorAll('.tag-filter').forEach(t => t.classList.remove('tag-active'));
+    el.classList.add('tag-active');
+    
+    const tag = el.dataset.tag;
+    document.querySelectorAll('.article-card').forEach(card => {
+      if (tag === 'all' || card.dataset.tags.includes(tag)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>

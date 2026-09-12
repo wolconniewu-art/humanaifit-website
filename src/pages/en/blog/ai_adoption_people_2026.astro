@@ -1,0 +1,208 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["AI &amp; Organization", "AI Adoption", "People Factor"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="The Last Mile of AI Adoption Is Usually Not Technical"
+  description="When an AI initiative stalls, the first instinct is to blame the model. &quot;It isn't smart enough.&quot; That's not entirely wrong, but it's often a lazy answer—it turn…"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-09-01</p>
+      <h1 style="font-size:2rem;line-height:1.35;">The Last Mile of AI Adoption Is Usually Not Technical</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>Let's look at a few numbers first.</p>
+
+<p>McKinsey finds that roughly nine in ten companies have launched AI transformations, yet only about a quarter report meaningful results, and only about one in ten have scaled the genuine article—the rest are stuck in pilots[1][2]. In China, a 2025 survey by Beijing News' Beike Finance covered 18 industries and 128 business leaders: 89.84% had deployed AI, but only 16.41% had set up a dedicated AI team, nearly half (47.66%) had never trained their employees, and 48.44% had no clear expectation of return on investment[3].</p>
+
+<p>The technology rolls out wide, but people don't absorb it. That may be the real gap.</p>
+
+<p>This article makes one point: the first variable in AI adoption is people, not technology. Why this holds, how to turn it into a practical approach, and where we have to acknowledge exceptions—we'll go through it step by step.</p>
+
+<h2>1. Three lines of theory converge: adoption is mostly a people problem</h2>
+
+<p>If "it's people, not technology" stays a slogan, a tech optimist can brush it off with "do you even understand models." So let's give it a skeleton—there are three independent threads in the research that end at the same conclusion: how fast technology spreads is driven mainly by the "people" variable, not by how mature the technology is.</p>
+
+<p><strong>The first, Diffusion of Innovations (Rogers).</strong></p>
+
+<p>Rogers long ago observed that new technology rarely spreads in one step; it climbs an S-curve slowly. Adopters split into five groups: innovators, early adopters, early majority, late majority, and laggards[9]. The key point is that between "the technology is usable" and "the technology is widely used" sits an entire population curve.</p>
+
+<p>A stronger model only lowers the bar for the innovators. To bring on the early and late majorities, you need five perceived attributes: relative advantage, compatibility, complexity, trialability, and observability[9]. Notice these five words—each one is about how people perceive, not about how objectively good the technology is.</p>
+
+<p>Apply that to the numbers up top, and the conclusion is clear: McKinsey's "nine in ten launch, one in four sees results" and Beike's "89.84% deployed, 16.41% with a dedicated team" both describe organizations that crossed "launch" (innovators act) but got stuck at "diffusion" (everyday adoption by the majority). The S-curve isn't crawling because of the model—it's because those five perceived attributes haven't been managed well[9].</p>
+
+<p>Rogers also distinguished individual adoption from organizational adoption: an organization isn't just a collection of people; it has its own procedures and norms. Whether an organization adopts depends on three things—whether there's a driver for change, whether it fits existing processes, and whether the consequences can be seen[9]. This is nearly the academic translation of the treasury official's line later in the article that "what's missing is adoption."</p>
+
+<p><strong>The second, Change Management (Kotter).</strong></p>
+
+<p>Kotter's 8-step change model, proposed in 1995, runs from creating urgency, forming a guiding coalition, building a vision, to communicating the vision, removing obstacles, creating short-term wins, consolidating gains, and anchoring the change in culture[10]. It's worth noting that none of these eight steps is "buy a better tool"[10].</p>
+
+<p>All eight point at people. Urgency is people's perception, coalition is people's organization, vision is people's consensus, obstacles are people's resistance, short-term wins give people confidence, culture is people's habit. Technology is just a vehicle picked up in steps five and six, under "remove obstacles" and "create wins"[10].</p>
+
+<p>A common obstacle in organizational change is "resistance," and resistance often comes not from "employees don't understand the technology" but from "employees are afraid of losing something"—their job, their sense of control, their familiar working rhythm[10]. That explains why "training" isn't an optional perk but a direct way to counter resistance. The 47.66% of companies in the Beike data that never trained aren't saving money—they're planting a time bomb.</p>
+
+<p><strong>The third, and the core of this field—Human-AI Fit.</strong></p>
+
+<p>This is humanaifit's professional foundation: whether technology creates value depends on whether "people–tasks–technology" fit together, not just on how strong any single element is.</p>
+
+<p>Swapping in a stronger model only changes one corner, the "technology." If people lack the skill or the will, or the task doesn't need AI at all, or the process hasn't been redesigned, the triangle falls apart and even strong technology lands flat. A multiplication is easier to grasp: value = people × task × technology. If any of the three approaches zero, the product is zero.</p>
+
+<p>There's also an easily-overlooked dimension within human-AI fit—the trust gradient. Prosci's study of 1,107 practitioners shows that trust in AI declines step by step from executives to team leads to frontline workers: executives are generally confident, frontline workers are generally skeptical[4]. That gap is itself a sign of failed fit—leaders think it's aligned, while the frontline experiences misalignment.</p>
+
+<p>All three threads can be gathered into one line:</p>
+
+<blockquote>Diffusion of innovations says "adoption is an S-curve that won't crawl," change management says "resistance comes from people's fear, not from technology," and human-AI fit says "value is the product of people, task, and technology, and if any term is zero the whole is zero." All three roads lead to the same conclusion: the first variable in AI adoption is people.</blockquote>
+
+<h2>2. A four-step adoption method: turning "not absorbed" into a workable framework</h2>
+
+<p>Saying "it's people" isn't enough; we need to say what to do. Here I'll upgrade the usual checklist into a framework with an order and clear criteria—four steps: diagnose → reshape roles → motivate → measure. The order can't be reversed—many organizations jump straight to step three, "motivate," without knowing which link they're stuck at.</p>
+
+<h3>Step 1: Locate exactly where the organization is stuck</h3>
+
+<p>When an organization can't use a tool, the reasons are usually multiple. Run a four-question self-check; whatever you can't answer is the gap:</p>
+
+<ul>
+
+<li><strong>Ownership</strong>: Is there a named person who's accountable for AI adoption results? In the Beike data, only 16.41% had a dedicated team[3].</li>
+
+<li><strong>Capability</strong>: Can frontline employees use it, and do they dare to? 47.66% of companies offered no training[3].</li>
+
+<li><strong>Process</strong>: Has the business process been redesigned for the new tool, or is it an old process in a new shell? McKinsey's point was exactly the lack of systematic business redesign[2].</li>
+
+<li><strong>Measurement</strong>: Is there a definition of what "paying off" means, who calculates it, and how often? 48.44% had no clear ROI expectation[3].</li>
+
+</li></ul>
+
+<p>The move is a single sentence: run a short "adoption audit" and score the organization on these four questions. Don't buy a tool first. The treasury official's first lesson was "government doesn't lack innovation, it lacks adoption"[1]—start by asking where adoption is stuck.</p>
+
+<h3>Step 2: Give adoption a named owner</h3>
+
+<p>Set up a dedicated AI adoption lead, rather than hiring another AI engineer or buying another tool.</p>
+
+<p>The difference matters. An adoption lead's output isn't "the model runs"—it's "the frontline actually uses it, and uses it with results." They're accountable for adoption rates, active usage, and process changes, and only indirectly for technical metrics.</p>
+
+<p>Resetting frontline managers matters most. The treasury official put it plainly: frontline managers decide whether a change lasts. PwC's manufacturing research points the same way—72% of manufacturers cite "employees comfortable with existing systems" as a top barrier, and 57% admit to "lack of training and preparation"[5]. Whether frontline leaders demonstrate personally, explain the purpose, and keep setting expectations determines whether employees' early curiosity snowballs or slides into resistance.</p>
+
+<p>The test: can this role, within 90 days, say clearly which of the four diagnostic questions the organization is stuck on?</p>
+
+<h3>Step 3: Solve "why people bother"</h3>
+
+<p>Turn "using AI" from an extra burden into something that's less effort and more valuable—and aim the incentives at the frontline, not just at executives.</p>
+
+<p>Rogers' "trialability + observability" come down to three moves in practice: give the frontline a near-zero-cost trial entry and allow exploration (PwC's research also notes that when people are allowed to explore, curiosity accelerates[5]); show early users' saved time and improved quality in terms the frontline can understand; and reward managers who bring others along, not just people who do well themselves—adoption is itself a diffusion behavior.</p>
+
+<p>One caution: if incentives only hang on "how much labor was saved" while ignoring who bears the extra cost of process redesign, you end up with the kind of people in the Beike data who "can't get the numbers right and don't dare move forward."</p>
+
+<h3>Step 4: Measure correctly, so you can cut or double down</h3>
+
+<p>Set the ROI baseline before launch, and avoid two traps.</p>
+
+<p>Trap A is "nobody counts"—money gets spent and forgotten, matching the 48.44% with no ROI expectation[3]. Trap B is "mis-counting"—only counting the hours saved, while leaving out process redesign, training, and parallel-run costs, producing a false "not worth it" verdict.</p>
+
+<p>Three checks: is there a distinction between "efficiency gains" (faster) and "capability gains" (able to do what wasn't possible before)? Is there a review cycle for ROI (90 days, six months) instead of one-and-done? Is there a clear "kill switch"—which pilots stop when they miss the bar, and which scale up when they hit it?</p>
+
+<p>With the numbers right, you can escape the loop of "everyone stuck in pilots, nobody daring to move forward." That's exactly the structural fix for McKinsey's "three-quarters stuck in pilots"[1][2].</p>
+
+<p>The four steps in one sentence: diagnose where you're stuck first → give adoption an owner → get the frontline willing → use the numbers to decide keep or cut. The order shouldn't be reversed.</p>
+
+<h2>3. A few contrasts: what got absorbed, and what didn't</h2>
+
+<p>Theory alone feels thin, so let me add a few contrasts with different outcomes to make the case hold up.</p>
+
+<p><strong>Case one—the U.S. Treasury: absorbed through role reshaping and collaboration.</strong></p>
+
+<p>David Lebryk, a senior U.S. Treasury official, described in a public interview how he led the digitalization of savings bonds. The project saved tens of millions of dollars and delivered a year early[1]. In his approach there's one counterintuitive line: government doesn't lack innovation, it lacks adoption. The real leverage wasn't in what system to buy, but in how to get frontline people and processes to actually take up the new tool—naming a responsible owner, reshaping the frontline manager's role, and explaining the purpose over and over[1]. It's a full real-world demonstration of the "role reshaping" move.</p>
+
+<p>To be fair, this is a case told by the protagonist himself in a McKinsey interview. We read it as an example of how role reshaping helped absorb a tool, not as a template that works everywhere.</p>
+
+<p><strong>Case two—frontline resistance in manufacturing.</strong></p>
+
+<p>Manufacturing's technical potential for AI is clear: BCG's research suggests AI can unlock around 30% productivity gains, about 25% machine-performance gains, and about 25% indirect-labor automation in the sector[6]. But the adoption bottleneck isn't elsewhere—PwC's research lays it out: 72% of manufacturers call "employees comfortable with existing systems" the top barrier to major technological change, and 57% cite "lack of training and preparation"[5].</p>
+
+<p>What's more subtle is that manufacturing's AI scenarios (predictive maintenance, quality inspection, production scheduling) depend heavily on real-time feedback and operational experience from frontline workers—you need "people" to feed in the operational context and collect the feedback. The tools aren't weak, but without this human-in-the-loop, the "AI" stays in fragile experiments and never becomes a capability the pipeline trusts. It's a snapshot of "the technology is sufficient, but people didn't absorb it": the first barrier isn't model accuracy, it's "employees are used to the old system and won't move"[5].</p>
+
+<p><strong>Case three—the professional trust gap in medical AI.</strong></p>
+
+<p>IBM Watson for Oncology (2011–2018) is a widely reported failure in the industry: in real clinical use its accuracy fell short, it couldn't generalize from training data to new cases, and the project was eventually terminated[11]. Meanwhile, medical researchers at the frontline widely distrust "black boxes"—they trust systems they helped verify or build, and won't touch an external black box at all.</p>
+
+<p>This case needs careful reading. Medicine is a high-precision, high-stakes, heavily regulated domain, and here "people not absorbing it" has harder, legitimate reasons: professional autonomy, patient safety, explainability. It's an example of "people didn't absorb it," and it also leaves an entry point for the next section—in some contexts, "people won't take the risk" is a rational choice, not an organizational failing.</p>
+
+<h2>4. The counter-view: when "the technology really isn't strong enough"</h2>
+
+<p>If I push the point too far, the article gets cheap. So let me admit that "people are the key variable" has boundaries—in these three kinds of situations, the pinch point does fall on technology first, not people.</p>
+
+<p><strong>One, contexts with too little data.</strong> Generative AI's strength depends on vast, high-quality data. When an organization has little data, sparse labels, or a niche domain, the model lacks a generalizable base, and even the strongest adoption will can't make up for "nothing to learn from." Some niche production lines, small languages, and rare-disease medicine have naturally sparse data; here "the technology isn't strong enough" holds, and adoption takes a back seat.</p>
+
+<p><strong>Two, high-risk, high-accuracy contexts.</strong> Medical diagnosis, financial trading, and safety-critical systems have hard requirements for explainability, reliability, and accountability. Doctors' "black-box distrust" is professional bottom line, not organizational laziness. The failure of Watson for Oncology was primarily that technical reliability didn't meet the bar, not that organizations declined to adopt it[11]. In these contexts, the sensible sequence is to let the technology cross the reliability threshold first, then talk adoption engineering.</p>
+
+<p><strong>Three, contexts where the organization can't absorb it, especially SMEs.</strong> Some organizations aren't unwilling—they lack the basic foundation for adoption: no data infrastructure, no people who understand AI, no money or energy for process redesign. OECD–ICSB forum data is direct: from 2023 to 2025, across OECD economies, SME AI usage rose from 7% to 17.5%, mid-size firms from 13.6% to 29.5%, and large firms from 30.4% to 52.1%[7]. Small firms "run fast but fall further behind"—the gap widens. UK research corroborates: skills gaps (cited by over six in ten firms), tool fragmentation, and uncertain ROI are the main barriers[8].</p>
+
+<p>For these organizations, "assign a dedicated person, run training, do the accounting" on its own is empty talk. The sensible sequence is to build out the "technical base + talent foundation" first.</p>
+
+<p>Put rigorously: "adoption is a people problem" mainly applies to the middle range where the technology is sufficient but the organization hasn't absorbed it; at the two extremes—sparse data, high risk, and weak organizational capability—"technology isn't strong enough" or "organization can't absorb it" remain real constraints. Acknowledging that boundary actually gives the main argument more weight.</p>
+
+<h2>5. Mirrors at home and abroad: one universal pattern, plus a size divide</h2>
+
+<p>Pull the lens back and you see this isn't a peculiarity of any single country—it's a universal tension, with a clear size divide on top of it.</p>
+
+<p><strong>The shared pattern: technology spreads fast, organizations adapt slowly.</strong> Put three data sets together—McKinsey's "nine in ten launch, one in four sees results, three-quarters stuck in pilots" (global)[1][2], Prosci's "63% of AI implementation challenges stem from human factors" (1107 people across global industries)[4], and Beike's "89.84% deployed / 16.41% dedicated team / 47.66% not trained / 48.44% no ROI" (18 industries in China)[3].</p>
+
+<p>The common point is striking: the "deployment" (technology spreads) numbers are all high, while the "dedicated management, training, measurement" (organization adapts) numbers are all low. Fast technology, slow organization—that's a universal tension in global AI adoption, not a problem unique to any one market.</p>
+
+<p><strong>The size divide: big institutions vs. SMEs.</strong> In the OECD data, large firms' AI usage (52.1%) is about three times that of small firms (17.5%), and the gap is widening[7]. UK data is finer: SME active adoption rose from 25% in 2024 to 54% in early 2026, but "strategic deployment with a clear business purpose" is still only around 16%, and only about 12% of AI-using firms reported revenue growth attributable to AI[8].</p>
+
+<p>Think this layer through, and the conclusion runs deeper: "missing adoption" in big institutions looks like "has budget and tools, but no owner and no training"; in SMEs it looks like "doesn't even have the basic foundation." The fixes differ—the former centers on role reshaping and change management, the latter on building capability foundations first. That distinction keeps the article from the shallow "one prescription for every illness."</p>
+
+<h2>Conclusion: the last hundred meters are about someone to absorb, someone to lead, someone to count</h2>
+
+<p>Back to the opening misunderstanding.</p>
+
+<p>Tech optimists like to say "just wait one more version." But the data is right here: model after model gets stronger, yet the three-quarters of companies stuck in pilots didn't walk out on their own. Because between "the technology is sufficient" and "the technology gets used," what sits in between is never the algorithm—it's an S-curve someone has to climb, a group of frontline employees someone has to lead across the trust gap, and a ledger someone has to dare to add up and dare to cut.</p>
+
+<p>A new tool with no owner eventually becomes an old piece of furniture nobody claims.</p>
+
+<p>If you're stuck at some step of AI adoption, don't rush to upgrade the model. First go back and look at those four questions: is someone responsible, can the frontline use it, has the process been redesigned, and do the numbers add up? The answer usually isn't in the tool.</p>
+
+<p>Acknowledging that some contexts "aren't strong enough technically" is precisely what lets you, where the technology is strong enough, say with more confidence: the problem isn't the AI—it's the people.</p>
+
+<h2>References</h2>
+
+<ol>
+<li><strong>Building America's innovation engine: An interview with David Lebryk</strong> — McKinsey &amp; Company, 2026-07-01 (first-person account by the interviewee; read as an illustrative case).</li>
+<li><strong>McKinsey: AI transformation urgently needs to cross the "pilot trap"</strong> — Xinhua Shanghai, 2026-04-15.</li>
+<li><strong>Chinese Entrepreneurs' AI Adoption Survey Report (2025)</strong> — Beijing News / Beike Finance, 2025-07-29.</li>
+<li><strong>Keys to Unlocking AI Adoption</strong> — Prosci, 2024.</li>
+<li><strong>Frontline leadership in manufacturing's AI adoption</strong> — PwC &amp; The Manufacturing Institute, 2026.</li>
+<li><strong>Unlocking the Value Potential of AI in Manufacturing</strong> — BCG, 2025-06-30.</li>
+<li><strong>SME AI adoption gap widens: OECD-ICSB Forum 2026</strong> — ICSB, 2026.</li>
+<li><strong>Artificial Intelligence Adoption Among SMEs in the UK</strong> — 2026-06.</li>
+<li><strong>Diffusion of Innovations (5th ed.)</strong> — Everett M. Rogers, Free Press, 2003.</li>
+<li><strong>Leading Change</strong> — John P. Kotter, Harvard Business School Press, 1995.</li>
+<li><strong>IBM Watson for Oncology (2011–2018) coverage</strong> — IEEE Spectrum / STAT News, 2018.</li>
+</ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 What did this article inspire for you?</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit studies how humans and AI can genuinely work together. If you face real questions on enterprise AI adoption, human-AI collaboration, or global compliance, join our discussion.
+  </p>
+  <p style="margin:0;">
+    🔗 Search for the "AI Era Survival Handbook" Knowledge Planet, ¥199/year — every deep article comes with tool templates and direct contact with the author.
+  </p>
+</blockquote>
+
+  </div>
+</Article>

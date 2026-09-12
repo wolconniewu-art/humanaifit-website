@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="合作咨询"
+  description="预约免费诊断 — 告诉我们你的挑战，30分钟内给你一个可行的方向。"
+  lang="zh-CN"
+  path="/contact/"
+>
+  <section class="section" style="padding-top:100px;">
+    <div class="container">
+      <div class="grid-2" style="align-items:start;">
+        <div>
+          <p class="section-label">合作咨询</p>
+          <h1>聊聊你的挑战</h1>
+          <p style="color:var(--color-text-secondary);font-size:17px;">
+            告诉我们你的情况，我们会在24小时内回复，并提供初步方向建议。免费，无压力。
+          </p>
+          <div style="margin-top:var(--spacing-xl);">
+            <div style="padding:var(--spacing-lg);border-left:3px solid var(--color-accent);margin-bottom:var(--spacing-lg);">
+              <div style="font-weight:600;color:var(--color-primary);">💡 你可以咨询什么？</div>
+              <ul style="list-style:none;padding:0;margin-top:var(--spacing-sm);color:var(--color-text-secondary);font-size:14px;">
+                <li style="padding:4px 0;">→ 团队AI使用效率不高，怎么优化？</li>
+                <li style="padding:4px 0;">→ 产品出口欧盟，CBAM怎么应对？</li>
+                <li style="padding:4px 0;">→ 公司要出海，从哪里开始？</li>
+                <li style="padding:4px 0;">→ 作为个人，如何提升人机协同能力？</li>
+              </ul>
+            </div>
+            <p style="color:var(--color-text-muted);font-size:13px;">
+              或直接发邮件至：<a href="mailto:connie@humanaifit.com" style="color:var(--color-primary);">connie@humanaifit.com</a>
+            </p>
+          </div>
+        </div>
+        <div style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
+          <h3 style="margin-bottom:var(--spacing-lg);">填写表单</h3>
+          <form action="https://formspree.io/f/your-form-id" method="POST" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">姓名 *</label>
+              <input type="text" name="name" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="你的名字">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">邮箱 *</label>
+              <input type="email" name="email" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="your@email.com">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">公司名称</label>
+              <input type="text" name="company" style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="选填">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">你的挑战 *</label>
+              <textarea name="message" rows="5" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);resize:vertical;" placeholder="简单描述你的情况或需求..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">发送咨询 →</button>
+            <p style="font-size:11px;color:var(--color-text-muted);text-align:center;margin:0;">
+              * 提交即表示你同意我们根据隐私政策处理你的信息。
+            </p>
+          </form>
+          <div style="margin-top:var(--spacing-md);padding:var(--spacing-md);background:#FFF8E1;border-radius:6px;font-size:12px;color:#856404;">
+            ⚠️ 表单当前通过 Formspree 提交。如未配置，请运行本地测试，或直接发送邮件至 <strong>connie@humanaifit.com</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

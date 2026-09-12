@@ -1,0 +1,320 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Embodied Intelligence", "Humanoid Robots", "Quadruped Robots", "Supply Chain", "AI Factory", "Human-AI Fit", "US-China Pathways"];
+const articleDate = '2026-08-29';
+---
+
+<Article
+  title="Embodied Intelligence: US-China Technology Routes, Supply Chains, and the AI Factory"
+  description="As humanoid robots beat the human half-marathon record, dexterous hands thread needles on factory floors, and quadruped and spherical robots land in warehouses and cities simultaneously, a deeper question emerges: the US-China race is decided not by algorithms alone but by the thickness of hardware supply chains and the density of manufacturing training environments—and the paradigm that ultimately defines this transformation is how humans build trust with intelligent machines of every form in the physical world."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-08-29</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Embodied Intelligence: US-China Technology Routes, Supply Chains, and the AI Factory</h1>
+      <div class="article-meta">
+        <span>2026-08-29</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>Introduction: From "Human-Shaped Machines" to "Embodied Intelligence"</h2>
+
+<p>When we talk about the robotics transformation sweeping the world, one word tends to frame our thinking: "humanoid robots." A biped that beats the human world record in a half marathon on the track, dexterous hands threading needles on a factory floor, quadruped carriers shuttling through warehouses, and spherical inspection devices rolling through city streets—they differ in form, yet share one underlying logic: <strong>giving a large model a "body" that can step into the physical world.</strong></p>
+
+<p>This is what "embodied intelligence" (or Physical AI) really means. It is not a rebranding of the humanoid robot; it redefines the question from "how to build a machine that looks human" to "how to let AI learn, decide, and collaborate under real physical constraints."</p>
+
+<p>Around this proposition, the United States and China have walked two strikingly different paths. This article does not repackage any single off-the-shelf analytical report. Instead, it offers an independent synthesis of several landmark events, supply-chain data, and industrial practices from the first half of 2026, and attempts to answer three increasingly layered questions: first, where exactly the two technology routes diverge; second, what underestimated role hardware supply chains play; and third, how manufacturing—as a "training environment"—in turn shapes the future of embodied intelligence and the basic paradigm of human-machine collaboration.</p>
+
+<hr />
+
+<h2>Chapter One: The Fork in the Two Routes—Scale Manufacturing vs. Algorithm First</h2>
+
+<h3>1.1 A Landmark That Is Easy to Underrate: The Humanoid That Beat Humans at a Half Marathon</h3>
+
+<p>The Beijing Humanoid Robot Half Marathon in early May 2026 is the best entry point for understanding this divergence. A biped robot completed the 21.1 km course faster than the human world record, improving by nearly two hours compared with the same event in 2025. Reuters, The New York Times, The Guardian, and Al Jazeera reported it almost simultaneously.</p>
+
+<p>Outsiders saw "a robot faster than a person." Insiders saw coordinated breakthroughs across three dimensions: <strong>motion control</strong>—maintaining stable long-distance running on uneven surfaces, turns, and gradients is a far harder engineering challenge than lab balance tests; <strong>battery endurance</strong>—running continuously for about an hour demands a real leap in energy density and power management; and <strong>environmental perception</strong>—real-time obstacle avoidance and coping with wind and terrain on an open track is entirely different from fixed-route operation in a workshop.</p>
+
+<p>But the more important question is: <strong>where does the real significance lie?</strong> Our judgment is that this is less "an athlete's victory" than "a victory of supply chain and systems engineering." Beating the half marathon proves that China's motion control, energy management, and integrated-machine capabilities have reached the engineering intensity needed to confront the physical world—which is precisely the most direct footnote to China's "hardware-first" route.</p>
+
+<h3>1.2 The China Route: Industrial Scaling + Government Guidance</h3>
+
+<p>The China route can be characterized along four dimensions.</p>
+
+<p><strong>Entry point</strong>: entering from the manufacturing end and scaling quickly atop the world's most complete electromechanical and EV industry chain, with "scale-driven cost reduction" as the first strategy.</p>
+
+<p><strong>Capital structure</strong>: a national guidance fund of roughly RMB 138 billion, plus local government matching subsidies, designating robotics and AI as strategic priorities. This "national guidance + local matching" allocation model produces a fundamentally different efficiency curve from purely market-driven allocation in a capital-intensive, long-cycle industry.</p>
+
+<p><strong>Industrial goal</strong>: systematically embedding embodied intelligence into the broader manufacturing-upgrade plan, rather than pursuing the universality of a single platform.</p>
+
+<p><strong>Deployment pace</strong>: prioritizing controllable environments like factories and warehouses—AgiBot has shipped roughly 10,000 units, while Yushu and Fourier push into service and consumer scenarios simultaneously. When the Associated Press reported "humanoids threading needles" in June 2026, it was China's supply chain advancing from "capable of making it" toward "making it precise."</p>
+
+<h3>1.3 The U.S. Route: Algorithm First + Capital-Driven</h3>
+
+<p>The first-principles logic of the U.S. route is intelligence density, not manufacturing density. Its core features include:</p>
+
+<p><strong>Entry point</strong>: entering from foundational R&D, treating AI models and algorithmic innovation as the precondition for everything.</p>
+
+<p><strong>Capital structure</strong>: venture capital. Global VC flowing into humanoid robots reached roughly $40.7 billion in 2025, growing more than threefold between 2023 and 2025. Venture capital favors the "general-purpose capability platform" narrative and will pay for technology that has not yet scaled.</p>
+
+<p><strong>Industrial goal</strong>: solving "how smart can the brain be" before worrying about scale—Tesla Optimus and Figure are the exemplars; a single Optimus hand integrates more than 50 micro-actuators.</p>
+
+<p><strong>Deployment preference</strong>: prioritizing service scenarios with higher tolerance for imprecision (housekeeping, reception), and edge cases with strong software-defined needs.</p>
+
+<h3>1.4 A Fuller Picture: A Three-Way Contest, Not a Two-Power Standoff</h3>
+
+<p>If we widen the lens, there is a third route beyond the US and China—Japan's "precision integration" (suriawase): neither forcing the machine to imitate humans nor forcing humans to adapt to the machine, but designing precise physical interfaces and deterministic communication protocols so both sides collaborate seamlessly at the boundary. This route is most pragmatic in high-risk scenarios (operating rooms, nuclear facilities, elderly care), but its expansion speed is limited because each new scenario requires re-designing the boundary protocol.</p>
+
+<p>The differences at the bottom of the three routes can be summarized in one comparison table:</p>
+
+<table>
+  <tr>
+    <th>Dimension</th>
+    <th>China: Hardware First</th>
+    <th>U.S.: AI First</th>
+    <th>Japan: Precision Integration</th>
+  </tr>
+  <tr>
+    <td>Core Strategy</td>
+    <td>Scale manufacturing, fast cost reduction, dominant market share</td>
+    <td>Software-defined robots, AI as the brain</td>
+    <td>Precision mechanics + deterministic interface design</td>
+  </tr>
+  <tr>
+    <td>Prime Driver</td>
+    <td>National guidance funds (~RMB 138B) + local subsidies</td>
+    <td>Venture capital (~$40.7B in global humanoid robotics in 2025)</td>
+    <td>Generations of accumulated precision manufacturing expertise</td>
+  </tr>
+  <tr>
+    <td>Patent Focus</td>
+    <td>~7,700 patents on motion control and AI perception</td>
+    <td>~1,560 patents on AI algorithms and multimodal perception</td>
+    <td>~1,100 patents on precision operation and safety control</td>
+  </tr>
+  <tr>
+    <td>Representative Companies</td>
+    <td>AgiBot, Yushu, Fourier</td>
+    <td>Tesla Optimus, Figure</td>
+    <td>Fanuc, Harmonic Drive</td>
+  </tr>
+  <tr>
+    <td>Trust Foundation</td>
+    <td>Hardware reliability—the machine is physically dependable</td>
+    <td>Algorithm accuracy—the AI's judgment can be trusted</td>
+    <td>Interface predictability—determinism at the boundary</td>
+  </tr>
+  <tr>
+    <td>Primary Risk</td>
+    <td>If the next generation needs smarter software, not cheaper hardware</td>
+    <td>The "sim-to-real" gap between lab and factory floor</td>
+    <td>Can the institutional system move faster than the market?</td>
+  </tr>
+  <tr>
+    <td>Likely First Deployments</td>
+    <td>Factories and warehouses (controllable environments)</td>
+    <td>Low-precision service scenarios</td>
+    <td>High-risk scenarios (surgery, nuclear, elderly care)</td>
+  </tr>
+</table>
+
+<p><strong>None of the three routes is inherently superior—only more or less matched to each country's industrial endowments.</strong> But the key takeaway is that, regardless of route, embodied intelligence must eventually write algorithms into the physical world and work alongside humans—which pushes the conversation to Chapter Two: what truly decides this contest may not be algorithms, but the hardware nodes hidden inside the "body."</p>
+
+<hr />
+
+<h2>Chapter Two: The Hardware Supply Chain—The Underrated Decisive Factor</h2>
+
+<h3>2.1 "The Bottleneck Is Not the AI Brain, but the Hardware Body"</h3>
+
+<p>A fact repeatedly obscured by public discourse is that the biggest bottleneck in embodied-intelligence industrialization is often hardware, not algorithms. OEM branding competition gets the attention, but what truly sets the pace of mass production and cost is a bottom-layer supply chain of "high-value nodes"—reducers, force and tactile sensors, and dexterous hands.</p>
+
+<p>Giving embodied intelligence a body involves core subsystems—motors, harmonic drives, power electronics, battery systems, sensors—that are almost all deeply coupled to the EV industry chain. In other words, <strong>whoever controls the scale and yield-management capability of EV industrialization naturally stands at the center of the embodied-intelligence hardware chain.</strong></p>
+
+<h3>2.2 China's Position: Like the "Shenzhen Model" of 2015</h3>
+
+<p>China's position in the embodied-intelligence supply chain closely resembles the "Shenzhen model" of the smartphone era in 2015—not because its original design is strongest, but because its ecosystem is most complete, its manufacturing density highest, and its scale effects most powerful. Its foundation is a highly mature EV industry chain: motors, reducers, batteries, and power electronics are already industrialized, and embodied intelligence can directly "borrow" these capabilities, requiring only adaptation for special needs such as miniaturization and high power density.</p>
+
+<p>This "scale + reuse" model stands in sharp contrast to the "design-driven + customization" approach of the US and Europe. The result: <strong>in the early phase of mass production, China holds a significant cost-control advantage; but its shortfalls are equally pronounced in high-end precision components.</strong></p>
+
+<h3>2.3 Three Bottleneck "High-Value Nodes"</h3>
+
+<p>When embodied-intelligence hardware is graded by risk, the highest-value and deepest-moat areas are precisely the three hardest nodes:</p>
+
+<p><strong>Bottleneck one: precision reducers (harmonic drive / strain wave gears).</strong> Global capacity is concentrated among a few suppliers (such as Harmonic Drive and Nabtesco, plus rising Chinese players like Leaderdrive). This is capital-intensive precision manufacturing with long certification cycles, and it cannot scale up as quickly as electronic components. Chinese players are breaking through, but high-end stability and lifespan still lag behind international leaders.</p>
+
+<p><strong>Bottleneck two: force and tactile sensors.</strong> Six-axis force/torque sensors are supplied by only a few specialized makers like ATI Industrial Automation and OnRobot; calibration precision is extremely high and hard to automate. Tactile sensors are mostly custom solutions from startups and research labs, with no unified standards or scaled suppliers yet. Sensors are precisely the weakest link in China's supply chain—and also the fastest-growing, hottest investment area.</p>
+
+<p><strong>Bottleneck three: the dexterous hand.</strong> The human hand has 20+ degrees of freedom; a single Tesla Optimus hand integrates more than 50 micro-actuators. The hand sits at the intersection of three hard domains—miniaturized actuators, robot-grade sensing, and low-latency control—and remains in a "supply determines demand" stage, with no commercially mature supply chain.</p>
+
+<h3>2.4 A Three-Tier Opportunity Map: Who Wins the Window</h3>
+
+<p>From a supplier's perspective, this "high-value chain" maps onto three tiers of opportunity:</p>
+
+<ul>
+  <li><strong>Low risk, large scale</strong>: motors, standard bearings, camera modules, LiDAR, battery modules—suited to scale-driven cost reduction and homogeneous competition.</li>
+  <li><strong>Medium risk, differentiation</strong>: encoders, inertial measurement units (IMUs), real-time control electronics—suited to adapting existing industrial/automotive-grade products for humanoid or task-specific forms.</li>
+  <li><strong>High risk, high reward</strong>: harmonic drives, six-axis force sensors, tactile sensors, dexterous hands—suited to tech entrepreneurs willing to do hard R&D and bond with leading OEMs early for co-development.</li>
+</ul>
+
+<p>Our core judgment is that <strong>2026-2028 is the "window period" for the embodied-intelligence supply chain.</strong> The OEM market may form a "winner-take-most" pattern within five years, but the supply-chain market is fragmented, diverse, and more sustainable. Whoever builds scalable, standardized supply capability during this phase will seize the lead in the trillion-dollar market of the 2030s.</p>
+
+<hr />
+
+<h2>Chapter Three: The AI Factory—How Manufacturing Shapes Embodied Intelligence in Return</h2>
+
+<h3>3.1 A Counter-Intuitive Conclusion</h3>
+
+<p>If embodied intelligence really competes along two routes, the third force deciding the outcome is often completely overlooked—<strong>the value of manufacturing itself as an "AI training environment."</strong></p>
+
+<p>Here is a counter-intuitive conclusion worth unpacking. The ramp-up factor for AI servers—the resource multiplier needed to double production—is above 10x, and advanced packaging equipment (CoWoS) has a lead time of 18-24 months. This means the physical world expands systematically slower than AI computing power grows. The stronger your models become, the more you need real production lines to validate and iterate—yet factory expansion can never keep pace with computing growth.</p>
+
+<p>Thus an inversion appears: <strong>manufacturing is not merely one "application scenario" for AI; it is the training gate AI must pass through on its way from the digital to the physical world.</strong> And the factory is the densest, most realistic "training ground" for embodied intelligence.</p>
+
+<h3>3.2 Low Signal-to-Noise Environments: The Best Generalization Curriculum</h3>
+
+<p>Office AI benchmarks on clean data; factory AI contends with oil-stained lenses, vibration interference, and workers inadvertently blocking sensors—what the industry calls "dirty data." Yet it is precisely this low signal-to-noise environment that produces models with the strongest generalization.</p>
+
+<p>Standard machine-learning theory holds that training-data diversity directly determines out-of-distribution performance. From this view, the factory floor's "dirty data" offers the most realistic distribution for real-world deployment. One data point makes the case: a typical mid-automation line generates tens of data points per second, while most knowledge workers are evaluated once a month—a feedback-density gap of several orders of magnitude. <strong>High-density feedback drives rapid iteration, and this rule holds for both AI training and human skill growth.</strong></p>
+
+<h3>3.3 The Three-Stage Evolution of Human-Machine Adaptation</h3>
+
+<p>Embodied intelligence entering the factory follows a clear three-stage path:</p>
+
+<table>
+  <tr>
+    <th>Stage</th>
+    <th>AI's Role</th>
+    <th>Human's Role</th>
+    <th>Factory Example</th>
+  </tr>
+  <tr>
+    <td>Early</td>
+    <td>Assistant</td>
+    <td>Makes decisions, trains AI</td>
+    <td>Worker labels defect samples; AI learns to recognize</td>
+  </tr>
+  <tr>
+    <td>Mid</td>
+    <td>Collaborator</td>
+    <td>Joint decision-making</td>
+    <td>AI flags potential defects; worker confirms judgment</td>
+  </tr>
+  <tr>
+    <td>Mature</td>
+    <td>Expert</td>
+    <td>Exception handling + higher-order judgment</td>
+    <td>AI handles routine QC; workers handle anomalies and process improvement</td>
+  </tr>
+</table>
+
+<p>The core insight of this model: <strong>the stronger AI becomes, the more it depends on humans who truly understand the physical world.</strong> The worker's role is not "replaced"—it evolves from operator to supervisor and process optimizer. Machines learn from human data; humans reason back from the machine's decision logic. This is a complete cycle of reciprocal learning, and it is what "Human-AI Fit" truly means at the industrial level.</p>
+
+<h3>3.4 Why So Many Deployments Fail to Deliver Value: Cultural Debt</h3>
+
+<p>A harsh reality is that many manufacturing AI deployments fail to produce expected value. The problem is usually organizational, not technical. The concept of "Cultural Debt" helps capture four systemic obstacles:</p>
+
+<ul>
+  <li><strong>Process debt</strong>: AI tools layered on top of legacy workflows that were never restructured.</li>
+  <li><strong>Skill debt</strong>: employees lack the capability to use AI effectively.</li>
+  <li><strong>Trust debt</strong>: employees distrust AI decisions, worry about data privacy, and fear replacement.</li>
+  <li><strong>Governance debt</strong>: no clear norms for AI usage.</li>
+</ul>
+
+<p>None of these four categories can be resolved by "deploying more AI." Their common root cause is a structural imbalance: <strong>the speed of deploying AI systematically outruns the speed at which the organization absorbs it.</strong> This is not a technology problem—it is an organizational problem, and it lies at the heart of Human-AI Fit research.</p>
+
+<h3>3.5 The Industry's Time Account: The Misalignment of Reshoring, Expansion, and Compute</h3>
+
+<p>Manufacturing as an AI training environment also has a frequently ignored macro dimension: time. Take the US reshoring debate as an example: the reshoring window (about 5 years) is far shorter than the capacity-expansion cycle (about 8-10 years). The 10x expansion requirement for AI servers collides with the 18-24 month lead time for CoWoS equipment—manufacturing expansion follows the rhythm of the physical world, not the progress of AI technology.</p>
+
+<p>Moreover, geopolitics adds another layer of uncertainty to this time account: one policy subsidizes domestic fabs through the CHIPS Act while restricting exports of advanced lithography equipment, even as roughly 49% of EUV lithography revenue comes from mainland China. The contradiction between policy tightening and a globalized supply chain ultimately transmits back through equipment supply, cost, and delivery cycles into the entire embodied-intelligence hardware chain. <strong>For any enterprise seeking to scale embodied intelligence, understanding the "slow cadence" of the physical world is closer to the essence of competition than chasing AI's "fast iteration."</strong></p>
+
+<hr />
+
+<h2>Chapter Four: A Complete Logical Chain—Trust Is the Last and Highest Barrier</h2>
+
+<h3>4.1 Connecting the Threads</h3>
+
+<p>Now the seemingly independent threads of the previous chapters can be connected into a complete logical chain:</p>
+
+<ol>
+  <li><strong>Manufacturing is the best training ground for AI generalization</strong>—low signal-to-noise environments produce the most robust models.</li>
+  <li><strong>Embodied intelligence is the optimal vehicle for AI's transition from digital to physical</strong>—the US-China route battle is essentially a disagreement about how this transition should happen.</li>
+  <li><strong>Route choice ultimately depends on each society's understanding of "trust"</strong>—different trust paradigms determine which route breaks through first, and in which scenarios.</li>
+  <li><strong>Regardless of which route wins, tacit knowledge and explicit algorithms must integrate</strong>—this is what "Human-AI Fit" truly means at the industrial level.</li>
+</ol>
+
+<h3>4.2 Three Routes, Three Trust Paradigms</h3>
+
+<p>When the trust dimension is isolated, the divergence across the three routes becomes strikingly clear. A single visible AI error can destroy long-built trust, and the cost of repair is exceptionally high—today this is a consensus that cuts across all routes.</p>
+
+<p><strong>China's trust comes from hardware reliability.</strong> Users trust the robot because it is physically stable and predictable. This trust self-reinforces with scale—the more units deployed, the more reliability data accumulates, the higher the trust.</p>
+
+<p><strong>The U.S. trust model rests on algorithmic accuracy.</strong> Users trust the robot because the AI "has seen enough scenarios." Yet this trust is fragile—a single high-profile AI failure can erode public trust across the board. This maps directly onto the "one error destroys long-built trust" mechanism.</p>
+
+<p><strong>Japan's trust paradigm is built on interface determinism.</strong> Users trust the robot not because the AI is intelligent, but because the human-machine interface has clearly defined physical boundaries, and both parties operate within them. This model is most robust in safety-critical systems, but its expansion speed is limited.</p>
+
+<p>One counter-intuitive variable is worth watching: China's trust rests on "the machine is physically reliable," but when hardware becomes homogeneous and competition pivots to software, "reliability" itself stops being scarce. Japan's route holds a reverse opportunity—its cultural distrust of the AI black box, if paired with physics-simulation-based explainable AI and a deterministic action stack, could resolve the industry's deepest "black-box control" pain point instead.</p>
+
+<h3>4.3 Real Takeaways for Enterprises</h3>
+
+<p>Descending from the industrial level to the enterprise level, the three threads yield three cross-route lessons:</p>
+
+<p><strong>First, trust infrastructure is non-negotiable.</strong> Regardless of your technology route, building and maintaining human-machine trust is a strategic investment, not an option.</p>
+
+<p><strong>Second, complementarity design outperforms capability replacement.</strong> A good AI is not like a human—it is like a human's best collaborator, helping where you are weak rather than imitating you. This principle applies to AI product design and equally to form-factor choice: is it about "a machine that thinks like a human," or "a machine that excels in what humans do poorly"? The latter is usually more pragmatic.</p>
+
+<p><strong>Third, feedback density is a structural driver of organizational competitiveness.</strong> A factory floor generating tens of data points per second is not just an AI-training advantage—it is an organizational-learning advantage. Organizations that actively shorten their feedback cycles, whether for human learning or AI learning, will gain structural competitive advantages.</p>
+
+<hr />
+
+<h2>Conclusion: The Future of Embodied Intelligence Is Written in Bodies and Trust</h2>
+
+<p>Looking back across this analysis, one main thread remains clear: <strong>the embodied-intelligence contest is, on the surface, a contest of algorithms and capital; in reality, it is the combined product of the thickness of hardware supply chains, the density of manufacturing training environments, and the way each society trusts AI.</strong></p>
+
+<p>China's route uses scale to capture markets. The U.S. route uses intelligence to push boundaries. Japan's route uses determinism to build trust. They compete yet mirror one another, each answering from a different angle the same question: how can humans and intelligent machines effectively coexist and collaborate in the physical world?</p>
+
+<p>The most important reminder for enterprises and policymakers is this: <strong>do not be blinded by the "human-shaped" narrative—what really determines the landscape is the supply chain behind the "body," and the manufacturing environment in which that body is embedded.</strong> The next wave of embodied intelligence will not erupt in the laboratory; it will erupt in the hands of those willing to pay for the slow cadence of the physical world, dense real-world feedback, and sustainable human-machine trust.</p>
+
+<hr />
+
+<h2>References</h2>
+<ol>
+  <li>Reuters. (2026, May). <em>Humanoid robots race past humans in Beijing half-marathon, showing rapid advances</em>.</li>
+  <li>The New York Times. (2026, May). <em>Humanoid Robot Wins Half-Marathon and Smashes Humans' Record</em>.</li>
+  <li>The Guardian. (2026, May). <em>Humanoid robots show rapid advances as they race past humans in Beijing half marathon</em>.</li>
+  <li>Global Times. (2026, May). <em>Humanoid robot breaks human half-marathon record; Drastic improvement reflects systemic advances in China's robot technologies</em>.</li>
+  <li>MERICS. (2026, April). <em>Embodied AI: China's Ambitious Path to Transform Its Robotics Industry</em>. Mercator Institute for China Studies.</li>
+  <li>McKinsey. (2026, May). <em>Japan's $100 Billion Opportunity in General-Purpose Robotics</em>. McKinsey &amp; Company.</li>
+  <li>McKinsey. (2026, April). <em>Turning Humanoid Supply Chain Constraints into Billion-Dollar Wins</em>. McKinsey Industrials Practice.</li>
+  <li>McKinsey Global Institute. (2026, May). <em>Ramping Up Manufacturing in America?</em> McKinsey &amp; Company.</li>
+  <li>Deloitte. (2026). <em>Getting Human and Machine Relationships Right</em>. Deloitte Research.</li>
+  <li>Deloitte. (2026). <em>A New Era of Human-Machine Collaboration: 2026 Global Human Capital Trends</em>. Deloitte Research.</li>
+  <li>Euronews. (2026, June). <em>Japan Targets AI Robot Brains as China Dominates Humanoid Race</em>.</li>
+  <li>AP News. (2026, June). <em>Humanoids Dance and Thread Needles as Japanese Developers Look to Outdo Chinese</em>.</li>
+  <li>Wall Street Journal. (2026). <em>Under the Skin of America's Humanoid Robots: Chinese Technology</em>.</li>
+  <li>TIME. (2026). <em>China Could Dominate the Physical AI Future</em>.</li>
+  <li>Newsweek. (2026). <em>China's Robot Blitz Is Exposing America's AI Blind Spot</em>.</li>
+  <li>Brookings. (2026). <em>Competing AI Strategies for the US and China</em>.</li>
+  <li>IFR. (2025). <em>World Robotics 2025 Report</em>.</li>
+  <li>South China Morning Post. (2025, December). <em>China packs a patent punch in the race to build humanoid robots</em>.</li>
+</ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 Did this article spark an idea for your work?</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit explores how humans and AI truly collaborate. If you face real challenges in enterprise AI adoption, human-AI fit, or global compliance, we&apos;d love to hear from you.
+  </p>
+  <p style="margin:0;">
+    🔗 Join the <strong>AI Era Survival Guide</strong> Knowledge Planet — where every article comes with practical toolkits, templates, and direct discussions with the authors.
+  </p>
+</blockquote>
+
+</div>
+</Article>

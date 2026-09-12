@@ -1,0 +1,249 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Frontier Tech", "AI Evaluation", "LMArena", "Benchmark"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="The Underlying Logic of AI Evaluation: From LMArena&#39;s User Battles to Benchmark Rankings, Who Defines What Makes AI &#39;Good&#39;"
+  description="Let's start with a question that sounds simple but has no standard answer: what exactly makes an AI model &quot;good&quot;?"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-09-01</p>
+      <h1 style="font-size:clamp(10px, 0.94vw, 12px);line-height:1.35;white-space:nowrap;">The Underlying Logic of AI Evaluation: From LMArena's User Battles to Benchmark Rankings, Who Defines What Makes AI 'Good'</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>One: Who Gets to Decide Whether AI Is "Good"?</h2>
+
+<p>Let's start with a question that sounds simple but has no standard answer: what exactly makes an AI model "good"?</p>
+
+<p>Silicon Valley has burned astronomical sums in the race to build large models. OpenAI, Anthropic, Google, Meta — every week there's a fresh round of bickering over whose model is stronger. Yet if you look closely, the "evidence" behind all those arguments actually comes from two completely different paths.</p>
+
+<p>One path is subjective head-to-head. This is what LMArena (formerly Chatbot Arena) does: two models answer anonymously on the same stage, you vote on gut feel, and whoever wins climbs the leaderboard.</p>
+
+<p>The other path is objective benchmark rankings. Think Forbes AI 50, the Stanford AI Index — lists that use a set of "rulers" to measure capital, papers, deployment scale, and even a country's structural readiness.</p>
+
+<p>These two paths ask different questions: one asks "which model feels better when a real person actually uses it," the other asks "who looks stronger when measured on the yardsticks of capital and industry." They look like they're both answering "is AI good," but they're actually measuring two different things.</p>
+
+<p>And here's the third, more tantalizing question: put together, what truly defines "good AI" — the evaluation mechanisms themselves, or the people who hold the power to evaluate?</p>
+
+<p>This article aims to pry open a crack in the "black box" of AI evaluation. We'll start with that famous user-battle experiment, then dissect the "rulers" behind rankings, and finally land on a question that touches you and me: in an era where AI keeps getting stronger, which ruler should you trust — and how should you position yourself?</p>
+
+<hr />
+
+<h2>Two: Two Legs — How Subjective Battles and Objective Benchmarks Divide the Work</h2>
+
+<p>To understand AI evaluation, you first have to separate the origins of the two systems that carry it.</p>
+
+<h3>Subjective battles: let real humans be the judge</h3>
+
+<p>LMArena's operation is deceptively simple. You type a prompt. The system anonymously sends it to two models at once. You don't know which answer came from which model — that's the blind test — and you simply vote for whichever response feels better.</p>
+
+<p>The scale is staggering: more than 10 million accumulated users, roughly 700 million conversations, 82 million votes, 10 million monthly active visitors, spanning 150+ countries.[1][2]</p>
+
+<p>What matters more than the number of users is the un-gameable quality of the votes. According to the platform, about 80% of daily user queries are brand new — no model can "memorize the answer bank" in advance. Tens of millions of real, diverse votes feed into an Elo ranking — a scoring algorithm that adjusts for opponent strength, born in chess, now widely used in esports and AI evaluation.</p>
+
+<p>Because it's trustworthy, model makers voluntarily submit their flagships for testing. OpenAI even tested GPT-5 under the codename "summit" on LMArena before its official launch.[2]</p>
+
+<p>The essence of subjective battle is using "human feeling" to certify "how good the conversation is." It covers the most everyday, real use cases — when you and I ask a model questions, ask it to write, chat with it, the final evaluation is inherently subjective.</p>
+
+<h3>Objective benchmarks: measure the landscape with a set of rulers</h3>
+
+<p>On the other side, objective benchmarks/rankings run on a different logic. They don't run blind tests with human judges; instead they use publicly verifiable data plus a selection rubric to score and rank subjects. These lists come in many forms, but after all the dress-up, they boil down to five rulers:</p>
+
+<ul>
+
+<li>Capital power — who controls AI's capital and products: Altman, Jensen Huang, Zuckerberg.</li>
+
+<li>Commercial potential — whose company is worth the most and grows fastest: funding, valuation, whether the business model holds.</li>
+
+<li>Industry deployment — who actually gets AI into specific industries: volume shipped, seats sold, real users.</li>
+
+<li>Scholarship &amp; ideas — who founded the discipline and defined its research paradigm: papers, awards, citations.</li>
+
+<li>National structural readiness — measures not companies or people but whether a country has built the institutional, talent, compute, data, and capital foundations for long-term AI leadership.</li>
+
+</li></ul>
+
+<p>The same subject, measured with different rulers, can land in wildly different places. That's precisely the Achilles' heel of objective benchmarks: they look neutral, yet every ruler hides a value judgment about "what matters."</p>
+
+<hr />
+
+<h2>Three: How User Battles Became a Money-Printing Business</h2>
+
+<p>Let's return to LMArena. What draws the most jealousy isn't the technology — it's the business model.</p>
+
+<p>The core commercial product is called AI Evaluations, launched September 2025, with brutally simple logic: public evaluations are free — anyone can see which model beats which; but model makers who want deeper, customized evaluation analytics pay for it.</p>
+
+<p>CEO Angelopoulos describes it as "a CI/CD system for the real world" (CI/CD is the automated test-and-deploy pipeline in software development, borrowed here as a metaphor for AI's automated evaluation pipeline): before a model launches, the community tests it for free; but if a company wants proprietary analysis or scenario-specific diagnostics, that's a paid service.[2]</p>
+
+<p>The numbers tell the story clearly:</p>
+
+<ul>
+
+<li>September 2025 — commercial launch;</li>
+
+<li>January 2026 — $30 million annualized revenue disclosed at the Series A;</li>
+
+<li>June 2026 — annualized revenue crossed $100 million — more than 3x growth in 8 months;</li>
+
+<li>At the January 2026 Series A, the post-money valuation reached $1.7 billion.[1][2][3]</li>
+
+</li></ul>
+
+<p>Even more striking is the client list — every major model maker is a paying customer: OpenAI, Google, Anthropic, Meta. A "protection money from the entire industry" business model is nearly unprecedented in AI. The CEO candidly calls it "consumption-based revenue" rather than strict recurring subscription revenue, but the market clearly doesn't mind the distinction.[3]</p>
+
+<p>It has almost no serious direct competitor — its former rival Yupp shut down in March 2026. Its true peers are post-training and evaluation firms like Scale AI (data labeling and model evaluation), Mercor (AI evaluation and talent platform), and Surge. For context, per The Information, Scale AI and Mercor have both crossed $1 billion in annualized revenue.[1]</p>
+
+<p>In one line: in a gold rush, the people selling shovels make money before the miners do. LMArena isn't just selling shovels — it also issues the gold purity certification.</p>
+
+<hr />
+
+<h2>Four: Deconstructing Rankings — From "Who's Strongest" to "Who Defines 'Strong'"</h2>
+
+<p>If LMArena represents "subjective battle," objective lists are an entirely different world. To read them, you first have to grasp a core judgment:</p>
+
+<p>Global AI rankings are not the answer to "who's strongest." They are the question of "who gets to define 'strong.'</p>
+
+<p>Here's the most intuitive example — Yann LeCun. One of the founding fathers of deep learning, father of the CNN, 2018 Turing Award winner, chief AI scientist at Meta for over a decade. A figure like that ranks 50th on Observer's AI Power Index. Not even in the top 50? Isn't he an undisputed giant?[8][9]</p>
+
+<p>The reason isn't LeCun — it's the ruler. Observer's yardstick measures "whose decisions can change the industry," not "who advanced our understanding." It's a capital-power ruler — it measures control over capital and products. What LeCun holds is papers and models, not venture funds. He moves AI's thinking, but he doesn't own a product line or dictate capital allocation. So 50th isn't him being weak — it's a ruler that simply doesn't measure the dimension where he's strongest.</p>
+
+<p>The same logic explains why ByteDance's and Alibaba's tech leaders are absent from America's "power of people" lists — not because they lack power, but because the American ruler silently defines "power" as "control over Silicon Valley capital."[4][5]</p>
+
+<p>So how do you read a ranking with any real value? The core move is cross-validation. Remember three rules:</p>
+
+<ul>
+
+<li>Consensus = strength.If a company or person ranks high under several different rulers, they're probably genuinely strong. When multiple yardsticks measure the same subject and land on the same answer, that assessment is hard to game. OpenAI is the benchmark — leading on Observer, TIME100, and Forbes AI 50 alike, with $182.6 billion in funding, roughly 60% of all funding across every company on the Forbes AI 50 list.</li>
+
+<li>Divergence = signal. If a person swings wildly within one list, or varies drastically across lists, an underlying fact is often hiding: some ruler isn't measuring the right thing.</li>
+
+<li>Blank = blind spot. What a list doesn't measure still exists — and it may be the most important thing of all. Like "what does this mean for me personally" — almost no list measures it.</li>
+
+</li></ul>
+
+<hr />
+
+<h2>Five: Why Both Paths Coexist — The Evaluation Standard Itself Is Shifting</h2>
+
+<p>After understanding subjective battles and objective benchmarks, the question truly worth pondering is: why does AI evaluation today need both legs on the field at once?</p>
+
+<p>The answer is that the axis on which AI capability is judged is shifting from "knowledge-based" to "task-based."</p>
+
+<p>Early AI evaluation often compared "who knows more answers" or "whose conversation sounds more human" — precisely the home turf of subjective battles like LMArena. But the wind changed in 2026: MiniMax's M3 launch centered on "task completion" metrics like BrowserComp and SWE-Bench; per developer-community reports, GPT-5.6's tiered pricing has also shifted toward "charging by task value."[4][5]</p>
+
+<p>In other words, the industry no longer just asks "can this model chat" — it asks "for the tasks handed to it, can it reliably get them done?" LMArena launched Agent Mode — expanding from "humans judging conversation quality" to "machines evaluating task completion rates" — precisely capturing this pivot.[2]</p>
+
+<p>At the same time, as model capabilities converge across consumer and general enterprise scenarios, "the evaluation standard itself" becomes the new profit zone. Look back at PC-era IT history: Windows and Office weren't necessarily the most profitable layer; the real cash machines were SQL Server, Active Directory, Azure — the infrastructure that defined "what enterprise-grade IT looks like." Likewise, when AI consolidates from a thousand models down to half a dozen, whoever defines "what a good model looks like" holds the commercial leverage.</p>
+
+<p>This is why both evaluation paths must coexist: subjective battles keep evaluation close to real human feeling; objective benchmarks illuminate the landscape and trends. Missing the former distorts evaluation; missing the latter leaves you with isolated "feelings" and no map of the whole.</p>
+
+<hr />
+
+<h2>Six: Who Defines Good AI — The Power Structure of the Judge's Role</h2>
+
+<p>Lay subjective battles and objective benchmarks side by side and a deeper pattern emerges: what truly defines "good AI" is the handful of people who hold the evaluation or standard-setting power.</p>
+
+<p>In LMArena, we see the infrastructure-ization of evaluation power — it doesn't build models, but every vendor who wants to prove "I'm the best" must pass its check first. This calls to mind certification bodies like the Chinese Quality Certification Center (CQC) or Switzerland's SGS: they don't manufacture, but nothing gets to market without passing their gate. What began as a Berkeley lab student project not long ago is now an industry infrastructure earning nine figures annually. The core founders — CEO Angelopoulos (math background, Stanford electrical engineering undergrad, Berkeley PhD, whose doctoral research on "mathematically rigorous judgments on black-box models" is the prototype of LMArena's concept), CTO Wei-Lin Chiang (creator of the open-source chatbot Vicuna), and Berkeley professor and Databricks co-founder Ion Stoica — turned this into a textbook case.[1][2][3]</p>
+
+<p>In objective lists, we see the selective power of standard-setters. The same company, the same person, can land at wildly different positions across different lists — not because the lists are wrong, but because "the rulers are different." Whoever owns which of those five rulers partly determines how "the AI landscape" appears to the public.</p>
+
+<p>These two powers converge on the same conclusion by different roads: the right to evaluate outlasts the right to manufacture. In mature global industries, the most profitable player is often not the producer but the certifier and standard-setter. AI is no exception.</p>
+
+<p>Go further, and AI's power is flowing toward three kinds of people:</p>
+
+<ul>
+
+<li>Those who use AI — the moat isn't knowing a tool but judgment: knowing which claim to trust, which list is real, which model fits which job.</li>
+
+<li>Those who build AI — the moat isn't general technical know-how but understanding of a vertical: people who truly grasp an industry's pain points and can embed a model into it and make it work.</li>
+
+<li>Those who set the rules — the moat is cross-domain connection: those who can translate fluently between tech, business, and policy hold the real leverage.</li>
+
+</li></ul>
+
+<p>Check where you stand among these three right now.</p>
+
+<hr />
+
+<h2>Seven: How a Regular Person Can Use This Logic</h2>
+
+<p>After all this, let's finally land on the most practical question: now that you understand the underlying logic of AI evaluation, how does it help you?</p>
+
+<p>Here are three tools you can take with you.</p>
+
+<p>First, don't be hijacked by a single ruler. With any evaluation, first ask "what ruler does it use, what does it measure, and what does it deliberately leave out?" A list claiming to be "the strongest ranking" is of little reference value to you if it doesn't understand "real task completion rates." Read rankings with cross-validation — never just one.</p>
+
+<p>Second, arm yourself with judgment. In an era of converging AI capabilities, everyone can use the tools; what's scarce is judgment. Knowing which model suits writing, which suits coding, which is just marketing hype — this skill only appreciates as AI gets stronger.</p>
+
+<p>Third, find your own "evaluation-type niche." Do a quick self-check: You build model applicationsCould you define evaluation standards for similar apps? You develop toolsCould you define capability tiers for similar tools? You do industry researchCould your analytical framework become an industry reference? You create contentCould your knowledge system become a domain standard?</p>
+
+<p>Not everyone needs to found an LMArena. But the direction of "moving from being evaluated to being able to define standards" holds true for professionals in almost every field.</p>
+
+<p>Finally, a question worth thinking one step ahead: in 2027, which kind of work becomes more valuable because of AI? Judgment, vertical understanding, and cross-domain connection only appreciate as AI gets stronger — because AI is responsible for doing things fast, and you're responsible for knowing what to do, why to do it, and who it serves. The underlying logic of AI evaluation, in one sentence: good AI is ultimately defined by the people who both know how to use it and understand it.</p>
+
+<h2>VIII. Bonus: The 5 AI Rankings We Compiled</h2>
+
+<p>By now you have the reading methodology. To let you analyze directly, we have turned the ranking categories dissected above into 5 Excel ranking sets — on top of each original list, we added four working fields: Country / Highlight / Yardstick / Cross-validation takeaway. Each is clearly marked for "which yardstick it uses, what it measures, and what it deliberately doesn't measure," so you can apply this logic to your own analysis right away:</p>
+
+<ul>
+
+<li><strong>Observer AI Power Index</strong> (100, capital-power yardstick): <a href="/files/ai_rankings_observer_100_en.xlsx" rel="noopener" target="_blank">Download English XLSX</a></li>
+
+<li><strong>Forbes AI 50 Global</strong> (commercial-potential yardstick): <a href="/files/ai_rankings_forbes50_global_en.xlsx" rel="noopener" target="_blank">Download English XLSX</a></li>
+
+<li><strong>Forbes China Top 50</strong> (industry-rollout yardstick): <a href="/files/ai_rankings_forbes50_china_en.xlsx" rel="noopener" target="_blank">Download English XLSX</a></li>
+
+<li><strong>HumanizeAI 36 Countries</strong> (national-preparedness yardstick): <a href="/files/ai_rankings_humanizeai_36_en.xlsx" rel="noopener" target="_blank">Download English XLSX</a></li>
+
+<li><strong>Overview of the 5 Rankings</strong>: <a href="/files/ai_rankings_overview_en.xlsx" rel="noopener" target="_blank">Download English XLSX</a></li>
+
+</ul>
+
+<blockquote>Note: Data compiled from publicly published lists by Observer, Forbes, Forbes China, HumanizeAI, etc., with interpretation fields added for reference.</blockquote>
+
+<p>These rankings are not the standard answer to “who is strongest”; they are the puzzle of “who defines strength.” After downloading, try reading them through the cross-validation checklist (consensus=strength / divergence=signal / absence=blind spot) — you'll find that understanding a ranking is far more useful than memorizing a place.</p>
+
+<hr />
+
+<h2>References</h2>
+
+<ol>
+<li>LMArena lands $1.7B valuation four months after launching its product — Julie Bort, TechCrunch, 2026-01-06. https://techcrunch.com/2026/01/06/lmarena-lands-1-7b-valuation-four-months-after-launching-its-product/</li>
+<li>Arena, the AI leaderboard everyone uses, is now a $100M business — Marina Temkin, TechCrunch, 2026-06-29. https://techcrunch.com/2026/06/29/arena-the-ai-leaderboard-everyone-uses-is-now-a-100m-business/</li>
+<li>"年入1亿美元，两个90后伯克利室友，搞出最赚钱的AI生意" — Xinzhiyuan, 36Kr, 2026-07-06. https://www.36kr.com/p/3883329844555777</li>
+<li>Forbes. "Forbes AI 50 2026" — Forbes, 2026-04-16. https://www.forbes.com/lists/ai50/</li>
+<li>Forbes China. "2026 Forbes China Artificial Intelligence Technology Enterprise Top 50" — 2026-05-17. https://forbeschina.com/technology/71575</li>
+<li>Stanford HAI. "The 2026 AI Index Report" — 2026. https://hai.stanford.edu/ai-index</li>
+<li>Observer. "The 2025 AI Power Index" — 2025. https://observer.com/list/2025-ai-power-index/</li>
+<li>AI pioneer Yann LeCun to leave Meta and start own firm — BBC, 2025-11. https://www.bbc.com/news/articles/cdx4x47w8p1o</li>
+<li>Meta chief AI scientist Yann LeCun is leaving the company — CNBC, 2025-11-19. https://www.cnbc.com/2025/11/19/meta-chief-ai-scientist-yann-lecun-is-leaving-the-company-.html</li>
+<li>"MiniMax M3：一家AI公司，为什么开始重新定义自己的价值？" — Qidianpai, 36Kr, 2026-07-05. https://www.36kr.com/p/3882467938040710</li>
+<li>"硅谷无间道：GPT-5.6'偷跑'截杀Claude，最快明天端出三大模型" — DIYIXinsheng, 36Kr, 2026-07-06. https://www.36kr.com/p/3883839281099016</li>
+<li>"国产人工智能大模型DeepSeek引发全球关注" — Chinese Academy of Sciences / Science and Technology Daily, 2025. https://www.cas.cn/zt/kjzt/2025kjpd/pd2/202512/t20251229_5094542.shtml</li>
+</ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 What did this article inspire for you?</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit studies how humans and AI can genuinely work together. If you face real questions on enterprise AI adoption, human-AI collaboration, or global compliance, join our discussion.
+  </p>
+  <p style="margin:0;">
+    🔗 Search for the "AI Era Survival Handbook" Knowledge Planet, ¥199/year — every deep article comes with tool templates and direct contact with the author.
+  </p>
+</blockquote>
+
+  </div>
+</Article>

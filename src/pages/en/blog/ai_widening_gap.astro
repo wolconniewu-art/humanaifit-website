@@ -1,0 +1,124 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "Gap", "Competitiveness"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="AI Is Widening the Gap, Not Closing It"
+  description="AI was supposed to be the great equalizer — a capability anyone could tap into. The data tells a different story: it's quietly pulling people and companies furt…"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-09-01</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI Is Widening the Gap, Not Closing It</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>It does this along six front lines. See all six, and you'll know where you stand and where to head.</p>
+
+<h2>1. Who pockets the money: many deploy AI, few cash in</h2>
+
+<p>Most companies have deployed AI, but only a minority have turned it into returns.</p>
+
+<p>McKinsey reports that under 10% of enterprises have genuinely scaled AI agents within a single function; most are still in "trying things out" mode. One line from McKinsey is worth keeping: adoption is no longer a mark of differentiation.</p>
+
+<p>What separates the leaders is "who captures the return first." A PwC China report found the top 20% of companies reaped 74% of AI-driven gains, leaving 26% for the other 80%.</p>
+
+<p>It's not that the other 80% didn't spend — they did, they just didn't produce. The problem is the "efficiency illusion": the technology lets you do more, but you haven't turned "able to do" into "able to earn." What's scarce isn't how many chips you buy — it's the organizational capability to make AI create value.</p>
+
+<h2>2. Where the saved time goes: without a "reinvestment mechanism," it leaks</h2>
+
+<p>AI saves time, but the saved time often goes nowhere useful.</p>
+
+<p>BCG found that 42% of frontline workers who use AI regularly save a full day or more each week. Yet 66% got no guidance on what to do with that time.</p>
+
+<p>The saved time leaks out three ways:</p>
+
+<ul>
+
+<li><strong>Cognitive drain</strong>: repeatedly checking AI output, tweaking prompts, worrying about being replaced. 41% of AI users report higher cognitive load — not lighter work, just a different kind of tired.</li>
+
+<li><strong>Task expansion</strong>: finishing the original task, then using AI to do more of the same instead of something different.</li>
+
+<li><strong>Hidden redundancy</strong>: someone becomes effectively redundant because AI is so fast, but they're neither cut nor reassigned. The saved time turns into a sunk cost.</li>
+
+</li></ul>
+
+<p>BCG's verdict is direct: time individuals save leaks out of the organization unless it's tracked and reinvested on purpose. This isn't a matter of individual willpower — it's a matter of organizational design.</p>
+
+<h2>3. Training budget sets the ceiling: many know they must change, few are trained well</h2>
+
+<p>72% of people know their skill requirements have changed, but only 36% feel they've been adequately trained. And that number barely moved from the previous year — a year of added training with little growth in effectiveness.</p>
+
+<p>The split in the training market is sharper still. For the same AI stack, different prices teach completely different things: a cheap course teaches you "how to use it" (operator training); pricier ones teach you "when to use it, and why" (scenario and strategy).</p>
+
+<p>Your budget largely sets the boundary of your cognition. But the deeper trap comes after — many people finish the course and return to the same old workflow, where the new skill lies idle. PwC calls this the "value-closure gap": companies invested in training but didn't redesign the workflow around AI, so learning never became practice, and practice never became output.</p>
+
+<h2>4. Base capability gets amplified: the starting gap is additive, AI's effect is multiplicative</h2>
+
+<p>AI isn't egalitarian — it helps everyone the same way, but it amplifies whatever base capability you already had.</p>
+
+<p>BCG splits AI users into three tiers: 17% "strategic users" who weave AI into their workflow, with efficiency more than three times that of passive users; 40% "active users" at about 1.5–2x; and 43% "passive users" near baseline.</p>
+
+<p>A Tencent Research Institute framework points the same way (offered as industry observation): a few leap ahead, many improve modestly, some get displaced.</p>
+
+<p>The conclusion is the same: when two people start with a gap and use the same AI, the gap widens further. AI amplifies logic, fast learning, problem decomposition, and judgment — and those gaps existed from the start.</p>
+
+<h2>5. AI makes you more tired: enjoyment and exhaustion at once</h2>
+
+<p>A seeming contradiction: 67% of regular AI users say they enjoy work more, while 41% report higher cognitive load.</p>
+
+<p>Both can be true. BCG's explanation: the bar for "good enough" rose, and workers spend more time reviewing and correcting AI output. The work changed — not that there's nothing to do, but that they stopped doing type-A tasks and started doing type-B tasks (verifying, correcting, covering for the machine), which are more draining, more tedious, less satisfying.</p>
+
+<p>BCG also found the burden isn't shared evenly: leaders enjoy most of the efficiency gains, frontline workers absorb most of the correction cost. The load, in most cases, lands on the execution layer.</p>
+
+<h2>6. Some are locked out at birth: the electricity gap</h2>
+
+<p>This last front line has nothing to do with personal effort.</p>
+
+<p>It depends on where you were born, and what kind of power infrastructure that place built decades ago. A ChatGPT-class query consumes several times the energy of an ordinary search (Goldman Sachs citing IEA data, magnitude confirmed by IEEE Spectrum), and AI data centers naturally cluster where power is abundant and cooling is cheap — that is, in developed regions.</p>
+
+<p>Global data-center capacity is heavily concentrated in a handful of countries, and frontier training compute is even more so. Countries in the Global South face an outsized "triple outflow" of value: their data flows to be processed in developed countries, the compute bill flows out, and AI services get sold back to them. They supply the lithium, the land, and the cheap power, but own none of the models and capture none of the value.</p>
+
+<p>The same subscription costs a US programmer a fraction of an hour's wage, but a programmer in a low-income country several days' worth. AI's commercial pricing has become a new kind of digital tariff.</p>
+
+<h2>7. Five front lines can be designed away; the sixth is structural</h2>
+
+<p>The six front lines aren't independent — they reinforce each other. A company that can't make money can't afford to redesign work; workers who don't know what to do with saved time accumulate cognitive load, use AI worse, and the company makes even less.</p>
+
+<p>But there's an opening: five of the six front lines are designable. Organizations can design time-reinvestment mechanisms, rebuild training, and restructure workflows to lower cognitive load. Only the sixth — the electricity gap — is structural, and no single person or company can fix it alone.</p>
+
+<p>Once you see the gap, you still have to ask: what can't AI do? Because that's where the human's opening is.</p>
+
+<p>AI can summarize, create, analyze, and reason — it covers nearly every "cognitive skill." But there are three things it still can't do: it doesn't truly question (its criticism is based on patterns in its training data, not on genuine unease); it doesn't take responsibility (when AI's advice goes wrong, who answers for it — a key reason many enterprises are slow to trust it); and it doesn't ask about meaning (it can write a poem about loneliness without knowing what loneliness feels like).</p>
+
+<p>So when you face a task, three questions can tell you whether to leave it to a human: Does someone have to take responsibility? Does someone have to question the accepted answer? Does someone have to explain why this is worth doing?</p>
+
+<p>Most research leans one way: AI used to augment people rather than replace them yields steadier returns over time — this is a shared tendency across studies and practice, not a universal law, but worth taking seriously.</p>
+
+<p>AI isn't the problem. The problem is lacking the ability to redesign how humans and AI divide the work. And who has that design ability is itself becoming a new line of division.</p>
+
+<h2>References</h2> <ol> <li><strong>BCG</strong> — "AI at Work 2026," BCG with a global research platform, 2026</li> <li><strong>McKinsey & Company</strong> — "The Symbiotic Enterprise," June 2026</li> <li><strong>PwC China</strong> — "2026 Global AI Effectiveness Study, China Report," 2026</li> <li><strong>ManpowerGroup</strong> — CEO survey, released via WEF, June 19, 2026</li> <li><strong>WEF</strong> — "Future of Jobs Report 2025"</li> <li><strong>Tencent Research Institute</strong> — "The Age of the Super-Individual," 2025 (industry observation)</li> <li><strong>IEA</strong> — "Electricity 2024," data centres and data transmission networks chapter</li> <li><strong>Goldman Sachs Research</strong> — "Generative AI Can Deepen Power Demand," 2024</li> <li><strong>Stanford HAI</strong> — "AI Index Report 2025"</li> <li><strong>IEEE Spectrum</strong> — Sarah Wells, "Generative AI's Energy Problem Today Is Foundational," October 2023</li> <li><strong>Deloitte</strong> — "State of AI in the Enterprise" (8th edition), 2025</li> </ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 What did this article inspire for you?</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit studies how humans and AI can genuinely work together. If you face real questions on enterprise AI adoption, human-AI collaboration, or global compliance, join our discussion.
+  </p>
+  <p style="margin:0;">
+    🔗 Search for the "AI Era Survival Handbook" Knowledge Planet, ¥199/year — every deep article comes with tool templates and direct contact with the author.
+  </p>
+</blockquote>
+
+  </div>
+</Article>

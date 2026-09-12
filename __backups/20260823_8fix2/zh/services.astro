@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="服务"
+  description="彼恳管理咨询服务介绍 — 人机协同咨询、CBAM碳合规、全球化战略。"
+  lang="zh-CN"
+  path="/services/"
+>
+  <section class="section" style="padding-top:100px;">
+    <div class="container text-center">
+      <p class="section-label">服务</p>
+      <h1>我们如何帮助你？</h1>
+      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);">
+        我们提供以人机契合（Human-AI Fit）为核心的三类服务，覆盖从战略诊断到落地执行的完整链路。
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div id="human-ai-fit" style="margin-bottom:var(--spacing-3xl);padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
+        <h2 style="margin-bottom:var(--spacing-md);">01. 人机协同咨询</h2>
+        <p style="color:var(--color-text-secondary);">帮助组织诊断当前的AI使用成熟度，设计"人+AI"双引擎工作模式。涵盖AI能力评估、流程再造、团队培训和持续优化。</p>
+        <div style="margin-top:var(--spacing-lg);display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">AI Maturity Assessment</span>
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Workflow Redesign</span>
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Team Enablement</span>
+        </div>
+      </div>
+
+      <div id="cbam" style="margin-bottom:var(--spacing-3xl);padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
+        <h2 style="margin-bottom:var(--spacing-md);">02. CBAM碳合规</h2>
+        <p style="color:var(--color-text-secondary);">面向中国出口企业的CBAM（碳边境调节机制）合规服务。提供免费自检工具、合规路径规划、数据收集模板和欧盟法规跟进。</p>
+        <div style="margin-top:var(--spacing-lg);display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Free Self-Check</span>
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Compliance Planning</span>
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">EU Regulation Tracking</span>
+        </div>
+        <a href="/diagnosis/cbam/" class="btn btn-primary" style="margin-top:var(--spacing-lg);" target="_blank">免费自检 →</a>
+      </div>
+
+      <div id="globalization" style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
+        <h2 style="margin-bottom:var(--spacing-md);">03. 全球化战略</h2>
+        <p style="color:var(--color-text-secondary);">基于学术研究与产业洞察，为中国企业全球化提供战略咨询。涵盖市场选择、品牌定位、合规策略和本地化运营建议。</p>
+        <div style="margin-top:var(--spacing-lg);display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Market Entry Strategy</span>
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Regulatory Compliance</span>
+          <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">Localization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 家庭端产品专区 -->
+  <section class="section" style="background:linear-gradient(160deg, #f8f7f4 0%, #ffffff 100%);padding-bottom:var(--spacing-3xl);">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
+        <p class="section-label" style="color:#3B82F6;">家庭端方案</p>
+        <h2>为孩子选一个适合的AI学习方案</h2>
+        <p style="max-width:500px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);">
+          先做 <a href="/diagnosis/" style="color:#0F2B46;font-weight:600;">免费诊断</a>，再按需选择
+        </p>
+      </div>
+
+      <div style="max-width:500px;margin:0 auto;">
+
+        <div style="border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;">
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">AI素养深度报告</span>
+            <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#1a73e8;color:white;border-radius:10px;font-size:11px;">最佳选择</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">基于诊断的10页个性化报告，含学习路线图和适龄工具清单</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+            <div style="font-weight:700;color:#0F2B46;font-size:18px;">¥9.9</div>
+            <button onclick="copyEmail('购买', 'AI素养深度报告 ¥9.9')" style="display:inline-block;margin-top:6px;padding:8px 20px;background:#0F2B46;color:white;border-radius:6px;border:none;font-size:13px;font-weight:500;cursor:pointer;">购买</button>
+          </div>
+        </div>
+
+        <div style="border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;">
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">月度订阅</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">月付方案，持续获得AI素养学习内容与陪伴</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+            <div style="font-weight:700;color:#0F2B46;font-size:18px;">¥19.9</div>
+            <div style="font-size:12px;color:#888;">/ 月</div>
+            <button onclick="copyEmail('订阅', '月度订阅 ¥19.9/月')" style="display:inline-block;margin-top:6px;padding:8px 20px;background:#0F2B46;color:white;border-radius:6px;border:none;font-size:13px;font-weight:500;cursor:pointer;">订阅</button>
+          </div>
+        </div>
+
+        <div style="border:2px solid #C9A96E;border-radius:12px;padding:20px;margin-bottom:14px;background:white;display:flex;justify-content:space-between;align-items:center;position:relative;">
+          <div style="position:absolute;top:-10px;right:20px;background:#C9A96E;color:#0F2B46;padding:2px 12px;border-radius:10px;font-size:11px;font-weight:600;">推荐</div>
+          <div style="flex:1;">
+            <span style="font-weight:600;font-size:16px;">年度家庭计划</span>
+            <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#fff3e0;color:#e65100;border-radius:10px;font-size:11px;">热门</span>
+            <p style="font-size:13px;color:#666;margin:6px 0 0;">分龄AI课程 + 每月家长问答 + 学习进度追踪</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+            <div style="font-weight:700;color:#0F2B46;font-size:18px;">¥199</div>
+            <div style="font-size:12px;color:#888;">/ 年</div>
+            <button onclick="copyEmail('订阅', '年度家庭计划 ¥199/年')" style="display:inline-block;margin-top:6px;padding:8px 20px;background:#0F2B46;color:white;border-radius:6px;border:none;font-size:13px;font-weight:500;cursor:pointer;">订阅</button>
+          </div>
+        </div>
+
+        <!-- 邮箱显示 + 内联JS -->
+        <div style="background:linear-gradient(135deg,#0F2B46,#1A3F64);border-radius:12px;padding:20px 20px;text-align:center;">
+          <div style="margin-top:0;padding:10px 16px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;gap:10px;">
+            <span style="color:white;font-size:13px;">联系邮箱：</span>
+            <span style="color:#C9A96E;font-weight:600;font-size:14px;" id="emailDisplay">connie@humanaifit.com</span>
+            <button onclick="copyRawEmail()" style="padding:4px 12px;background:rgba(201,169,110,0.3);color:#C9A96E;border:1px solid rgba(201,169,110,0.5);border-radius:4px;font-size:12px;cursor:pointer;">复制</button>
+          </div>
+          <p id="copyMsg" style="color:#4ade80;font-size:12px;margin-top:8px;height:18px;"></p>
+        </div>
+
+        <script is:inline>
+          function copyEmail(action, product) {
+            var text = '【' + action + '】' + product + '\n\n请发邮件至 connie@humanaifit.com，我会尽快联系您完成支付。';
+            var msg = document.getElementById('copyMsg');
+            if (navigator.clipboard) {
+              navigator.clipboard.writeText(text).then(function() {
+                msg.textContent = '✅ 已复制购买信息，请前往邮箱发送';
+              }).catch(function() {
+                fallbackCopy(text, msg);
+              });
+            } else {
+              fallbackCopy(text, msg);
+            }
+          }
+          function copyRawEmail() {
+            var msg = document.getElementById('copyMsg');
+            if (navigator.clipboard) {
+              navigator.clipboard.writeText('connie@humanaifit.com').then(function() {
+                msg.textContent = '✅ 已复制邮箱地址';
+              }).catch(function() {
+                fallbackCopy('connie@humanaifit.com', msg);
+              });
+            } else {
+              fallbackCopy('connie@humanaifit.com', msg);
+            }
+          }
+          function fallbackCopy(text, msgEl) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand('copy');
+              msgEl.textContent = '✅ 已复制到剪贴板';
+            } catch(e) {
+              msgEl.textContent = '请复制邮箱：connie@humanaifit.com';
+            }
+            document.body.removeChild(ta);
+          }
+        </script>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark text-center">
+    <div class="container">
+      <h2>不确定哪个服务适合你？</h2>
+      <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
+        预约免费诊断，我们帮你找到最迫切的需求。
+      </p>
+      <a href="/contact/" class="btn btn-primary" style="border:none;cursor:pointer;padding:14px 28px;background:var(--color-accent);color:#0F2B46;border-radius:8px;font-size:16px;font-weight:600;text-decoration:none;display:inline-block;">预约诊断 →</a>
+    </div>
+  </section>
+</Base>

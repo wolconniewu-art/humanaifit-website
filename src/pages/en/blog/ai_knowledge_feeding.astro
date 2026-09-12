@@ -1,0 +1,140 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "Knowledge Management", "Two-Way Distillation"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="Your Knowledge and Skills Get Distilled into AI — and How to Feed AI Well"
+  description="Start with one word, the key to the whole piece: **distillation**."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-09-01</p>
+      <h1 style="font-size:2rem;line-height:1.35;">Your Knowledge and Skills Get Distilled into AI — and How to Feed AI Well</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>Distillation means turning what you "know how to do but can't quite articulate" into something AI can read and reuse. Your experience, judgment, and intuition live in your head; once extracted into rules and parameters, AI can run them for you.</p>
+
+<p>This is happening in two directions at once — your skills get extracted, and your knowledge gets fed out by your own hand. See this two-way flow clearly, and you'll know where to stand.</p>
+
+<h2>1. How knowledge gets "distilled" into something AI can use</h2>
+
+<p>In May 2026, an open-source project called skills-for-humanity stirred up the developer community. What it does, plainly put: it packages the structured reasoning methods of rigorous human thinkers into "skills" AI can invoke directly.</p>
+
+<p>By May 26, 2026, the project had passed 8,000 stars on GitHub. What it installs into AI is a "thinking-framework router" — not teaching AI "what to answer," but "how to think."</p>
+
+<p>It organizes hundreds of methods into broad categories: logic, probability, decision-making, game theory, systems thinking, creativity. A few examples: verifying whether a premise actually supports a conclusion; anchoring an estimate to a historical base rate; having several "advisors" form a committee to analyze together, so no single perspective runs away with it.</p>
+
+<p>How does this work in practice? A side-by-side makes it clear. Tell AI to "analyze this business problem," and it gives you a pretty, generic answer. But change it to "first use Porter's Five Forces to map the competitive structure, then SWOT to assess strengths and weaknesses, then output the conclusion in SCQA form," and the result is entirely different — structure decides the quality of the output.</p>
+
+<p>Its deeper meaning is a shift across three generations of human-AI interaction (a division proposed in this piece, not an industry consensus):</p>
+
+<ul>
+
+<li><strong>1.0</strong> (early days): you prompt, AI answers; quality depends on how well you express yourself.</li>
+
+<li><strong>2.0</strong> (2024–2025): AI learns chain-of-thought reasoning; quality depends on how well the framework is designed.</li>
+
+<li><strong>3.0</strong> (2026 onward): you turn methods into "protocols," and AI executes within them; quality depends on how well the method is structured.</li>
+
+</li></ul>
+
+<h2>2. But this extraction runs two ways, and it costs something</h2>
+
+<p>If extraction were just "you teach AI your methods," things would be simple. The problem is that extraction runs two ways, and the power is not symmetric.</p>
+
+<p><strong>On one side, enterprises distill employees.</strong> A company wants to extract a top performer's way of working, standardize it, and feed it into AI. That sounds reasonable, but it often fails in practice. The well-known example is Amazon's "Tokenmaxxing" phenomenon (reported by the Financial Times in 2024): after employees discovered the company was using AI to audit productivity, they learned to "game" the AI metrics — generating verbose documents, padding code commits. This wasn't a few people slacking; it was a systemic inversion of incentives: the company was measuring productivity, and employees were measuring the measurement.</p>
+
+<p>The knowledge being measured is cognitive and context-dependent, and employees can blur the line between "genuine contribution" and "gamed activity." Once the data is polluted, the distilled model becomes unreliable. This isn't a moral problem — it's a structural one.</p>
+
+<p><strong>On the other side, platforms distill enterprises.</strong> A company feeds its business-process data to an AI platform to train a private agent, then tries to switch vendors six months later and finds it can't export its history or migrate its custom model. Your customer profiles, your pricing logic — all sedimented into someone else's model weights.</p>
+
+<p>Lock-in in the AI era is worse than SaaS — it's not your contract being locked, it's your cognition. And you can hardly turn back: a company not using AI can't keep pace with one that is. You know handing over data loses your edge, but refusing may cost you the game immediately. It's a classic prisoner's dilemma.</p>
+
+<h2>3. Better to feed AI well than be drained by it</h2>
+
+<p>Since extraction can't be avoided, the more practical move is to feed AI well on purpose. Behind this is a whole trend: knowledge management, an old trade, suddenly becoming important.</p>
+
+<p>The reason isn't a tool upgrade — it's that the role changed. For two decades, the knowledge base was a "warehouse for people to query," uploaded but seldom read. Now it's become a "fuel depot for AI" — agents actively call on it as the basis for reasoning and decision-making. The venture firm a16z put it bluntly: if you want AI agents to work reliably, give them high-quality context.</p>
+
+<p>This shift boils down to one line: <strong>clean input yields reliable output.</strong> If your knowledge base is stuffed with outdated or inaccurate information, the quality of AI's output collapses with it.</p>
+
+<p>Before you act, do three things in order:</p>
+
+<ul>
+
+<li><strong>Clean the data</strong>: before deploying AI, sort through and clean your existing knowledge base. This step can't be skipped.</li>
+
+<li><strong>Manage permissions</strong>: once agents can auto-access the knowledge base, access control matters more than ever — least-privilege should apply to every agent.</li>
+
+<li><strong>From "management" to "empowerment"</strong>: don't let AI search for you; let it organize, connect, and provide decision context, so you can put your attention on work that needs more judgment.</li>
+
+</li></ul>
+
+<h2>4. Down to your own hands: don't trade away quality for speed</h2>
+
+<p>Matters at the organizational level always come down to how one person uses the tool in hand. Here's a counterintuitive lesson from the coding world.</p>
+
+<p>On May 25, 2026, former Mozilla engineer Nolan Lawson published a piece whose title is itself a claim: "Using AI to write better code more slowly." Within a day it drew 522 upvotes and nearly 200 comments on Hacker News, reaching #2 on the front page.</p>
+
+<p>His approach runs against the grain: after writing a chunk of code, send it to several different AI models for review at once, then rank the findings by severity and verify each by hand. The result surprised him — the review not only surfaced issues in the new code, it often dug up old bugs that had been sitting in the codebase all along. The speed didn't improve, but the quality did, and his understanding of the code deepened to an unusual degree. In his words, AI is a mirror that shows you your own blind spots.</p>
+
+<p>The title resonates because it cuts to a misunderstanding of "efficiency." If by efficiency you mean lines of code per unit of time, AI really does explode it; but if you mean sustainable, maintainable, defect-free value per unit of time, the story is entirely different. This debate has been running since ChatGPT appeared in 2022; by 2026 — with AI coding tools everywhere — it has only grown sharper.</p>
+
+<p>The HN thread split into three camps. <strong>Advocates</strong> treat LLMs as an "AI mentor," having it explain code logic and defects — slower, but the cognitive payoff far exceeds manual coding. <strong>Skeptics</strong> note that the AI review/fix loop can take longer than manual coding, so it barely qualifies as efficiency. <strong>Neutrals</strong> argue the key isn't AI itself but how you use it — use a cheaper model for planning and let AI do the grunt work. Same takeaway: the same technology, used differently by different people, yields entirely different results. The difference isn't the tool; it's the person.</p>
+
+<p>One user (justinlivi) shared: "I find myself spending more time in the AI review/fix loop than I do manual coding. Partly it's because LLM code never matches my style or architecture on the first pass, and I need the same amount of time to get it to an acceptable level." Another (kiba) said: "I treat the LLM as a mentor — I work hard to write code I know may be imperfect but reflects my best, then let it tirelessly point out my errors and explain why it should be done differently. In the end I write code I could never have written — and I actually understand why it works." This is not a victory of speed; it's a victory of depth.</p>
+
+<p>Lawson's closing is worth reading twice: "If you're the kind of developer who generates several-hundred-line PRs with AI and barely understands any of it, I invite you to slow down. Ask AI to explain how your PR works and where it might fail. You may not be more 'efficient' in raw lines of code. But you'll find this is a more 'augmented' way to program — careful, deliberate, quality-first, focused on making the next developer better."</p>
+
+<p>Behind this are two very different ways of collaborating:</p>
+
+<ul>
+
+<li><strong>Substitution</strong>: AI generates, a human glances, merge. The human's role is "check it runs," speed first.</li>
+
+<li><strong>Augmentation</strong>: a human writes the frame, AI cross-reviews from multiple angles, the human verifies line by line. The human is "chair of the review committee," quality first.</li>
+
+</li></ul>
+
+<p>More and more people shift from the first to the second, for a simple reason: the more code AI generates, the faster technical debt piles up. Let AI churn out code unchecked, and in a few months you have a tangle nobody dares touch. In other words, don't trade away quality for speed.</p>
+
+<p>This holds beyond coding. For writing, the fastest way is to let AI draft the whole thing and touch it up; the better way is to lay out the frame yourself and let AI handle fact-checking. For data analysis, the fastest is to throw it at AI with "analyze this"; the better is to define the analytical frame yourself and let AI run hypotheses inside it. For product design, the fastest is to have AI produce ten UI mockups; the better is to define the user journey yourself and let AI suggest improvements at each touchpoint. The core is one line: <strong>the deeper your grasp of the task, the more reliable AI's output becomes</strong> — in an age when everyone chases "10x efficiency," Lawson points to a third path: this is not about acceleration, but deepening. The best accelerator isn't AI running for you; it's AI teaching you to run smarter. Speed is a by-product; depth is the goal.</p>
+
+<h2>5. In closing: controlling where your knowledge flows is the real security</h2>
+
+<p>Your knowledge and skills are being extracted, and fed out by your own hand. The real question isn't "should I use AI" — it's <strong>whether you can steer this flow of knowledge.</strong></p>
+
+<p>The individual's move is "counter-distillation": keep some of what's genuinely valuable — industry intuition, the depth of client relationships, a whole-system judgment — in your head rather than handing it all over. This isn't withholding cooperation; it's looking after a sustainable career.</p>
+
+<p>The organization's move is to build a psychological contract instead of a surveillance contract: tell people plainly which knowledge will feed AI training, and create a "protected zone" for contributions, so sharing doesn't threaten anyone's position.</p>
+
+<p>The platform's long-term choice is to shift from "earning by locking data" to "earning by providing better inference" — platforms willing to let companies leave are more likely to keep them. Trust, more than lock-in, is what lasts.</p>
+
+<p>Security in the AI era doesn't come from how deeply you hide, but from whether you can decide where your knowledge flows — and who gets to use it.</p>
+
+<h2>References</h2> <ol> <li><strong>skills-for-humanity</strong> — 171 personal reasoning skills for Claude Code, GitHub, May 2026</li> <li><strong>Nolan Lawson</strong> — "Using AI to write better code more slowly," nolanlawson.com, May 25, 2026, ↳ <a href="https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/">nolanlawson.com/2026/05/25/...</a></li> <li><strong>Hacker News discussion</strong> — thread on Nolan Lawson's piece, 522 points / 199 comments, May 25, 2026, ↳ <a href="https://news.ycombinator.com/item?id=48272984">news.ycombinator.com</a></li> <li><strong>FT (Financial Times)</strong> — report on Amazon's "Tokenmaxxing" phenomenon, 2024</li> <li><strong>Rousseau, D. M.</strong> — "Psychological Contracts in Organizations," SAGE Publications, 1995</li> <li><strong>Shapiro, C. & Varian, H. R.</strong> — "Information Rules," Harvard Business School Press, 1999</li> <li><strong>Nonaka, I. & Takeuchi, H.</strong> — "The Knowledge-Creating Company," Oxford University Press, 1995</li> <li><strong>Andreessen Horowitz</strong> — "Your Data Agents Need Context," 2026</li> <li><strong>IBM</strong> — "What Is Enterprise Search?," 2026</li> <li><strong>Stepper, J.</strong> — "Working Out Loud," 2015</li> </ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 What did this article inspire for you?</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit studies how humans and AI can genuinely work together. If you face real questions on enterprise AI adoption, human-AI collaboration, or global compliance, join our discussion.
+  </p>
+  <p style="margin:0;">
+    🔗 Search for the "AI Era Survival Handbook" Knowledge Planet, ¥199/year — every deep article comes with tool templates and direct contact with the author.
+  </p>
+</blockquote>
+
+  </div>
+</Article>

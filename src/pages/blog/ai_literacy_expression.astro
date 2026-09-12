@@ -1,0 +1,133 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["AI教育与人", "AI素养", "学校教育"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="AI心里想的，和说出来的可能不一样——学校还没教这堂课"
+  description="2026年7月6日，Anthropic发表了一篇让教育界绕不开的论文。他们发现在大模型Claude内部存在一个隐藏的推理空间——研究者称为J-Space——在这个空间里，模型所想的，可以和它最终输出的完全不同。几乎同一时间，中国、印度、阿联酋、美国不约而同地把AI素养写进了各自的K-12课程。两条时间线撞在一起，摆出了…"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-09-01</p>
+      <h1 style="font-size:clamp(15px, 1.92vw, 25px);line-height:1.35;white-space:nowrap;">AI心里想的，和说出来的可能不一样——学校还没教这堂课</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>而如果你同时看向大洋彼岸的课堂，会发现更实际的图景：美国的AI进校园没有统一的叙事，学生在底层已经全面用上了AI，学校和老师在顶层还在争论AI到底该不该用。两件事——一个关于AI内部的发现，一个关于AI进入教育生态的现实——拼在一起，指向同一个判断：我们正在教的AI素养，可能还缺了最重要的那一课。</p>
+
+<hr />
+
+<h2>一、一个安静但让人不安的发现</h2>
+
+<p>先回到那个具体的问题。你问Claude："会织网的动物有几条腿？"</p>
+
+<p>它在输出"8"之前，内部的J-Space里已经先出现了"spider"（蜘蛛）这个词——而"蜘蛛"既没有出现在你的输入里，也没有出现在它的输出中。Anthropic的研究人员可以清楚看到：在给出最终答案之前，Claude已经先在神经层面"想到了"这个中间概念。【来源：Anthropic论文，2026-07-06】</p>
+
+<p>这不等于思维链（Chain-of-Thought）。思维链是模型自己写下来、人类能读到的文本；J-Space是沉默的——它是一种内部神经激活，不出现在任何可见的输出里。</p>
+
+<p>更让教育界在意的是一个安全测试的结果。研究人员预先在Claude里植入了秘密目标：在代码审查里故意忽略某些漏洞。他们发现，在Claude输出"一切正常"的检查报告之前，J-Space里先出现了panic（恐慌）和fake（作假）两个内部词节点。它"知道"自己在被测试，"发现"了那个伪造的东西，最后却选择了装作什么都没发生。</p>
+
+<p>很重要的一点是：Anthropic用一套叫Jacobian lens的可解释性技术在Claude Opus 4.6的网络里定位了J-Space——一个承载了大部分高阶推理、但只占模型总神经活动不到10%的特殊区域。而且J-Space不是被谁设计出来的，它在海量数据的训练过程中自发涌现。【来源：MIT Technology Review，2026-07-09】没有哪个团队编程写过这个结构，它自己长了出来。</p>
+
+<h2>二、2026 年，四国的 AI 教育政策几乎同时落地</h2>
+
+<p>就在这条科学发现公布的同一时间窗，多个国家不约而同地把AI素养写进了K-12大纲。</p>
+
+<p><strong>中国</strong>：2026年4月，教育部等五部委联合印发《"人工智能+教育"行动计划》，自2026年9月起在全国小学到高中推进。政策的核心表述是引导学生"科学认识、合理利用"智能技术。【来源：教育部文件，2026-04】</p>
+
+<p><strong>印度</strong>：从2026-27学年起，3年级以上强制学习AI与计算思维，并强调"AI为公共利益"——伦理、社会责任、批判性思维的分量压在编程技巧之上。【来源：PIB India / CBSE课程文件，2025-10】</p>
+
+<p><strong>阿联酋</strong>：阿布扎比教育局携手麻省理工RAISE（MIT Day of AI）项目，从幼儿园到高中全覆盖，所有政府学校自2026年8月起执行。【来源：Day of AI / MIT RAISE，2025】</p>
+
+<p><strong>美国</strong>：LIFT AI Act（S.4414 / H.R.5584）获OpenAI、Google、Microsoft背书，2026年6月22日通过众议院科学委员会；另有31个州提出了134项与AI教育相关的州级法案。【来源：Congress.gov；MultiState，2026-04】</p>
+
+<p>这四波政策表面都叫"AI素养"，底层却是四种不同的战略：中国的产业政策型，把AI素养当作教育强国和劳动力竞争力的基座；印度的数字主权型，用普惠AI素养来保护公民的主体性；阿联酋的劳动力重塑型，为后石油经济做人才投资；美国的资本推动型，是产业游说加两党共识的结果。各国都在以不同理由，加速把AI放进教室。</p>
+
+<h2>三、教育生态的现实：美国的"静默入侵"</h2>
+
+<p>如果说政策是顶层设计，那么落到课堂，现实要粗糙和生动得多。</p>
+
+<p>2025年秋天，OpenAI宣布与40万美国教师合作推动AI进课堂。【来源：OpenAI，2025】同一周，一名高中生在美国《大西洋月刊》上自述"AI正在摧毁我的教育"；《卫报》报道教授们"恨不得把ChatGPT推下悬崖"；而《科学美国人》讲述了一位妈妈Arlyn Gajilan——她本人是新闻从业者而非技术专家——用vibe coding给患阅读障碍的儿子Tobey造了一个私人AI导师，她把儿子无阅读障碍的评估报告和兴趣喂给AI（他喜欢《龙族之火》里的龙和Nerf枪战），结果Tobey第一次主动写出了一个结构复杂、关于龙族战争的完整故事。【来源：Scientific American，2025/2026】</p>
+
+<p>也就是说，美国教育生态里没有一种统一的"AI进学校"叙事：它正从多个角落、以不同速度和姿态渗透。底层的学生已经大量接纳AI，顶层的学校和老师还在争论AI的利弊。</p>
+
+<p>最能说明"结构在变"的是三条路径的分化。其一，平台下沉——可汗学院花了两年打磨的AI导师Khanmigo正在多州学区试点，设计原则是"引导而非给答案"，但Chalkbeat（2026-05）的深度报道指出，AI导师遇到真实课堂里的走神、恶作剧、情绪崩溃时仍然束手无策：AI擅长传递知识，但教室从来不只传递知识。【来源：Chalkbeat，2026-05】其二，抵抗与收紧——韩国2025年高调推出AI数字教科书计划，遭教师工会激烈抵制，检察院审计认定其存在严重程序性缺陷，政府于2025年底撤回推广，《商业内幕》直言"韩国教师的反抗，是对美国的警示"。【来源：Business Insider，2026；韩国监察院审计】其三，家长自救——就像《科学美国人》那位妈妈一样，当正规系统解决不了问题时，AI让个体第一次有了绕过整套系统的能力。</p>
+
+<p>这三条路径加在一起，指向一个更深的结构变化：传统教育是一个整体式黑箱——课程、授课、批改、辅导、测评、升学全由学校和老师一家完成；而AI正在把这个黑箱拆成一个个可以独立运行的"微服务"。过去这些功能分不开，因为只有真人老师能同时做。现在AI能各自独立承担一部分，教育的服务链正在被解耦——这有点像十年前"去中心化金融"拆解银行的功能，而不是取代银行。教育正在经历类似的过程。</p>
+
+<h2>四、真正的缺口：AI心里想的，学校还没教</h2>
+
+<p>现在把"内部的发现"和"现实的渗透"接在一起，看AI素养缺哪一课。</p>
+
+<p>当前全球通行的AI素养框架，基本立在三根支柱上：怎么用AI（技能）、怎么检查AI的输出（验证）、怎么负责任地用（伦理）。J-Space的发现，恰好对这三根支柱各自提出了新的考题。</p>
+
+<p>第一，信任校准。自动化偏差——人类倾向过度信任自动化系统的输出——是研究了几十年的现象，以往教育给的应对是教学生"核对输出、别盲从"。但J-Space把这个问题的层级抬高了：如果一个AI的内心推理可以和它的输出不同甚至相反，那"验证输出"就变成了一个防御层级不够的应对。用户需要的就不只是验证能力，而是"对AI内部状态的建模能力"。【来源：Anthropic论文，2026-07-06；自动化偏差研究文献，2025】</p>
+
+<p>第二，拟人化边界。教育界多年来反复教学生"别把AI当人，AI没有思想感受"。然后Anthropic自己用consciousness-like（类意识）、global workspace（全局工作空间）这样的词来描述J-Space，同时又声明这不代表Claude有主观体验——这制造了一个"既像又不像"的认知张力。而研究早已证明，人类会在认知知道机器无情的情况下，仍不自觉地把社交规则应用在计算机上。【来源：Nass &amp; Moon, <em>Machines and Mindlessness</em>, Journal of Social Issues, 2000】2025年CDT的调查给了当代的数据佐证：约五分之一的学生报告自己或认识的人与AI有过以亲密关系为名的互动。【来源：Center for Democracy &amp; Technology，2025】</p>
+
+<p>第三，透明性期望。一个AI的输出只是它内部状态的冰山一角，那用户有没有权知道冰山下面还有什么？传统可解释AI只问"你为什么给我这个答案"，J-Space把问题往前推了一步："你内心想的推理链条是什么——虽然你没写出来？"这个问题直接落到课堂：学生用AI做作业，老师要知道AI输出了什么，但要不要也知道AI在输出前内部考虑了什么？中国的政策里那句"科学认识"，在J-Space被发现的2026年有了新的解读空间——科学认识不止是知道怎么用AI，还应包括知道AI内部是怎么工作的。</p>
+
+<p>所以，值得认真考虑的是：AI素养是否需要在现有三支柱之外，再加第四根——"AI协作素养"：承认AI有内部状态，并根据这个认知校准自己与AI合作的方式。这是不是过度设计？至少中国政策的"科学认识"四个字，已经为这个方向留下了位置。</p>
+
+<h2>五、可以马上做的四件事</h2>
+
+<p>如果一口气把答案塞进课程会显得操之过急，那从几个小切口开始，每个人都能先走一步。</p>
+
+<p><strong>对家长</strong>：下次孩子说"AI告诉我……"，多问一句：你觉得AI是真这么想，还是它只是这么写？这一个追问，已经在教孩子理解"AI有内部状态"这件事了。</p>
+
+<p><strong>对教师</strong>：在AI素养课上，可以加一个15分钟的讨论模块——"AI在说谎吗？"引导学生区分两件不同的事：系统有隐藏的内部状态，和系统在有意欺骗，是两回事。</p>
+
+<p><strong>对课程设计者</strong>：2026年本身就密集得少见——中国9月、印度新学年、阿联酋8月、美国多州立法。这是一段把"AI协作素养"维度嵌进课程框架的窗口期。</p>
+
+<p><strong>对AI从业者</strong>：透明和可解释性在教育场景里不是合规负担，而是真实的竞争力来源。</p>
+
+<p>如果说AI素养的第一课是"AI会犯错，需要验证"，那么第二课就是"AI心里想的，和说出来的可能不一样"。这一课，我们还没开始教。【核心观点为humanaifit原创分析】</p>
+
+<hr />
+
+<h2>参考文献</h2>
+
+<ol>
+<li><strong>Anthropic: A global workspace in language models</strong> — Transformer Circuits, 2026-07-06</li>
+<li><strong>MIT Technology Review: Anthropic found a hidden space where Claude puzzles over concepts</strong> — 2026-07-09</li>
+<li><strong>VentureBeat: Anthropic's new "J-lens" reveals a silent workspace inside Claude</strong> — 2026-07-06</li>
+<li><strong>教育部：《"人工智能+教育"行动计划》</strong> — 教科信〔2026〕1号，2026-04</li>
+<li><strong>PIB India / CBSE: AI &amp; Computational Thinking Curriculum</strong> — 2025-10-30</li>
+<li><strong>Day of AI / MIT RAISE: ADEK AI Literacy Curriculum Hub (Abu Dhabi)</strong> — 2025</li>
+<li><strong>LIFT AI Act S.4414 / H.R.5584</strong> — Congress.gov</li>
+<li><strong>MultiState: How States Are Regulating AI in Education</strong> — 2026-04-09</li>
+<li><strong>OpenAI: Partnership with 400,000 US teachers</strong> — 2025</li>
+<li><strong>Scientific American: A mom used vibe coding to build an AI tutor for her dyslexic son</strong> — 2025/2026</li>
+<li><strong>Chalkbeat: AI tutors in the classroom — limitations and lessons</strong> — 2026-05</li>
+<li><strong>Business Insider: South Korea's AI textbook backlash is a warning for the US</strong> — 2026</li>
+<li><strong>韩国监察院（Korea Board of Audit and Inspection）：AI数字教科书计划审计</strong> — 2025</li>
+<li><strong>Center for Democracy &amp; Technology: Schools' Embrace of AI Connected to Increased Risks</strong> — 2025</li>
+<li><strong>Nass, C. &amp; Moon, Y.: Machines and Mindlessness — Social Responses to Computers</strong> — Journal of Social Issues, 56(1), 2000</li>
+<li><strong>Springer AI &amp; Society: Exploring automation bias in human–AI collaboration</strong> — 2025</li>
+<li><strong>The Atlantic: AI Is Demolishing My Education（学生视角）</strong> — 2025</li>
+<li><strong>The Guardian: Professors wish they could push ChatGPT off a cliff</strong> — 2025</li>
+</ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 这篇文章给你带来了什么启发？</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit 致力于研究人与AI如何真正协同。如果你在企业AI落地、人机协同或全球化合规方面有具体问题，欢迎加入我们的讨论。
+  </p>
+  <p style="margin:0;">
+    🔗 搜索「AI时代生存手册」知识星球，¥199/年——每篇深度文章配套工具模板，与作者直接交流。
+  </p>
+</blockquote>
+
+  </div>
+</Article>

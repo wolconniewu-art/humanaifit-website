@@ -1,0 +1,140 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["人机契合", "知识管理", "双向蒸馏"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="你的知识与技能，怎样被AI学走、怎样喂好AI"
+  description="先讲一个词，这个词是理解全篇的钥匙：**蒸馏**。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-09-01</p>
+      <h1 style="font-size:2rem;line-height:1.35;">你的知识与技能，怎样被AI学走、怎样喂好AI</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>蒸馏，就是把"你心里会做但说不清"的东西，抽成"AI 看得懂、能复用"的东西。你的经验、判断、手感，本来藏在脑子里；一旦被抽成规则和参数，AI 就能替你跑。</p>
+
+<p>这件事正在两个方向上同时发生——你的技能被企业抽走，你的知识被你主动喂出去。看清这股双向流动，你才知道该怎么站。</p>
+
+<h2>一、知识是怎么被"抽"成 AI 能用的</h2>
+
+<p>2026 年 5 月，一个叫 skills-for-humanity 的开源项目在程序员社区引起热议。它做的事说穿了很简单：把人类历史上那些严谨思考者的结构化推理方法，打包成 AI 可以直接调用的"技能"。</p>
+
+<p>到 2026 年 5 月 26 日，这个项目已经在 GitHub 上拿到超过 8000 颗星。它给 AI 装的是一个"思维框架调度器"——不是教 AI"回答什么"，而是教它"怎么思考"。</p>
+
+<p>它把上百种方法按大类整理，比如逻辑、概率、决策、博弈、系统思维、创造力。举几个例子：验证一个论证的前提是否支撑结论；用历史基准率去锚定估算；让几个"顾问"组成委员会一起分析，防止单一视角跑偏。</p>
+
+<p>这东西到底怎么用？一个对比就很清楚。你让 AI"分析这个商业问题"，它会给你一段漂亮的泛泛之谈。但你改成"先用波特五力识别竞争结构，再用 SWOT 评估优劣势，最后按 SCQA 输出结论"，出来的东西就完全不同了——结构，决定了输出的质量。</p>
+
+<p>它的深层意义，是三代人机交互范式的更替（这是本文提出的划分，不是行业共识）：</p>
+
+<ul>
+
+<li><strong>1.0</strong>（早期）：你提示，AI 回答，质量靠你的表达能力。</li>
+
+<li><strong>2.0</strong>（2024-2025）：AI 学会思维链推理，质量靠框架设计的水平。</li>
+
+<li><strong>3.0</strong>（2026 起）：你把方法变成"协议"，AI 在协议内执行，质量靠方法结构化到什么程度。</li>
+
+</li></ul>
+
+<h2>二、但这种抽取是双向的，而且有代价</h2>
+
+<p>如果抽取只是"你把方法教给 AI"，事情还算简单。问题在于，抽取是双向的，而且两边的权力并不对等。</p>
+
+<p><strong>一边，是企业蒸馏员工。</strong> 企业想把高绩效员工的工作方式抽出来，标准化，再灌给 AI。这听起来合理，但实践中常常翻车。知名的例子是亚马逊的"Tokenmaxxing"现象（英国《金融时报》2024 年报道）：员工发现公司在用 AI 审计生产力后，开始"刷"AI 指标——生成冗长文档、增加无意义的提交。不是少数人摸鱼，而是系统性的激励反转：公司在度量生产力，员工在度量度量。</p>
+
+<p>被测量的知识是认知性的、上下文依赖的，员工能在"真贡献"和"刷出来的互动"之间制造混淆信号。数据一旦被污染，蒸馏出来的模型就不可靠。这不是道德问题，是结构问题。</p>
+
+<p><strong>另一边，是平台蒸馏企业。</strong> 企业把业务流程数据喂给 AI 平台训练自己的私有 Agent，半年后想换供应商，发现历史记录导不出来、定制模型无法迁移。你的客户画像、定价逻辑，全沉积在别人的模型权重里。</p>
+
+<p>AI 时代的锁定比 SaaS 更狠——它锁的不是你的合同，是你的认知。而且你几乎没法回头：不用 AI 的企业在竞争力上跑不过用的企业。你知道上交数据会失去优势，但不上交，你可能立刻失去竞争资格。这是典型的囚徒困境。</p>
+
+<h2>三、与其被动被抽，不如主动喂好</h2>
+
+<p>既然抽取躲不掉，更务实的做法是主动把 AI"喂好"——这背后是一整个趋势：知识管理这个老行当，突然变得重要了。</p>
+
+<p>原因不在于工具升级，而在于角色变了。过去二十年的知识库，是"给人查的仓库"，有人上传、少人看；现在它成了"给 AI 喂的粮仓"——AI Agent 执行任务时会主动调用它，作为推理和决策的基础。风投机构 a16z 有篇文章说得直白：你要 AI Agent 可靠地干活，就得给它高质量的上下文。</p>
+
+<p>这一转变的核心只有一句：<strong>干净的输入，才有可靠的输出。</strong> 如果知识库里塞满了过时或不准确的信息，AI 的输出质量也会跟着塌。</p>
+
+<p>动手前，先做完三件事：</p>
+
+<ul>
+
+<li><strong>洗数据</strong>：部署 AI 之前，先梳理和清洗现有知识库。这一步省不掉。</li>
+
+<li><strong>管权限</strong>：AI Agent 能自动访问知识库后，权限管理比以往更关键，最小权限原则要落到每个 Agent 上。</li>
+
+<li><strong>从"管理"到"赋能"</strong>：别让 AI 替你搜索，让它帮你整理、关联、提供决策上下文，你才能把精力放到更需要判断的活上。</li>
+
+</li></ul>
+
+<h2>四、落到你自己手上：用 AI 干活，别把质量搭进去</h2>
+
+<p>组织层面的事，最终都落到一个人怎么用手上的工具。这里有个反直觉的教训来自编程圈。</p>
+
+<p>2026 年 5 月 25 日，前 Mozilla 工程师 Nolan Lawson 写了一篇文章，标题本身就是一个主张："用 AI 更慢地写出更好的代码"（Using AI to write better code more slowly）。不到一天，它在 Hacker News 上拿到 522 个赞、近 200 条评论，冲上首页第二。</p>
+
+<p>他的做法是反着来的：写完一段代码后，同时交给几个不同的 AI 模型去审查，再把发现的问题按严重程度分级，逐条人工验证。结果出乎意料——审查不仅发现新代码的问题，还常常挖出代码库里本就存在的旧 bug。速度没变快，质量却显著提升，而且他对代码的理解深到了一个前所未有的程度。用他的话讲，AI 是一面镜子，照出的是人的盲区。</p>
+
+<p>这个标题之所以能打动人，是因为它戳中了对"效率"的误解。如果你说的"效率"是单位时间内产出的代码行数，AI 确实让效率爆了；但如果你说的是单位时间内产出可持续、可维护、无缺陷的价值，故事完全不一样。这个话题从 2022 年 ChatGPT 出现就一直在，到了 2026 年——AI 编码工具已经无处不在——变得更尖锐了。</p>
+
+<p>HN 评论区因此分成了三类：<strong>拥趸者</strong>把大模型当"AI 导师"，让它解释代码逻辑和缺陷，虽慢但认知收益远超手动编码；<strong>质疑者</strong>指出 AI 评审/修复循环可能比手动编码还慢，谈不上效率；<strong>中立派</strong>认为关键不在 AI 而在怎么用——用便宜的模型做规划，让 AI 只干苦活。同一个结论：技术一样，用的人不同，效果完全不同。差异不在工具，在人。</p>
+
+<p>有用户（justinlivi）分享："我发现自己在 AI 审核/修复循环上花的时间，比手动编码还长。一个原因是 LLM 代码第一版从来不符合我的风格或架构，我需要花同样的时间让它达到我能接受的水平。"也有用户（kiba）说："我把 LLM 当导师——我努力写出我知道可能不完美、但这是我的最好水平的代码，让 LLM 不知倦地指出错误、解释为什么该那么写。到最后我写出了我永远写不出的代码——并且我确实理解了它为什么这样工作。"这不是速度的胜利，是学习深度的胜利。</p>
+
+<p>Lawson 在文末有一段话值得反复读："如果你是用 AI 生成几百行的 PR、自己几乎不理解这些代码的那种开发者，我邀请你慢下来。让 AI 解释你的 PR 是怎么工作的、它可能在哪里失败。你可能不会在原始代码行数上更"高效"。但你会发现，这是一种更"增强版"的编程方式——小心翼翼、有条不紊、质量至上、专注于让下一个开发者过得更好。"</p>
+
+<p>这背后是两种完全不同的协同方式：</p>
+
+<ul>
+
+<li><strong>替代型</strong>：AI 生成，人快速过目，合并。人的角色是"检查能不能跑"，速度优先。</li>
+
+<li><strong>增强型</strong>：人写框架，AI 多角度交叉审查，人逐条验证。人的角色是"评审委员会主席"，质量优先。</li>
+
+</li></ul>
+
+<p>越来越多人从前者转向后者，理由很简单：AI 生成的代码越多，代码库的技术债累积越快。不加节制地让 AI 快速产出，几个月后就会变成一团谁都不敢动的乱麻。换句话说，别拿速度去换质量。</p>
+
+<p>这个道理跳出来，别的活也一样。写文章，最快是让 AI 生成全文再小修，最好是人定框架、让 AI 做事实核查；做数据分析，最快是扔给 AI"帮我分析"，最好是人定义分析框架、让 AI 在框内跑假设；做产品设计，最快是让 AI 出十个 UI 稿，最好是人定义用户旅程、让 AI 在每个触点给优化建议。核心是一句：<strong>人对任务理解越深，AI 的输出越有谱。</strong>——在人人追求"十倍效率"的时代，Lawson 指出的是第三条路：这不是加速，是深化。最好的加速器不是 AI 替你跑，而是 AI 教会你怎么跑得更聪明。速度是副产品，深度才是目的。</p>
+
+<h2>五、收口：知识流向你能不能掌控，是 AI 时代真正的安全感</h2>
+
+<p>你的知识和技能，正在被抽走，也正在被你喂出去。真正的问题不是"要不要用 AI"，而是<strong>这股知识流，你能不能掌控</strong>。</p>
+
+<p>个人的办法是"反蒸馏"：把真正值钱的东西——行业直觉、客户关系深度、对复杂系统的整体判断——留一部分在脑子里，别全盘托出。这不是不配合，是对可持续的职业生涯负责。</p>
+
+<p>组织的办法是建立心理契约，而不是监控契约：透明地告诉员工哪些知识会用于 AI 训练，给知识贡献设"保护区"，让分享不威胁到自己的位置。</p>
+
+<p>平台的长期选择，是从"锁住数据赚钱"转向"提供更好的推理能力赚钱"——愿意放企业走的平台，反而更可能留住企业。因为信任，比锁定更持久。</p>
+
+<p>AI 时代的安全感，不来自你藏得多深，而来自你有没有能力决定：自己的知识流到哪里去，以及谁来用它。</p>
+
+<p>&lt;h2&gt;参考文献&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;skills-for-humanity&lt;/strong&gt; — 171 personal reasoning skills for Claude Code，GitHub，2026-05&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Nolan Lawson&lt;/strong&gt; — "Using AI to write better code more slowly"，nolanlawson.com，2026-05-25，↳ &lt;a href="https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/"&gt;nolanlawson.com/2026/05/25/...&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Hacker News discussion&lt;/strong&gt; — Nolan Lawson 文章讨论帖，522 points / 199 comments，2026-05-25，↳ &lt;a href="https://news.ycombinator.com/item?id=48272984"&gt;news.ycombinator.com&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;FT (Financial Times)&lt;/strong&gt; — 亚马逊 "Tokenmaxxing" 事件报道，2024&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Rousseau, D. M.&lt;/strong&gt; — "Psychological Contracts in Organizations"，SAGE Publications，1995&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Shapiro, C. &amp;amp; Varian, H. R.&lt;/strong&gt; — "Information Rules"，Harvard Business School Press，1999&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Nonaka, I. &amp;amp; Takeuchi, H.&lt;/strong&gt; — "The Knowledge-Creating Company"，Oxford University Press，1995&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Andreessen Horowitz&lt;/strong&gt; — "Your Data Agents Need Context"，2026&lt;/li&gt; &lt;li&gt;&lt;strong&gt;IBM&lt;/strong&gt; — "What Is Enterprise Search?"，2026&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Stepper, J.&lt;/strong&gt; — "Working Out Loud"，2015&lt;/li&gt; &lt;/ol&gt;</p>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 这篇文章给你带来了什么启发？</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit 致力于研究人与AI如何真正协同。如果你在企业AI落地、人机协同或全球化合规方面有具体问题，欢迎加入我们的讨论。
+  </p>
+  <p style="margin:0;">
+    🔗 搜索「AI时代生存手册」知识星球，¥199/年——每篇深度文章配套工具模板，与作者直接交流。
+  </p>
+</blockquote>
+
+  </div>
+</Article>

@@ -1,0 +1,218 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["AI治理与政策", "AI素养", "监管"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="当全球把&quot;会AI&quot;写进法律：监管在做减法，为什么最终都指向人？"
+  description="2025到2026年，全球围绕AI的法律动作，看起来方向完全相反。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-09-01</p>
+      <h1 style="font-size:clamp(13px, 1.69vw, 22px);line-height:1.35;white-space:nowrap;">当全球把"会AI"写进法律：监管在做减法，为什么最终都指向人？</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>一、同一个反差镜头</h2>
+
+<p>2025到2026年，全球围绕AI的法律动作，看起来方向完全相反。</p>
+
+<p>欧盟在往回收。2024年生效的《人工智能法案》本该在2026年8月收紧高风险AI系统的合规，结果先是欧洲议会投票延迟了部分条款的实施[1]，随后又拿出了一份"简化方案"（Digital Omnibus），把AI的定义范围收窄、把文件要求砍掉约四成[2]。美国却在往上加。伊利诺伊州在2026年5月通过了一条法案，要求OpenAI、Anthropic、Google DeepMind这类前沿AI实验室接受独立的第三方安全审计，被不少专家称为美国目前对大型AI公司最有力的法律约束[3]。</p>
+
+<p>另一边，欧盟、美国、新加坡、日本、中国等一批国家在做另一件事——把"会AI"本身变成义务。欧盟的《人工智能法案》第4条在2025年2月就生效，规定所有提供和使用AI系统的机构，必须确保其员工具备"足够水平的AI素养"[4]；美国的总统行政令启动了白宫AI教育特别工作组，截至2026年6月已有37个州和波多黎各发布了中小学生使用AI的官方指南[4]；新加坡把AI素养列为国家优先事项，由总理亲自主持国家AI理事会[4]；日本内阁通过了首份《AI基本计划》，官民合计投入超过1兆日元[4]；中国教育部联合四部门在2026年4月印发《"人工智能+教育"行动计划》[4]。</p>
+
+<p>一个在往回收，一个在往上加，还有一群在把"会AI"写进法律。这三种动作看起来南辕北辙，但把它们放在一起，能看到它们在吵同一件事——AI治理到底在管什么。</p>
+
+<h2>二、欧盟在做减法：把一部大法往回"细调"</h2>
+
+<p>先看欧盟。要理解2026年的"减法"，得先看清2024年那部"加法"铺了多大的摊子。</p>
+
+<p>2024年8月，欧盟《人工智能法案》正式生效，采用分阶段实施。按照原定时间表，2026年8月将是高风险AI系统的合规截止日期。但推进远不如预期顺利：欧洲议会在2026年4月投票决定延迟部分条款的实施[1]，布鲁塞尔的谈判一度陷入僵局，虽然8月的截止日期"理论上"仍被保留[5]。美国公司在欧盟市场面临的合规压力也在增大，Holland &amp; Knight就提醒在欧运营的美企关注2026年8月这个潜在节点[6]。</p>
+
+<p>"简化方案"（Digital Omnibus）就是在这一背景下出台的。它做的不是"放松"，而是三次收紧：</p>
+
+<p><strong>第一，把AI的定义收窄。</strong> 什么样的系统算"AI"、"需要接受AI法案管辖"？方案把纯粹的规则型系统和简单算法排除在适用范围之外，把焦点留在"真正具有自主决策能力的AI系统"[2]。这改变了判断的起点——更多工具不再算"需要被这部法管的AI"。</p>
+
+<p><strong>第二，把文件要求砍下来。</strong> 简化后的合规文件要求比原方案减少了约40%[2]。同时微型和小型企业获得更多豁免，降低了门槛。</p>
+
+<p><strong>第三，把责任链条理清。</strong> 方案引入了更明确的"上下游责任共担"机制——基础模型提供者和应用部署者的义务边界更加分明，而不是让一套系统从研发到落地全程只由一方扛[2]。</p>
+
+<p>这正是"做减法"该被纠正的误解——它不是监管退潮。JD Supra的评价是一句精准的概括："Omnibus简化方案不是AI Act的终结，而是它的成人礼。"[7] 从执行层面看，最终多数AI系统仍需符合透明度、人类监督、准确性和安全性这些核心要求[8]。也就是说，网从宽泛收紧到精准，不合规的"面"小了，但落在每个系统上的"点"反而更深。</p>
+
+<p>用普通人的话说：欧盟不是在松开监管，是在把一张撒得太宽、可能连自己也管不清楚的大网，收成一张它真正抓得住的细网。管得更准，不等于管得更松。</p>
+
+<h2>三、美国在做加法：一层层往上"加码"</h2>
+
+<p>如果说欧盟在做减法，美国（至少在州一级）就是一套层层加码的加法。</p>
+
+<p>2026年5月27日，伊利诺伊州众议院通过SB 315，要求前沿AI实验室接受独立的第三方安全审计[3]。它的机制看起来简单：独立的第三方审计机构要验证，AI实验室是否真的遵守了自己声明的安全标准。</p>
+
+<p>这一步在监管史上的位置，可以用一张表说明[3]：</p>
+
+<ul>
+
+<li><strong>加州（2025）</strong>：要求AI实验室披露模型防护措施和安全事件</li>
+
+<li><strong>纽约（2025）</strong>：类似的信息披露与公开报告要求</li>
+
+<li><strong>伊利诺伊（2026）</strong>：要求独立第三方审计，验证安全实践是否真实执行——而非公司自己说了算</li>
+
+</li></ul>
+
+<p>Secure AI Project的政策总监Scott Wisor对WIRED说得直白："以前的情况是AI公司自己批改自己的作业。SB 315如果成为法律，伊利诺伊将要求独立审计师检查AI实验室是否确实遵守了它们的安全承诺。"[3] 审计方可以是德勤、安永、毕马威、普华永道这类四大会计师事务所，也可以是AI评估者论坛（AI Evaluator Forum）的成员机构，包括METR、Transluce、Averi等专业研究组织[3]。</p>
+
+<p>值得注意的是这次"加法"背后的两个机制。</p>
+
+<p><strong>一个是州级实验田。</strong> 美国国会至今没有通过任何实质性的AI安全立法，这让战场下沉到州级。SB 315的发起人、伊利诺伊州众议员Daniel Didech对WIRED表示："这类法律有助于创造一个让联邦政府更有可能通过相关立法的环境。"[3] 这个模式与美国数据隐私立法的历史高度相似——在GDPR和CCPA成为事实标准之前，各州经历了多年的分散立法。</p>
+
+<p><strong>另一个是产业态度的逆转。</strong> OpenAI此前曾支持一项在模型造成灾难性损害时免除AI实验室责任的伊利诺伊法案，但OpenAI全球事务负责人Chris Lehane后来表示，这个支持是个"疏忽"（oversight）[3]。与此同时，OpenAI的政策战略转向推动一系列相似的州级法律——大型AI实验室不再全盘反对州级监管，而是选择参与、塑造、接受其为不可避免的趋势。这是从"全面反对监管"到"接受并塑造监管"的重大转变[3]。</p>
+
+<p>这一条"自我报告→强制第三方审计"的路径，与金融监管的历史几乎一模一样——上市公司先自行报告财务数据，再由审计师验证。这个在会计行业走了数十年的演化，在AI领域只用了几年[3]。随之而来的是一个正在成形的产业生态：审计机构、评估组织、认证框架、配套基础设施。AI评估者论坛已经是这个生态的早期信号[3]。</p>
+
+<h2>四、全球在把素养制度化：从"加分项"变成"义务"</h2>
+
+<p>欧盟做减法、美国做加法，都还停留在"管技术"的层面。真正把重心从"管机器"移到"管人怎么跟机器相处"的，是全球同步爆发的那批素养政策。而这条线最重要的一个细节是时间。</p>
+
+<p>欧盟《人工智能法案》2024年8月才生效，可它的<strong>第4条（AI素养义务）在2025年2月2日就先行生效</strong>了——比高风险AI系统的规则早了整整一年半。第4条规定，提供者和部署者必须采取措施，确保其员工及其他代表其处理AI系统的人员具备"足够水平的AI素养"，不遵守可能被罚[4]。这一条在生效时间上早于法案大部分条款，传递的信号非常明确：<strong>AI治理的起点不是技术，是人[4]。</strong></p>
+
+<p>围绕这个起点，各国沿着各自的路径展开：</p>
+
+<ul>
+
+<li><strong>美国</strong>：2025年4月23日，总统签署"Advancing Artificial Intelligence Education for American Youth"行政令，成立白宫AI教育特别工作组[4]。截至2026年6月，37个州和波多黎各发布了K-12学校的AI使用官方指南（这一数字在2025年10月还是34个，反映出加速趋势）；俄亥俄州成为首个要求每个K-12学区必须制定正式AI使用政策的州[4]。</li>
+
+<li><strong>新加坡</strong>：把AI素养嵌入国家AI战略（NAIS 2.0），总理亲自主持新设的国家AI理事会。教育部推行分龄AI使用政策——小学低年级不直接使用AI、强调印刷为主，高年级在有结构的课堂监督下有限使用，中学及以上逐步扩大接触面[4]。</li>
+
+<li><strong>日本</strong>：2025年12月内阁通过首份《AI基本计划》，将"全民AI素养教育"列为四大推进政策之一，官民合计5年投入超过1兆日元（约合447亿人民币），目标是把国民AI利用率提升到80%[4]。</li>
+
+<li><strong>中国</strong>：2024年11月教育部办公厅发文，目标2030年前在中小学基本普及AI教育；2026年4月教育部联合国家发改委、工信部、科技部、国家数据局印发《"人工智能+教育"行动计划》，构建全学段与全社会通识教育体系；北京从2025年秋季起全市中小学每学年不少于8课时的AI通识课[4]。</li>
+
+<li><strong>UNESCO</strong>：作为唯一制定全球性AI素养标准的国际组织，发布了学生框架（4维度、12项能力）和教师框架（5维度、15项能力），成为各国课程设计的重要参考基准。它的突破在于把AI素养定义为公民素养而非技术培训——不只是培养会用工具的人，更是培养在这个时代保持主体性、能识别偏见和隐私风险的负责任公民[4]。</li>
+
+</li></ul>
+
+<p>这些政策有一个共同的"不可测量"难题：到底什么叫"足够水平的AI素养"？UNESCO框架给出了内容维度，却缺乏可量化的评估工具[4]。OECD的TALIS 2024数据显示，日本在中小学课堂中使用AI的教师仅16%至20%[4]——要理解这个数字的意义，可以看一个反差。</p>
+
+<p>一边是政策把所有"会AI"写进法律，一边是现实落地冷得扎眼。Alpha Schools是一所完全以AI取代人类教师的私立学校，计划2026年秋季在芝加哥招生，学费高达5.5万美元一年，但WBUR调查显示它AI生成的教案出现事实性错误、学生满意度低，NEA和AFT两大教师工会强烈反对并提出了"AI征税"方案[9]。另一边，Khan Academy的AI辅导工具Khanmigo自2023年推出，到2026年数据显示<strong>仅有15%的学生实际使用</strong>[9]。政策轰轰烈烈，工具安安静静，这之间的落差就是问题的真正所在。</p>
+
+<h2>五、当规则命令你"必须会"，它到底在要求什么？</h2>
+
+<p>把这三条线摆在一起，真正的落点终于浮现：法律只规定了"必须会"，却没有规定"会不会"。</p>
+
+<p>欧盟的"做减法"是在回答"这部法管得动吗"——于是它收窄定义、砍文件、理责任，把监管收成管得动的形状。美国的"做加法"是在回答"这些公司说的是真的吗"——于是它从自我报告走到强制第三方审计，让外部独立的眼睛盯着安全承诺是否兑现。而全球的素养制度化是在回答"人跟得上吗"——于是各国把"会AI"从加分项变成义务，从孩子抓起，写到国家战略里。</p>
+
+<p>这三问其实是同一件事的三个侧面：AI治理的重心，正在从"管技术"下沉到"管人怎么跟AI相处"。原因在于，技术是人在用——一个人对一个系统的判断力、风险意识，直接决定了这个系统会被用成什么样。所以真正落在监管终点的，不是某行算法，而是用它的那个人。</p>
+
+<p>由此，落地鸿沟正好落在人机契合的命题上。法律能命令"你必须让员工具备AI素养"，却没法命令这些员工真的"会"。把"义务"翻译成"能力"这一步，机器替不了、法规替不了，只能靠一代人对AI的重新适应来补上。谁能把那道鸿沟填平，谁就真正接住了这一轮全球监管的下沉。</p>
+
+<p>这就是"管人先于管技术"的证据——别忘了那个时间差：AI素养义务在2025年2月就生效，比高风险AI系统的规则早了18个月[4]。全球最先用法律锁死的，不是某种技术该关，而是你这个人该会。</p>
+
+<p>落到具体的人身上，动作各不相同：</p>
+
+<ul>
+
+<li><strong>企业</strong>，别再等着条款逐条明确。法律已经在命令你给员工补素养，先把内部AI使用准则、风险评估、可追溯的决策记录建起来[2][8]——这些既是合规准备，也是真正的人机契合基础设施。</li>
+
+<li><strong>教师与学校</strong>，别被"全AI课堂"的话术带偏。现实的温度是15%的使用率、还有教案里的事实错误。混合模式更可能是主流——AI辅助加上人类教师的模式，而非完全取代[9]。当"会AI"成为义务，分清"工具能帮什么"和"工具不能替什么"，正是你最该教的那一课。</li>
+
+<li><strong>个人学习者</strong>，政策已经把"会AI"写成了制度性约定，但素养评估和课程体系还不成熟——这个缺口既是风险，也是你的窗口。在体系成型前先把自己的素养坐标立起来，不让"义务"变成一纸空文。</li>
+
+</li></ul>
+
+<p>放到监管的减与加上看，动作虽然相反，终点却落在一起：欧盟减掉的是技术清单，美国加上的是技术清单，而围绕"AI素养"展开的那批政策，指向的都不是机器，而是人。</p>
+
+<hr />
+
+<h2>参考文献</h2>
+
+<p><strong>监管类</strong></p>
+
+<ol>
+
+<li><strong>European Parliament votes to delay EU AI Act implementation</strong> — CIO.com，2026-04</li>
+
+<li><strong>EU AI Act "Omnibus" Simplification: The simplification plan explained</strong> — Hogan Lovells，2026</li>
+
+<li><strong>EU AI Act Omnibus — What the simplification means for AI governance</strong> — IAPP，2026</li>
+
+<li><strong>EU AI Act Omnibus proposal: what companies need to know</strong> — Reuters，2026-05-08</li>
+
+<li><strong>EU AI Act "Omnibus" Simplification: A New Era for AI Regulation?</strong> — JD Supra，2026</li>
+
+<li><strong>U.S. Companies Face EU AI Act's Possible August 2026 Compliance Deadline</strong> — Holland &amp; Knight，2026-04</li>
+
+<li><strong>Brussels AI Act talks collapse - but the August 2026 deadline holds</strong> — PPC Land，2026-04</li>
+
+<li><strong>EU's AI Act Delays Let High-Risk Systems Dodge Oversight</strong> — Tech Policy Press，2026-04</li>
+
+<li><strong>The Paradoxes of the European Union's AI Regulation</strong> — The Regulatory Review (Penn Law)，2026-04</li>
+
+<li><strong>Illinois Lawmakers Just Passed America's Strongest AI Safety Bill</strong> — WIRED (Maxwell Zeff)，2026-05-27</li>
+
+<li><strong>OpenAI's Chris Lehane on State-Level AI Policy Strategy</strong> — WIRED，2026-05</li>
+
+<li><strong>AI Evaluator Forum</strong> — aievaluatorforum.org</li>
+
+</li></ol>
+
+<p><strong>教育类</strong></p>
+
+<ol>
+
+<li><strong>教育部办公厅关于加强中小学人工智能教育的通知</strong>（教基厅函〔2024〕32号）— 教育部，2024-11-20</li>
+
+<li><strong>《中小学人工智能通识教育指南（2025年版）》</strong> — 教育部基础教育教学指导委员会，2025-05-12</li>
+
+<li><strong>教育部等五部门关于印发《"人工智能+教育"行动计划》的通知</strong>（教科信〔2026〕1号）— 教育部等五部门，2026-04-02</li>
+
+<li><strong>北京市推进中小学人工智能教育工作方案（2025—2027年）</strong> — 北京市教委，2025-03-07</li>
+
+<li><strong>欧盟AI法案（Regulation (EU) 2024/1689）第4条</strong> — 欧盟（AI素养义务自2025-02-02生效）</li>
+
+<li><strong>AI Continent Action Plan</strong> — 欧盟委员会，2025-04-09</li>
+
+<li><strong>Advancing Artificial Intelligence Education for American Youth</strong>（行政令）— 白宫，2025-04-23</li>
+
+<li><strong>美国各州K-12 AI官方指南/政策</strong> — AI for Education统计（截至2026-06覆盖37州+波多黎各）</li>
+
+<li><strong>National AI Literacy Day</strong> — 2026-03-27</li>
+
+<li><strong>新加坡国家AI战略（NAIS 2.0）+ EdTech Masterplan 2030 + 分龄AI使用政策</strong> — 新加坡教育部</li>
+
+<li><strong>Singapore Budget 2026：AI素养成为国家优先事项</strong> — 海峡时报（The Straits Times），2026-02-12</li>
+
+<li><strong>日本《AI基本计划》</strong> — 日本内阁会议决定，2025-12-23</li>
+
+<li><strong>数理·数据科学·AI教育プログラム認定制度（MDASH）</strong> — 日本文部科学省</li>
+
+<li><strong>UNESCO AI Competency Framework for Students / Teachers</strong> — UNESCO，2024-09-03</li>
+
+<li><strong>OECD TALIS 2024</strong> — 日本教师AI课堂使用率数据</li>
+
+<li><strong>Alpha Schools Chicago / Khan Academy Khanmigo 使用率</strong> — WBUR等公开报道，2026</li>
+
+</li></ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 这篇文章给你带来了什么启发？</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit 致力于研究人与AI如何真正协同。如果你在企业AI落地、人机协同或全球化合规方面有具体问题，欢迎加入我们的讨论。
+  </p>
+  <p style="margin:0;">
+    🔗 搜索「AI时代生存手册」知识星球，¥199/年——每篇深度文章配套工具模板，与作者直接交流。
+  </p>
+</blockquote>
+
+  </div>
+</Article>

@@ -1,0 +1,107 @@
+---
+import Article from '../../layouts/Article.astro';
+const tags = ["中国全球化", "全球南方", "非洲", "数字民生"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="全球南方：数字民生，与非洲的 AI 之路"
+  description="全球成年人的金融账户拥有率，从 2011 年的 51% 升到了 2024 年的 79%（世界银行《全球 Findex 数据库 2025》）。但换个角度看，到今天仍有约 13 亿成年人连一个银行账户都没有——他们中的绝大多数，生活在全球南方。"
+  date={articleDate}
+  tags={tags}
+  lang="zh-CN"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-09-01</p>
+      <h1 style="font-size:2rem;line-height:1.35;">全球南方：数字民生，与非洲的 AI 之路</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<p>传统银行网点覆盖不到偏远地区，一张银行卡、一份信用记录对普通人也不容易获得。南方给出的答案，不在银行体系里，而在移动网络、二维码和越来越开放的工具里：它没有复制北方"先建网点、再数字化"的路径，而是让金融和智能服务，直接触达更广的人群。</p>
+
+<p>这条路径里，藏着非洲正在走的那条 AI 之路。</p>
+
+<h2>一、先讲清"全球南方"是什么</h2>
+
+<p>"全球南方"不是地图上赤道以南的那片区域，而是一个政治经济概念：发展水平较低、历史上多遭殖民、并追求国际秩序变革的国家群体。</p>
+
+<p>词源能追溯到 1960 年代的左翼运动，更早的源头是 1952 年法国学者阿尔弗雷德·索维提出的"第三世界"。冷战结束后，"第三世界"因暗含等级色彩逐渐退场，"全球南方"成为更中性的表述。</p>
+
+<p>中国算不算全球南方？中国官方在 2026 年 6 月发布的全球治理白皮书中，自认是全球南方的一员；但中国又是世界第二大经济体、地处北半球。西方学界判断更多元，有学者认为"全球南方"更多是一种身份认同而非经济现实。这个争议本身，正是"全球南方"作为政治概念的注脚——它不是一张静态地图，而是一群"起点相似、解法相近"的人，正在参与定义自己的位置。</p>
+
+<h2>二、数字民生：三条腿立起来的金融包容</h2>
+
+<p>南方走金融排斥，靠的不是银行网点，而是数字公共基础设施（DPI）搭起的三条腿——支付、身份、信用。</p>
+
+<p><strong>支付。</strong> 印度 UPI（统一支付接口）是代表。据印度国家支付公司统计，UPI 在 2026 年 7 月单月处理了 236.6 亿笔交易。对摊贩而言，一个二维码贴在摊上，顾客扫码付钱直接进账，省了 POS 机，连找零都免了。巴西的 Pix 同样可观，2025 年全年处理近 800 亿笔交易，约 93% 的成年人在用。非洲的 M-Pesa 则说明：智能手机并非必需，一部功能机加一张 SIM 卡就能转账、缴费、储蓄，到 2026 年 3 月在肯尼亚已有 4000 万月活用户。</p>
+
+<p><strong>身份。</strong> 印度 Aadhaar 用指纹和虹膜为居民签发唯一身份号，截至 2026 年已签发约 14 亿个编号。身份数字化，让"被国家看见"成为可能，也让福利发放、开户、领补贴更精准地落到个人。</p>
+
+<p><strong>信用。</strong> 没有抵押品，就用数据替代。支付流水、缴费记录成为信用评估依据，让没有房产和传统征信记录的小微商户和底层劳动者，第一次有获得正规信贷的可能。</p>
+
+<p>三条腿的共同点是低门槛、高覆盖。它们改变了普通人的什么？一个印度奶茶摊老板，过去只收现金、贷款无门，用 UPI 收款后流水变成了信用记录，开始能借到小额经营贷款；一个肯尼亚农村妇女，从前跨境收汇款要经历长途和高额手续费，现在一个 M-Pesa 账户就完成了。</p>
+
+<p>还有一个常被忽略的变化：人在用这些工具的过程中，本身在长本事——学会记账、看懂流水、理解信用。数字民生提供的，不只是"接入的管道"，也是一个"练习的场域"。</p>
+
+<p>但这不是技术乌托邦。数字鸿沟仍在：撒哈拉以南非洲的账户拥有率约 58%，低于全球 79% 的平均水平；女性账户拥有率仍普遍低于男性；当"信用"变成一串数据、"身份"变成一枚指纹，那些没有手机、不会用、或不愿让人脸虹膜进库的人，可能反而被新的门槛挡住。便利与风险，需要被同时看见。</p>
+
+<h2>三、非洲的 AI 之路：绕开缺口，而不是先补缺口</h2>
+
+<p>非洲的发展瓶颈常被概括为"基础设施不足"。但过去 15 年的移动支付已经示范了一条不同的路：当银行网点覆盖不到时，非洲没有花几十年建物理网点，而是直接进入移动端。AI 正在提供类似的转折点。</p>
+
+<p>缺口是真实的。非洲中位年龄不到 20 岁，但一位老师面对 50 到 80 个学生是常态；每千人医生数不足 0.3，低于世卫组织建议的标准；约 60% 人口从事小农经济，却难以获得准确的天气、土壤和市场信息。</p>
+
+<p>AI 的价值在于绕过这些缺口：个性化辅导工具在不扩建学校、不大规模增聘教师的情况下，缓解基础教育的规模瓶颈；AI 辅助诊断和远程问诊填补"没有医生"的区域；数字农业服务改变"种什么、什么时候种、到哪里卖"的决策链。</p>
+
+<p>更值得注意的是一组转向的信号。据 Condia 和 TechCabal Insights 的数据，2026 年第一季度非洲创业公司融资 7.05 亿美元，同比增长 26.5%——这发生在全球风投整体收缩的环境里。GSMA 预测，非洲数字经济市场规模到 2030 年将超过 1800 亿美元。与此同时，肯尼亚、南非、尼日利亚等国陆续推出数据本地化法规，为本地 AI 训练数据集的建立创造了需求。</p>
+
+<p>中国企业的参与方式也在变。华为在非洲多国建 4G/5G 网络，并在埃及、南非、肯尼亚设 AI 创新实验室做本地化适配；传音在非洲智能手机市场份额超过 40%（据 IDC 追踪数据），旗下 PalmPay 推动移动支付下沉；阿里云在南非和尼日利亚设云节点，通过 eFounders Fellowship 帮助非洲创业者建立数字化能力。</p>
+
+<p>一个关键区别在于：AI 基础设施不是消耗性资源，而是累积性资产——数据越多、模型越好、生态越丰富。这与传统的资源开采有本质不同，合作方式是"一起做"而非"教他们做"。</p>
+
+<h2>四、清醒地看待这份"正在书写的手稿"</h2>
+
+<p>回到开头那 13 亿没有银行账户的人。全球北方有成熟的银行体系和大模型，全球南方则在用"数字公共基础设施 + 移动支付 + 可负担 AI"这些方式，让金融和智能服务触及更广的人群。两条路径并无高下，只是起点不同。</p>
+
+<p>南方真正值得关注的，不是迎合任何一方的叙事，而是它开始用自己的方式回应"什么是发展、什么是好日子"——用最朴素的尺度：普通人的生活，是否真的变好了。</p>
+
+<p>数字鸿沟还在、风险还在、定义权仍被讨论。但方向是清楚的：一个农村主妇第一次有了自己的账户，一个小摊贩第一次被正规支付网络接纳，一个小农户第一次用母语向 AI 提问。这些日常、琐碎、正在发生的事实，才是理解这条路径的线索。</p>
+
+<hr />
+
+<h2>参考文献</h2>
+
+<ol>
+<li><strong>The Global Findex Database 2025</strong> — World Bank，2025-06</li>
+<li><strong>Aadhaar Saturation Report (May 2026)</strong> — UIDAI，2026-05</li>
+<li><strong>UPI completes 10 years, world's largest real-time payments platform</strong> — PIB，2026</li>
+<li><strong>Pix: Brazil's instant system approaches 8 billion monthly transactions</strong> — EBANX，2025-11-17</li>
+<li><strong>Safaricom's M-PESA Crosses 40 Million Kenyan Customers</strong> — The Kenyan Wallstreet，2026</li>
+<li><strong>Reimagining Africa's Growth: Four Levers to Close the Financing Gap</strong> — McKinsey Global Institute，2025/2026</li>
+<li><strong>Africa's Startup Funding in Q1 2026: $705M, Up 26.5% YoY</strong> — Condia / TechCabal Insights，2026-06-04</li>
+<li><strong>The Mobile Economy Sub-Saharan Africa 2025</strong> — GSMA，2025</li>
+<li><strong>华为云全球基础设施与 AI 创新实验室</strong> — 华为官网（huawei.com）</li>
+<li><strong>IDC Quarterly Mobile Phone Tracker, Africa</strong> — IDC，2025-2026</li>
+<li><strong>阿里云全球化布局与 eFounders Fellowship</strong> — 阿里云官网（alibabacloud.com）</li>
+<li><strong>构建更加公正合理的全球治理体系（白皮书）</strong> — 国务院新闻办，2026-06-17</li>
+</ol>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 这篇文章给你带来了什么启发？</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit 致力于研究人与AI如何真正协同。如果你在企业AI落地、人机协同或全球化合规方面有具体问题，欢迎加入我们的讨论。
+  </p>
+  <p style="margin:0;">
+    🔗 搜索「AI时代生存手册」知识星球，¥199/年——每篇深度文章配套工具模板，与作者直接交流。
+  </p>
+</blockquote>
+
+  </div>
+</Article>

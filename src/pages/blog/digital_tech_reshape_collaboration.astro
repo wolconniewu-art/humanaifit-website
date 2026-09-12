@@ -1,186 +1,145 @@
 ---
 import Article from '../../layouts/Article.astro';
+const tags = ["AI与组织", "协作", "管理学"];
+const articleDate = '2026-09-01';
 ---
 
 <Article
   title="当数字技术重塑人类协作方式，管理学的边界正在被重写"
-  description="三篇学术论文揭示了一个共同趋势：技术的发展正在以超出预期的程度，重塑「组织」和「工作」的基础逻辑。"
+  description="这几年你大概注意到一件事：工作不再只发生在有工位、有组织架构图、有上下级的地方了。"
+  date={articleDate}
+  tags={tags}
   lang="zh-CN"
 >
   <section class="article-hero">
     <div class="container" style="max-width:720px;">
       <a href="/blog/" class="article-back">← 返回博客</a>
-      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-05-05</p>
-      <h1 style="font-size:2rem;line-height:1.35;">当数字技术重塑人类协作方式，管理学的边界正在被重写</h1>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-09-01</p>
+      <h1 style="font-size:clamp(16px, 2.00vw, 26px);line-height:1.35;white-space:nowrap;">当数字技术重塑人类协作方式，管理学的边界正在被重写</h1>
       <div class="article-meta">
-        <span>2026-05-05</span>
-        <span class="tag">学术前沿</span>
-        <span class="tag">人机契合</span>
-        <span class="tag">组织行为</span>
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
       </div>
     </div>
   </section>
   <div class="article-body">
 
-<blockquote>
-<p><strong>导语：</strong>
-如果你是DAO（去中心化自治组织）的参与者，或者正在用数字工具管理一个远程团队，又或者只是好奇&quot;AI时代人类到底还剩下什么&quot;，这三篇论文将给你一个全新的视角。</p>
-<p>它们各自回答了一个关键问题：<strong>当组织不再依赖传统科层制，是什么在驱动人们工作，又是什么在消耗他们？</strong></p>
-</blockquote>
+<p>有人在一个没有办公室、没有雇佣关系、甚至没有实体法人的"组织"里干活；有人在用数字工具反复打磨一个作品，但时间不知不觉被"迭代"本身吞掉了；有人加入一个社区，不拿工资，而是拿"股份"——一种还没法直接变现的所有权。</p>
 
-<hr />
+<p>这三件事看起来不搭边，但如果把它们背后的研究放在一起，会指向同一个信号：数字技术正在改写"组织"和"工作"的基础逻辑，而管理学的旧框架，正在被一点一点挤到边界上。</p>
 
-<h2>论文一：Token-Centric Work Practices in Fluid Organizations</h2>
-<h3>当组织变成&quot;流体&quot;，代币成了新的管理工具</h3>
+<p>这篇文章想借三项学术界的研究，把这条线讲清楚。</p>
 
-<p><em>Schirrmacher, N. B., Jensen, J. R., &amp; Avital, M. (2021)</em></p>
+<h2>一、没有办公室的组织怎么运转：代币成了新的管理工具</h2>
 
-<h3>核心问题</h3>
-<p>传统的企业有组织架构图、有管理层、有规章制度。但如果一个组织<strong>没有固定的组织结构，没有雇佣关系，甚至没有一个办公室——全靠一群陌生人通过智能合约在区块链上协作</strong>，它是如何运转的？</p>
-<p>这就是&quot;流体组织&quot;（fluid organizations）——一种新型的、极度灵活的组织形态。其中最具代表性的两个案例是Yearn Finance和MakerDAO。</p>
+<p>传统企业有组织架构图、有管理层、有规章制度。但如果一个组织没有固定的结构、没有雇佣关系、也没有一个办公室——全靠一群陌生人通过智能合约在区块链上协作，它靠什么运转？</p>
 
-<h3>他们发现了什么</h3>
-<p>研究者发现，在这样的组织中，<strong>代币（token）承担了你在传统组织中由管理层、HR、财务部甚至公司文化共同完成的多重功能</strong>：</p>
-<ol>
-<li><strong>协调工具</strong>：代币不是钱，它是信号。代币持有者的投票权重决定了项目方向，这让分散在全世界的人能够对齐决策</li>
-<li><strong>激励引擎</strong>：代币的价值绑定在组织整体成功上，每个人多做的贡献都会让手上的代币更值钱——这是一种&quot;人人都是股东&quot;的放大版</li>
-<li><strong>治理入口</strong>：代币持有者可以投票决定资金分配、协议参数、甚至雇佣谁</li>
-<li><strong>身份标识</strong>：在无法见面、没有工牌的环境中，代币持有量就是你在这个组织中的&quot;存在感&quot;</li>
-</ol>
+<p>这就是研究者所说的"流体组织"（fluid organizations）：一种极度灵活的新型组织形态。这套逻辑最典型的两个例子，是 Yearn Finance 和 MakerDAO[1]。</p>
 
-<h3>为什么重要</h3>
-<p>这篇论文发表于2021年。当时大多数人还觉得DAO是个小众加密极客的玩具。但五年后的今天，<strong>&quot;代币化协作&quot;的逻辑正在大规模渗透到传统企业</strong>：</p>
+<p>三位研究者（Schirrmacher、Jensen 和 Avital）在这篇论文里发现，在这样的组织里，代币（token）承担了传统企业中本由管理层、HR、财务部、甚至公司文化共同完成的多重功能[1]：</p>
+
 <ul>
-<li>远程团队用&quot;声誉积分&quot;管理贡献</li>
-<li>开源项目用&quot;贡献度代币&quot;分配收入</li>
-<li>创作者社区用NFT作为身份和权益载体</li>
-</ul>
-<p><strong>一句话总结：代币不是数字货币，它是一种新型的组织管理工具。理解它，就是在理解未来工作的基础架构。</strong></p>
 
-<hr />
+<li>它是协调工具。代币持有者的投票权重决定项目方向，这让散落世界各地的人能够对齐决策——代币在这里不是钱，是信号。</li>
 
-<h2>论文二：Tedious Work</h2>
-<h3>数字技术让你的工作更&quot;无聊&quot;，而这恰恰是最危险的事</h3>
+<li>它是激励引擎。代币的价值绑定在整个组织的成功上，每个人多做的贡献都会让自己手上的代币更值钱——一种"人人都是股东"的放大版。</li>
 
-<p><em>Bruns, H. C., &amp; Long Lingo, E. (2024)</em><br />
-<em>Administrative Science Quarterly, 69(1), 39-79</em></p>
+<li>它是治理入口。持有代币的人可以投票决定资金分配、协议参数、甚至招聘谁。</li>
 
-<h3>核心问题</h3>
-<p>数字技术大大降低了创作的迭代成本和修改便利性。这听起来全是好消息。但Bruns和Long Lingo提出了一个反直觉的问题：<strong>当&quot;再来一次&quot;变得过于容易，我们会不会被迭代本身困住？</strong></p>
+<li>它还是身份标识。在见不到面、也没有工牌的环境里，代币持有量就是你在这个组织里的"存在感"。</li>
 
-<h3>他们发现了什么</h3>
-<p>研究者对两个截然不同的领域进行了对比民族志研究——系统生物学实验室和音乐制作工作室。他们发现了一个被普遍忽视的问题：<strong>&quot;无趣工作&quot;（tedious work）</strong>。</p>
-<p>定义：<strong>重复的、细节导向的、依赖专业知识但缺乏创造性的工作。</strong></p>
-<p>他们识别出四种类型：</p>
-<ol>
-<li><strong>&quot;钓鱼型&quot;（Fishing）</strong>：在大量数据中搜索那个可能有意义的蛛丝马迹——不是在探索，是在&quot;捞&quot;</li>
-<li><strong>&quot;行政型&quot;（Administrating）</strong>：管理版本、标注文件、整理元数据——创作20%，整理80%</li>
-<li><strong>&quot;抛光型&quot;（Polishing）</strong>：微调一个参数、调一个音轨的响度、调一个页面边距——不改变本质但追求极致完美</li>
-<li><strong>&quot;汇编型&quot;（Compiling）</strong>：把不同来源的成果拼在一起，确保它们能工作——整合的繁琐</li>
-</ol>
+</li></ul>
 
-<h3>无趣工作的三个&quot;隐形杀手&quot;</h3>
-<p>数字技术让每个环节都能无限迭代，但这也制造了三个陷阱：</p>
+<p>这篇论文发表于 2021 年[1]，当时很多人觉得 DAO 只是加密极客的小众玩具。但几年过去，"代币化协作"的逻辑正在往传统企业渗透：远程团队用声誉积分管理贡献，开源项目用贡献度代币分配收入，创作者社区用数字所有权作为身份和权益的载体。</p>
+
+<p>一句话：代币不是数字货币，它是一种新型的组织管理工具。理解它，就是在理解未来工作的底层结构之一。</p>
+
+<h2>二、迭代太容易了，工作反而变得更"无聊"</h2>
+
+<p>数字技术大大降低了创作的成本，也让你可以无限次地修改。这听上去全是好消息。但两位研究者（Bruns 和 Long Lingo）提出了一个反直觉的问题：当"再来一次"变得过于容易，我们会不会被迭代本身困住？</p>
+
+<p>他们的论文发表在《Administrative Science Quarterly》上，是这一步领域里相当扎实的一项研究（Bruns &amp; Long Lingo, 2024, 69(1), 39-79）[2]。研究者对两个截然不同的领域做了对比性田野研究——系统生物学实验室和音乐制作工作室，结果发现在两头都普遍存在一种"无趣工作"（tedious work）。</p>
+
+<p>所谓无趣工作，指的是重复、细节导向、依赖专业知识却缺乏创造性的活。他们把它拆成四种类型[2]：</p>
+
 <ul>
-<li><strong>时间黑洞</strong>：你花了80%的时间在反复修改上</li>
-<li><strong>动力流失</strong>：重复操作耗尽内在驱动力</li>
-<li><strong>信息过载</strong>：版本太多，根本记不清哪个是最终版</li>
-</ul>
 
-<h3>为什么重要</h3>
-<p>这篇论文对&quot;AI时代的创造者&quot;来说意义重大。</p>
-<p><strong>它的启示是：AI不仅要帮你&quot;更快地完成创作&quot;，更要帮你减少那些&quot;无趣工作&quot;。</strong></p>
-<p>如果你正在用AI辅助创作（写作、编程、设计、研究），一个重要的问题是：<strong>AI是在减少你的无趣工作，还是在帮你更快地制造更多的无趣工作？</strong></p>
-<p>一个好的助手应该让你专注于&quot;钓鱼&quot;和&quot;探索&quot;，而不是帮你以10倍速度&quot;抛光&quot;和&quot;汇编&quot;那些可能根本没有意义的东西。</p>
-<p><strong>一句话总结：迭代的自由是有代价的。数字技术为你打开了无限修改的大门，但只有那些懂得什么时候停、把精力留在真正要紧的事上的人，才能产出真正有生命力的成果。</strong></p>
+<li><strong>钓鱼型</strong>：在大量数据里搜索那个可能有意义的蛛丝马迹——不是在探索，是在"捞"。</li>
 
-<hr />
+<li><strong>行政型</strong>：管理版本、标注文件、整理元数据——创作占 20%，整理占 80%。</li>
 
-<h2>论文三：Beyond Money</h2>
-<h3>不给钱，给&quot;股份&quot;：DAO社区的激励实验</h3>
+<li><strong>抛光型</strong>：反复微调一个参数、调一条音轨的响度、调一个页面边距——不改变本质，却追求完美。</li>
 
-<p><em>Chen, K., Fan, Y., Fang, Y., &amp; Luo, X. (2025)</em><br />
-<em>Journal of Operations Management, 71(7), 988-1016</em></p>
+<li><strong>汇编型</strong>：把不同来源的成果拼在一起，确保它们能正常工作——整合的繁琐。</li>
 
-<h3>核心问题</h3>
-<p>如果你运营一个社区（无论是DAO、开源项目还是创作者社群），你希望成员多创作还是多维护秩序？给多少钱才够？如果&quot;不给钱，给股份（代币所有权）&quot;会怎样？</p>
+</li></ul>
 
-<h3>他们如何研究</h3>
-<p>研究者分析了Steemit（一个基于区块链的社交媒体平台）上98,000名用户从2017到2019年的真实行为数据。</p>
-<p>Steemit的特殊之处在于：它有两种代币：</p>
+<p>数字技术让每个环节都能无限迭代，但也带来了三个副作用：时间黑洞（大把时间耗在反复修改上）、动力流失（重复操作耗尽内在驱动力）、信息过载（版本太多，连哪个是最终版都记不清）。</p>
+
+<p>对正在用 AI 辅助创作的人来说，这篇论文最重要的一点是：AI 的价值，不在于帮你更快地制造更多"无趣工作"，而在于帮你减少那些"无趣工作"。一个好助手应该让你把精力花在"钓鱼"和"探索"上，而不是帮你以 10 倍速度去"抛光"和"汇编"那些也许根本没意义的东西。</p>
+
+<p>迭代的自由是有代价的。数字技术为你打开了无限修改的门，但能产出真正有生命力成果的，往往是那些懂得什么时候该停下来、把精力留在要紧处的人。</p>
+
+<h2>三、不给钱，给"股份"：社区激励的一次实验</h2>
+
+<p>如果你运营一个社区——不管它是 DAO、开源项目还是创作者社群——你希望成员多创作，还是多维护秩序？给多少钱才够？如果"不给钱，给股份"会怎样？</p>
+
+<p>三位研究者（Chen、Fan、Fang 和 Luo）在一篇发表于《Journal of Operations Management》的论文里，用 StackOverflow、Steemit 等平台上的真实数据回答了这个问题（Chen et al., 2025, 71(7), 988-1016）[3]。其中最有意思的一组样本，来自一个基于区块链的社交媒体平台 Steemit，研究者分析了它上面 98,000 名用户在 2017 到 2019 年的真实行为数据[3]。</p>
+
+<p>Steemit 的特殊之处在于它有两种代币[3]：</p>
+
 <ul>
-<li><strong>Steem</strong>（交易代币）——可以兑换成现金，相当于&quot;工资&quot;</li>
-<li><strong>Steem Power</strong>（治理代币）——不能直接变现，但投票权更大，相当于&quot;股权&quot;</li>
-</ul>
-<p>&quot;Power-up&quot;操作——用户选择把Steem转成Steem Power（即把现金换成股权）——被研究者视为一个自然实验，借此观察&quot;所有权激励&quot;的效果。</p>
 
-<h3>他们发现了什么</h3>
-<p><strong>1. 所有权（股权）vs 现金（工资）的效果截然不同</strong></p>
-<table>
-<thead>
-<tr><th>维度</th><th>现金（交易代币）驱动</th><th>股权（治理代币）驱动</th></tr>
-</thead>
-<tbody>
-<tr><td>创作量</td><td>普通 ↑</td><td><strong>显著 ↑ ↑</strong></td></tr>
-<tr><td>维护行为（点赞、评论）</td><td>普通 ↑</td><td><strong>强烈 ↑ ↑ ↑</strong></td></tr>
-<tr><td>创作新颖性</td><td>正常</td><td><strong>↓ 下降</strong></td></tr>
-</tbody>
-</table>
+<li><strong>Steem</strong>（交易代币）——可以兑换成现金，相当于"工资"。</li>
 
-<p><strong>2. 有趣的反直觉发现</strong></p>
+<li><strong>Steem Power</strong>（治理代币）——不能直接变现，但投票权重更大，相当于"股权"。</li>
+
+</li></ul>
+
+<p>用户把 Steem 转成 Steem Power（即把现金换成股权）的操作叫 Power-up。研究者把这个行为当作一个天然实验，专门用它来观察"所有权激励"带来的效果[3]。</p>
+
+<p>他们发现了几个互相咬合的结果[3]：</p>
+
 <ul>
-<li><strong>股权激励让你更愿意&quot;维护社区&quot;而不是&quot;创造新内容&quot;</strong>：拥有股权的用户更倾向于对别人的内容点赞、评论（curation），而不是自己发表新内容</li>
-<li><strong>股权激励会降低内容的新颖性</strong>：用户更倾向于写&quot;安全、受欢迎&quot;的内容，而不是冒险搞创新</li>
-<li><strong>股权激励的效果随时间递减</strong>：新鲜感过了就消退</li>
-<li><strong>但如果你重新确认选择（比如再次&quot;power-up&quot;），效果会恢复</strong></li>
-<li><strong>社交关系弱的人更容易被股权激励带动</strong>：初来乍到的陌生人更需要&quot;拥有感&quot;</li>
-<li><strong>高声誉用户不容易被股权激励</strong>：他们已经在为其他原因创作了</li>
-</ul>
 
-<h3>为什么重要</h3>
-<p>这对任何&quot;以激励为核心的平台型业务&quot;都有直接的指导意义：</p>
+<li>现金（工资）和股权（所有权）的驱动效果很不一样。股权在提升创作量、尤其是点赞和评论这类维护行为上更明显，但代价是内容的新颖性下降了——人们更愿意写"安全、受欢迎"的内容，而不是冒险创新。</li>
+
+<li>股权激励的效果会随时间衰减，新鲜感过了就消退；但如果用户重新确认自己的选择（比如再次 Power-up），激励效果会恢复。</li>
+
+<li>社交关系弱的新人更容易被股权带动，而高声誉的用户不容易——他们已经为了别的理由在创作了。</li>
+
+</li></ul>
+
+<p>它对任何一个"以激励为核心的平台型业务"都有直接的含义。拿我们自己的产品举个例子（这是 humanaifit 的设计思考，不是外部案例）：免费诊断像"交易代币"，马上能用，用完就结束；订阅制或 1 对 1 咨询则像"治理代币"，是长期关系、权益会增长。前者驱动短期使用，后者驱动深度参与。这条研究提示我们，如果给用户太多"股权型"回报，他们可能变得保守——在教学场景里尤其要小心，学生的动力如果被"积分排名"过度驱动，反而可能抑制探索式的学习。</p>
+
+<p>一句话：股权激励让人更忠诚但也更保守，现金激励让人更自由但也更冷漠。设计激励时要想清楚的不是"别人会怎么选"，而是"你希望贡献者成为怎样的人"。</p>
+
+<h2>四、三项研究放在一起：一个更大的提示</h2>
+
+<p>把这三项研究并排看，共同点会浮现出来：数字技术不是简单地"把老工作搬到网上"，它改变了"组织靠什么运转""工作由什么构成""人为什么愿意付出"这些基础问题。</p>
+
 <ul>
-<li><strong>免费诊断→付费服务：你的&quot;股权&quot;是什么？</strong>
-在我们的业务中，免费诊断是&quot;交易代币&quot;（马上能用，但用完就结束），而订阅或1对1咨询才是&quot;治理代币&quot;（长期关系、权益增长）。前者驱动短期使用，后者驱动深度参与。</li>
-<li><strong>新颖性下降的警告</strong>：如果给用户太多&quot;股权型回报&quot;，他们可能变得保守。这在教育场景中尤其需要留意——学生的学习动力如果被&quot;积分排名&quot;过度驱动，可能会抑制探索性学习。</li>
-<li><strong>重新选择的效果</strong>：定期让用户&quot;确认&quot;他们的选择（比如续费、重新订阅），可以重新激活激励效果。</li>
-</ul>
-<p><strong>一句话总结：股权激励让人更忠诚但更保守，现金激励让人更自由但更冷漠。设计激励时，考虑的不是&quot;别人怎么选&quot;，而是&quot;你希望贡献者变成怎样的人&quot;。</strong></p>
 
-<hr />
+<li>论文一说，当组织变得没有结构，管理不再依赖科层制，而是依赖一个可以流动的信号（代币）[1]。</li>
 
-<h2>当三篇论文放在一起看：一个更大的图景</h2>
+<li>论文二说，当迭代无限容易，创造的敌人不再是"做不出来"，而是"耗在不值得的事情上"[2]。</li>
 
-<table>
-<thead>
-<tr><th>维度</th><th>论文一（流体组织）</th><th>论文二（无趣工作）</th><th>论文三（代币激励）</th></tr>
-</thead>
-<tbody>
-<tr><td>核心关切</td><td>如何在无结构组织中协调</td><td>数字工具如何消耗创造力</td><td>如何设计激励影响行为</td></tr>
-<tr><td>共同主题</td><td colspan="3">数字技术正在重新定义&quot;工作&quot;本身</td></tr>
-<tr><td>对AI时代的启示</td><td>代币 = 基础管理工具</td><td>AI = 无趣工作吸尘器</td><td>激励 = 行为塑造器</td></tr>
-</tbody>
-</table>
+<li>论文三说，当贡献可以被量化给价值，激励设计就不再只是经济账，更是行为心理学[3]。</li>
 
-<p>这三篇论文的共同洞察是：<strong>技术的发展正在以超出我们预期的程度重塑&quot;组织&quot;和&quot;工作&quot;的基础逻辑。</strong></p>
-<ul>
-<li>传统的&quot;发工资→干活&quot;模型正在被&quot;代币化协作&quot;补充甚至替代</li>
-<li>数字工具一方面给人们创造的自由，另一方面默默消耗着创造者的精力和时间</li>
-<li>激励设计不再只是经济问题，更是行为心理学问题</li>
-</ul>
-<p>对于正在搭建人机协同业务模式的我们来说，这些学术洞见不是书架上的装饰品——<strong>它们是产品设计的骨架。</strong></p>
+</li></ul>
+
+<p>把它们叠到 AI 时代，就有了一张不那么顺滑、但更真实的地图：AI 可以当那个"吸收无趣工作的吸尘器"，把钓鱼和探索以外的杂活接过去；而组织和激励这两个环节，依然要由人来设计——因为技术越强，边界越是被推到"人如何协作、为何协作"这一层。</p>
+
+<p>对正在搭建人机协同业务的人来说，这些学术洞见不是书架上的装饰品。它们是在提醒：工作方式的底层在变，管理学的旧边界在松动，而新的边界，往往就长在人机之间的那个接缝上。</p>
 
 <h2>参考文献</h2>
+
 <ol>
-  <li><strong>Token-centric work practices in fluid organizations: The cases of Yearn and MakerDAO</strong> — Schirrmacher, N. B., Jensen, J. R., &amp; Avital, M., 2021</li>
-  <li><strong>Tedious work: Developing novel outcomes with digitization in the arts and sciences</strong> — Bruns, H. C., &amp; Long Lingo, E., <em>Administrative Science Quarterly</em>, 69(1), 39-79, 2024</li>
-  <li><strong>Beyond money: Incentive effects of tokenized ownership on user contribution in DAOs</strong> — Chen, K., Fan, Y., Fang, Y., &amp; Luo, X., <em>Journal of Operations Management</em>, 71(7), 988-1016, 2025</li>
+<li><strong>Token-centric work practices in fluid organizations: The cases of Yearn and MakerDAO</strong> — Schirrmacher, N. B., Jensen, J. R., &amp; Avital, M., 2021。</li>
+<li><strong>Tedious work: Developing novel outcomes with digitization in the arts and sciences</strong> — Bruns, H. C., &amp; Long Lingo, E., <em>Administrative Science Quarterly</em>, 69(1), 39-79, 2024。</li>
+<li><strong>Beyond money: Incentive effects of tokenized ownership on user contribution in DAOs</strong> — Chen, K., Fan, Y., Fang, Y., &amp; Luo, X., <em>Journal of Operations Management</em>, 71(7), 988-1016, 2025。</li>
 </ol>
 
-  </div>
-  <div class="article-footer">
-    <a href="/blog/" class="btn btn-outline" style="border-radius:8px;padding:12px 32px;">← 返回博客列表</a>
-  
 <blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
   <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 这篇文章给你带来了什么启发？</p>
   <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
@@ -191,5 +150,5 @@ import Article from '../../layouts/Article.astro';
   </p>
 </blockquote>
 
-</div>
+  </div>
 </Article>

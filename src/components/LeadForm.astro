@@ -1,0 +1,147 @@
+---
+---
+{/* 统一留资表单组件 LeadForm
+    用法: 在页面中 <LeadForm source="home" variant="inline|float" />
+    - 字段: 姓名 + 邮箱 + 意向 + 需求(选填)  —— 遵循 student 的"字段极少"铁律
+    - 提交: POST /api/lead → 飞书AI素养群通知
+    - 不收集手机号/公司/职位等分级信号
+*/}
+
+<script>
+  // 暴露全局函数供按钮触发
+  window.humaLead = {
+    openFloat: function () {
+      const el = document.getElementById('huma-lead-modal');
+      if (el) { el.style.display = 'flex'; }
+    },
+    closeFloat: function () {
+      const el = document.getElementById('huma-lead-modal');
+      if (el) { el.style.display = 'none'; }
+    }
+  };
+</script>
+
+<style>
+  .huma-lead-inline {
+    max-width: 640px;
+    margin: 32px auto;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid var(--color-border, #E5E5E5);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(15,43,70,0.06);
+  }
+  .huma-lead-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary, #0F2B46);
+    margin-bottom: 6px;
+  }
+  .huma-lead-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary, #666);
+    margin-bottom: 20px;
+  }
+  .huma-lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .huma-lead-form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary, #0F2B46);
+    margin-bottom: -6px;
+  }
+  .huma-lead-form input,
+  .huma-lead-form select,
+  .huma-lead-form textarea {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--color-text, #2D2D2D);
+    background: #fafaf8;
+    border: 1.5px solid var(--color-border, #E5E5E5);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .huma-lead-form input:focus,
+  .huma-lead-form select:focus,
+  .huma-lead-form textarea:focus {
+    border-color: var(--color-accent, #C9A96E);
+  }
+  .huma-lead-form textarea { min-height: 70px; resize: vertical; }
+  .huma-lead-note {
+    font-size: 12px;
+    color: var(--color-text-muted, #999);
+    margin-top: -4px;
+  }
+  .huma-lead-submit {
+    margin-top: 6px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-accent, #C9A96E);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .huma-lead-submit:hover { background: var(--color-accent-dark, #B8944C); }
+  .huma-lead-submit:disabled { opacity: 0.6; cursor: wait; }
+  .huma-lead-msg { font-size: 13px; margin-top: 10px; }
+  .huma-lead-msg.ok { color: #2e7d32; }
+  .huma-lead-msg.err { color: #c62828; }
+
+  /* 浮动按钮（CBAM 等工具页用） */
+  .huma-lead-float-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 28px;
+    z-index: 9998;
+    padding: 13px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-accent, #C9A96E);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .huma-lead-float-btn:hover { transform: translateY(-2px); }
+  .huma-lead-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(15,43,70,0.45);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .huma-lead-modal-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 28px;
+    background: #fff;
+    border-radius: 16px;
+    position: relative;
+  }
+  .huma-lead-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--color-text-muted, #999);
+    cursor: pointer;
+  }
+  .huma-lead-close:hover { color: var(--color-primary, #0F2B46); }
+</style>

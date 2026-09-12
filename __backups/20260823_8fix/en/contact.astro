@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Get in Touch"
+  description="Free consultation — tell us about your challenge and we'll give you a direction within 24 hours."
+  lang="en"
+  path="/en/contact/"
+>
+  <section class="section" style="padding-top:100px;">
+    <div class="container">
+      <div class="grid-2" style="align-items:start;">
+        <div>
+          <p class="section-label">Contact</p>
+          <h1>Tell Us About Your Challenge</h1>
+          <p style="color:var(--color-text-secondary);font-size:17px;">
+            Tell us about your situation. We'll reply within 24 hours with initial guidance. Free, no pressure.
+          </p>
+          <div style="margin-top:var(--spacing-xl);">
+            <div style="padding:var(--spacing-lg);border-left:3px solid var(--color-accent);margin-bottom:var(--spacing-lg);">
+              <div style="font-weight:600;color:var(--color-primary);">💡 Common Questions</div>
+              <ul style="list-style:none;padding:0;margin-top:var(--spacing-sm);color:var(--color-text-secondary);font-size:14px;">
+                <li style="padding:4px 0;">→ How do I improve my team's AI usage efficiency?</li>
+                <li style="padding:4px 0;">→ How do I prepare my products for EU CBAM?</li>
+                <li style="padding:4px 0;">→ Where should my company start with globalization?</li>
+                <li style="padding:4px 0;">→ How can I personally improve my human-AI synergy skills?</li>
+              </ul>
+            </div>
+            <p style="color:var(--color-text-muted);font-size:13px;">
+              Or email us directly: <a href="mailto:connie@humanaifit.com" style="color:var(--color-primary);">connie@humanaifit.com</a>
+            </p>
+          </div>
+        </div>
+        <div style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
+          <h3 style="margin-bottom:var(--spacing-lg);">Contact Form</h3>
+          <form action="https://formspree.io/f/your-form-id" method="POST" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">Name *</label>
+              <input type="text" name="name" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="Your name">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">Email *</label>
+              <input type="email" name="email" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="your@email.com">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">Company</label>
+              <input type="text" name="company" style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);" placeholder="Optional">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:var(--spacing-xs);">Your Challenge *</label>
+              <textarea name="message" rows="5" required style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:6px;font-size:14px;font-family:var(--font-sans);resize:vertical;" placeholder="Briefly describe your situation or needs..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send →</button>
+            <p style="font-size:11px;color:var(--color-text-muted);text-align:center;margin:0;">
+              * By submitting you agree to our privacy policy.
+            </p>
+          </form>
+          <div style="margin-top:var(--spacing-md);padding:var(--spacing-md);background:#FFF8E1;border-radius:6px;font-size:12px;color:#856404;">
+            ⚠️ Form currently uses Formspree. If not configured, please email <strong>connie@humanaifit.com</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

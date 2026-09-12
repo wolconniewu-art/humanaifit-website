@@ -44,6 +44,24 @@ const path = Astro.url.pathname;
       background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
+    .article-hero h1 {
+      margin: 0 0 4px 0;
+      font-size: clamp(1.4rem, 2.6vw + 0.6rem, 1.9rem) !important;
+      line-height: 1.3 !important;
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      text-wrap: balance;
+    }
+    .article-hero .article-subtitle {
+      display: block;
+      margin: 6px 0 0 0;
+      font-size: clamp(1.05rem, 1.2vw + 0.6rem, 1.25rem) !important;
+      line-height: 1.5 !important;
+      color: var(--color-text-secondary, #555) !important;
+      font-weight: 500;
+      white-space: normal !important;
+    }
     .article-meta {
       display: flex;
       align-items: center;
@@ -163,6 +181,28 @@ const path = Astro.url.pathname;
     }
     .article-body .callout strong {
       color: var(--color-primary);
+    }
+    /* ===== 参考文献规范显示 ===== */
+    .article-body ol {
+      margin: 16px 0 24px;
+      padding-left: 24px;
+      list-style: decimal;
+    }
+    .article-body ol li {
+      margin: 8px 0;
+      padding-left: 4px;
+      line-height: 1.7;
+      font-size: 14px;
+      color: var(--color-text);
+      word-break: break-word;
+    }
+    .article-body ol li strong {
+      color: var(--color-text);
+    }
+    .article-body .reference-section p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: var(--color-text);
     }
     .article-back {
       display: inline-flex;

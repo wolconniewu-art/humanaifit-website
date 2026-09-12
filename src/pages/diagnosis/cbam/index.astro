@@ -1,0 +1,82 @@
+---
+import Blog from '../../../layouts/Blog.astro';
+---
+
+<Blog
+  title="CBAM碳合规自查 — 30秒检查你的产品"
+  description="输入你的HS编码（前6-8位），30秒免费诊断：你的产品是否受欧盟CBAM影响？包含排放估算和合规路线图。"
+  lang="zh-CN"
+>
+  <div class="article-body" style="max-width:1200px;margin:0 auto;padding:40px 20px 80px;">
+<div style="width:100%;height:100vh;border:none;overflow:hidden;">
+  <iframe 
+    src="https://cbam.humanaifit.com/?lang=zh&v=2" 
+    style="width:100%;height:100%;border:none;min-height:100vh;"
+    title="CBAM碳合规自查工具"
+    loading="eager"
+    allow="payment"
+  ></iframe>
+</div>
+
+<script>
+  // 自适应 iframe 高度
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'resize') {
+      const iframe = document.querySelector('iframe');
+      if (iframe) iframe.style.height = e.data.height + 'px';
+    }
+  });
+</script>
+  </div>
+</Blog>
+
+<!-- CBAM 留资浮窗 -->
+<button class="huma-lead-float-btn" onclick="humaLead.open()">💬 CBAM 咨询</button>
+<div class="huma-lead-modal" id="huma-lead-modal">
+  <div class="huma-lead-modal-card">
+    <button class="huma-lead-close" onclick="humaLead.close()">×</button>
+    <div class="huma-lead-title">留下联系方式</div>
+    <div class="huma-lead-sub">告诉我你的产品情况，24小时内我亲自回复 CBAM 合规建议。</div>
+    <form class="huma-lead-form" id="leadForm-cbam" onsubmit="return humaLeadSubmit(event, 'cbam')">
+      <label>怎么称呼你？</label>
+      <input type="text" name="name" required placeholder="你的姓名或昵称" />
+      <label>邮箱</label>
+      <input type="email" name="email" required placeholder="you@example.com" />
+      <label>你关心什么？</label>
+      <select name="intent" required>
+        <option value="">请选择</option>
+        <option>CBAM碳合规</option>
+        <option>碳关税咨询</option>
+        <option>全球化合规</option>
+        <option>其他合作</option>
+      </select>
+      <label>想解决的问题（选填）</label>
+      <textarea name="note" placeholder="例如：我司出口钢材到欧盟，想知道是否受影响"></textarea>
+      <p class="huma-lead-note">不收集手机号，可随时要求删除。</p>
+      <button type="submit" class="huma-lead-submit">发送</button>
+      <div class="huma-lead-msg" id="leadMsg-cbam"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function(){
+    window.humaLead = {
+      open: function(){ var m=document.getElementById('huma-lead-modal'); if(m) m.style.display='flex'; },
+      close: function(){ var m=document.getElementById('huma-lead-modal'); if(m) m.style.display='none'; }
+    };
+    window.humaLeadSubmit = async function(e, source){
+      e.preventDefault();
+      var f = e.target, msg = document.getElementById('leadMsg-'+source), btn = f.querySelector('.huma-lead-submit');
+      var data = { name:f.name.value, email:f.email.value, intent:f.intent.value, note:f.note.value, source:source };
+      btn.disabled=true; btn.textContent='发送中...';
+      try{
+        await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+        msg.className='huma-lead-msg ok'; msg.textContent='✅ 已收到，我24小时内回复你。';
+        f.reset(); setTimeout(function(){ var m=document.getElementById('huma-lead-modal'); if(m) m.style.display='none'; }, 1500);
+      }catch(err){ msg.className='huma-lead-msg err'; msg.textContent='发送失败，请稍后再试。'; }
+      btn.disabled=false; btn.textContent='发送';
+    };
+  })();
+</script>
+

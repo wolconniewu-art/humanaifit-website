@@ -72,8 +72,8 @@ fi
 echo ""
 echo "Step 0b: 标题完整性校验..."
 
-# 英文标题
-SHORT_TITLES=$(grep -oP '(?<=title: ")[^"]+' src/pages/en/blog.astro | awk 'length < 20 {print}' | head -5)
+# 英文标题（提取完整 title 值，正确处理含转义引号的标题）
+SHORT_TITLES=$(grep -oP '\btitle\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*tags' src/pages/en/blog.astro | sed -E 's/^title\s*:\s*"//; s/\"$//' | awk 'length < 20 {print}' | head -5)
 if [ -n "$SHORT_TITLES" ]; then
   echo "   错误: 发现短标题（<20字符），疑似截断:"
   echo "$SHORT_TITLES" | while IFS= read -r t; do

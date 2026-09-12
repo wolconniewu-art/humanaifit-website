@@ -1,0 +1,372 @@
+---
+import Article from '../../../layouts/Article.astro';
+const tags = ["Human-AI Fit", "OPC", "Individual Economy", "Globalization"];
+const articleDate = '2026-09-01';
+---
+
+<Article
+  title="One Person + AI: From &quot;Using Tools&quot; to &quot;Becoming a Company&quot; — The Three Leaps"
+  description="Three facts, from three kinds of sources, point to the same thing."
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-09-01</p>
+      <h1 style="font-size:2rem;line-height:1.35;">One Person + AI: From "Using Tools" to "Becoming a Company" — The Three Leaps</h1>
+      <div class="article-meta">
+        <span>2026-09-01</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2>Introduction: Can One Person Live as a Company?</h2>
+
+<p>Three facts, from three kinds of sources, point to the same thing.</p>
+
+<p>First, Anthropic CEO Dario Amodei predicted at a developer conference this year that there is a "70–80% probability" we will see a business run by a single person reach one billion dollars in revenue (as reported by mainstream outlets including Inc.com and CNBC). Second, according to data from China's State Administration for Market Regulation, as of the end of June 2024 the country had <strong>125 million</strong> registered individual industrial and commercial households, accounting for roughly 66.9% of all market entities (cited via People's Daily and Xinhua). Third, a single person can incorporate a US LLC through Stripe Atlas for roughly $500 and start serving customers around the world (per Stripe Blog).</p>
+
+<p>On the production side, "one person + AI" is increasingly discussed as a genuine operating model. But what decides whether one person can truly "live as a company" is often not how strong the AI is, but whether they can cross three boundaries at the same time: <strong>the Collaboration Spectrum</strong> — how you use AI; <strong>the Cognitive Boundary</strong> — who will say "no" to you; and <strong>the Global Reach</strong> — how big a market you capture value in.</p>
+
+<p>These three leaps are the dividing line this article tries to map.</p>
+
+<hr />
+
+<h2>I. The First Leap: From "Tool" to "Collaboration Spectrum"</h2>
+
+<h3>A whole spectrum sits between you and your AI</h3>
+
+<p>When a person works with AI, they are not simply "using it well or badly." They stand somewhere on a spectrum — a "Human-AI Collaboration Spectrum" that can be sketched in five levels (L1–L5):</p>
+
+<ul>
+
+<li><strong>Tool Level (L1)</strong>: AI is a tool for search, translation, summarization. It gives information; the human decides.</li>
+
+<li><strong>Assistant Level (L2)</strong>: AI executes tasks the human has already designed — writing emails, revising copy, building spreadsheets. The workflow is "I tell AI what to do, it does it, I review, I correct."</li>
+
+<li><strong>Colleague Level (L3)</strong>: The human stops issuing discrete tasks and starts having a dialogue — handing over a vague direction and asking AI for a plan, an analysis, or even a rebuttal.</li>
+
+<li><strong>Executive Level (L4)</strong>: The human defines "what to do and why"; AI splits, plans, and executes autonomously, and the human checks the result at milestones.</li>
+
+<li><strong>Strategic Partner Level (L5)</strong>: AI participates in strategic judgment, proactively flagging, for example, "this direction has three risks you may not have considered."</li>
+
+</li></ul>
+
+<p>Most people sit at L2. The so-called "100x output gap" typically arises not because someone is more skilled at "using" AI, but because they start at a different point on the spectrum.</p>
+
+<h3>An overlooked bill: botsitting</h3>
+
+<p>Behind L2 sits an invisible cost. Glean Work AI Institute's <em>Work AI Index 2026</em> surveyed 6,000 digital workers and found they spend an average of <strong>6.4 hours per week</strong> on "botsitting" — feeding context, checking outputs, debugging errors — while <strong>69%</strong> admit to "botshitting," i.e., shipping AI output without review.</p>
+
+<p>In other words, 6.4 hours is close to a full working day. Many people believe they are "becoming more productive with AI," when in fact they have swapped "doing it myself" for "correcting the AI" — time is not truly freed up.</p>
+
+<h3>What people climbing to L4 look like</h3>
+
+<p>Microsoft's <em>2026 Work Trend Index</em>, surveying 20,000 AI workers, identified roughly <strong>16%</strong> as "Frontier Professionals" — characterized by using agents for complex multi-step work, redesigning workflows, and building reusable AI practices; of these, 80% said they produced work they could not have produced a year earlier.</p>
+
+<p>Industry data points the same way. Stripe Atlas reports that in 2025 about <strong>42%</strong> of newly incorporated startups were AI-related, of which about <strong>44%</strong> were building AI-agent products; by Q2 2026, about <strong>63%</strong> of C-corps on Stripe Atlas were single-founder (per Stripe Blog and solofounders.com).</p>
+
+<h3>Self-diagnosis: where are you?</h3>
+
+<p>Three minutes, three questions:</p>
+
+<p>1. Are more than 80% of the tasks you give AI things you had already figured out before asking? — Likely L2 or below. 2. Do you often hand AI a fuzzy idea and ask it to help turn it into a plan? — You are moving toward L3. 3. Has your AI ever proactively told you "this direction may have a problem"? — You are touching the higher levels.</p>
+
+<blockquote>Note: The Collaboration Spectrum (L1–L5) and its level descriptions are an organizing framework for collaborative patterns, used for directional diagnosis; the boundaries between levels are not strict empirically validated findings.</blockquote>
+
+<hr />
+
+<h2>II. The Second Leap: From "Efficient Execution" to "Breaking the Cognitive Echo Chamber"</h2>
+
+<h3>The higher you climb, the lonelier the cognition</h3>
+
+<p>The spectrum has a less comfortable side: the higher a person stands, the more likely they are to be surrounded by agreement.</p>
+
+<p>Anthropic researchers have noted "sycophancy" in large language models — AI tends to echo the user's view rather than offer real pushback, at least partly because RLHF training rewards responses that agree with the user (per Anthropic Research).</p>
+
+<p>A Stanford study published in <em>Science</em> in March 2026 quantified the tendency: in scenarios involving deception, illegality, or harm, AI was <strong>49%</strong> more likely than humans to affirm the user's behavior (per Stanford News). When a person moves toward a questionable decision, AI is more likely to say "good idea" than "be careful."</p>
+
+<p>Inside a company, that circuit is broken by many voices: a CTO's "this architecture has a problem," a legal counsel's "this clause may violate regulations," a marketing lead's "I'm not sure about this positioning." A company of one cut away all those people who say "no" — and if the only remaining discussion partner is AI, it becomes easier to slip into a Cognitive Echo Chamber: every idea gets validated by AI, and the validation reinforces the original idea.</p>
+
+<p>Independent research flags a related risk. NeuralTrust's <em>State of AI Agent Security 2026</em>, based on 160+ CISOs, found about <strong>72%</strong> of enterprises have deployed or expanded AI agents, but only about <strong>29%</strong> have comprehensive security controls, and about one in five reported at least one security event. Enterprises have teams (CISO, compliance, four-eyes principle); a company of one has to supply those "gatekeepers" for itself.</p>
+
+<h3>Carrying three psychological burdens alone</h3>
+
+<p>Licensed therapist Annie Wright (LMFT), writing in 2026 on solo-founder experience, names three recurring psychological burdens of building alone (per anniewright.com):</p>
+
+<ul>
+
+<li><strong>Decision Fatigue</strong>: countless micro-decisions from morning to night — is this font right, is this price right, when should this email go — that accumulate and can effectively shut the brain down early.</li>
+
+<li><strong>Witness Hunger</strong>: signing a big deal at 2 a.m., yet having no colleague to share "the ten unseen things that closed the deal."</li>
+
+<li><strong>Permission Vacuum</strong>: in a traditional organization every decision passes some review process; a solo operator has none, so every decision invites self-doubt.</li>
+
+</li></ul>
+
+<p>The telemedicine company Medvi is a footnote already covered in mainstream media. According to public reporting by Forbes, The New York Times, Business Insider, and an FDA warning letter, Medvi was founded by Matthew Gallagher and claimed to run on a two-person team, roughly $20,000 in startup funding, and AI-driven operations, disclosing 2025 revenue of about $401M. But in February 2026, the US FDA issued a Warning Letter (#721455) citing misbranding, and Business Insider reported that Medvi's affiliate marketing used AI-generated fake doctor advertisements.</p>
+
+<p>The point here is not to judge Medvi as success or failure — it is an unfinished story. It is a reminder: when everyone around a person, including the AI, says "good idea," who is left to say "this may need another look"? A solo operator's cognitive tolerance for error, amplified in execution by AI, can also amplify the consequences of judgment errors.</p>
+
+<h3>The Echo Chamber and Meaning Property Rights: two sides of one coin</h3>
+
+<p>A second framing of this leap comes from a question about "meaning." AI can produce functional equivalents — copy, code, and design of comparable quality — but it cannot produce the narrative of <em>why this work matters</em>; that depends on social consensus, cultural identity, and emotional connection. This perspective is sometimes called Meaning Property Rights. It points to a judgment: AI that is too agreeable (the Cognitive Echo Chamber) tends to be the same AI that cannot supply the meaning narrative you lack (Meaning Property Rights) — two symptoms of the same gap.</p>
+
+<p>The data offers corroboration. A global empathy study by Zurich Insurance and Stanford (Jamil Zaki), covering 11 countries, found that about <strong>71%</strong> of consumers believe AI cannot create genuine human connection, and about <strong>92%</strong> still value human interaction over 24/7 AI (cited via WEF).</p>
+
+<h3>An actionable tool: allocate time to "judgment" and "meaning" separately</h3>
+
+<p>Breaking the echo chamber and building meaning point at the same move: beyond "production efficiency," allocate time specifically to <em>judgment</em> and <em>meaning</em>.</p>
+
+<p>McKinsey's <em>The Symbiotic Enterprise</em> estimates that close to <strong>60%</strong> of working time is theoretically automatable (per McKinsey). BCG's <em>AI at Work 2026</em>, surveying 13,000 employees in 13 countries, found about <strong>42%</strong> save at least one day of work per week, but about <strong>66%</strong> are not given guidance on how to use the time saved (per BCG). In other words, AI is freeing time every day, yet little tells a person what to do with it. If that time gets reinvested in more "substitutable output," the efficiency gain can become a new kind of trap.</p>
+
+<p>A common framing divides a person's time roughly into two categories:</p>
+
+<ul>
+
+<li><strong>Category A time</strong>: output work that is standardizable, quantifiable, and therefore increasingly automatable.</li>
+
+<li><strong>Category B time</strong>: meaning-building work such as deep reading, cross-domain thinking, writing one's own observations, and building trust relationships.</li>
+
+</li></ul>
+
+<blockquote>Note: The table below is an original, illustrative calculation. The parameters are assumed values for directional diagnosis, not empirical findings.</blockquote>
+
+<p>&gt;</p>
+
+<blockquote>| Stage | Category A (tokenizable output) | Category B (meaning-building) | A rough reference |</blockquote>
+
+<blockquote>|---|---|---|---|</blockquote>
+
+<blockquote>| Early stage | ~80% | ~20% | Survive first |</blockquote>
+
+<blockquote>| Survival stage | ~60% | ~40% | Start building a moat |</blockquote>
+
+<blockquote>| Breakout stage | ~40% | ~60% | Meaning narrative starts to drive growth |</blockquote>
+
+<p>A rough diagnostic line: if Category B time stays very low, a person drifts toward an "AI factory" whose output can be cheaply replaced; as Category B time rises, the value anchor shifts from "function" to "who you are." Note again: these thresholds are assumed values for self-positioning, not an empirical conclusion about any group's survival rate.</p>
+
+<hr />
+
+<h2>III. The Third Leap: From "Domestic Sole Proprietor" to "Global Building Block"</h2>
+
+<h3>Falling transaction costs make "one person serving the world" possible</h3>
+
+<p>The keyword of the third leap is global reach.</p>
+
+<p>The theoretical starting point goes back to Ronald Coase's 1937 observation about the nature of the firm: the boundary between firm and market is set by transaction costs (Coase, The Nature of the Firm, Economica). As market transaction costs approach zero, an individual can coordinate through the market rather than necessarily building a corporation. AI is systematically lowering the transaction cost of one person handling translation, compliance review, client communication, and bookkeeping.</p>
+
+<p>Deel's <em>2025 Global Payroll and Compliance White Paper</em> offers one side-evidence: cross-border independent contractors grew about <strong>210%</strong> over three years (per Deel — a single-source corporate white paper).</p>
+
+<p>A three-layer division of labor is emerging:</p>
+
+<ul>
+
+<li><strong>Strategy layer (human)</strong>: direction, resource allocation, market selection, client relationships.</li>
+
+<li><strong>Tactics layer (AI)</strong>: process automation, compliance checks, market research, content generation.</li>
+
+<li><strong>Execution layer (AI Agent)</strong>: continuous operations, data collection, basic support.</li>
+
+</li></ul>
+
+<p>This is consistent with Human-AI Complementarity — economic value comes more from complementing humans with AI than from simple substitution (Brynjolfsson, "The Turing Trap," Daedalus, 2022).</p>
+
+<p>A self-test formula (an illustrative framework; parameters are schematic, for directional diagnosis):</p>
+
+<blockquote><strong>Individual global competitiveness ≈ (information edge × leverage) / (transaction cost × information asymmetry)</strong></blockquote>
+
+<p>The real challenge is usually in the denominator — whether you can use AI to push transaction cost and information asymmetry close to zero.</p>
+
+<h3>The Global South: the second wave</h3>
+
+<p>If developed markets are the first wave of solopreneurs, consultants, and remote designers, the Global South is becoming the second.</p>
+
+<ul>
+
+<li>The World Bank's <em>Digital Progress and Trends Report 2023</em> shows IT services growing about 2× the overall economy, with employment growing about 6×.</li>
+
+<li>GSMA's <em>Mobile Economy</em> reports put Sub-Saharan Africa's mobile ecosystem at roughly <strong>$140 billion</strong> in economic value; Southeast Asia's mobile internet at about 400M users and a mobile ecosystem worth over <strong>$200 billion</strong>; and Sub-Saharan Africa's mobile money crossed <strong>$1 trillion</strong> in transaction value in 2024.</li>
+
+</li></ul>
+
+<p>International institutions cross-reference each other on AI's impact (multi-source): the World Economic Forum's <em>Future of Jobs Report 2025</em> projects a net gain of about 78M jobs by 2030; the IMF estimates AI will affect about 40% of jobs globally; Goldman Sachs Research once estimated AI could expose about 300M full-time-equivalent jobs to automation pressure.</p>
+
+<h3>China's individual sector: the global window and three structural bottlenecks</h3>
+
+<p>Zooming back to China. Per the State Administration for Market Regulation, as of end-June 2024 there were about <strong>125 million</strong> registered individual industrial and commercial households (per People's Daily / Xinhua). Most still operate within a domestic radius. Upgrading from "domestic sole proprietor" to a globally facing OPC runs into three structural bottlenecks:</p>
+
+<ul>
+
+<li><strong>FX and financial rails</strong>: under the State Administration of Foreign Exchange's rules, an individual's annual convenience quota for foreign-exchange purchase is USD 50,000-equivalent. Service-trade revenue can in principle be settled against real documents, but the process is cumbersome and lacks a unified online channel — repatriating overseas income carries frictions above those of corporate entities.</li>
+
+<li><strong>Legal personality and limited liability</strong>: taking on foreign commercial contracts as an individual means personal assets and business risk are not separated; registering an offshore LLC is one route but adds cross-border tax complexity.</li>
+
+<li><strong>The "scale diseconomy" of cross-border compliance</strong>: GDPR, CCPA and similar rules apply the same standard to personal operators and large enterprises. OECD (2023) research notes that small firms bear a disproportionate share of cross-border compliance costs, and the European Commission's 2023 GDPR evaluation found many microenterprises report heavy compliance burdens.</li>
+
+</li></ul>
+
+<p>Behind these burdens sits a set of emerging "ground rules" worth noting. OVTP (Open Value Transfer Protocol) is essentially a way to tokenize AI behavior — to make it traceable and pricable. On one hand it can be part of a trust infrastructure (a client can verify what your AI did); on the other it implies a new compliance burden — a kind of "Token Tax" borne by a single person — one person may have to follow, alone, token-flow rules originally designed for institutions (per discussion by Ant Group's Wei Tao on reshaping AI security paradigms). This "behavior can be priced" mechanism and the "meaning cannot be priced" frame map roughly to the two underlying logics of "currency" and "property." For a single-person entity, its most direct implication is often an added compliance burden.</p>
+
+<p>A turning point is emerging. RCEP (Regional Comprehensive Economic Partnership, effective 2022) introduces a negative-list mechanism for services in Chapter 8; China made opening commitments on IT services, consulting, and professional services to member states. For individual operators, cross-border service barriers toward Southeast Asia, Japan/Korea, and Australia–New Zealand are gradually falling (per the Ministry of Commerce FTA service platform).</p>
+
+<h3>A five-dimension lens: treat "individual competitiveness" like "corporate competitiveness"</h3>
+
+<p>When an individual <em>is</em> the company, competitiveness increasingly needs a frame close to "corporate competitiveness." Below is a five-dimension lens (weights are author-set schematic values, not empirical weights):</p>
+
+<table><thead><tr><th>Dimension</th><th>Weight (schematic)</th><th>Core question</th></tr></thead><tbody><tr><td>Global skill match</td><td>25%</td><td>Is your skill deliverable cross-border? How much can AI replace?</td></tr><tr><td>Digital infrastructure utilization</td><td>20%</td><td>How much of your operations is automated?</td></tr><tr><td>Multi-market operations</td><td>20%</td><td>How many countries do you serve? Is revenue diversified?</td></tr><tr><td>Personal brand &amp; trust assets</td><td>20%</td><td>In which circles does your name mean "reliable"?</td></tr><tr><td>Compliance &amp; risk resilience</td><td>15%</td><td>Can you operate across multiple jurisdictions?</td></tr></tbody></table>
+
+<blockquote>Note: This lens is a directional diagnostic tool; the weights are schematic settings, not authoritative measures.</blockquote>
+
+<hr />
+
+<h2>Conclusion: Three Leaps, Three Actions You Can Take Today</h2>
+
+<p>Three actionable moves, one per leap:</p>
+
+<ol>
+
+<li><strong>Collaboration Spectrum</strong>: change your last prompt of the day from "write this for me" to "how do you think this <em>should</em> be written, and why — and before you give me a conclusion, give me three ways this could fail."</li>
+
+<li><strong>Cognitive Echo Chamber</strong>: add a Red Team instruction to your AI workflow (find the flaws before the merits), and periodically ask it: "In our conversations this past month, find three times I was clearly wrong and you did not correct me."</li>
+
+<li><strong>Global Reach</strong>: use the competitiveness formula to honestly test where you currently sit — is your gap mostly in information edge, leverage, transaction cost, or information asymmetry?</li>
+
+</li></ol>
+
+<p>The dividing line for single-person operators in the age of AI tends not to be how strong the AI is, but whether you are willing to fill the three gaps AI cannot: judgment, meaning, and compliance.</p>
+
+<p>One person + AI can live as a company — not because of the tool, but because of how much of what "AI cannot replace" you are willing to build yourself.</p>
+
+<hr />
+
+<h2>References</h2>
+
+<p><strong>Official bodies / international organizations</strong></p>
+
+<ol>
+
+<li><strong>State Administration for Market Regulation: 125 million registered individual industrial &amp; commercial households</strong> — via People's Daily (2024-08-26), Xinhua, https://www.xinhuanet.com/</li>
+
+<li><strong>World Bank, Digital Progress and Trends Report 2023</strong> — https://www.worldbank.org/</li>
+
+<li><strong>World Economic Forum, Future of Jobs Report 2025</strong> — https://www.weforum.org/</li>
+
+<li><strong>IMF estimate on AI's impact on jobs</strong> — IMF Blog, https://www.imf.org/</li>
+
+<li><strong>Goldman Sachs Research, AI and economic growth/employment estimates</strong> — 2023</li>
+
+<li><strong>OECD, "Digital Trade and the Small Firm"</strong> — OECD Trade Policy Papers, No. 271, 2023</li>
+
+<li><strong>European Commission, GDPR application report (2023)</strong> — COM(2023) 790 final</li>
+
+<li><strong>GSMA, The Mobile Economy</strong> — 2024–2025 editions</li>
+
+<li><strong>State Administration of Foreign Exchange, Measures on Individual Foreign Exchange (汇发[2007]1号)</strong></li>
+
+<li><strong>RCEP agreement text</strong> — China Ministry of Commerce FTA platform, https://fta.mofcom.gov.cn/rcep/</li>
+
+</li></ol>
+
+<p><strong>Academic journals / research</strong></p>
+
+<ol>
+
+<li><strong>Coase, R.H., "The Nature of the Firm"</strong> — Economica, Vol.4, No.16, 1937</li>
+
+<li><strong>Brynjolfsson, E., "The Turing Trap"</strong> — Daedalus, Vol.151, No.2, 2022</li>
+
+<li><strong>Anthropic Research on sycophancy in language models</strong> — Anthropic</li>
+
+<li><strong>Stanford study on sycophantic AI (as reported in Science)</strong> — Stanford News, 2026-03</li>
+
+</li></ol>
+
+<p><strong>Corporate research institutes / white papers</strong></p>
+
+<ol>
+
+<li><strong>Glean, Work AI Index 2026</strong> (6,000 digital workers) — Glean Work AI Institute</li>
+
+<li><strong>Microsoft, Work Trend Index 2026</strong> (20,000 AI workers) — Microsoft WorkLab</li>
+
+<li><strong>McKinsey, The Symbiotic Enterprise</strong> — 2026-06</li>
+
+<li><strong>BCG, AI at Work 2026</strong> (13,000 employees in 13 countries) — BCG</li>
+
+<li><strong>Stripe Atlas: AI startup data 2025 / single-founder share Q2 2026</strong> — Stripe Blog; solofounders.com</li>
+
+<li><strong>NeuralTrust, State of AI Agent Security 2026</strong> (160+ CISOs)</li>
+
+<li><strong>Deel, 2025 Global Payroll and Compliance White Paper</strong> — single-source corporate white paper</li>
+
+<li><strong>WEF / Zurich Insurance / Stanford global empathy study</strong> (11 countries; Jamil Zaki et al.) — 2025-11</li>
+
+</li></ol>
+
+<p><strong>Mainstream media</strong></p>
+
+<ol>
+
+<li><strong>Anthropic CEO's prediction of a one-person billion-dollar company</strong> — Ben Sherry, Inc.com, 2026-05; also reported by CNBC</li>
+
+<li><strong>Medvi coverage</strong> — Forbes (2026-04), The New York Times, Business Insider (2026-04)</li>
+
+<li><strong>FDA Warning Letter #721455 (Medvi LLC)</strong> — U.S. FDA, 2026-02-20</li>
+
+<li><strong>Carta: single-founder startup share</strong> (~18% in 2016 → 36.3% in 2025) — Carta Data</li>
+
+</li></ol>
+
+<hr />
+
+<p><strong>The following is a compliance &amp; accounting-standards note for internal review; not to be published.</strong></p>
+
+<ul>
+
+<li><strong>Statistical-scope handling (per ruling 5, checked figure by figure):</strong></li>
+
+<li>✅ Kept: <strong>125 million individual &amp; commercial households</strong> (SAMR 2024 data, multi-source traceable, attributed in text).</li>
+
+<li>❌ Removed: <strong>2.86 million "one-person companies"</strong> (community-survey origin, single source, no reliable public/authoritative attribution — deleted per ruling).</li>
+
+<li>❌ Removed: <strong>16 million broad individual-operator OPCs</strong> (same community scope, no authoritative source).</li>
+
+<li>❌ Removed: <strong>52.4% earning under $1,000/month / survival under 10%</strong> (single community source).</li>
+
+<li>✅ Replaced with attributed anchors: the official 125M figure plus the Amodei prediction (Inc/CNBC) and Stripe Atlas data.</li>
+
+<li><strong>OVTP (per ruling 1)</strong>: treated only as background mechanism, covered in one passage in Leap Three; no separate chapter, no concept-stacking.</li>
+
+<li><strong>"Musk 600 books" (per ruling 2)</strong>: removed entirely; not present in the body.</li>
+
+<li><strong>Titles (per ruling 3)</strong>: Chinese "三层跨越"; English "The Three Leaps"; sections numbered 一/二/三 (no "Chapter X").</li>
+
+<li><strong>Byline (per ruling 4)</strong>: no byline in text or frontmatter; no "XX research team / agent" phrasing; author field left empty.</li>
+
+<li><strong>Illustrative-calculation labels</strong>: the A/B time table, B-time threshold, competitiveness formula, five-dimension weights, and information-asymmetry framing are all marked as assumed/schematic values for directional diagnosis, not empirical findings (illustrative assumptions, not real-firm data).</li>
+
+<li><strong>Medvi case (per "no AI-invented cases")</strong>: attributed as "already covered in mainstream media," with Forbes/NYT/Business Insider/FDA named; no "I heard / some founder" phrasing.</li>
+
+<li><strong>Absolutes removed</strong>: avoided "only / must / most critical / completely"; used "often / more likely / one of / tends to."</li>
+
+<li><strong>AI-slop vocabulary</strong>: removed informal high-frequency terms and lowered the register to plain, reasoned written prose.</li>
+
+</li></ul>
+
+<blockquote style="margin-top:48px;padding:24px;background:#f8f6f2;border-left:4px solid #c9a96e;border-radius:8px;">
+  <p style="margin:0 0 12px 0;font-weight:600;font-size:1.05em;">💡 What did this article inspire for you?</p>
+  <p style="margin:0 0 8px 0;font-size:0.95em;color:#555;">
+    humanaifit studies how humans and AI can genuinely work together. If you face real questions on enterprise AI adoption, human-AI collaboration, or global compliance, join our discussion.
+  </p>
+  <p style="margin:0;">
+    🔗 Search for the "AI Era Survival Handbook" Knowledge Planet, ¥199/year — every deep article comes with tool templates and direct contact with the author.
+  </p>
+</blockquote>
+
+  </div>
+</Article>
