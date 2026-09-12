@@ -1,0 +1,115 @@
+---
+import Article from "../../layouts/Article.astro";
+const tags = ["世界模型", "具身智能", "Agentic AI", "AI 新经济", "ECCV 2026", "外滩大会", "金砖峰会", "技术范式"];
+const articleDate = '2026-09-12';
+---
+
+<Article
+  title="AI 从虚拟走向物理：2026 年 9 月 12 日，三场大会在同一个问题上收敛"
+  description="2026 年 9 月 12 日这一天，三个相隔数千公里的会场同时处在关键时刻：上海 Inclusion·外滩大会进入会期最后一天，瑞典马尔默的 ECCV 2026 计算机视觉大会闭幕，印度新德里的金砖国家领导人第十八次会晤开幕。表面上看，这分别是产业界、学术界和地缘政治的例行日程；但如果我们把三场大会的核心议程叠在一起，会发现它们指向同一个命题——**人工智能正在从&quot;生成内容&qu…"
+  date={articleDate}
+  tags={tags}
+  lang="zh"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-09-12</p>
+      <h1 style="font-size:2rem;line-height:1.35;">AI 从虚拟走向物理：2026 年 9 月 12 日，三场大会在同一个问题上收敛</h1>
+      <div class="article-meta">
+        <span>2026-09-12</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h1 id="ai-从虚拟走向物理2026-年-9-月-12-日三场大会在同一个问题上收敛">AI 从虚拟走向物理：2026 年 9 月 12 日，三场大会在同一个问题上收敛</h1>
+<h2 id="摘要">摘要</h2>
+<p>2026 年 9 月 12 日这一天，三个相隔数千公里的会场同时处在关键时刻：上海 Inclusion·外滩大会进入会期最后一天，瑞典马尔默的 ECCV 2026 计算机视觉大会闭幕，印度新德里的金砖国家领导人第十八次会晤开幕。表面上看，这分别是产业界、学术界和地缘政治的例行日程；但如果我们把三场大会的核心议程叠在一起，会发现它们指向同一个命题——<strong>人工智能正在从"生成内容"走向"执行任务"，从虚拟世界走进物理世界。</strong></p>
+<p>本文认为，2026 年下半年是 AI 的"执行期"起点。支撑这一判断的不是单点突破，而是三条独立线索的收敛：学术上，"世界模型"取代语言模型成为计算机视觉领域的中心议程；产业上，智能体（Agent）开始接管交易与作业，具身智能进入真实产线；地缘上，金砖机制把数字基础设施与"韧性"写进议程，试图为这条物理化路径提供非西方中心的底座。本文依次还原三场大会的关键信息，论证它们的收敛逻辑，并从技术范式、产业含义、地缘含义三个层面做深层分析，最后给出对从业者的启示。</p>
+<hr />
+<h2 id="一三场大会发生了什么">一、三场大会：发生了什么</h2>
+<h3 id="1-上海-inclusion外滩大会ai-从生成迈向执行">1. 上海 Inclusion·外滩大会：AI 从"生成"迈向"执行"</h3>
+<p>2026 年外滩大会于 9 月 9 日至 12 日在上海黄浦世博园区举行，主题为**"共创 AI 新经济"<strong>。这是该项大会自 2020 年创办以来的新一届（官方口径为"已连续举办四届"），也是</strong>首次把"AI 新经济"确立为核心议题**——不再停留于展示模型能力，而是直接追问 AI 如何转化为生产力、经济机会与增长红利。</p>
+<p>大会设置 1 场主论坛、40 余场见解论坛，汇聚 600 余位国内外分享嘉宾；1.5 万平方米主题科技展吸引 300 余家企业参展，报名观众突破 5 万人，参与者来自 50 多个国家和地区。主论坛阵容跨学界与产业界：2011 年诺贝尔经济学奖得主托马斯·萨金特、2025 年诺贝尔经济学奖得主菲利普·阿吉翁、之江实验室主任及阿里云创始人王坚等。</p>
+<p><strong>最值得记取的，是大会自己写下的那句定位</strong>：本届大会"聚焦人工智能从'生成'迈向'执行'的关键跃迁"，围绕"智能跃迁""经济重构""人本未来"三大板块展开。展馆中，"AI 支付与智能体商业生态""让人工智能走向物理世界"等板块被单列——这几乎就是把本文的命题贴在了展板上。具体落地场景包括：AI 支付智能体从"会办事"走向"能交易"；30 余个智能体应用走进工作与"8 小时外生活圈"；宇树、智元、苏度科技、灵波科技等 40 余家厂商展示机器人在药房、工业制造、物流分拣、巡检、康养等真实场景作业。<strong>机器人不再表演走路，而是展示"干活"。</strong></p>
+<h3 id="2-eccv-2026世界模型成为研究议程本身">2. ECCV 2026：世界模型成为"研究议程本身"</h3>
+<p>ECCV（欧洲计算机视觉大会）是全球仅有的三个 A* 级计算机视觉会议之一（另两个为 CVPR 与 ICCV），且两年一届，因此每一届都是一张"两年快照"。2026 年在瑞典马尔默举行，9 月 8 日至 12 日，是<strong>第 19 届</strong>，也是历史上规模最大的一届：投稿 10,473 篇，录用 2,883 篇，录取率 27.5%，论文集由 Springer 出版；workshop 多达 <strong>86 场</strong>，为历届之最。</p>
+<p>但真正定义这届大会的，是它<strong>智识上的组织方式</strong>。三大主线彼此咬合：</p>
+<ul>
+<li><strong>世界模型（World Models）</strong>——不再是研究议程之一，而是"研究议程本身"。术语由 Jürgen Schmidhuber 于 1990 年引入机器学习领域，Yann LeCun 在 2022 年的立场论文中将其复兴，主张智能需要关于物理世界的预测模型，而非单纯的模式匹配。到 2026 年，这一主张不是靠某一次突破、而是靠<strong>机构性共识</strong>被确认：以世界模型为题的 workshop 数量超前届，具身智能、自动驾驶、3D 场景生成等几乎所有主线都用世界模型的语汇重新表述自己的工作。</li>
+<li><strong>3D 高斯泼溅（Gaussian Splatting）作为基础设施</strong>——首个 poster 场次就有 80 余篇泼溅相关论文，贯穿 SLAM、水下、航拍、热红外、动态 4D、压缩流式传输、医学 CT 重建等方向。领域已不再争论它是否可行，而是在把它工程化进每一条流水线。</li>
+<li><strong>具身智能（Embodied AI）</strong>——与"智能体与世界模型"并列为最大 workshop 群（13 场）。</li>
+</ul>
+<p>三场 keynote 精准对应了这条脉络：Kristen Grauman（德州大学奥斯汀分校教授、Meta FAIR 前总监）讲第一人称具身感知（9 月 10 日）；<strong>Yann LeCun 的题目就是《World Models: Enabling the Next AI Revolution》</strong>（9 月 11 日 15:00）；Jamie Shotton（Wayve）讲《From Visual Recognition to Embodied AI》，把自动驾驶当作具身智能的第一块试验田（9 月 12 日）。</p>
+<p>值得一提的一个技术判断：研究者发现"世界模型 ≈ 大语言模型"这一类比存在结构性缺陷——语言有通用 token（词/子词），物理世界没有对应物。而 ECCV 2026 上两条趋势的合流，隐含着对这个问题的解答：<strong>把 3D 高斯当作物理世界的"token"，把世界模型当作预测与规划层</strong>。没有人宣布这道题解完了，但这届大会的论文集体描述了它的架构。</p>
+<h3 id="3-金砖国家第十八次会晤为物理化的智能排布底座">3. 金砖国家第十八次会晤：为"物理化的智能"排布底座</h3>
+<p>同一天，金砖国家领导人第十八次会晤在印度新德里 Bharat Mandapam 开幕，会期 9 月 12 日至 13 日。这是<strong>金砖机制成立 20 周年</strong>的峰会，也是印度第四次担任主席国（此前为 2012、2016、2021 年），主题为 <strong>"Building for Resilience, Innovation, Cooperation and Sustainability"（构建韧性、创新、合作与可持续）</strong>。</p>
+<p>今天的金砖已从最初的四国扩为<strong>11 个正式成员</strong>（巴西、中国、埃及、埃塞俄比亚、印度、印度尼西亚、伊朗、俄罗斯、沙特阿拉伯、南非、阿联酋）加 <strong>10 个伙伴国</strong>（白俄罗斯、玻利维亚、哈萨克斯坦、古巴、马来西亚、尼日利亚、泰国、乌干达、乌兹别克斯坦、越南），覆盖全球约 49.5% 人口、约 40% 的 GDP。中国国家主席习近平出席，时隔七年首次访问印度。</p>
+<p>把这场峰会放进本文脉络的关键，不在于声明措辞，而在于它的<strong>议程结构</strong>：印度今年把"数字公共基础设施（Digital Public Infrastructure）"作为对外展示与合作的重点板块写进官网；主题词"Resilience（韧性）"与"Innovation（创新）"并列。当 AI 从软件走向物理世界，它必然要依附于算力、能源、网络、支付与供应链这些"物理底座"——而这恰恰是金砖机制愿意谈、也有能力谈的东西。</p>
+<hr />
+<h2 id="二收敛逻辑为什么这是同一件事">二、收敛逻辑：为什么这是"同一件事"</h2>
+<p>三场大会分属产业、学术、地缘三个世界，为什么说它们在回答同一个问题？因为<strong>AI 的价值兑现方式正在发生一次根本位移：从"输出信息"转向"改变物理状态"。</strong></p>
+<ul>
+<li><strong>外滩</strong>回答的是"钱从哪来"：当 Agent 能自己完成交易、结算与作业，AI 的经济价值就不再体现为"生成一份报告"，而体现为"完成一件实事"。这就是为什么大会把"AI 从生成迈向执行"写成主题句。</li>
+<li><strong>ECCV</strong>回答的是"世界怎么被表示"：要让 AI 执行物理任务，它必须先能预测物理世界将如何变化。世界模型是执行的前置条件——它让机器在行动之前先在"脑内"推演后果。</li>
+<li><strong>金砖</strong>回答的是"底座由谁来建"：物理世界的执行依赖算力、能源与网络。谁掌握这些底座，谁就掌握了 AI 物理化的规模上限。</li>
+</ul>
+<p>把三者串起来，是一条完整的价值链：<strong>学术提供"如何理解并预测物理世界"的能力（世界模型），产业提供"如何把这种能力变成可交付的服务"（Agent + 具身智能），地缘提供"这种能力在多大范围内、以什么规则运行"的基础设施与治理框架（数字基建 + 韧性）。</strong> 三者缺一，AI 的物理化都走不远。</p>
+<p>这也解释了一个看似矛盾的现象：同一天里，最"务虚"的学术会议（ECCV）谈的却是最"务实"的预测与行动；最"商业"的产业大会（外滩）谈的却是范式的迁移；最"政治"的地缘峰会谈的却是基础设施。它们的用词不同，但落点是同一个：<strong>智能必须落到物理世界，才真正产生新的经济。</strong></p>
+<hr />
+<h2 id="三深层分析">三、深层分析</h2>
+<h3 id="31-技术范式从预测下一个词到预测下一个状态">3.1 技术范式：从"预测下一个词"到"预测下一个状态"</h3>
+<p>过去三年的主流叙事是"规模定律"（Scaling Law）——用更多数据、更多参数去预测下一个 token。ECCV 2026 释放的信号是，计算机视觉领域的中心问题已经换成了"预测下一个状态"。</p>
+<p>这一转向有硬约束作为背景。语言之所以能被大型模型统一表示，是因为它有一个通用 token。物理世界没有：一张图像的像素、一段视频的帧、一个机器人的关节角度，量纲与语义各不相同。ECCV 上"3D 高斯作为通用 3D 基底 + 世界模型作为预测规划层"的合流，本质上是在<strong>为物理世界寻找那个失踪的 token</strong>。若这条路走通，它带来的就不只是更好的视频生成，而是一个可被规划、可被控制、可被验证的物理世界表示层——这正是机器人学几十年来求而不得的东西。</p>
+<p>LeCun 个人路径也是这条转向的注脚：他 2025 年 11 月离开 Meta，创立 AMI Labs，主张从物理现实而非文本中学习世界模型，2026 年 3 月融资 10.3 亿美元。<strong>一位以语言模型批判者身份著称的图灵奖得主，把自己的声誉押在了"物理优先"的路线上</strong>，而 ECCV 2026 给了这条路线一个机构级的舞台。</p>
+<h3 id="32-产业含义agent-接管执行具身智能接管作业">3.2 产业含义：Agent 接管"执行"，具身智能接管"作业"</h3>
+<p>外滩大会给出的产业信号可以概括为两次"接管"。</p>
+<p><strong>第一次接管发生在数字世界：Agent 接管交易与流程。</strong> 大会把"当 Agent 成为交易主体"列为议题，蚂蚁集团、阿里巴巴、OPPO、万事达卡等企业同台讨论支付、信任与协作基础设施。这不是概念，而是有机构数据支撑的运营模式迁移：IBM 2026 年 5 月发布的《The blueprint for agentic operations》报告显示，<strong>60% 的企业计划采用"由 AI 代理协调跨财务、供应链、人力、采购、实体运营与客户服务等整合工作流"的下一代交付结构</strong>；同一报告还指出，55% 的组织正在开发或部署 agentic AI 运营模型。换句话说，企业要买的不是"更聪明的助手"，而是"能自己把活干完的操作系统"。</p>
+<p><strong>第二次接管发生在物理世界：具身智能接管作业现场。</strong> 外滩展区把机器人放进药房、工厂、分拣中心、巡检与康养场景，40 余家厂商集体亮相——评价标准已从"能不能走"变成"能不能干活、干得值不值"。资本市场给出的是同方向的量级预期：Grand View Research 估计，全球具身智能市场规模将从 2025 年的 46 亿美元增至 2026 年的 65 亿美元，并在 2033 年达到 676.3 亿美元，年复合增长率约 39.7%。（需要说明：由于"具身智能"与"physical AI""机器人"等口径定义不一，不同机构给出的数字差异显著——Data Bridge 给出 2033 年约 700 亿美元，MarketsandMarkets 则认为 2030 年约 230 亿美元。方向一致、量级分歧，本身就是这个赛道尚处早期的证据。）</p>
+<p>把两次接管并置，产业含义很清楚：<strong>AI 的商业化重心正在从"卖能力"转向"卖完成度"。</strong> 过去客户为模型能力付费，现在客户为"结果"付费——一个流程被走完、一单交易被结算、一个工位被替代。</p>
+<h3 id="33-地缘含义物理化把-ai-竞争拉回硬资源">3.3 地缘含义：物理化把 AI 竞争拉回"硬资源"</h3>
+<p>AI 的物理化有一个容易被忽视的后果：<strong>它把竞争从"软件层"拉回了"硬资源层"。</strong></p>
+<p>纯软件时代，AI 的瓶颈是数据与算法，边际成本可以趋近于零，一家公司就可能改变全球格局。但当 AI 要驱动机器人、自动驾驶与工业产线，瓶颈立刻变成算力、能源、芯片、网络、传感器供应链与制造产能——这些是<strong>无法靠一个模型下载就复制的物理要素</strong>。</p>
+<p>这正是金砖峰会的战略含义所在。11 个正式成员加 10 个伙伴国，覆盖全球约 40% 的 GDP 与近半人口，且多为资源与制造大国。当印度把"数字公共基础设施"作为合作议程、把"韧性"写进主题，它实际在做的事，是为这条物理化路径<strong>预置一套非西方中心的底座与规则</strong>——包括跨境支付、数字身份、算力与能源合作。这不一定意味着技术脱钩，但一定意味着：AI 的物理化将同时是一场关于基础设施主导权的竞争。</p>
+<p>一个耐人寻味的对照：同一天，上海在谈"AI 新经济"的落地场景，马尔默在谈机器如何理解物理世界，新德里在谈如何为这一切修建底座。三地不约而同地把注意力从"模型有多聪明"挪到了"世界有多配合"。</p>
+<hr />
+<h2 id="四对读者与从业者的启示">四、对读者与从业者的启示</h2>
+<ol type="1">
+<li><p><strong>评价指标要换。</strong> 如果你的 AI 项目还在用"生成质量""跑分"作为核心 KPI，你可能已经落后于范式。执行期的核心指标是<strong>完成率、闭环率与单位任务成本</strong>——AI 是否把一件事真正办成了，以及办成的代价。</p></li>
+<li><p><strong>数据资产的重心从"文本"转向"轨迹"。</strong> 世界模型与具身智能训练需要的，是带有物理因果关系的交互数据：操作轨迹、传感器时序、失败案例。谁积累了高质量的真实世界交互数据，谁就握有下一个周期的稀缺资源。这类数据难以公开获取，护城河因此更深。</p></li>
+<li><p><strong>组织要按"交付结构"重构，而不是叠加工具。</strong> IBM 的调研指向的不是"多买几个 Agent"，而是"改用 Agent 协调工作流的交付结构"。这意味着组织设计、权限体系、审计与治理都要随之重写。60% 的企业计划这么做，剩下的 40% 面临的不是技术差距，而是组织差距。</p></li>
+<li><p><strong>地缘变量必须进入技术路线图。</strong> 算力、能源、网络与供应链的可得性，将直接决定你的物理化方案能覆盖多大市场。把"韧性"当作技术约束而非政治口号，是更务实的做法。</p></li>
+<li><p><strong>保持对"世界模型 ≠ 大语言模型"的清醒。</strong> 物理世界没有通用 token，这意味着不能简单外推语言模型的成功经验。真正的突破可能来自表示层的创新（例如 3D 高斯作为物理基底），而非纯粹的参数扩张。</p></li>
+</ol>
+<hr />
+<h2 id="五结论">五、结论</h2>
+<p>2026 年 9 月 12 日，上海、马尔默、新德里三场大会在同一天走到各自的节点。把它们分开看，是三条新闻；合在一起看，是一份关于 AI 走向的联合声明：</p>
+<p><strong>学术已经确认，理解物理世界是下一代智能的核心问题（世界模型）；产业已经确认，AI 的价值要由"执行"而非"生成"来兑现（Agent + 具身智能）；地缘政治已经开始为这条物理化路径排布底座与规则（数字基建 + 韧性）。</strong></p>
+<p>AI 的"执行期"不是一句预测，而是一组正在发生的事实。真正的分水岭不在于谁的模型更聪明，而在于谁能把智能可靠地、规模化地落到物理世界里去。下一轮竞争，比的不是 IQ，而是"能不能把事办成"。</p>
+<hr />
+<h2 id="参考文献">参考文献</h2>
+<ol type="1">
+<li>ECCV 2026 官方日程（含 LeCun、Grauman 等 keynote 信息）. European Conference on Computer Vision. <a href="https://eccv.ecva.net/virtual/2026/calendar">https://eccv.ecva.net/virtual/2026/calendar</a></li>
+<li>ECCV 2026 会议页与论文集信息. <a href="https://eccv.ecva.net/Conferences/2026">https://eccv.ecva.net/Conferences/2026</a></li>
+<li>Chan, W. "ECCV 2026 Preview: Computer Vision Converges on World Models and Embodied AI." TechTimes, 2026-09-05. <a href="https://www.techtimes.com/articles/326764/20260905/eccv-2026-preview-computer-vision-converges-world-models-embodied-ai.htm">https://www.techtimes.com/articles/326764/20260905/eccv-2026-preview-computer-vision-converges-world-models-embodied-ai.htm</a></li>
+<li>Lund University. "Conference brings AI researchers from around the world together." 2026-09-03. <a href="https://www.lunduniversity.lu.se/article/conference-brings-ai-researchers-around-world-together">https://www.lunduniversity.lu.se/article/conference-brings-ai-researchers-around-world-together</a></li>
+<li>LeCun, Y. "A Path Towards Autonomous Machine Intelligence." OpenReview, 2022. <a href="https://openreview.net/forum?id=BZ5a1r-kVsf">https://openreview.net/forum?id=BZ5a1r-kVsf</a></li>
+<li>BRICS India 2026 官网（主题、成员与伙伴国、统计）. <a href="https://www.brics2026.gov.in/about-us/">https://www.brics2026.gov.in/about-us/</a></li>
+<li>"18th BRICS summit." Wikipedia. <a href="https://en.wikipedia.org/wiki/18th_BRICS_summit">https://en.wikipedia.org/wiki/18th_BRICS_summit</a></li>
+<li>中国日报. "2026外滩大会在上海举行." 2026-09-10. <a href="https://cn.chinadaily.com.cn/a/202609/10/WS6aa25e88e4b09a165c78934a.html">https://cn.chinadaily.com.cn/a/202609/10/WS6aa25e88e4b09a165c78934a.html</a></li>
+<li>中国日报. "聚焦'共创AI新经济' 2026外滩大会9月9日在上海开幕." 2026-09-07. <a href="https://cn.chinadaily.com.cn/a/202609/07/WS6a9e70e1e4b09a165c788764.html">https://cn.chinadaily.com.cn/a/202609/07/WS6a9e70e1e4b09a165c788764.html</a></li>
+<li>新浪财经/封面新闻. "共创AI新经济，2026 Inclusion·外滩大会今日在沪开幕." 2026-09-10. <a href="https://finance.sina.com.cn/tech/roll/2026-09-10/doc-inirinuu5322971.shtml">https://finance.sina.com.cn/tech/roll/2026-09-10/doc-inirinuu5322971.shtml</a></li>
+<li>中共上海市委金融委员会办公室（上海发布）. "牢牢把握前沿科技发展机遇……朱忠明考察外滩大会展览." 2026-09-11. <a href="https://jrj.sh.gov.cn/ZXYW178/20260911/fc3c2d95ec6143a7926a57dae044f314.html">https://jrj.sh.gov.cn/ZXYW178/20260911/fc3c2d95ec6143a7926a57dae044f314.html</a></li>
+<li>东方财富网/中国经营报. "聚焦'共创AI新经济' 2026外滩大会9月9日在上海开幕." 2026-09-04. <a href="https://wap.eastmoney.com/a/202609043865397585.html">https://wap.eastmoney.com/a/202609043865397585.html</a></li>
+<li>IBM Think. "How to manage AI agents without wrecking your business." 2026-08-18.（引 IBM IBV《The blueprint for agentic operations》）<a href="https://www.ibm.com/think/news/how-to-manage-AI-agents">https://www.ibm.com/think/news/how-to-manage-AI-agents</a></li>
+<li>IBM. "The blueprint for agentic operations." IBM Institute for Business Value. <a href="https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/agentic-ai-enterprise-operations">https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/agentic-ai-enterprise-operations</a></li>
+<li>IBM Newsroom. "Think 2026: IBM Delivers the Blueprint for the AI Operating Model as the AI Divide Widens." 2026-05-05. <a href="https://newsroom.ibm.com/2026-05-05-think-2026-ibm-delivers-the-blueprint-for-the-ai-operating-model-as-the-ai-divide-widens">https://newsroom.ibm.com/2026-05-05-think-2026-ibm-delivers-the-blueprint-for-the-ai-operating-model-as-the-ai-divide-widens</a></li>
+<li>Grand View Research. "Embodied AI Market Size &amp; Share, Industry Report, 2033." <a href="https://www.grandviewresearch.com/industry-analysis/embodied-ai-market-report">https://www.grandviewresearch.com/industry-analysis/embodied-ai-market-report</a></li>
+<li>Data Bridge Market Research. "Global Embodied AI Market … Forecast to 2033." <a href="https://www.databridgemarketresearch.com/reports/global-embodied-ai-market">https://www.databridgemarketresearch.com/reports/global-embodied-ai-market</a></li>
+<li>MarketsandMarkets. "Embodied AI Market Size, Share and Trends." <a href="https://www.marketsandmarkets.com/Market-Reports/embodied-ai-market-83867232.html">https://www.marketsandmarkets.com/Market-Reports/embodied-ai-market-83867232.html</a></li>
+</ol>
+
+  </div>
+</Article>
