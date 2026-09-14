@@ -210,10 +210,19 @@ import ArticleCover from '../components/ArticleCover.astro';
       <p style="font-size:14px;color:var(--color-text-muted);max-width:560px;margin:var(--spacing-sm) auto var(--spacing-xl);">
         创始人的研究与产业实践，长期置于这些学术机构的同行视野之中。
       </p>
-      <div class="logo-wall">
-        <div class="logo-cell"><img src="/images/orgs/gerpisa.png" alt="GERPISA" /></div>
-        <div class="logo-cell"><img src="/images/orgs/cga.jpg" alt="Chinese Globalization Association" /></div>
-        <div class="logo-cell"><span class="logo-wordmark">AAOM</span><span class="logo-sub">Asia Academy of Management</span></div>
+      <div class="about-photo-wall">
+        <a class="about-photo-cell" href="https://www.gerpisa.org" target="_blank" rel="noopener noreferrer">
+          <img src="/images/people/org-gerpisa-2025.jpg" alt="吴传娟博士在 GERPISA 第33届国际学术研讨会" loading="lazy" />
+          <span class="about-photo-cap"><strong>GERPISA</strong> 2025 · 国际汽车产业研究网络</span>
+        </a>
+        <a class="about-photo-cell" href="https://www.chinagoesglobal.org" target="_blank" rel="noopener noreferrer">
+          <img src="/images/people/org-cga-2026.jpg" alt="吴传娟博士在 China Goes Global 2026 年会" loading="lazy" />
+          <span class="about-photo-cap"><strong>China Goes Global</strong> 2026 · 中国全球化协会</span>
+        </a>
+        <a class="about-photo-cell" href="https://www.aaom.asia" target="_blank" rel="noopener noreferrer">
+          <img src="/images/people/org-aaom-2026.jpg" alt="吴传娟博士在 AAOM 亚洲管理学会第14届年会" loading="lazy" />
+          <span class="about-photo-cap"><strong>AAOM</strong> 2026 · 亚洲管理学会</span>
+        </a>
       </div>
       <p style="font-size:13px;color:var(--color-text-muted);margin-top:var(--spacing-lg);">
         以及 emlyon business school 全球人工智能中心（BIC）· 商业创新与全球化研究中心（BIG）· 美好商业中心，WOL 认证教练
@@ -445,6 +454,23 @@ import ArticleCover from '../components/ArticleCover.astro';
   }
   .logo-cell:hover { filter: grayscale(0%); opacity: 1; }
   .logo-cell img { max-height: 44px; max-width: 170px; object-fit: contain; display: block; }
+  .about-photo-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg, 20px);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .about-photo-cell {
+    display: block; text-decoration: none; background: #fff;
+    border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15,43,70,0.08);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .about-photo-cell:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15,43,70,0.16); }
+  .about-photo-cell img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .about-photo-cap { display: block; padding: 10px 14px; font-size: 12px; line-height: 1.5; color: var(--color-text-muted); text-align: left; }
+  .about-photo-cap strong { color: var(--color-primary); display: block; font-size: 13px; }
   .logo-wordmark {
     font-size: 22px;
     font-weight: 800;

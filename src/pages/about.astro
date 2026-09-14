@@ -59,10 +59,19 @@ import Base from '../layouts/Base.astro';
         <!-- 学术履历与社群 logo -->
         <div style="margin:var(--spacing-xl) 0;">
           <p style="font-size:12px;color:#8b7355;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:var(--spacing-md);">学术与研究社群</p>
-          <div class="about-logo-wall">
-            <a class="about-logo-cell" href="https://www.gerpisa.org" target="_blank" rel="noopener noreferrer"><img src="/images/orgs/gerpisa.png" alt="GERPISA" /></a>
-            <a class="about-logo-cell" href="https://www.chinagoesglobal.org" target="_blank" rel="noopener noreferrer"><img src="/images/orgs/cga.jpg" alt="Chinese Globalization Association" /></a>
-            <a class="about-logo-cell" href="https://www.aaom.asia" target="_blank" rel="noopener noreferrer"><span style="font-size:20px;font-weight:800;color:#0F2B46;letter-spacing:1px;">AAOM</span></a>
+          <div class="about-photo-wall">
+            <a class="about-photo-cell" href="https://www.gerpisa.org" target="_blank" rel="noopener noreferrer">
+              <img src="/images/people/org-gerpisa-2025.jpg" alt="吴传娟博士在 GERPISA 第33届国际学术研讨会" loading="lazy" />
+              <span class="about-photo-cap"><strong>GERPISA</strong> 2025 · 国际汽车产业研究网络</span>
+            </a>
+            <a class="about-photo-cell" href="https://www.chinagoesglobal.org" target="_blank" rel="noopener noreferrer">
+              <img src="/images/people/org-cga-2026.jpg" alt="吴传娟博士在 China Goes Global 2026 年会" loading="lazy" />
+              <span class="about-photo-cap"><strong>China Goes Global</strong> 2026 · 中国全球化协会</span>
+            </a>
+            <a class="about-photo-cell" href="https://www.aaom.asia" target="_blank" rel="noopener noreferrer">
+              <img src="/images/people/org-aaom-2026.jpg" alt="吴传娟博士在 AAOM 亚洲管理学会第14届年会" loading="lazy" />
+              <span class="about-photo-cap"><strong>AAOM</strong> 2026 · 亚洲管理学会</span>
+            </a>
           </div>
           <p style="font-size:13px;color:var(--color-text-muted);margin-top:var(--spacing-md);line-height:1.8;">
             GERPISA 国际汽车产业研究网络 · China Goes Global 中国全球化协会 · AAOM 亚洲管理学会。
@@ -156,16 +165,17 @@ import Base from '../layouts/Base.astro';
   </script>
 
 <style is:global>
-  .about-logo-wall { display: flex; flex-wrap: wrap; gap: 16px; }
-  .about-logo-cell {
-    display: flex; align-items: center; justify-content: center;
-    min-width: 150px; min-height: 60px; padding: 12px 20px;
-    background: #fff; border: 1px solid var(--color-border); border-radius: 12px;
-    text-decoration: none; filter: grayscale(100%); opacity: .78;
-    transition: filter .25s, opacity .25s;
+  .about-photo-wall { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .about-photo-cell {
+    display: block; text-decoration: none; background: #fff;
+    border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15,43,70,0.08);
+    transition: transform .25s, box-shadow .25s;
   }
-  .about-logo-cell:hover { filter: grayscale(0%); opacity: 1; }
-  .about-logo-cell img { max-height: 40px; max-width: 160px; object-fit: contain; display: block; }
+  .about-photo-cell:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15,43,70,0.16); }
+  .about-photo-cell img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .about-photo-cap { display: block; padding: 10px 12px; font-size: 12px; line-height: 1.5; color: var(--color-text-secondary); }
+  .about-photo-cap strong { color: var(--color-primary); display: block; font-size: 13px; }
 </style>
 
 </Base>
