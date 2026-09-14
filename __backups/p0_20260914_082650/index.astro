@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import ArticleCover from '../components/ArticleCover.astro';
 ---
 
 <Base
@@ -33,7 +32,7 @@ import ArticleCover from '../components/ArticleCover.astro';
       <h1 style="max-width:700px;margin:0 auto var(--spacing-md);font-size:2.4rem;color:var(--color-primary);">
         你用了AI，<span style="background:linear-gradient(135deg,#C9A96E,#B8944C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">竞争力增长</span>了吗？
       </h1>
-      <p style="font-size:17px;color:var(--color-text-secondary);margin:0 auto var(--spacing-lg);line-height:1.8;max-width:640px;">
+      <p style="font-size:17px;color:var(--color-text-secondary);white-space:nowrap;margin:0 auto var(--spacing-lg);line-height:1.8;">
         我们专注于<span style="font-weight:600;color:var(--color-primary);">人机契合（Human-AI Fit）</span>研究与实践——帮助组织和个人从"会用AI"走向"因AI而真正更强"。
       </p>
 
@@ -52,7 +51,7 @@ import ArticleCover from '../components/ArticleCover.astro';
       <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
         <p class="section-label">我们的信念</p>
         <h2>真正的竞争力来自人机协同</h2>
-        <p style="font-size:17px;color:var(--color-text-secondary);margin:var(--spacing-md) auto 0;max-width:620px;">
+        <p style="font-size:17px;color:var(--color-text-secondary);white-space:nowrap;margin:var(--spacing-md) auto 0;">
           不是AI工具本身，而是人如何与AI协同工作，决定了一个组织能否在变革中领先。
         </p>
       </div>
@@ -87,81 +86,17 @@ import ArticleCover from '../components/ArticleCover.astro';
     </div>
   </section>
 
-  <!-- 精选洞察：让 36 篇存量内容在首屏下拉处被看见 -->
-  <section class="section" style="background:var(--color-surface);">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
-        <p class="section-label">精选洞察</p>
-        <h2>我们在想什么</h2>
-        <p style="font-size:16px;color:var(--color-text-secondary);max-width:560px;margin:var(--spacing-md) auto 0;">
-          36 篇深度文章，关于人机契合、碳合规、中国全球化与 AI 治理。
-        </p>
-      </div>
-      <div class="grid-3">
-        <a href="/blog/three_summits_ai_physical/" class="insight-card">
-          <ArticleCover title="AI 从虚拟走向物理：三场大会在同一个问题上收敛" tags="前沿科技" size="100%" radius="10px" />
-          <div class="insight-body">
-            <span class="insight-tag">前沿科技</span>
-            <h4>AI 从虚拟走向物理：三场大会在同一个问题上收敛</h4>
-            <span class="insight-date">2026-09-12</span>
-          </div>
-        </a>
-        <a href="/blog/ai_invisible_cost/" class="insight-card">
-          <ArticleCover title="当 AI 把活都替你干了，你最该做的是什么？" tags="人机契合" size="100%" radius="10px" />
-          <div class="insight-body">
-            <span class="insight-tag">人机契合</span>
-            <h4>当 AI 把活都替你干了，你最该做的是什么？</h4>
-            <span class="insight-date">2026-09-01</span>
-          </div>
-        </a>
-        <a href="/blog/eu_compliance_carbon_guide/" class="insight-card">
-          <ArticleCover title="读懂碳世界的定价地图：欧盟 CBAM 如何重构中国出口" tags="碳合规" size="100%" radius="10px" />
-          <div class="insight-body">
-            <span class="insight-tag">碳合规</span>
-            <h4>读懂碳世界的定价地图：CBAM 如何重构中国出口</h4>
-            <span class="insight-date">2026-09-01</span>
-          </div>
-        </a>
-      </div>
-      <div class="text-center" style="margin-top:var(--spacing-2xl);">
-        <a href="/blog/" class="btn btn-outline">浏览全部 36 篇 →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 开放研究产出：政策表 + AI 榜单，一个入口全下载 -->
+  <!-- Policy Tables Highlight -->
   <section style="padding:var(--spacing-2xl) 0;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
-        <p class="section-label" style="color:#3B82F6;">开放研究产出 · 免费下载</p>
-        <h2 style="color:#1E3A5F;">我们自己整理的数据，直接拿去用</h2>
-        <p style="max-width:600px;margin:var(--spacing-md) auto 0;font-size:15px;color:#1E40AF;">
-          不是二手转述——是一手整理、可引用的结构化数据。中英双语，持续更新。
-        </p>
-      </div>
-      <div class="grid-3">
-        <a href="/policy-tables/" class="research-card">
-          <div class="research-icon">📊</div>
-          <h4>中美欧新能源政策全景</h4>
-          <p>172 条政策，覆盖 1986–2026 四十年。六张表格，中英双语。</p>
-          <span class="research-cta">查看政策表 →</span>
-        </a>
-        <div class="research-card">
-          <div class="research-icon">🏆</div>
-          <h4>全球 AI 榜单数据集</h4>
-          <p>Forbes AI 50、HumanizeAI 36 国、Observer 100 人——整理成可分析表格。</p>
-          <div class="research-downloads">
-            <a href="/files/AI榜单_Forbes_AI50全球_2026.xlsx" download>Forbes AI 50</a>
-            <a href="/files/AI榜单_HumanizeAI_36国_2026.xlsx" download>HumanizeAI 36国</a>
-            <a href="/files/AI榜单_Observer_100人_2025.xlsx" download>Observer 100人</a>
-          </div>
-        </div>
-        <a href="/diagnosis/" class="research-card">
-          <div class="research-icon">🧪</div>
-          <h4>在线工具：AI 素养诊断</h4>
-          <p>10 道题、30 秒，覆盖儿童 / 成人 / 银发三档，给出个性化建议。</p>
-          <span class="research-cta">免费诊断 →</span>
-        </a>
+    <div class="container text-center">
+      <p class="section-label" style="color:#3B82F6;">研究产出 · 开放下载</p>
+      <h2 style="color:#1E3A5F;">中美欧电动车 & 电池政策全景</h2>
+      <p style="max-width:550px;margin:var(--spacing-md) auto var(--spacing-xl);font-size:15px;color:#1E40AF;">
+        172条政策，覆盖1986-2026四十年。中英双语，六张表格，免费下载。
+      </p>
+      <div style="display:flex;gap:var(--spacing-md);justify-content:center;flex-wrap:wrap;">
+        <a href="/policy-tables/" class="btn btn-primary" style="background:#3B82F6;box-shadow:0 4px 14px rgba(59,130,246,0.25);">查看政策表</a>
+        <a href="/services/" class="btn btn-outline" style="border-color:#3B82F6;color:#1E3A5F;">了解更多服务</a>
       </div>
     </div>
   </section>
@@ -305,95 +240,5 @@ import ArticleCover from '../components/ArticleCover.astro';
       }
     })();
   </script>
-
-<style is:global>
-  /* 精选洞察卡片 */
-  .insight-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 14px;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  }
-  .insight-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-accent);
-    box-shadow: 0 10px 28px rgba(15,43,70,0.10);
-  }
-  .insight-card .article-cover { border-radius: 0 !important; }
-  .insight-body { padding: 18px 20px 22px; }
-  .insight-tag {
-    display: inline-block;
-    padding: 2px 10px;
-    background: rgba(201,169,110,0.12);
-    color: var(--color-accent-dark);
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .insight-body h4 {
-    font-size: 15px;
-    line-height: 1.45;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin: 0 0 10px;
-  }
-  .insight-date { font-size: 12px; color: var(--color-text-muted); }
-
-  /* 开放研究产出卡片 */
-  .research-card {
-    display: flex;
-    flex-direction: column;
-    padding: 28px 24px;
-    background: #ffffff;
-    border-radius: 14px;
-    border: 1px solid rgba(59,130,246,0.18);
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .research-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(59,130,246,0.16);
-  }
-  .research-icon { font-size: 30px; margin-bottom: 14px; }
-  .research-card h4 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1E3A5F;
-    margin: 0 0 8px;
-  }
-  .research-card p {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-    margin: 0 0 14px;
-    flex: 1;
-  }
-  .research-cta {
-    font-size: 13px;
-    font-weight: 600;
-    color: #3B82F6;
-  }
-  .research-downloads { display: flex; flex-direction: column; gap: 6px; }
-  .research-downloads a {
-    font-size: 12.5px;
-    color: #2563EB;
-    text-decoration: none;
-    padding: 5px 10px;
-    background: rgba(59,130,246,0.07);
-    border-radius: 6px;
-    transition: background 0.2s;
-  }
-  .research-downloads a:hover { background: rgba(59,130,246,0.16); }
-  @media (max-width: 768px) {
-    .insight-body h4 { font-size: 14px; }
-  }
-</style>
 
 </Base>

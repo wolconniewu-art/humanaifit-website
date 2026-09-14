@@ -144,10 +144,11 @@ const canonicalBase = 'https://humanaifit.com';
               ? '组织及个人真正的竞争力不来自AI本身，而来自人类智能与人工智能的协同增长。'
               : 'True competitiveness does not come from AI alone, but from the synergy between human intelligence and artificial intelligence.'}
           </div>
-          <!-- Social links: 只放真实存在的（知乎 / 微信公众号）；未确定的 LinkedIn/X/FB 暂不展示死链 -->
-          <div style="margin-top:var(--spacing-md);display:flex;gap:14px;align-items:center;">
-            <a href="https://www.zhihu.com/people/humanaifit" target="_blank" rel="noopener noreferrer" title="知乎" style="font-size:13px;color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border);border-radius:6px;padding:5px 12px;">知乎</a>
-            <span title="微信公众号：humanaifit" style="font-size:13px;color:var(--color-text-secondary);border:1px solid var(--color-border);border-radius:6px;padding:5px 12px;">公众号 humanaifit</span>
+          <!-- Social links placeholder -->
+          <div style="margin-top:var(--spacing-md);display:flex;gap:12px;">
+            <span style="font-size:20px;color:var(--color-text-muted);cursor:default;" title="WeChat">💬</span>
+            <span style="font-size:20px;color:var(--color-text-muted);cursor:default;" title="LinkedIn">🔗</span>
+            <span style="font-size:20px;color:var(--color-text-muted);cursor:default;" title="Zhihu">📝</span>
           </div>
         </div>
         <div>
@@ -167,11 +168,10 @@ const canonicalBase = 'https://humanaifit.com';
           <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-sm);">
             {isCn ? '每周精选博客，直接到你的邮箱。' : 'Weekly insights delivered to your inbox.'}
           </p>
-          <form id="footerSubscribe" onsubmit="return humaSubscribe(event)" style="display:flex;gap:6px;">
-            <input type="email" name="email" placeholder={isCn ? '输入邮箱' : 'your@email.com'} required style="flex:1;min-width:0;padding:8px 12px;border:1px solid var(--color-border);border-radius:6px;font-size:13px;background:var(--color-bg);" />
+          <form style="display:flex;gap:6px;" action="#" method="post" onsubmit="alert('订阅功能即将上线');return false;">
+            <input type="email" placeholder={isCn ? '输入邮箱' : 'your@email.com'} required style="flex:1;padding:8px 12px;border:1px solid var(--color-border);border-radius:6px;font-size:13px;background:var(--color-bg);" />
             <button type="submit" style="padding:8px 16px;background:#3B82F6;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">{isCn ? '订阅' : '→'}</button>
           </form>
-          <div id="footerSubscribeMsg" style="font-size:12px;margin-top:8px;min-height:16px;"></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -179,32 +179,5 @@ const canonicalBase = 'https://humanaifit.com';
       </div>
     </div>
   </footer>
-
-  <!-- Footer subscribe → 复用 /api/lead 接口（source=subscribe） -->
-  <script is:inline>
-    async function humaSubscribe(e) {
-      e.preventDefault();
-      var f = e.target, msg = document.getElementById('footerSubscribeMsg');
-      var email = (f.email.value || '').trim();
-      if (!email) return false;
-      msg.style.color = '#666'; msg.textContent = '提交中...';
-      try {
-        var res = await fetch('/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, intent: '订阅内容', source: 'subscribe', note: 'Footer 订阅新文通知' })
-        });
-        var data = await res.json();
-        if (data && data.success === false) throw new Error(data.error || 'failed');
-        msg.style.color = '#2e7d32';
-        msg.textContent = document.documentElement.lang === 'en' ? '✅ Subscribed. New posts will reach you.' : '✅ 已订阅，有新文章会通知你。';
-        f.reset();
-      } catch (err) {
-        msg.style.color = '#c62828';
-        msg.textContent = document.documentElement.lang === 'en' ? 'Failed, try again.' : '提交失败，请稍后再试。';
-      }
-      return false;
-    }
-  </script>
 </body>
 </html>

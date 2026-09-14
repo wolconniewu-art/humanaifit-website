@@ -40,7 +40,7 @@ async function sendMessage(token, content, chatId) {
 const SOURCE_LABELS = {
   'home': '🏠 首页', 'about': '👤 About/关于', 'adult': '🧑 💼 成人诊断',
   'child': '👶 儿童诊断', 'senior': '🧓 银发诊断', 'cbam': '🏭 CBAM助手',
-  'contact': '📮 联系我们', 'blog': '📰 文章页', 'default': '🌐 其他'
+  'contact': '📮 联系我们', 'blog': '📰 文章页', 'subscribe': '✉️ 页脚订阅', 'default': '🌐 其他'
 };
 
 export async function onRequest(context) {

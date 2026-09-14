@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import ArticleCover from '../components/ArticleCover.astro';
 
 const pinned = [
 { date: "2026-09-01", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同", tags: "关于, 人机契合" },
@@ -85,17 +84,14 @@ const tagGroups = ["全部", "关于", "人机契合", "碳合规", "中国全�
                        padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.02));
                        border:1px solid rgba(201,169,110,0.3);transition:all 0.25s;
                        text-decoration:none;gap:24px;">
-                <div style="flex:1;min-width:0;display:flex;align-items:center;gap:16px;">
-                  <ArticleCover title={item.title} tags={item.tags} size="56px" radius="12px" />
-                  <div style="min-width:0;flex:1;">
-                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
                     {item.title}
                   </div>
                   <div style="display:flex;gap:6px;flex-wrap:wrap;">
                     {item.tags.split(', ').map(t => (
                       <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
                     ))}
-                  </div>
                   </div>
                 </div>
               </a>
@@ -112,17 +108,14 @@ const tagGroups = ["全部", "关于", "人机契合", "碳合规", "中国全�
                    padding:20px 24px;border-radius:12px;background:var(--color-surface);
                    border:1px solid var(--color-border);transition:all 0.25s;
                    text-decoration:none;gap:24px;">
-            <div style="flex:1;min-width:0;display:flex;align-items:center;gap:16px;">
-              <ArticleCover title={item.title} tags={item.tags} size="56px" radius="12px" />
-              <div style="min-width:0;flex:1;">
-                <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
-                  {item.title}
-                </div>
-                <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                  {item.tags.split(', ').map(t => (
-                    <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
-                  ))}
-                </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                {item.title}
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                {item.tags.split(', ').map(t => (
+                  <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                ))}
               </div>
             </div>
           </a>
@@ -133,11 +126,11 @@ const tagGroups = ["全部", "关于", "人机契合", "碳合规", "中国全�
 
   <section class="section section-dark text-center">
     <div class="container">
-      <h2>不想错过更新？</h2>
+      <h2>Don't want to miss updates?</h2>
       <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
-        留下邮箱，有新文章发布时通知你。
+        Leave your contact and we'll notify you when new articles are published.
       </p>
-      <a href="/contact/" class="btn btn-primary">订阅 →</a>
+      <a href="/contact/" class="btn btn-primary">Subscribe →</a>
     </div>
   </section>
 </Base>
