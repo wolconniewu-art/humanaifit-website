@@ -20,35 +20,122 @@ import Base from '../layouts/Base.astro';
 
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <div id="human-ai-fit" style="margin-bottom:var(--spacing-3xl);padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
-        <h2 style="margin-bottom:var(--spacing-md);">01. 人机协同咨询</h2>
-        <p style="color:var(--color-text-secondary);">帮助组织诊断当前的AI使用成熟度，设计"人+AI"双引擎工作模式。涵盖AI能力评估、流程再造、团队培训和持续优化。</p>
+
+      <!-- ===== 01 人机协同咨询 ===== -->
+      <div id="human-ai-fit" style="margin-bottom:var(--spacing-3xl);padding:var(--spacing-xl);background:var(--color-surface);border-radius:12px;border:1px solid var(--color-border);">
+        <h2 style="margin-bottom:var(--spacing-lg);">01. 人机协同咨询</h2>
+
+        <div style="margin-bottom:var(--spacing-lg);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">你面临的问题</div>
+          <p style="color:var(--color-text-secondary);margin:0;">团队在用 AI，但产出没变好：工具买了不少，流程没变，责任没定；<strong style="color:var(--color-primary);">“用了 AI”没有变成“因 AI 而更强”</strong>。</p>
+        </div>
+
+        <div style="margin-bottom:var(--spacing-lg);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">我们交付什么</div>
+          <ul style="color:var(--color-text-secondary);margin:0;padding-left:1.2em;line-height:1.9;">
+            <li>AI 成熟度评估：定位组织当前所处阶段与瓶颈</li>
+            <li>“人 + AI” 双引擎工作模式设计：流程再造与角色重定义</li>
+            <li>团队赋能：分层培训与落地陪跑</li>
+            <li>持续优化：周期性复盘与迭代建议</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-lg);margin-bottom:var(--spacing-lg);">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">典型周期</div>
+            <p style="margin:0;color:var(--color-text-secondary);">4–8 周（视组织规模与范围）</p>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">适合谁</div>
+            <p style="margin:0;color:var(--color-text-secondary);">正在推动 AI 落地、但收效不及预期的组织</p>
+          </div>
+        </div>
+
         <div style="margin-top:var(--spacing-lg);display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">AI成熟度评估</span>
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">工作流重构</span>
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">团队赋能</span>
         </div>
+        <a href="/contact/" class="btn btn-primary" style="margin-top:var(--spacing-lg);display:inline-block;">获取报价与方案 →</a>
       </div>
 
-      <div id="cbam" style="margin-bottom:var(--spacing-3xl);padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
-        <h2 style="margin-bottom:var(--spacing-md);">02. CBAM碳合规</h2>
-        <p style="color:var(--color-text-secondary);">面向中国出口企业的CBAM（碳边境调节机制）合规服务。提供免费自检工具、合规路径规划、数据收集模板和欧盟法规跟进。</p>
+      <!-- ===== 02 CBAM 碳合规 ===== -->
+      <div id="cbam" style="margin-bottom:var(--spacing-3xl);padding:var(--spacing-xl);background:var(--color-surface);border-radius:12px;border:1px solid var(--color-border);">
+        <h2 style="margin-bottom:var(--spacing-lg);">02. CBAM 碳合规</h2>
+
+        <div style="margin-bottom:var(--spacing-lg);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">你面临的问题</div>
+          <p style="color:var(--color-text-secondary);margin:0;">欧盟 CBAM 已进入实操阶段：<strong style="color:var(--color-primary);">出口产品要不要申报、碳数据从哪来、成本是多少</strong>——不清楚就意味着风险与额外成本。</p>
+        </div>
+
+        <div style="margin-bottom:var(--spacing-lg);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">我们交付什么</div>
+          <ul style="color:var(--color-text-secondary);margin:0;padding-left:1.2em;line-height:1.9;">
+            <li>30 秒免费自检：按 HS 编码判断产品是否受影响</li>
+            <li>合规路径规划：申报义务、时间节点与责任分工</li>
+            <li>碳数据收集模板与核算方法</li>
+            <li>欧盟法规持续跟踪与更新提示</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-lg);margin-bottom:var(--spacing-lg);">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">典型周期</div>
+            <p style="margin:0;color:var(--color-text-secondary);">自检即时；合规搭建 2–6 周</p>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">适合谁</div>
+            <p style="margin:0;color:var(--color-text-secondary);">向欧盟出口钢铁、铝、水泥、化肥、电力、氢的企业</p>
+          </div>
+        </div>
+
         <div style="margin-top:var(--spacing-lg);display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">免费自检</span>
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">合规路径规划</span>
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">欧盟法规跟踪</span>
         </div>
-        <a href="/diagnosis/cbam/" class="btn btn-primary" style="margin-top:var(--spacing-lg);" target="_blank">免费自检 →</a>
+        <div style="margin-top:var(--spacing-lg);display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/diagnosis/cbam/" class="btn btn-primary" target="_blank">免费自检 →</a>
+          <a href="/contact/" class="btn" style="border:1px solid var(--color-border);color:var(--color-primary);border-radius:8px;padding:12px 20px;text-decoration:none;font-weight:600;">获取报价 →</a>
+        </div>
       </div>
 
-      <div id="globalization" style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
-        <h2 style="margin-bottom:var(--spacing-md);">03. 全球化战略</h2>
-        <p style="color:var(--color-text-secondary);">基于学术研究与产业洞察，为中国企业全球化提供战略咨询。涵盖市场选择、品牌定位、合规策略和本地化运营建议。</p>
+      <!-- ===== 03 全球化战略 ===== -->
+      <div id="globalization" style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:12px;border:1px solid var(--color-border);">
+        <h2 style="margin-bottom:var(--spacing-lg);">03. 全球化战略</h2>
+
+        <div style="margin-bottom:var(--spacing-lg);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">你面临的问题</div>
+          <p style="color:var(--color-text-secondary);margin:0;">出海是必选项，但<strong style="color:var(--color-primary);">去哪个市场、以什么身份进去、如何合规落地</strong>——缺少结构化的判断，容易把资源投在错误的市场。</p>
+        </div>
+
+        <div style="margin-bottom:var(--spacing-lg);">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">我们交付什么</div>
+          <ul style="color:var(--color-text-secondary);margin:0;padding-left:1.2em;line-height:1.9;">
+            <li>市场进入战略：市场选择与进入顺序</li>
+            <li>品牌与价值定位建议</li>
+            <li>跨境合规与政策风险地图</li>
+            <li>本地化运营与组织建议</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-lg);margin-bottom:var(--spacing-lg);">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">典型周期</div>
+            <p style="margin:0;color:var(--color-text-secondary);">3–6 周（战略报告 + 研讨）</p>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:6px;">适合谁</div>
+            <p style="margin:0;color:var(--color-text-secondary);">计划或正在出海的中国企业</p>
+          </div>
+        </div>
+
         <div style="margin-top:var(--spacing-lg);display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">市场进入战略</span>
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">合规策略</span>
           <span style="padding:4px 12px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:16px;font-size:12px;">本地化</span>
         </div>
+        <a href="/contact/" class="btn btn-primary" style="margin-top:var(--spacing-lg);display:inline-block;">获取报价与方案 →</a>
       </div>
     </div>
   </section>
