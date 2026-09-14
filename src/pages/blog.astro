@@ -1,5 +1,5 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Base from '../layouts/Base.astro';
 import ArticleCover from '../components/ArticleCover.astro';
 
 const pinned = [
@@ -51,6 +51,9 @@ const articles = [
 
 const tagGroups = ["全部", "关于", "人机契合", "碳合规", "中国全球化", "AI治理与政策", "前沿科技", "AI与组织", "AI教育与人", "文化纪实", "政策表"];
 ---
+
+<Base title="博客" description="关于人机契合、碳合规、全球化与知识管理的深度文章。" lang="zh-CN" path="/blog/">
+  <section class="section" style="padding-top:96px;">
     <div class="container text-center" style="position:relative;z-index:1;">
       <p class="section-label" style="color:var(--color-accent);font-weight:600;">博客</p>
       <h1>前沿思考</h1>

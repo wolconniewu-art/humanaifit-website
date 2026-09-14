@@ -19,26 +19,9 @@ import ArticleCover from '../../components/ArticleCover.astro';
 
     <div class="container text-center" style="position:relative;z-index:1;">
       <div class="fade-in" style="margin-bottom:var(--spacing-lg);">
-        <!-- Logo large: scheme B with tech blue accent -->
-        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:var(--spacing-lg);">
-          <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="helogo" x1="0" y1="0" x2="72" y2="72">
-                <stop offset="0%" stop-color="#0F2B46"/>
-                <stop offset="100%" stop-color="#1A3F64"/>
-              </linearGradient>
-              <linearGradient id="helogoBg" x1="0" y1="0" x2="72" y2="72">
-                <stop offset="0%" stop-color="#3B82F6"/>
-                <stop offset="100%" stop-color="#06B6D4"/>
-              </linearGradient>
-            </defs>
-            <rect width="72" height="72" rx="18" fill="url(#helogo)"/>
-            <rect x="4" y="4" width="64" height="64" rx="14" fill="none" stroke="url(#helogoBg)" stroke-width="2" opacity="0.4"/>
-            <text x="36" y="47" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="800" fill="white">H</text>
-          </svg>
-          <span style="font-size:44px;font-weight:400;color:#0F2B46;letter-spacing:-0.5px;">human</span>
-          <span style="font-size:52px;font-weight:900;background:linear-gradient(135deg,#C9A96E,#DFC88A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</span>
-          <span style="font-size:36px;font-weight:300;color:#8A8A8A;">fit</span>
+        <!-- Logo: new circular logo (human-AI fit mark + www.humanaifit.com) -->
+        <div style="display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-lg);">
+          <img src="/logo.svg" width="260" height="260" alt="humanAIfit — www.humanaifit.com" style="display:block;width:260px;max-width:70vw;height:auto;" />
         </div>
       <p class="section-label" style="color:#3B82F6;font-weight:600;">Beacon Consulting Co., Ltd.</p>
       <h1 style="max-width:740px;margin:0 auto var(--spacing-md);font-size:2.6rem;color:var(--color-primary);">

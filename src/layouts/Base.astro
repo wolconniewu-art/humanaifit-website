@@ -13,6 +13,7 @@ const alternatePath = path === '/'
   ? (isCn ? '/en/' : '/') 
   : (isCn ? `/en${path}` : path.replace('/en', ''));
 const canonicalBase = 'https://humanaifit.com';
+import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
@@ -37,13 +38,18 @@ const canonicalBase = 'https://humanaifit.com';
   <meta property="og:type" content="website" />
   <meta property="og:url" content={`${canonicalBase}${path}`} />
   <meta property="og:locale" content={isCn ? 'zh_CN' : 'en_US'} />
+  <meta property="og:image" content={`${canonicalBase}/og-default.jpg`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={`${canonicalBase}/og-default.jpg`} />
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/src/styles/global.css" />
+  <!-- global.css 由 Astro 在 frontmatter 中 import，自动注入带哈希的 <link> -->
 
   <!-- Scripts -->
   <script>
@@ -97,10 +103,7 @@ const canonicalBase = 'https://humanaifit.com';
   <header class="header" style="-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background:rgba(255,255,255,0.85);">
     <nav class="nav">
       <a href={isCn ? '/' : '/en/'} class="nav-logo">
-        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-          <rect width="34" height="34" rx="8" fill="url(#logog1)" style="background:#0F2B46;"/>
-          <text x="17" y="23" text-anchor="middle" font-family="Inter" font-size="18" font-weight="800" fill="white">H</text>
-        </svg>
+        <img src="/logo-mark.svg" width="34" height="34" alt="humanAIfit" style="flex-shrink:0;display:block;" />
         <span class="logo-text">
           <span style="font-weight:400;color:#0F2B46;">human</span>
           <span style="font-weight:800;color:#C9A96E;">AI</span>
@@ -133,7 +136,8 @@ const canonicalBase = 'https://humanaifit.com';
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="company" style="font-size:28px;margin-bottom:12px;">
+          <div class="company" style="font-size:28px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+            <img src="/logo-mark.svg" width="40" height="40" alt="humanAIfit" style="display:block;flex-shrink:0;" />
             <span style="font-weight:400;color:var(--color-primary);">human</span>
             <span style="color:#C9A96E;font-weight:800;">AI</span>
             <span style="font-weight:300;color:var(--color-text-muted);">fit</span>
