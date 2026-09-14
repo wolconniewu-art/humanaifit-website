@@ -21,7 +21,7 @@ import ArticleCover from '../../components/ArticleCover.astro';
       <div class="fade-in" style="margin-bottom:var(--spacing-lg);">
         <!-- Logo: new circular logo (human-AI fit mark + www.humanaifit.com) -->
         <div style="display:flex;align-items:center;justify-content:center;margin-bottom:6px;">
-          <img src="/logo.svg" width="200" height="200" alt="humanAIfit — www.humanaifit.com" style="display:block;width:200px;max-width:52vw;height:auto;" />
+          <img src="/logo.svg?v=3" width="200" height="200" alt="humanAIfit — www.humanaifit.com" style="display:block;width:200px;max-width:52vw;height:auto;" />
         </div>
       <p class="section-label" style="color:#3B82F6;font-weight:600;">Beacon Consulting Co., Ltd.</p>
       <h1 style="max-width:740px;margin:0 auto var(--spacing-md);font-size:2.6rem;color:var(--color-primary);">
@@ -97,6 +97,13 @@ import ArticleCover from '../../components/ArticleCover.astro';
   <section class="section">
     <div class="container">
       <div class="grid-2" style="align-items:center;">
+        <div style="text-align:center;">
+          <img src="/images/people/founder-2026-09.jpg" alt="Dr. Connie Wu" loading="lazy"
+               style="width:100%;max-width:340px;border-radius:16px;box-shadow:0 12px 36px rgba(15,43,70,0.18);" />
+          <p style="margin-top:14px;font-size:13px;color:var(--color-text-muted);">
+            Dr. Connie Wu<br>Founder · Human-AI Collaboration Architect
+          </p>
+        </div>
         <div>
           <p class="section-label">About</p>
           <h2>Researcher · Entrepreneur · Human-AI Architect</h2>
@@ -107,19 +114,46 @@ import ArticleCover from '../../components/ArticleCover.astro';
             Our core team includes specialized AI Agents (Main Orchestrator, Globalization Researcher, Human-AI Fit Researcher, Knowledge Coach, AI Product Manager, AI Teacher, AI Student), delivering at a pace and depth traditional consulting cannot match.
           </p>
           <a href="/en/about/" class="btn btn-outline" style="margin-top:var(--spacing-md);">Learn More →</a>
-        </div>
-        <div style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
-          <div style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-lg);">Core Competencies</div>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Human-AI Fit</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Organizational Behavior</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">CBAM Compliance</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Globalization</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Knowledge Management</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">AI Collaboration</span>
+          <div style="margin-top:var(--spacing-xl);padding-top:var(--spacing-lg);border-top:1px solid var(--color-border);">
+            <div style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-md);">Core Competencies</div>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Human-AI Fit</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Organizational Behavior</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">CBAM Compliance</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Globalization</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">Knowledge Management</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">AI Collaboration</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Academic & research community: photo wall -->
+  <section style="padding:var(--spacing-2xl) 0;background:var(--color-bg);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);">
+    <div class="container text-center">
+      <p class="section-label" style="color:var(--color-text-muted);">Academic & Research Community</p>
+      <p style="font-size:14px;color:var(--color-text-muted);max-width:560px;margin:var(--spacing-sm) auto var(--spacing-xl);">
+        The founder's research and industry practice sit within the peer view of these academic institutions.
+      </p>
+      <div class="about-photo-wall">
+        <a class="about-photo-cell" href="https://www.gerpisa.org" target="_blank" rel="noopener noreferrer">
+          <img src="/images/people/org-gerpisa-2025.jpg" alt="Dr. Connie Wu at GERPISA 33rd International Colloquium" loading="lazy" />
+          <span class="about-photo-cap"><strong>GERPISA</strong> 2025 · International Network of Automotive Research</span>
+        </a>
+        <a class="about-photo-cell" href="https://www.chinagoesglobal.org" target="_blank" rel="noopener noreferrer">
+          <img src="/images/people/org-cga-2026.jpg" alt="Dr. Connie Wu at China Goes Global 2026" loading="lazy" />
+          <span class="about-photo-cap"><strong>China Goes Global</strong> 2026 · China Globalization Association</span>
+        </a>
+        <a class="about-photo-cell" href="https://www.aaom.asia" target="_blank" rel="noopener noreferrer">
+          <img src="/images/people/org-aaom-2026.jpg" alt="Dr. Connie Wu at AAOM 14th Annual Conference" loading="lazy" />
+          <span class="about-photo-cap"><strong>AAOM</strong> 2026 · Asia Academy of Management</span>
+        </a>
+      </div>
+      <p style="font-size:13px;color:var(--color-text-muted);margin-top:var(--spacing-lg);">
+        And Researcher of the Global AI Center (BIC) · Expert Committee Member of the hub for Business Innovation & Globalization (BIG) · Industry Expert of the Good Business Center, emlyon business school; WOL Certified Coach.
+      </p>
     </div>
   </section>
 
@@ -323,6 +357,12 @@ import ArticleCover from '../../components/ArticleCover.astro';
   .research-downloads { display: flex; flex-direction: column; gap: 6px; }
   .research-downloads a { font-size: 12.5px; color: #2563EB; text-decoration: none; padding: 5px 10px; background: rgba(59,130,246,0.07); border-radius: 6px; transition: background 0.2s; }
   .research-downloads a:hover { background: rgba(59,130,246,0.16); }
+  .about-photo-wall { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--spacing-lg, 20px); max-width: 960px; margin: 0 auto; }
+  .about-photo-cell { display: block; text-decoration: none; background: #fff; border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; box-shadow: 0 6px 18px rgba(15,43,70,0.08); transition: transform .25s, box-shadow .25s; }
+  .about-photo-cell:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15,43,70,0.16); }
+  .about-photo-cell img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .about-photo-cap { display: block; padding: 10px 14px; font-size: 12px; line-height: 1.5; color: var(--color-text-muted); text-align: left; }
+  .about-photo-cap strong { color: var(--color-primary); display: block; font-size: 13px; }
 </style>
 
 </Base>
