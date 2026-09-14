@@ -170,6 +170,13 @@ import ArticleCover from '../components/ArticleCover.astro';
   <section class="section">
     <div class="container">
       <div class="grid-2" style="align-items:center;">
+        <div style="text-align:center;">
+          <img src="/images/people/connie-wu.jpg" alt="吴传娟博士（Dr. Connie Wu）" loading="lazy"
+               style="width:100%;max-width:340px;border-radius:16px;box-shadow:0 12px 36px rgba(15,43,70,0.18);" />
+          <p style="margin-top:14px;font-size:13px;color:var(--color-text-muted);">
+            吴传娟博士（Dr. Connie Wu）<br>创始人 · 人机协同架构师
+          </p>
+        </div>
         <div>
           <p class="section-label">关于</p>
           <h2>研究者 · 创业者 · 人机协同架构师</h2>
@@ -180,19 +187,37 @@ import ArticleCover from '../components/ArticleCover.astro';
             核心团队汇聚了多位专业AI Agent（AI大总管·全球化研究员·人机契合研究员·知识教练·AI时代的产品经理·AI时代的老师·AI时代的学生），以传统咨询无法匹及的速度与深度交付成果。
           </p>
           <a href="/about/" class="btn btn-outline" style="margin-top:var(--spacing-md);">了解更多</a>
-        </div>
-        <div style="padding:var(--spacing-xl);background:var(--color-surface);border-radius:8px;border:1px solid var(--color-border);">
-          <div style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-lg);">核心领域</div>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">人机契合</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">组织行为</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">CBAM碳合规</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">全球化</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">知识管理</span>
-            <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">AI协同</span>
+          <div style="margin-top:var(--spacing-xl);padding-top:var(--spacing-lg);border-top:1px solid var(--color-border);">
+            <div style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-md);">核心领域</div>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--spacing-sm);">
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">人机契合</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">组织行为</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">CBAM碳合规</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">全球化</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">知识管理</span>
+              <span style="padding:6px 14px;background:rgba(201,169,110,0.1);color:var(--color-accent-dark);border-radius:20px;font-size:13px;font-weight:500;">AI协同</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 学术背书：研究机构 logo 墙 -->
+  <section style="padding:var(--spacing-2xl) 0;background:var(--color-bg);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);">
+    <div class="container text-center">
+      <p class="section-label" style="color:var(--color-text-muted);">学术与研究社群</p>
+      <p style="font-size:14px;color:var(--color-text-muted);max-width:560px;margin:var(--spacing-sm) auto var(--spacing-xl);">
+        创始人的研究与产业实践，长期置于这些学术机构的同行视野之中。
+      </p>
+      <div class="logo-wall">
+        <div class="logo-cell"><img src="/images/orgs/gerpisa.png" alt="GERPISA" /></div>
+        <div class="logo-cell"><img src="/images/orgs/cga.jpg" alt="Chinese Globalization Association" /></div>
+        <div class="logo-cell"><span class="logo-wordmark">AAOM</span><span class="logo-sub">Asia Academy of Management</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--color-text-muted);margin-top:var(--spacing-lg);">
+        以及 emlyon business school 全球人工智能中心（BIC）· 商业创新与全球化研究中心（BIG）· 美好商业中心，WOL 认证教练
+      </p>
     </div>
   </section>
 
@@ -394,6 +419,39 @@ import ArticleCover from '../components/ArticleCover.astro';
   @media (max-width: 768px) {
     .insight-body h4 { font-size: 14px; }
   }
+
+  /* 机构 logo 墙 */
+  .logo-wall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    flex-wrap: wrap;
+  }
+  .logo-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 64px;
+    min-width: 160px;
+    padding: 14px 22px;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: filter 0.25s, opacity 0.25s;
+  }
+  .logo-cell:hover { filter: grayscale(0%); opacity: 1; }
+  .logo-cell img { max-height: 44px; max-width: 170px; object-fit: contain; display: block; }
+  .logo-wordmark {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+  }
+  .logo-sub { font-size: 11px; color: var(--color-text-muted); max-width: 110px; line-height: 1.3; text-align: left; }
 </style>
 
 </Base>

@@ -30,6 +30,8 @@ import Base from '../../layouts/Base.astro';
         </p>
 
         <h2 style="font-size:1.3rem;margin:var(--spacing-xl) 0 var(--spacing-md);">Founder</h2>
+        <img src="/images/people/connie-aaom.jpg" alt="Dr. Connie Wu at the Asia Academy of Management Annual Conference" loading="lazy"
+             style="width:100%;max-width:420px;border-radius:14px;box-shadow:0 10px 30px rgba(15,43,70,0.16);margin-bottom:var(--spacing-md);" />
         <p style="color:var(--color-text-secondary);">
           Dr. Connie Wu — Researcher, knowledge entrepreneur, human-AI architect.
         </p>
@@ -50,6 +52,19 @@ import Base from '../../layouts/Base.astro';
               </ul>
             </div>
           </div>
+        </div>
+
+        <!-- Academic communities -->
+        <div style="margin:var(--spacing-xl) 0;">
+          <p style="font-size:12px;color:#8b7355;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:var(--spacing-md);">Academic Communities</p>
+          <div class="about-logo-wall">
+            <a class="about-logo-cell" href="https://www.gerpisa.org" target="_blank" rel="noopener noreferrer"><img src="/images/orgs/gerpisa.png" alt="GERPISA" /></a>
+            <a class="about-logo-cell" href="https://www.chinagoesglobal.org" target="_blank" rel="noopener noreferrer"><img src="/images/orgs/cga.jpg" alt="Chinese Globalization Association" /></a>
+            <a class="about-logo-cell" href="https://www.aaom.asia" target="_blank" rel="noopener noreferrer"><span style="font-size:20px;font-weight:800;color:#0F2B46;letter-spacing:1px;">AAOM</span></a>
+          </div>
+          <p style="font-size:13px;color:var(--color-text-muted);margin-top:var(--spacing-md);line-height:1.8;">
+            GERPISA — International Network of Automotive Industry Research · China Goes Global Association · AAOM — Asia Academy of Management.
+          </p>
         </div>
 
         <h2 style="font-size:1.3rem;margin:var(--spacing-xl) 0 var(--spacing-md);">Our Team</h2>
@@ -135,5 +150,19 @@ import Base from '../../layouts/Base.astro';
       btn.disabled = false; btn.textContent = 'Send';
     }
   </script>
+
+
+<style is:global>
+  .about-logo-wall { display: flex; flex-wrap: wrap; gap: 16px; }
+  .about-logo-cell {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 150px; min-height: 60px; padding: 12px 20px;
+    background: #fff; border: 1px solid var(--color-border); border-radius: 12px;
+    text-decoration: none; filter: grayscale(100%); opacity: .78;
+    transition: filter .25s, opacity .25s;
+  }
+  .about-logo-cell:hover { filter: grayscale(0%); opacity: 1; }
+  .about-logo-cell img { max-height: 40px; max-width: 160px; object-fit: contain; display: block; }
+</style>
 
 </Base>
