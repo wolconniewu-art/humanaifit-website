@@ -39,11 +39,6 @@ const deg = (h % 90) + 135;
   {fullTitle ? (
     <span style="position:relative;z-index:2;padding:8% 9%;font-size:clamp(15px,2.0vw,22px);font-weight:700;line-height:1.45;letter-spacing:0;text-align:left;width:100%;">{title}</span>
   ) : (
-    <>
-      <span style="position:relative;z-index:2;">{initial}</span>
-      <span style={`position:absolute;right:-6px;bottom:-10px;
-                    font-size:calc(${size} * 0.85);opacity:0.16;font-weight:900;
-                    line-height:1;z-index:1;`}>{firstTag ? firstTag[0] : ''}</span>
-    </>
+    <span style={`position:relative;z-index:2;font-size:calc(${size} * 0.235);font-weight:700;line-height:1.15;letter-spacing:0;padding:0 8%;text-align:center;`}>{firstTag || initial}</span>
   )}
 </div>
