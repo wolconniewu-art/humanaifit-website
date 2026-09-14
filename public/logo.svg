@@ -1,6 +1,6 @@
 <svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
       <defs><linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#E3C88A"/><stop offset="100%" stop-color="#C9A96E"/></linearGradient></defs>
-      <circle cx="180.0" cy="180.0" r="154.0" fill="#FFFFFF" stroke="#DCE2E8" stroke-width="2"/><g transform="translate(20.62,77.93) scale(1.5414)">
+      <circle cx="180.0" cy="180.0" r="154.0" fill="#FFFFFF" stroke="#DCE2E8" stroke-width="2"/><g transform="translate(20.62,77.63) scale(1.5414)">
       <rect x="116" y="10" width="36" height="34" rx="14" fill="none" stroke="#C9A96E" stroke-width="10"/>
       <line x1="134" y1="10" x2="134" y2="0" stroke="#C9A96E" stroke-width="7" stroke-linecap="round"/>
       <circle cx="134" cy="-4" r="5" fill="#C9A96E"/>
@@ -17,4 +17,4 @@
       <line x1="86" y1="66" x2="127.3" y2="128" stroke="#0F2B46" stroke-width="11" stroke-linecap="round"/>
       <line x1="128" y1="64" x2="86.9" y2="128" stroke="#C9A96E" stroke-width="10" stroke-linecap="round"/>
       <circle cx="107" cy="93" r="6.5" fill="#C9A96E"/>
-    </g><text x="91.52" y="296.79" font-family="DejaVu Sans" font-size="16.805" text-anchor="start"><tspan fill="#0F2B46" font-weight="normal">www.</tspan><tspan fill="#0F2B46" font-weight="normal">human</tspan><tspan fill="#C9A96E" font-weight="bold">AI</tspan><tspan fill="#0F2B46" font-weight="normal">fit</tspan><tspan fill="#0F2B46" font-weight="normal">.com</tspan></text></svg>
+    </g><text x="180.00" y="296.49" font-family="DejaVu Sans" font-size="16.805" text-anchor="middle"><tspan fill="#0F2B46" font-weight="normal">www.</tspan><tspan fill="#0F2B46" font-weight="normal">human</tspan><tspan fill="#C9A96E" font-weight="bold">AI</tspan><tspan fill="#0F2B46" font-weight="normal">fit</tspan><tspan fill="#0F2B46" font-weight="normal">.com</tspan></text></svg>
