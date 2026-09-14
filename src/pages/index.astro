@@ -87,26 +87,23 @@ import ArticleCover from '../components/ArticleCover.astro';
       </div>
       <div class="grid-3">
         <a href="/blog/three_summits_ai_physical/" class="insight-card">
-          <ArticleCover title="AI 从虚拟走向物理：三场大会在同一个问题上收敛" tags="前沿科技" size="100%" radius="10px" />
+          <ArticleCover title="AI 从虚拟走向物理：三场大会在同一个问题上收敛" tags="前沿科技" size="100%" radius="10px" fullTitle />
           <div class="insight-body">
             <span class="insight-tag">前沿科技</span>
-            <h4>AI 从虚拟走向物理：三场大会在同一个问题上收敛</h4>
             <span class="insight-date">2026-09-12</span>
           </div>
         </a>
         <a href="/blog/ai_invisible_cost/" class="insight-card">
-          <ArticleCover title="当 AI 把活都替你干了，你最该做的是什么？" tags="人机契合" size="100%" radius="10px" />
+          <ArticleCover title="当 AI 把活都替你干了，你最该做的是什么？" tags="人机契合" size="100%" radius="10px" fullTitle />
           <div class="insight-body">
             <span class="insight-tag">人机契合</span>
-            <h4>当 AI 把活都替你干了，你最该做的是什么？</h4>
             <span class="insight-date">2026-09-01</span>
           </div>
         </a>
         <a href="/blog/eu_compliance_carbon_guide/" class="insight-card">
-          <ArticleCover title="读懂碳世界的定价地图：欧盟 CBAM 如何重构中国出口" tags="碳合规" size="100%" radius="10px" />
+          <ArticleCover title="读懂碳世界的定价地图——欧盟CBAM、英国CBAM与全球碳价如何重构中国出口的底层逻辑" tags="碳合规" size="100%" radius="10px" fullTitle />
           <div class="insight-body">
             <span class="insight-tag">碳合规</span>
-            <h4>读懂碳世界的定价地图：CBAM 如何重构中国出口</h4>
             <span class="insight-date">2026-09-01</span>
           </div>
         </a>
@@ -213,7 +210,7 @@ import ArticleCover from '../components/ArticleCover.astro';
         </a>
       </div>
       <p style="font-size:13px;color:var(--color-text-muted);margin-top:var(--spacing-lg);">
-        以及 emlyon business school 全球人工智能中心（BIC）· 商业创新与全球化研究中心（BIG）· 美好商业中心，WOL 认证教练
+        以及 emlyon business school 全球人工智能中心（BIC）研究员· 商业创新与全球化研究中心（BIG）专家委员会委员· 美好商业中心行业专家，WOL 认证教练
       </p>
     </div>
   </section>
@@ -346,7 +343,7 @@ import ArticleCover from '../components/ArticleCover.astro';
     border-color: var(--color-accent);
     box-shadow: 0 10px 28px rgba(15,43,70,0.10);
   }
-  .insight-card .article-cover { border-radius: 0 !important; }
+  .insight-card .article-cover { border-radius: 0 !important; height: 150px !important; }
   .insight-body { padding: 18px 20px 22px; }
   .insight-tag {
     display: inline-block;
