@@ -147,6 +147,15 @@ import '../styles/global.css';
           </div>
         </div>
         <div>
+          <h4>{isCn ? '页面导航' : 'Navigate'}</h4>
+          <a href={isCn ? '/' : '/en/'}>{isCn ? '首页' : 'Home'}</a>
+          <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '服务' : 'Services'}</a>
+          <a href={isCn ? '/about/' : '/en/about/'}>{isCn ? '关于我们' : 'About'}</a>
+          <a href={isCn ? '/blog/' : '/en/blog/'}>{isCn ? '博客' : 'Insights'}</a>
+          <a href={isCn ? '/diagnosis/' : '/en/diagnosis/'}>{isCn ? '诊断工具' : 'Diagnostics'}</a>
+          <a href={isCn ? '/policy-tables/' : '/en/policy-tables/'}>{isCn ? '政策表' : 'Policy Tables'}</a>
+        </div>
+        <div>
           <h4>{isCn ? '服务' : 'Services'}</h4>
           <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? '人机协同咨询' : 'Human-AI Fit Consulting'}</a>
           <a href={isCn ? '/services/' : '/en/services/'}>{isCn ? 'CBAM碳合规' : 'CBAM Carbon Compliance'}</a>
@@ -173,6 +182,10 @@ import '../styles/global.css';
         &copy; {new Date().getFullYear()} {isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.'} — {isCn ? 'All rights reserved.' : 'All rights reserved.'}
       </div>
     </div>
+    <button id="backToTop" aria-label={isCn ? '回到顶部' : 'Back to top'} title={isCn ? '回到顶部' : 'Back to top'} onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+      <span>{isCn ? '顶部' : 'Top'}</span>
+    </button>
   </footer>
 
   <!-- Footer subscribe → 复用 /api/lead 接口（source=subscribe） -->

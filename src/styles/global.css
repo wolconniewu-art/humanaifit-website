@@ -443,13 +443,39 @@ a:hover {
   padding: var(--spacing-3xl) 0 var(--spacing-xl);
   background: var(--color-primary);
   color: rgba(255,255,255,0.7);
+  position: relative;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: var(--spacing-2xl);
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr;
+  gap: var(--spacing-xl);
 }
+
+/* 回到顶部按钮 */
+#backToTop {
+  position: absolute;
+  right: 24px;
+  top: -22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #0F2B46;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 0.2s, background 0.2s;
+}
+#backToTop:hover {
+  background: #DFC88A;
+  transform: translateY(-2px);
+}
+#backToTop svg { display: block; }
 
 .footer-brand {
   font-size: 14px;
@@ -493,8 +519,16 @@ a:hover {
 
 @media (max-width: 768px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
   }
+  #backToTop {
+    right: 50%;
+    transform: translateX(50%);
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  #backToTop:hover { transform: translateX(50%) translateY(-2px); }
 }
 
 /* --- Service Card Hover Effects (2026-05-04) --- */
