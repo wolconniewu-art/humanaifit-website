@@ -1,6 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import ArticleCover from '../components/ArticleCover.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+// 文章数自动统计：直接数 src/pages/blog/*.astro（新增文章后无需手改数字）
+const blogDir = path.resolve('./src/pages/blog');
+const articleCount = fs.existsSync(blogDir)
+  ? fs.readdirSync(blogDir).filter(f => f.endsWith('.astro')).length
+  : 0;
 ---
 
 <Base
@@ -39,9 +46,9 @@ import ArticleCover from '../components/ArticleCover.astro';
     <div class="container">
       <div class="huma-stats">
         <div class="huma-stat"><div class="huma-stat-num">172</div><div class="huma-stat-label">条政策数据（1986–2026）</div></div>
-        <div class="huma-stat"><div class="huma-stat-num">36</div><div class="huma-stat-label">篇深度文章 · 中英双语</div></div>
-        <div class="huma-stat"><div class="huma-stat-num">3</div><div class="huma-stat-label">项里昂商学院学术任职</div></div>
-        <div class="huma-stat"><div class="huma-stat-num">4</div><div class="huma-stat-label">份开放研究数据 · 免费下载</div></div>
+        <div class="huma-stat"><div class="huma-stat-num">{articleCount}</div><div class="huma-stat-label">篇深度文章 · 中英双语</div></div>
+        <div class="huma-stat"><div class="huma-stat-num">3</div><div class="huma-stat-label">项研究机构任职</div></div>
+        <div class="huma-stat"><div class="huma-stat-num">4</div><div class="huma-stat-label">份开放数据集（1 政策表 + 3 AI 榜单）</div></div>
       </div>
     </div>
   </section>
@@ -80,21 +87,21 @@ import ArticleCover from '../components/ArticleCover.astro';
       <div class="grid-2">
         <a href="/diagnosis/" class="service-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
           <h4>孩子AI素养诊断</h4>
-          <p style="font-size:14px;color:var(--color-text-secondary);">10道选择题，30秒测出你孩子的AI学习类型：探索型 / 应用型 / 创作型。附个性化学习建议，帮家长回答「我的孩子该学什么AI？」</p>
+          <p style="font-size:14px;color:var(--color-text-secondary);">22道题的儿童版（6-18岁），约10分钟测出你孩子的AI学习类型：探索型 / 应用型 / 创作型。附个性化学习建议，帮家长回答「我的孩子该学什么AI？」</p>
           <span style="display:inline-block;margin-top:12px;padding:8px 16px;background:#2e7d32;color:white;border-radius:6px;font-size:13px;font-weight:500;">免费诊断</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 精选洞察：让 36 篇存量内容在首屏下拉处被看见 -->
+  <!-- 精选洞察：让存量内容在首屏下拉处被看见 -->
   <section class="section" style="background:var(--color-surface);">
     <div class="container">
       <div class="text-center" style="margin-bottom:var(--spacing-2xl);">
         <p class="section-label">精选洞察</p>
         <h2>我们在想什么</h2>
         <p style="font-size:16px;color:var(--color-text-secondary);max-width:560px;margin:var(--spacing-md) auto 0;">
-          36 篇深度文章，关于人机契合、碳合规、中国全球化与 AI 治理。
+          {articleCount} 篇深度文章，关于人机契合、碳合规、中国全球化与 AI 治理。
         </p>
       </div>
       <div class="grid-3">
@@ -121,7 +128,7 @@ import ArticleCover from '../components/ArticleCover.astro';
         </a>
       </div>
       <div class="text-center" style="margin-top:var(--spacing-2xl);">
-        <a href="/blog/" class="btn btn-outline">浏览全部 36 篇 →</a>
+        <a href="/blog/" class="btn btn-outline">浏览全部 {articleCount} 篇 →</a>
       </div>
     </div>
   </section>
@@ -156,7 +163,7 @@ import ArticleCover from '../components/ArticleCover.astro';
         <a href="/diagnosis/" class="research-card">
           <div class="research-icon">🧪</div>
           <h4>在线工具：AI 素养诊断</h4>
-          <p>10 道题、30 秒，覆盖儿童 / 成人 / 银发三档，给出个性化建议。</p>
+          <p>22～27 道题、约 10 分钟，覆盖儿童 / 成人 / 银发三档，给出个性化建议。</p>
           <span class="research-cta">免费诊断 →</span>
         </a>
       </div>
@@ -301,7 +308,7 @@ import ArticleCover from '../components/ArticleCover.astro';
         "30秒判断产品是否受CBAM碳关税影响",
         "中美欧172条EV/电池政策最新对比",
         "从\u201C会用AI\u201D到\u201C因AI而更强\u201D",
-        "你的AI素养什么水平？10题快速诊断",
+        "你的AI素养什么水平？22/27题快速诊断",
         "网站有中英文双语版，记得切换阅读哦"
       ];
       function init() {
