@@ -261,24 +261,77 @@ import '../styles/global.css';
        避免小屏标题强制单行导致横向溢出。标题在窄屏改为正常换行。 -->
   <style is:global>
     .article-hero h1 {
-      white-space: normal !important;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      white-space: nowrap;
+      overflow-wrap: normal;
+      word-break: keep-all;
+      max-width: 100%;
     }
-    /* 参考文献长 URL 不溢出（全局，覆盖 scoped 够不到的正文链接） */
+    /* 窄屏：标题尽量用满宽度（减少两侧留白），以便单行可读 */
+    @media (max-width: 640px) {
+      .article-hero .container { padding-left: 12px !important; padding-right: 12px !important; }
+    }
+    .article-body {
+      overflow-wrap: anywhere !important;
+      word-break: break-word !important;
+    }
+    /* 参考文献/正文长 URL 一律不溢出（全局，覆盖 scoped 够不到的链接） */
+    .article-body a,
+    .article-body li,
+    .article-body ul,
+    .article-body p,
+    .article-body h2,
+    .article-body h3,
+    .article-body h4,
+    .article-body td,
+    .article-body th,
     .article-body ol li,
     .article-body ol li a,
     .article-body p a {
       overflow-wrap: anywhere !important;
       word-break: break-word !important;
     }
-    @media (max-width: 820px) {
-      .article-hero h1 {
-        font-size: clamp(1.15rem, 4.2vw, 1.6rem) !important;
-        line-height: 1.35 !important;
-      }
-    }
   </style>
+  <script is:inline>
+    // 标题排版：先尝试单行；若按可读下限仍装不下，则改为正常换行（保证永不溢出）
+    (function () {
+      var MIN = 10; // 单行模式的可读下限（px）
+      function fitTitle() {
+        var h1 = document.querySelector('.article-hero h1');
+        if (!h1) return;
+        var box = h1.parentElement || h1;
+        // 量测基准：强制单行 + 自然字距
+        h1.style.whiteSpace = 'nowrap';
+        h1.style.wordBreak = 'keep-all';
+        h1.style.overflowWrap = 'normal';
+        h1.style.fontSize = '';
+        var boxPad = parseFloat(getComputedStyle(box).paddingLeft || 0) + parseFloat(getComputedStyle(box).paddingRight || 0);
+        var avail = (box.clientWidth || avail) - boxPad - 2;
+        if (avail <= 0) avail = h1.clientWidth || 300;
+        var base = parseFloat(getComputedStyle(h1).fontSize) || 20;
+        if (base < MIN) base = MIN;
+        // 单次比例估算，避免多次重排振荡
+        var need = base * (avail / Math.max(1, h1.scrollWidth)) * 0.97;
+        if (need >= MIN) {
+          // 单行可行：用缩后字号，保持单行
+          if (need < base) h1.style.fontSize = need.toFixed(2) + 'px';
+          h1.style.whiteSpace = 'nowrap';
+        } else {
+          // 单行不可行：用可读下限 + 正常换行
+          h1.style.fontSize = MIN + 'px';
+          h1.style.whiteSpace = 'normal';
+          h1.style.wordBreak = 'normal';
+          h1.style.overflowWrap = 'break-word';
+        }
+      }
+      var raf = window.requestAnimationFrame || function (f) { setTimeout(f, 16); };
+      function run() { raf(fitTitle); }
+      if (document.readyState !== 'loading') run();
+      document.addEventListener('DOMContentLoaded', run);
+      window.addEventListener('load', run);
+      var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fitTitle, 120); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+    })();
+  </script>
 </head>
 <body>
   <div id="readProgress" aria-hidden="true"></div>
