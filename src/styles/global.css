@@ -632,3 +632,52 @@ blockquote {
   .huma-stats { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); padding: var(--spacing-lg) 0; }
   .huma-stat-label { font-size: 12px; }
 }
+
+/* --- 客户评价 (2026-09-15) --- */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.testi-card {
+  margin: 0;
+  padding: 26px 28px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.testi-card blockquote {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-primary);
+  font-style: italic;
+}
+.testi-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+}
+.testi-card figcaption strong {
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: 700;
+  line-height: 1.5;
+}
+.testi-card figcaption span {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .testi-grid { grid-template-columns: 1fr; gap: 16px; }
+  .testi-card { padding: 22px 20px; }
+  .testi-card blockquote { font-size: 15px; }
+}
