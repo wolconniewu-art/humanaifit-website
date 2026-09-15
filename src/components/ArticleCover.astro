@@ -6,8 +6,9 @@ export interface Props {
   size?: string; // css size, default 64px
   radius?: string;
   fullTitle?: boolean; // true: 显示完整标题（大字号）而非首字，用于“精选洞察”大卡片
+  banner?: boolean; // true: 随宽自适应（宽度 100%、固定宽高比），用于网格卡封面
 }
-const { title = '', tags = '', size = '64px', radius = '12px', fullTitle = false } = Astro.props;
+const { title = '', tags = '', size = '64px', radius = '12px', fullTitle = false, banner = false } = Astro.props;
 
 const palettes = [
   ['#0F2B46', '#1A3F64'],
@@ -29,15 +30,17 @@ const deg = (h % 90) + 135;
 
 <div
   class="article-cover"
-  style={`width:${size};height:${size};flex-shrink:0;border-radius:${radius};
+  style={`${banner ? 'width:100%;aspect-ratio:16/7;' : `width:${size};height:${size};`}flex-shrink:0;border-radius:${radius};
           background:linear-gradient(${deg}deg, ${c1} 0%, ${c2} 100%);
           display:flex;align-items:center;justify-content:center;
-          color:#fff;font-weight:800;font-size:calc(${size} * 0.42);
+          color:#fff;font-weight:800;${banner ? '' : `font-size:calc(${size} * 0.42);`}
           letter-spacing:-1px;position:relative;overflow:hidden;`}
   aria-hidden={fullTitle ? undefined : 'true'}
 >
   {fullTitle ? (
     <span style="position:relative;z-index:2;padding:8% 9%;font-size:clamp(15px,2.0vw,22px);font-weight:700;line-height:1.45;letter-spacing:0;text-align:left;width:100%;">{title}</span>
+  ) : banner ? (
+    <span style="position:relative;z-index:2;padding:0 8%;font-size:1.05rem;font-weight:700;line-height:1.35;letter-spacing:0;text-align:center;">{firstTag || initial}</span>
   ) : (
     <span style={`position:relative;z-index:2;font-size:calc(${size} * 0.235);font-weight:700;line-height:1.15;letter-spacing:0;padding:0 8%;text-align:center;`}>{firstTag || initial}</span>
   )}
