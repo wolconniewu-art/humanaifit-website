@@ -607,3 +607,28 @@ blockquote {
     font-size: 1.3rem;
   }
 }
+
+/* --- 首页信任数据带 (2026-09-15) --- */
+.huma-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+.huma-stat-num {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
+.huma-stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .huma-stats { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); padding: var(--spacing-lg) 0; }
+  .huma-stat-label { font-size: 12px; }
+}
