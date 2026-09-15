@@ -53,7 +53,7 @@ import '../styles/global.css';
       z-index: 9999; transition: width 0.1s linear;
     }
   </style>
-  <style>
+  <style is:global>
     .article-hero {
       padding: 120px 0 40px;
       background: linear-gradient(160deg, #f5f7fa 0%, #ffffff 50%, #eef1f5 100%);
@@ -71,12 +71,9 @@ import '../styles/global.css';
     }
     .article-hero h1 {
       margin: 0 0 4px 0;
-      font-size: clamp(1.4rem, 2.6vw + 0.6rem, 1.9rem) !important;
-      line-height: 1.3 !important;
-      white-space: normal !important;
-      overflow: visible !important;
-      text-overflow: clip !important;
-      text-wrap: balance;
+      line-height: 1.3;
+      overflow: visible;
+      text-overflow: clip;
     }
     .article-hero .article-subtitle {
       display: block;
@@ -265,6 +262,12 @@ import '../styles/global.css';
       overflow-wrap: normal;
       word-break: keep-all;
       max-width: 100%;
+      font-size: clamp(1.25rem, 2.2vw + 0.5rem, 1.75rem);
+      line-height: 1.3;
+    }
+    /* 标题区域可比正文更宽：桌面放宽 hero 容器，让长标题单行且不缩得太小 */
+    @media (min-width: 900px) {
+      .article-hero .container { max-width: 880px !important; }
     }
     /* 窄屏：标题尽量用满宽度（减少两侧留白），以便单行可读 */
     @media (max-width: 640px) {
@@ -294,23 +297,27 @@ import '../styles/global.css';
   <script is:inline>
     // 标题排版：先尝试单行；若按可读下限仍装不下，则改为正常换行（保证永不溢出）
     (function () {
-      var MIN = 10; // 单行模式的可读下限（px）
+      var MIN = 12; // 单行模式的字号下限（px）——低于此则改用更宽的行宽
       function fitTitle() {
         var h1 = document.querySelector('.article-hero h1');
         if (!h1) return;
         var box = h1.parentElement || h1;
+        // 标题允许比正文更宽：桌面上放宽到最多 1000px，减少因过窄造成的过度缩字
+        h1.style.maxWidth = '1000px';
+        h1.style.width = '100%';
         // 量测基准：强制单行 + 自然字距
         h1.style.whiteSpace = 'nowrap';
         h1.style.wordBreak = 'keep-all';
         h1.style.overflowWrap = 'normal';
         h1.style.fontSize = '';
+        // 标题允许比正文更宽：桌面上 hero 容器已放宽（见全局 CSS）
         var boxPad = parseFloat(getComputedStyle(box).paddingLeft || 0) + parseFloat(getComputedStyle(box).paddingRight || 0);
-        var avail = (box.clientWidth || avail) - boxPad - 2;
+        var avail = (box.clientWidth - boxPad) - 2;
         if (avail <= 0) avail = h1.clientWidth || 300;
         var base = parseFloat(getComputedStyle(h1).fontSize) || 20;
         if (base < MIN) base = MIN;
         // 单次比例估算，避免多次重排振荡
-        var need = base * (avail / Math.max(1, h1.scrollWidth)) * 0.97;
+        var need = base * (avail / Math.max(1, h1.scrollWidth)) * 0.985;
         if (need >= MIN) {
           // 单行可行：用缩后字号，保持单行
           if (need < base) h1.style.fontSize = need.toFixed(2) + 'px';
