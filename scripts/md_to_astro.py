@@ -16,7 +16,7 @@ import sys, re, os, html, subprocess
 PANDOC = "/home/connie/.local/lib/python3.12/site-packages/pypandoc/files/pandoc"
 
 TEMPLATE = """---
-import Article from {layout_path};
+import Article from "{layout_path}";
 const tags = {tags_js};
 const articleDate = '{date}';
 ---
