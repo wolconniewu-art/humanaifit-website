@@ -98,6 +98,35 @@ import '../styles/global.css';
       });
     });
   </script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${canonicalBase}/#org`,
+        name: isCn ? '彼恳企业管理咨询（上海）有限责任公司' : 'Beacon Consulting Co., Ltd.',
+        alternateName: 'humanAIfit',
+        url: `${canonicalBase}/`,
+        logo: `${canonicalBase}/logo.svg`,
+        email: 'connie@humanaifit.com',
+        description: isCn
+          ? '专注于人机契合（Human-AI Fit）研究与实践，帮助组织和个人实现真正的竞争力增长。'
+          : 'Focused on Human-AI Fit research and practice, helping organizations and individuals achieve true competitive growth.',
+        sameAs: [
+          'https://www.zhihu.com/people/humanaifit',
+          'https://www.workingoutloud.com/coaches/connie-wu'
+        ]
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${canonicalBase}/#website`,
+        url: `${canonicalBase}/`,
+        name: 'humanAIfit',
+        inLanguage: isCn ? 'zh-CN' : 'en',
+        publisher: { '@id': `${canonicalBase}/#org` }
+      }
+    ]
+  })} />
 </head>
 <body>
   <!-- Header (v2: 毛玻璃效果 + 当前页面高亮) -->
