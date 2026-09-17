@@ -1,0 +1,127 @@
+---
+import Article from "../../../layouts/Article.astro";
+const tags = ["Frontier Tech", "AI Governance", "Human-AI Fit", "Open Weights", "Digital Trust"];
+const articleDate = '2026-09-17';
+---
+
+<Article
+  title="Making Trust Verifiable: Three Trust Mechanisms in the AI Industry"
+  description="In the second and third weeks of September 2026, the global AI industry moved intensively on a single theme: **how to turn &quot;trustworthy&quot; from a promise into something verifiable.** Drawin…"
+  date={articleDate}
+  tags={tags}
+  lang="en"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/en/blog/" class="article-back">← Back to Blog</a>
+      <p class="section-label" style="color:var(--color-accent);">Blog · 2026-09-17</p>
+      <h1>Making Trust Verifiable: Three Trust Mechanisms in the AI Industry</h1>
+      <div class="article-meta">
+        <span>2026-09-17</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2 id="abstract">Abstract</h2>
+<p>In the second and third weeks of September 2026, the global AI industry moved intensively on a single theme: <strong>how to turn "trustworthy" from a promise into something verifiable.</strong> Drawing on public information from that period, this article proposes an analytical framework: the industry is currently running three trust mechanisms in parallel — <strong>institutional trust</strong> (pre-release peer testing, government regulation), <strong>engineering trust</strong> (evidence traceability, multi-agent cross-validation, open weights), and <strong>inclusive trust</strong> (redistribution to reach unserved populations). These are not competitors but complements. Understanding this structure has direct operational implications for what enterprises should trust and where they should invest.</p>
+<hr />
+<h2 id="1-the-problem-when-mutual-trust-meets-incentive-failure">1. The Problem: When "Mutual Trust" Meets Incentive Failure</h2>
+<p>On 15 September 2026, at the All-In Summit in Los Angeles, Elon Musk proposed a governance design: have leading AI labs — xAI, OpenAI, Anthropic, Google, Meta, and several Chinese companies — test each other's models <strong>before</strong> release, establishing a peer-review mechanism. According to CNBC and Quartz, <strong>no other lab has publicly accepted</strong> the proposal.</p>
+<p>Earlier, Anthropic CEO Dario Amodei had called on 12 September for the industry to deliberately slow the pace of frontier model development — a call that, per CNBC and Politico, drew endorsements from OpenAI's Sam Altman and Musk, and also political criticism. On 16 September, Anthropic's head of public policy, Sarah Heck, said further at the Politico Decoded Summit in Washington that AI companies <strong>"can't operate on an honor code"</strong> and that "we can't be checking our own homework," urging government rules.</p>
+<p><strong>These three events point to the same structural difficulty</strong>: having a competitor inspect your model before release means handing your most sensitive technical details to a rival, while the benefit — "a safer industry overall" — is a classic public good. The economic feature of a public good is that <strong>everyone hopes others will move first and free-rides.</strong> This is not a moral problem but an incentive-design problem.</p>
+<p><strong>Where institutional trust stalls is precisely that it does not solve "who moves first."</strong> Meanwhile, no external enforcer exists — with fragmented regulation and intense competition, "who has the authority to enforce" has no answer.</p>
+<hr />
+<h2 id="2-engineering-trust-turning-trust-from-belief-into-verification">2. Engineering Trust: Turning Trust from Belief into Verification</h2>
+<p>While the institutional channel struggles, another path unfolded intensively in the same week: <strong>do not ask users to "believe" — make the result verifiable.</strong></p>
+<h3 id="21-evidence-traceability-making-every-conclusion-checkable">2.1 Evidence Traceability: Making Every Conclusion Checkable</h3>
+<p>Alibaba Health's medical AI assistant "Hydrogen Ion" (氢离子), aimed at clinical and research physicians, is built around <strong>"low hallucination, high evidence"</strong>: every answer carries clinical guidelines and literature citations, with one-click traceability. The project began at the end of 2024, became a company-strategic initiative in mid-2025, <strong>completed internal testing and opened downloads in January 2026, and was officially launched in Hangzhou on 13 May 2026</strong>, the same day it announced an exclusive journal-content partnership with the UK's BMJ Group; it had earlier integrated content from the Chinese Medical Association, the People's Medical Publishing House, and the China Anti-Cancer Association (CACA). Per Yicai, Alibaba Health set a goal of serving roughly 5 million Chinese physicians, with <strong>no commercialization considered for three years</strong>.</p>
+<p><strong>The essence of this path: redefine trust from a "belief problem" into a "verification problem."</strong> The system's reliability does not depend on whether users choose to believe, but on whether each answer can be independently verified by its user — critical in settings with extremely low tolerance for error, such as clinical decision-making.</p>
+<h3 id="22-multi-agent-cross-checking-systems-auditing-themselves">2.2 Multi-Agent Cross-Checking: Systems Auditing Themselves</h3>
+<p>The deepened cooperation between Dian Diagnostics (迪安诊断) and Tencent Health advances a one-stop AI-for-clinical-research platform whose core is a <strong>"Co-scientist" multi-agent architecture</strong>, built on three capability pillars — multi-agent collaboration, an Agent-Data Protocol, and a professional agent matrix — integrated with Tencent's <strong>WorkBuddy</strong> ecosystem (Sina Tech, 2026-09-16).</p>
+<p>The trust value of multi-agent architectures is often underestimated: <strong>when a conclusion is produced by multiple independent agents in cross-check, the hallucination of any single model is offset or exposed.</strong> This is a kind of "engineered peer review" — no competitor needs to inspect you; the system continuously audits itself.</p>
+<h3 id="23-open-weights-basing-trust-on-self-sustainability">2.3 Open Weights: Basing Trust on "Self-Sustainability"</h3>
+<p>In the same period, US open-weight company <strong>Arcee AI</strong> announced its Series B at a <strong>USD 1 billion pre-money valuation</strong>, becoming a unicorn (GlobeNewswire, 2026-09-16). Its positioning is "frontier open-weight foundation models," explicitly targeting finance, healthcare, and government clients that require <strong>vendor independence</strong>.</p>
+<p>Another case from the same period came from drug discovery: ByteDance spun out its AI drug-discovery business into <strong>Anew Labs</strong>, which completed a USD 290 million debut independent round at a post-money valuation of about USD 1.5 billion, with ByteDance retaining a 56% controlling stake (Yicai, 2026-09-16). Its significance lies not in the amount but in the <strong>governance structure</strong>: detaching a long-cycle, high-uncertainty R&amp;D effort from the group's quarterly assessment and assigning it to an independent entity — itself a "trust mechanism" design that handles trust through organizational separation rather than moral commitment.</p>
+<p>In parallel, on 15 September, Gartner released its <em>Top AI Trends for China 2026</em>, listing <strong>"model technology-stack resilience"</strong> among ten trends, defined as redundancy and substitutability across model frameworks, inference engines, APIs, and deployment environments — to withstand "supply-chain disruption, geopolitical control, or abrupt vendor strategy shifts."</p>
+<p><strong>In the language of trust</strong>: Gartner defines "trust" directly as <strong>the ability not to depend on any single vendor.</strong> This is isomorphic to the logic of engineering trust — trust is not believing a vendor will never change, but <strong>being able to withstand it if it does.</strong></p>
+<hr />
+<h2 id="3-inclusive-trust-the-third-human-dimension">3. Inclusive Trust: The Third, Human Dimension</h2>
+<p>The two paths above address "how institutions trust one another." On 15 September, the Gates Foundation offered a third dimension: <strong>trust between ordinary people and AI.</strong></p>
+<p>The Foundation announced it would invest <strong>at least USD 1 billion</strong> over two years to advance equitable AI, publishing its tenth annual <em>Goalkeepers Report</em> (focused on AI). Allocation is roughly <strong>40% education, 40% health, 10% agriculture, 10% digital infrastructure (language datasets)</strong>; explicitly applied-layer only, not general foundation-model R&amp;D (AP News; ScienceNet).</p>
+<p>Bill Gates's words in the report deserve quotation: <strong>"If left entirely to the market, the most powerful tools will first be developed for those with the greatest ability to pay, not necessarily for those who could benefit most."</strong></p>
+<p><strong>This completes the picture of the "trust deficit"</strong>: it is not only that institutions lack mutual trust, but that many people remain outside the system — their languages, contexts, and purchasing power may not be in existing training data. For them, AI is not yet usable, let alone trustworthy.</p>
+<hr />
+<h2 id="4-analytical-framework-the-complementary-structure-of-three-trust-mechanisms">4. Analytical Framework: The Complementary Structure of Three Trust Mechanisms</h2>
+<p>Drawing the observations together, an analytical framework emerges:</p>
+<table>
+<thead>
+<tr>
+<th>Trust mechanism</th>
+<th>Typical actions</th>
+<th>Depends on</th>
+<th>Main bottleneck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Institutional</strong></td>
+<td>Pre-release peer testing; government mandates</td>
+<td>Industry voluntarism or external authority</td>
+<td>Public-good free-riding; no global enforcer</td>
+</tr>
+<tr>
+<td><strong>Engineering</strong></td>
+<td>Evidence traceability; multi-agent cross-checking; open weights</td>
+<td>Verifiable technical evidence</td>
+<td>High verification cost; no unified standard yet</td>
+</tr>
+<tr>
+<td><strong>Inclusive</strong></td>
+<td>Redistribution to reach unserved populations</td>
+<td>Proactive investment and long-term commitment</td>
+<td>Slow results; depends on sustained funding</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Core judgment: the three are complements, not substitutes.</strong> When institutional trust is absent, engineering trust fills the gap; where engineering trust cannot reach, inclusive trust provides a floor. Betting on only one leaves a gap somewhere.</p>
+<p><strong>Why do different regions emphasize different mechanisms?</strong> This is not a technology-route dispute but a difference in <strong>the enabling conditions</strong> of each mechanism:</p>
+<ul>
+<li>Institutional trust needs <strong>a commonly recognized authority</strong> — hard to achieve amid fragmented regulation;</li>
+<li>Engineering trust needs only <strong>that one thing be verifiable</strong> — any enterprise can start from its own context without waiting for others;</li>
+<li>Hence starting from "traceable," "cross-verifiable," and "open-sourceable" is a pragmatic path that <strong>sidesteps the chicken-and-egg deadlock.</strong></li>
+</ul>
+<p><strong>A fresh corroboration at the infrastructure layer</strong>: at the Computing Power Network Development Conference (15–16 September 2026), it was proposed that "<strong>China's computing power network and the ZPG plan will be the core lever of technological competition in the intelligent era</strong>," stressing that "<strong>openness and open source are the core key factor in China's AI success</strong>" (Shanghai Securities News; China News Service, 15–16 September 2026). The computing power network has been incorporated into the national "Six Networks" buildout, with an estimated investment of RMB 3–4 trillion. This is "self-control" landing directly at the infrastructure layer, corroborating once more: <strong>trust's answer at the engineering layer is "substitutability," and at the infrastructure layer is "autonomy."</strong></p>
+<hr />
+<h2 id="5-three-practical-recommendations-for-enterprises">5. Three Practical Recommendations for Enterprises</h2>
+<p><strong>First, write "verifiable" into procurement standards.</strong> Do not only ask vendors "how accurate is your model?" Ask "<strong>how can I verify its accuracy myself?</strong>" Whether there are citations, traceability, and support for independent evaluation matters more than any benchmark score. Hydrogen Ion's one-click traceability is this logic productized.</p>
+<p><strong>Second, prepare redundancy against "supply cut-off."</strong> Gartner's "model technology-stack resilience" is advice to CIOs: if your business runs on a single model API, you are not betting on technology but on that company's <strong>strategic stability.</strong> Open weights (e.g., Arcee, GLM, DeepSeek series) at least provide a "self-sustaining" fallback.</p>
+<p><strong>Third, know whether your users are "in the training data."</strong> The Gates Foundation's education investment makes one point clear: <strong>AI's utility depends heavily on whether you are "seen."</strong> If your customer base, business language, or scenario data are not in mainstream models, "a bigger model" may not help — what you may need is <strong>your own data infrastructure.</strong></p>
+<hr />
+<h2 id="6-conclusion">6. Conclusion</h2>
+<p>The clearest signal from the AI industry in this week of September 2026 is not how much stronger any model became, but that <strong>"trust" is shifting from a moral slogan into a problem that must be engineered, productized, and institutionalized.</strong></p>
+<p>That Musk's peer-testing proposal drew no takers shows institutional trust has yet to find its foundation; what Hydrogen Ion, Dian Diagnostics, and Arcee are doing shows engineering trust has moved from concept to product; the Gates Foundation's USD 1 billion reminds us that a whole population still stands outside the trust system.</p>
+<p><strong>The real dividing line is neither geography nor open-versus-closed source, but: who can turn "trust" into something verifiable, deliverable, and scalable.</strong></p>
+<hr />
+<h2 id="references">References</h2>
+<ol type="1">
+<li>Gartner. (2026, September 15). <em>Gartner Releases 2026 Top AI Trends for China</em> [Press release]. <a href="https://www.gartner.com/cn/newsroom/press-releases/2026-09-15-gartner-releases-2026-top-ai-trends-for-china">https://www.gartner.com/cn/newsroom/press-releases/2026-09-15-gartner-releases-2026-top-ai-trends-for-china</a></li>
+<li>CNBC. (2026, September 16). <em>Anthropic policy chief says AI companies can't operate on 'honor code'</em>. <a href="https://www.cnbc.com/2026/09/16/anthropic-policy-chief-says-ai-companies-cant-operate-on-honor-code.html">https://www.cnbc.com/2026/09/16/anthropic-policy-chief-says-ai-companies-cant-operate-on-honor-code.html</a></li>
+<li>CNBC. (2026, September 15). <em>Elon Musk urges cooperation with AI labs, China to test models</em>. <a href="https://www.cnbc.com/2026/09/15/elon-musk-ai-safety-testing.html">https://www.cnbc.com/2026/09/15/elon-musk-ai-safety-testing.html</a></li>
+<li>Politico. (2026, September 16). <em>Anthropic policy chief says winning AI race key for safety</em>. <a href="https://www.politico.eu/article/anthropic-policy-chief-says-winning-ai-race-key-for-safety">https://www.politico.eu/article/anthropic-policy-chief-says-winning-ai-race-key-for-safety</a></li>
+<li>AP News. (2026, September 15). <em>Bill Gates Foundation commits $1 billion to AI for public good</em>. <a href="https://apnews.com/article/bill-gates-foundation-ai-united-nations-26ce25f9be20574a4fa04a5f983521ae">https://apnews.com/article/bill-gates-foundation-ai-united-nations-26ce25f9be20574a4fa04a5f983521ae</a></li>
+<li>ScienceNet. (2026, September). <em>Gates Foundation pledges USD 1 billion for equitable AI</em> [in Chinese]. <a href="http://news.sciencenet.cn/htmlnews/2026/9/571500.shtm">http://news.sciencenet.cn/htmlnews/2026/9/571500.shtm</a></li>
+<li>GlobeNewswire. (2026, September 16). <em>Arcee AI Reaches $1B+ Valuation with Series B Funding to Advance Frontier Open-Weight AI</em>. <a href="https://ca.finance.yahoo.com/news/arcee-ai-reaches-1b-valuation-140000923.html">https://ca.finance.yahoo.com/news/arcee-ai-reaches-1b-valuation-140000923.html</a></li>
+<li>Yicai. (2026, September 16). <em>ByteDance spins out AI drug-discovery firm Anew Labs at USD 1.5bn valuation</em> [in Chinese]. <a href="https://finance.sina.com.cn/tech/roll/2026-09-16/doc-inirzmzc0556877.shtml">https://finance.sina.com.cn/tech/roll/2026-09-16/doc-inirzmzc0556877.shtml</a></li>
+<li>Yicai / Jianwen Consulting. (2026, January 20). <em>Exclusive interview with Alibaba Health on "Hydrogen Ion"</em> [in Chinese]. <a href="https://www.yicai.com/news/103016006.html">https://www.yicai.com/news/103016006.html</a></li>
+<li>Xinhua. (2026, May 13). <em>BMJ partners exclusively with Hydrogen Ion</em> [in Chinese]. <a href="http://www.xinhuanet.com/tech/20260513/941aa474592c4682bec14c60e560a4eb/c.html">http://www.xinhuanet.com/tech/20260513/941aa474592c4682bec14c60e560a4eb/c.html</a></li>
+<li>Sina Tech. (2026, September 16). <em>Dian Diagnostics and Tencent Health advance one-stop AI clinical research platform</em> [in Chinese]. <a href="https://tech.sina.cn/2026-09-16/detail-iniryvca3452498.d.html">https://tech.sina.cn/2026-09-16/detail-iniryvca3452498.d.html</a></li>
+<li>Shanghai Securities News. (2026, September 15). <em>Computing power network develops in three stages, continuously driving related investment</em> [in Chinese]. <a href="https://finance.sina.com.cn/stock/t/2026-09-15/doc-inirxpiq6907374.shtml">https://finance.sina.com.cn/stock/t/2026-09-15/doc-inirxpiq6907374.shtml</a></li>
+<li>China News Service. (2026, September 16). <em>2026 Computing Power Network Development Conference held in Beijing</em> [in Chinese]. <a href="https://www.chinanews.com.cn/gn/2026/09-16/10697197.shtml">https://www.chinanews.com.cn/gn/2026/09-16/10697197.shtml</a></li>
+<li>ifeng Tech. (2026, September 15). <em>Gartner releases ten AI trends for China 2026</em> [in Chinese]. <a href="https://tech.ifeng.com/c/8wRIqmMAcBL">https://tech.ifeng.com/c/8wRIqmMAcBL</a></li>
+<li>36Kr. (2026, September). <em>OpenAI considers new funding round at USD 1.2 trillion valuation</em> [in Chinese]. <a href="http://www.36kr.com/p/3985407647045249">http://www.36kr.com/p/3985407647045249</a></li>
+</ol>
+
+  </div>
+</Article>
