@@ -1,0 +1,136 @@
+---
+import Article from "../../layouts/Article.astro";
+const tags = ["AI 产业", "智能体", "算力经济", "科技地缘", "商业逻辑"];
+const articleDate = '2026-10-02';
+---
+
+<Article
+  title="芯片买生态、三巨头抢智能体、海湾抢第三极：读懂 2026 年这场 AI 权力重组"
+  description="2026 年 9 月到 10 月初，一连串看似分散的事件在同一个时间窗口里密集发生：英伟达以约 129 亿美元收购开源模型社区 Hugging Face；AMD 以约 82 亿美元拿下李飞飞创办的世界模型实验室 World Labs；Meta 推出号称「首个个人 AI 智能体」的 Muse 并把 …"
+  date={articleDate}
+  tags={tags}
+  lang="zh"
+>
+  <section class="article-hero">
+    <div class="container" style="max-width:720px;">
+      <a href="/blog/" class="article-back">← 返回博客</a>
+      <p class="section-label" style="color:var(--color-accent);">博客 · 2026-10-02</p>
+            <h1 style="font-size:min(1.35rem,calc((100vw - 2.4rem)/30));line-height:1.3;white-space:nowrap;overflow:visible;text-overflow:clip;">芯片买生态、三巨头抢智能体、海湾抢第三极：读懂 2026 年这场 AI 权力重组</h1>
+      <div class="article-meta">
+        <span>2026-10-02</span>
+        {tags.filter(Boolean).map(t => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <div class="article-body">
+
+<h2 id="摘要">摘要</h2>
+<p>2026 年 9 月到 10 月初，一连串看似分散的事件在同一个时间窗口里密集发生：英伟达以约 129 亿美元收购开源模型社区 Hugging Face；AMD 以约 82 亿美元拿下李飞飞创办的世界模型实验室 World Labs；Meta 推出号称"首个个人 AI 智能体"的 Muse，并把它装进 AI 眼镜；OpenAI 在 DevDay 上一口气发布 20 多项产品，主角是能长期替你办事的智能体（Agent）；与此同时，新加坡的亚洲愿景论坛、Tech Week Singapore，和 10 月初阿布扎比的 AI Everything，把半个亚洲和整个海湾的注意力拉到同一个主题上。</p>
+<p>把这一串事件放在一起看，它们不是七条独立新闻，而是同一个故事的不同侧面。本文认为，2026 年正在发生的是<strong>一次 AI 权力结构的重组</strong>，它由三条主线交织而成：芯片巨头从"卖算力"转向"圈住整个生态"；三大科技巨头把战场从"聊天机器人"搬到"智能体"（能自主执行长期任务的 AI 助手）；海湾与东南亚在"第三极"的争夺中各就各位。理解这三条主线，就能理解未来 12 到 24 个月的走向，也能理解它对普通人——你的工作、隐私、消费决策和情感生活——究竟意味着什么。</p>
+<hr />
+<h2 id="一事件现场发生了什么">一、事件现场：发生了什么</h2>
+<h3 id="1-英伟达买下开源大本营">1. 英伟达买下"开源大本营"：129 亿美元收购 Hugging Face</h3>
+<p>2026 年 9 月 3 日，英伟达宣布同意以 <strong>129.3 亿美元</strong>收购 Hugging Face——全球开发者下载、托管和分享开源 AI 模型最主要的社区。消息由英伟达官方博客和 CNBC 先后确认。</p>
+<p>这笔交易的反常之处在于"身份错位"：英伟达一直把自己包装成"开源最大的支持者"，如今却直接买下了开源世界的集体大厅。更关键的是，它是<strong>芯片公司第一次把"模型分发入口"攥进自己手里</strong>。过去，开发者从 Hugging Face 下载模型，再部署到英伟达的 GPU 上；现在，从下载到部署的整条路径，最好都留在英伟达的软硬件栈里跑完。</p>
+<h3 id="2-amd-的反击">2. AMD 的反击：82 亿美元收购李飞飞的 World Labs</h3>
+<p>不到一个月后的 9 月 28 日，AMD 宣布以约 <strong>82 亿美元</strong>的全股票交易（约合 550 亿元人民币）收购"AI 教母"李飞飞创办的 AI 实验室 World Labs。李飞飞将加入 AMD，直接向 CEO 苏姿丰汇报。苏姿丰对这笔交易的解释很简短："你对整个端到端（从硬件到软件、从模型到应用的全链条）流程了解得越深入，就越能构建出更好的系统。"</p>
+<p>这是英伟达那笔交易的镜像。英伟达有 CUDA 这道十年建成的软件护城河，AMD 有硬件却缺软件生态和顶级人才——所以它干脆花 82 亿，买下"空间智能与世界模型"这条最能拉动算力需求的前沿路线，外加李飞飞这块金字招牌。World Labs 主攻的"世界模型"（让 AI 在行动前先在"脑内"推演物理世界会如何变化），正是机器人、自动驾驶等"物理 AI"（让 AI 拥有身体、在真实世界执行任务）的核心技术。</p>
+<h3 id="3-meta-推出-muse">3. Meta 推出 Muse：把智能体装进眼镜</h3>
+<p>9 月 8 日，Meta 发布 <strong>Muse</strong>，官方定位是"安全、私密的个人 AI 智能体（Personal AI Agent），主动帮助人们实现目标、提出建议"。关键在于"主动"两个字——它不再等你提问，而是持续了解你的习惯与目标，主动替你想、替你安排。9 月 23 日，Meta 在 Connect 大会上宣布把 Muse 搬上它的 AI 眼镜；9 月 29 日，进一步把 Muse 扩展到中小企业，并接入 Shopify、Dropbox 等服务。</p>
+<p>对商业而言，这意味着 Meta 想把智能体从"手机里的一个应用"变成"随时在你眼前的入口"——一个能看见你、听见你、并随时替你行事的助手。</p>
+<h3 id="4-openai-devday">4. OpenAI DevDay：20 多项发布，主角是智能体</h3>
+<p>9 月 29 日，OpenAI 举办"迄今规模最大"的 DevDay，发布 20 多项产品，官方说法是"推出能承担持续性责任的智能体（agents that can take on ongoing responsibilities）"。其中两项最受关注：一套名为 <strong>dots</strong> 的智能体工具，以及新模型 <strong>GPT-6.1 Sol</strong>。同时，OpenAI 宣布把 ChatGPT 开放成一个"人类与智能体协作的共享平台"，让开发者能直接向它的 <strong>12 亿周活跃用户</strong>发布新的原生体验。</p>
+<p>OpenAI 自己写下的那句话值得记住：它要"扩大对开放生态的承诺"。翻译成商业语言就是：<strong>谁掌握了智能体的入口，谁就掌握了下一代的流量分发权。</strong></p>
+<h3 id="5-三场峰会">5. 三场峰会：同一周，区域在抢"第三极"</h3>
+<p>几乎同一时间，三场地缘与产业峰会挤在同一个区域：</p>
+<ul>
+<li><strong>亚洲愿景论坛创新峰会（ANVF Innovation 2026）</strong>：9 月 29 日在新加坡举行，由财新传媒与国际会议平台 DLD 联合主办，主题定为<strong>"变革与韧性"</strong>。北京大学国际战略研究院等机构学者出席，讨论的正是"技术加速颠覆与全球格局重构背景下，亚洲如何以创新与韧性塑造可持续未来"。</li>
+<li><strong>Tech Week Singapore 2026</strong>：9 月 29 日至 30 日在新加坡滨海湾金沙会展中心举行，2.8 万多名参会者、550 多位演讲者，核心主题聚焦 <strong>AI 基础设施</strong>（支撑 AI 运行的数据中心、芯片与网络）。</li>
+<li><strong>AI Everything Abu Dhabi 2026</strong>：10 月 6 日至 7 日在阿布扎比国家展览中心举行，由阿联酋政府部委主办，自称"全球最大的 AI-first 展会与峰会"，目标是助力阿联酋成为<strong>"全球第一个 AI-native（原生 AI）社会"</strong>，汇集 400 多家 AI 公司。</li>
+</ul>
+<p>三场会议不在一个国家，主题措辞也各不相同，但它们在同一周、同一区域密集发生，绝非巧合。</p>
+<hr />
+<h2 id="二隐藏的商业逻辑">二、隐藏的商业逻辑：三条主线</h2>
+<h3 id="主线一">主线一：从"卖算力"到"圈住整个生态"</h3>
+<p>英伟达和 AMD 的两笔收购，讲的是同一个逻辑：<strong>芯片战争已经打完了硬件这一局，现在打的是"硬件 + 模型 + 开发者"的全栈闭环。</strong></p>
+<p>英伟达买 Hugging Face，是把"淘金者聚集的集市"买了下来——它不再只是卖铲子，而且要成为所有人找金子、挖金子、炼金子的必经之地。AMD 买 World Labs，则是用一个巨额数字，瞬间补齐自己在"软件 + 顶级人才"上的短板，同时押注最前沿、也最吃算力的方向。</p>
+<p>这背后是一笔惊人的资本账：2026 年，Google、Amazon、Microsoft、Meta 四大科技公司计划投入的资本开支（capex，即用于购买设备、建数据中心等长期资产的支出）合计约 <strong>7250 亿美元</strong>，比 2025 年创纪录的约 4100 亿美元再跳涨约 <strong>77%</strong>。当一年就有七千多亿美元砸向算力与数据中心，硬件本身已经不再是稀缺品；真正稀缺的，是让这些算力被用起来、被反复使用的"入口"和"生态"。这就是芯片巨头要从"卖算力"转向"圈生态"的根本原因。</p>
+<h3 id="主线二">主线二：三巨头把战场搬到"智能体"</h3>
+<p>三巨头的动作指向同一个战场共识：<strong>从"聊天机器人"转向"智能体"。</strong></p>
+<ul>
+<li><strong>OpenAI</strong> 的 dots，专攻"能承担持续责任的智能体"，并开放 ChatGPT 让开发者直接触达 12 亿周活用户。</li>
+<li><strong>Meta</strong> 的 Muse，主打"主动"，并把它装进 AI 眼镜，让智能体成为"随身的入口"。</li>
+<li><strong>AMD</strong> 通过 World Labs 押注世界模型——这是让智能体"能在物理世界里干活"的前置技术。</li>
+</ul>
+<p>为什么大家都盯着智能体？因为两者的商业模式完全不同。<strong>聊天机器人是"按次付费的玩具"——你用一次，付一次，用完就走；智能体是"按月订阅、接管你日常流程的入口"——它持续替你办事，你持续为它付费。</strong> 更关键的是，谁成为你日常任务的默认调度者，谁就拿到了移动操作系统级别的位置——那才是真正长久的生意。</p>
+<p>但这条路有一个巨大的拦路虎：<strong>信任</strong>。咨询公司 BCG 在 2026 年的一项调查发现，只有 <strong>4% 的消费者愿意让 AI 智能体独立完成一次购买</strong>；麦肯锡 2026 年 3 月的报告同样指出，安全与风险顾虑是"智能体 AI"规模化的头号障碍。换句话说，技术已经不是瓶颈，<strong>人们信不信它，才是瓶颈。</strong></p>
+<h3 id="主线三">主线三：海湾与东南亚各就各位，抢"第三极"</h3>
+<p>把三场峰会叠在地图上，一条清晰的分工线浮现出来：</p>
+<ul>
+<li><strong>海湾出钱、出算力。</strong> 沙特和阿联酋合计已承诺超过 <strong>500 亿美元</strong>投入 GPU（图形处理器，AI 训练的核心芯片）基础设施；沙特的 AI 公司 Humain 获准进口 1.8 万台英伟达最先进的 GB300 服务器。它们想做的，是"主权 AI"（Sovereign AI，即一国自主掌控的 AI 能力）——用石油美元买下 AI 时代的入场券。</li>
+<li><strong>东南亚出场景、出中立性。</strong> 新加坡一周内接连办三场峰会，本身就是在把自己定位成"中美之外的中立枢纽"——既连接资本，也连接应用场景。</li>
+<li><strong>中国出市场、出制造。</strong> 通过财新在新加坡主办的论坛，中国机构与学者输出的是议程与话语。</li>
+</ul>
+<p>这三方合起来，构成了中美两大阵营之外的"第三极"想象：<strong>海湾负责资本与能源，东南亚负责中转与场景，东亚负责制造与市场。</strong> 在中美技术脱钩的背景下，谁能为"不想选边站"的国家提供第三条路，谁就能收获巨大的战略红利。</p>
+<hr />
+<h2 id="三发展趋势">三、发展趋势（未来 12–24 个月）</h2>
+<ol type="1">
+<li><p><strong>开源正在被资本收编。</strong> Hugging Face 被芯片巨头买走，是一个标志性信号：开源的大门不会关上，但<strong>分发的钥匙会握在大厂手里</strong>。未来 12 个月，我们大概率会看到更多"开源社区被巨头收编"的交易，以及随之而来的、关于"开源还算不算开源"的争论。</p></li>
+<li><p><strong>竞争焦点从"模型多聪明"转向"入口在谁手里"。</strong> 比拼的不再是谁的参数更多、跑分更高，而是谁的智能体先住进你的手机、眼镜、办公软件，成为你日常任务的默认调度者。这解释了为什么 Meta 急着把 Muse 塞进眼镜、OpenAI 急着开放 ChatGPT 平台——<strong>它们在抢的是下一个"操作系统"的位置。</strong></p></li>
+<li><p><strong>硬件重新变得性感。</strong> AI 眼镜、端侧芯片、机器人将取代"又一个聊天框"成为硬件创新的焦点。AMD 收购 World Labs 押注的世界模型，正是为机器人铺路的底层技术。</p></li>
+<li><p><strong>算力与电力成为隐形瓶颈和投资主线。</strong> 7250 亿美元的资本开支最终要落到电网上。数据中心用电、能源供给、电网改造，会成为未来两年最被低估的约束条件和投资主题。</p></li>
+<li><p><strong>"信任"从软话题变成硬指标。</strong> 当只有 4% 的人愿意让智能体独立花钱，谁能拿出可审计、可撤销、可解释的智能体授权机制，谁就能真正把市场打开。这会催生一个新行业：<strong>智能体的身份认证与责任保险。</strong></p></li>
+<li><p><strong>主权 AI 从口号变成采购单。</strong> 海湾国家用真金白银证明，"AI 主权"是能被购买的。这会给所有中等强国一个示范：不建自己的 AI 能力，就要在下一轮里被"租用"。</p></li>
+</ol>
+<hr />
+<h2 id="四对普通百姓意味着什么">四、对普通百姓意味着什么</h2>
+<h3 id="1-你的工作方式正在被重塑">1. 你的工作方式正在被重塑</h3>
+<p>这不是未来，而是这一两年正在发生的事。智能体会替你预约、比价、填表、写初稿、跑重复流程——一个会用智能体的人，效率可能是不会用的人的几倍。</p>
+<p>关于冲击有多大的争论非常激烈。Anthropic 公司 CEO 达里奥·阿莫代（Dario Amodei）预测，AI 可能<strong>消灭一半的初级白领岗位</strong>，并把失业率推高到 20%；而波士顿咨询公司（BCG）的判断更温和，认为 AI"重塑的岗位远多于替代的岗位"——很多人会保住原来的工作，但要面对全新的工作方式与要求。学术界的态度介于两者之间：斯坦福等机构的研究提醒，<strong>真正的冲击可能不是"一夜失业"，而是"同一份工作被要求用全新方式完成"。</strong></p>
+<p>对个人而言，最实际的结论是：<strong>与其担心哪一天被替代，不如现在就把智能体变成自己的杠杆。</strong></p>
+<h3 id="2-你的隐私边界正在模糊">2. 你的隐私边界正在模糊</h3>
+<p>Muse 的卖点是"主动帮你"，而"主动"的前提是它要<strong>长期读取你的数据</strong>——你的日程、你的习惯、你的对话、你的偏好。便利与监控，是同一枚硬币的两面。</p>
+<p>数据可以佐证这种张力：调查显示，<strong>81%</strong> 的美国消费者担心企业如何使用他们的数据。麦肯锡也把安全风险列为智能体规模化的头号障碍。当智能体要替你办事，它就必须知道得足够多；知道得足够多，就意味着你把自己的生活交托给了某个系统。</p>
+<h3 id="3-消费更被安排">3. 消费更"被安排"，但情感价值依然重要</h3>
+<p>未来的消费会越来越多地"被安排"：价格、推荐、决策由智能体代劳，你的选择权在被平台悄悄接管。这正是那"只有 4% 愿意让智能体独立下单"的数据所揭示的另一面——<strong>人们既想要便利，又本能地抗拒把决定权完全交出去。</strong></p>
+<p>但这里有一个容易被忽略的反面：<strong>情感与情绪价值，恰恰是智能体最难"接管"、也最不该被接管的部分。</strong> 近年来 AI 情感陪伴应用迅速爆发——AI 伴侣类应用累计下载量已达约 2.2 亿次，吸金超过 4 亿美元。但这些应用也一直伴随尖锐的质疑：<strong>当陪伴来自一个被设计来"让你满意"的程序，而不是一个有自己的喜怒哀乐、有"自己"的存在时，它到底算不算真正的陪伴？</strong></p>
+<p>正因为如此，一些打着"AI 伴侣"旗号的产品在中文互联网上被明确指出"没有'自己'""只是在扮演"。这个质疑触及了一个深层问题：<strong>智能体能替你比价、替你排程、替你执行任务，但它很难真正替你感受，也很难让你真正感到被理解。</strong> 情绪价值、真实的人际连接、被看见与被在乎——这些是人类之间的稀缺品，反而可能因为 AI 的普及而变得更加珍贵。</p>
+<p>换句话说，AI 越擅长"办事"，人对"真人真情绪"的需求就越突出。这既是风险（沉迷于算法给的即时满足），也是机会（把省下的时间，还给真正重要的人）。</p>
+<hr />
+<h2 id="五结论">五、结论：普通人该守住什么</h2>
+<p>这一串事件合起来，讲的是一个转变：<strong>AI 正从"能聊天的技术"，变成"要接管你工作流和决策入口的生意"。</strong> 芯片巨头买生态、三巨头抢智能体、海湾和东南亚抢第三极——竞争已经从技术本身，转向了<strong>入口</strong>和<strong>基础设施</strong>。</p>
+<p>对普通人而言，这一轮里红利与风险同样真实：效率工具是真的好用，隐私流失、就业挤压、选择权被平台代持也是真的在发生。最实际的应对，是两条看似矛盾、实则互补的原则：</p>
+<ul>
+<li><strong>主动学会使用智能体</strong>——把它当成杠杆，让自己的效率先上一个台阶，不要被动等待被替代。</li>
+<li><strong>同时守住一条底线：不让任何单一平台全权代理你</strong>——多平台并用，对"主动帮你"的助手保持清醒，把最重要的决定和最重要的情感，留给真人。</li>
+</ul>
+<p>技术会继续狂奔，但选择权，最好还是握在自己手里。</p>
+<hr />
+<h2 id="参考文献">参考文献</h2>
+<ol type="1">
+<li>NVIDIA. "NVIDIA to Acquire Hugging Face." NVIDIA Blog, 2026-09-03. <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/">https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/</a></li>
+<li>CNBC. "Nvidia agrees to buy Hugging Face for almost $13 billion." 2026-09-03. <a href="https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html">https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html</a></li>
+<li>证券时报. "AMD 豪掷 550 亿元收购李飞飞创立的 AI 实验室，李飞飞将加入 AMD 直接向苏姿丰汇报." 2026-09-28. <a href="https://www.stcn.com/live/video-detail/25857.html">https://www.stcn.com/live/video-detail/25857.html</a></li>
+<li>Meta. "Introducing Muse: The World's First Personal AI Agent." 2026-09-08. <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/</a></li>
+<li>Meta. "Everything We Announced at Meta Connect 2026." 2026-09-23. <a href="https://www.meta.com/blog/meta-connect-2026-everything-we-announced/">https://www.meta.com/blog/meta-connect-2026-everything-we-announced/</a></li>
+<li>TechCrunch. "Meta is expanding its AI agent Muse to small businesses." 2026-09-29. <a href="https://techcrunch.com/2026/09/29/meta-is-expanding-its-ai-agent-muse-to-small-businesses/">https://techcrunch.com/2026/09/29/meta-is-expanding-its-ai-agent-muse-to-small-businesses/</a></li>
+<li>OpenAI. "DevDay 2026 Recap." 2026-09-29. <a href="https://openai.com/index/devday-2026-recap/">https://openai.com/index/devday-2026-recap/</a></li>
+<li>Caixin Global. "ANVF INNOVATION 2026." <a href="https://www.caixinglobal.com/caixin-anvf-2026/">https://www.caixinglobal.com/caixin-anvf-2026/</a></li>
+<li>财新网. "2026 亚洲愿景论坛创新峰会 29 日启幕 共议'变革与韧性'." <a href="https://topics.caixin.com/2026/asia-new-vision-forum_2026/">https://topics.caixin.com/2026/asia-new-vision-forum_2026/</a></li>
+<li>Tech Week Singapore. 官网, 2026-09-29~30. <a href="https://www.singaporetechnologyweek.com/">https://www.singaporetechnologyweek.com/</a></li>
+<li>AI Everything Abu Dhabi. 官网, 2026-10-06~07. <a href="https://www.aieverythingabudhabi.com/">https://www.aieverythingabudhabi.com/</a></li>
+<li>Yahoo Finance. "Google, Microsoft, Meta, and Amazon capex spending to hit $725 billion in 2026." 2026-04-30. <a href="https://finance.yahoo.com/sectors/technology/articles/google-microsoft-meta-amazon-capex-131823436.html">https://finance.yahoo.com/sectors/technology/articles/google-microsoft-meta-amazon-capex-131823436.html</a></li>
+<li>Statista. "Big Tech's AI Spending to Reach $760 Billion in 2026." 2026-07-31. <a href="https://www.statista.com/chart/35046/capital-expenditure-of-meta-alphabet-amazon-and-microsoft/">https://www.statista.com/chart/35046/capital-expenditure-of-meta-alphabet-amazon-and-microsoft/</a></li>
+<li>ClusterBid. "Middle East GPU: Saudi Arabia &amp; UAE AI Buildout." <a href="https://clusterbid.com/blog/middle-east-gpu-investment-saudi-arabia-uae-ai-infrastructure">https://clusterbid.com/blog/middle-east-gpu-investment-saudi-arabia-uae-ai-infrastructure</a></li>
+<li>Phenomenal World. "Nvidia in the Gulf." <a href="https://phenomenalworld.org/analysis/nvidia-in-the-gulf/">https://phenomenalworld.org/analysis/nvidia-in-the-gulf/</a></li>
+<li>BCG X. "Personal AI Agents Compete on Trust, Not Capability." 2026-09. <a href="https://www.bcg.com/x/the-multiplier/personal-ai-agents-compete-on-trust">https://www.bcg.com/x/the-multiplier/personal-ai-agents-compete-on-trust</a></li>
+<li>McKinsey. "State of AI trust in 2026: Shifting to the agentic era." 2026-03-25. <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era">https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/tech-forward/state-of-ai-trust-in-2026-shifting-to-the-agentic-era</a></li>
+<li>IT之家（引杨百翰大学等研究）. "AI 伴侣应用吸金超 4 亿美元，近七成用户向人类伴侣隐瞒使用行为." 2026-07-15. <a href="https://www.ithome.com/0/977/200.htm">https://www.ithome.com/0/977/200.htm</a></li>
+<li>Incave. "A History of AI Companions: From ELIZA to the 2026 Boom." 2026-06-18. <a href="https://incave.io/blog/ai-companion-industry/">https://incave.io/blog/ai-companion-industry/</a></li>
+<li>Stanford SIEPR. "What is really happening to jobs? Separating AI hype from reality." 2026-07-06. <a href="https://siepr.stanford.edu/publications/policy-brief/what-really-happening-jobs-separating-ai-hype-reality">https://siepr.stanford.edu/publications/policy-brief/what-really-happening-jobs-separating-ai-hype-reality</a></li>
+<li>BCG. "AI Will Reshape More Jobs Than It Replaces." 2026-04-03. <a href="https://www.bcg.com/publications/2026/ai-will-reshape-more-jobs-than-it-replaces">https://www.bcg.com/publications/2026/ai-will-reshape-more-jobs-than-it-replaces</a></li>
+<li>Anthropic. "Labor market impacts of AI: A new measure." 2026-03-05. <a href="https://www.anthropic.com/research/labor-market-impacts">https://www.anthropic.com/research/labor-market-impacts</a></li>
+</ol>
+
+  </div>
+</Article>
