@@ -270,9 +270,9 @@ import Base from '../../layouts/Base.astro';
   .pub-imgs.pub-imgs-single { grid-template-columns: 1fr; max-width: 380px; }
   .pub-fig { margin: 0; background: #fff; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(15,43,70,0.08); }
   .pub-fig img { width: 100%; height: auto; display: block; }
-  /* Book chapters: cover keeps its original 258px width; TOC page enlarged to 1.8x its original height (proportional, no crop). */
-  .pub-imgs-books { grid-template-columns: 258px 464px; gap: 16px; max-width: none; align-items: start; }
-  .pub-imgs-books .pub-fig-toc img { width: 100%; }
+  /* Book chapters: cover and TOC page rendered at equal height (370px), widths auto by aspect. */
+  .pub-imgs-books { grid-template-columns: auto auto; justify-content: start; gap: 16px; max-width: none; align-items: start; }
+  .pub-imgs-books .pub-fig img { height: 370px; width: auto; }
   .pub-fig figcaption { padding: 7px 10px; font-size: 11.5px; color: var(--color-text-muted); text-align: center; border-top: 1px solid var(--color-border); }
   .pub-meta { padding-top: 12px; max-width: 780px; }
   .pub-title { font-size: 14px; line-height: 1.6; color: var(--color-text); margin: 0 0 8px; }
@@ -283,6 +283,7 @@ import Base from '../../layouts/Base.astro';
   @media (max-width: 768px) {
     .pub-imgs, .pub-imgs-books { grid-template-columns: 1fr; max-width: 100%; }
     .pub-imgs.pub-imgs-single { max-width: 100%; }
+    .pub-imgs-books .pub-fig img { height: auto; width: 100%; }
   }
 </style>
 
