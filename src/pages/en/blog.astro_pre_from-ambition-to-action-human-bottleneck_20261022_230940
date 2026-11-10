@@ -1,0 +1,213 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCover from '../../components/ArticleCover.astro';
+
+const pinned = [];
+const articles = [
+{ date: "2026-10-15", slug: "weo_2026_split_economy", title: "What Does the IMF's Latest Report Actually Say?", tags: "Global Economy, IMF, AI Investment, Geopolitics" },
+{ date: "2026-10-02", slug: "ai_power_regroup_2026", title: "Chips Buy Ecosystems, Giants Race for Agents, the Gulf Pursues a Third Pole: How to Understand the 2026 AI Power Regrouping", tags: "Frontier Tech, AI Industry, AI Agents, Compute Economy, Tech Geopolitics" },
+{ date: "2026-09-27", slug: "ai_education_standards_gateways_2026", title: "The Battle Over Standards and the Battle Over Gateways: Education AI's Two Fronts Open at Once in September 2026", tags: "Frontier Tech, AI Education, AI Literacy, Ecosystem Competition, LLM" },
+{ date: "2026-09-17", slug: "making_trust_verifiable", title: "Making Trust Verifiable: Three Trust Mechanisms in the AI Industry", tags: "Frontier Tech, AI Governance, Human-AI Fit, Open Weights, Digital Trust" },
+{ date: "2026-09-15", slug: "ai_brake_slowdown_2026", title: "Why Are AI Leaders Suddenly Calling for a Brake? A Structural Analysis of Speed, Control, and Competition", tags: "Frontier Tech, AI Governance, AI Safety, Recursive Self-Improvement, Human-AI Fit" },
+{ date: "2026-09-01", slug: "about_humanaifit", title: "Meet humanaifit — Where Humans and AI Actually Work Together", tags: "About, Human-AI Fit" },
+{ date: "2026-09-12", slug: "three_summits_ai_physical", title: "From Virtual to Physical: How Three Summits on September 12, 2026 Converged on One Question", tags: "Frontier Tech, World Models, Embodied AI, ECCV, Bund Summit, BRICS" },
+{ date: "2026-09-01", slug: "lingnan_daily_61_tales", title: "When AI Slop Shapes a Child's Mind, What Counts as \"Rooted\" Content? — An Answer from 61 Tales of Lingnan", tags: "Culture, Lingnan, AI Slop, Children" },
+{ date: "2026-09-01", slug: "ai_invisible_cost", title: "When AI Does All the Doing, What's the Most Important Thing Left for You?", tags: "Human-AI Fit, Individual, Emotional Tax, Cognition" },
+{ date: "2026-09-01", slug: "opc_individual_economy", title: "One Person + AI: From \"Using Tools\" to \"Becoming a Company\" — The Three Leaps", tags: "Human-AI Fit, OPC, Individual Economy, Globalization" },
+{ date: "2026-09-01", slug: "ai_irreplaceability_2026", title: "Four Reasons AI Can't Replace You: Translate, Level Up, Own a Niche, Stay Resilient", tags: "Human-AI Fit, Irreplaceability, Individual Competitiveness" },
+{ date: "2026-09-01", slug: "ai_widening_gap", title: "AI Is Widening the Gap, Not Closing It", tags: "Human-AI Fit, Gap, Competitiveness" },
+{ date: "2026-09-01", slug: "ai_knowledge_feeding", title: "Your Knowledge and Skills Get Distilled into AI — and How to Feed AI Well", tags: "Human-AI Fit, Knowledge Management, Two-Way Distillation" },
+{ date: "2026-09-01", slug: "ai_cognition_question", title: "Asking the Right Questions Is the Real Cognition in the AI Era", tags: "Human-AI Fit, Cognition, Originality, Questioning" },
+{ date: "2026-09-01", slug: "eu_compliance_carbon_guide", title: "Reading the Carbon Pricing Map — How the EU CBAM, UK CBAM, and Global Carbon Prices Reshape the Logic Beneath China's Exports", tags: "Carbon Compliance, CBAM, Carbon Pricing, EU" },
+{ date: "2026-09-01", slug: "eu_compliance_carbon_roadmap", title: "From HS Codes to Carbon Data Competitiveness — A Complete Practical Route for Chinese Exporters Facing CBAM", tags: "Carbon Compliance, CBAM, Practical Guide, Carbon Data" },
+{ date: "2026-09-01", slug: "cbam_agent_1_plus_3_x", title: "1+3+X: The Agent Architecture for CBAM Compliance", tags: "Carbon Compliance, CBAM, Agent Architecture" },
+{ date: "2026-09-01", slug: "smart_cars_going_global", title: "Smart Cars Going Global: A Mirror for Chinese Enterprises", tags: "Globalization, Smart Cars, Going Global" },
+{ date: "2026-09-01", slug: "china_going_global_challenges", title: "The Structural Challenges of China Going Global", tags: "Globalization, Going Global, Structural Challenges" },
+{ date: "2026-09-01", slug: "china_ai_global_value", title: "From Reading Papers to Eating Raw Data: China's AI — Three Fronts, One Unanswered Question", tags: "Globalization, China AI, Macro" },
+{ date: "2026-09-01", slug: "hukou_reform_2026", title: "Household Registration No Longer Matters That Much", tags: "Globalization, Hukou, Migrant Workers" },
+{ date: "2026-09-01", slug: "china_global_chessboard", title: "China's Cards for Going Global — and the Multipolar Competition of Globalization", tags: "Globalization, Going Global, Multipolar" },
+{ date: "2026-09-01", slug: "global_south_digital_livelihood", title: "The Global South: Digital Livelihoods, and Africa's AI Path", tags: "Globalization, Global South, Africa, Digital Livelihoods" },
+{ date: "2026-09-01", slug: "chinamaxxing_soft_power", title: "The Soft-Power Shift Behind Chinamaxxing: From \"Function\" to \"Way of Life\"", tags: "Globalization, Chinamaxxing, Soft Power" },
+{ date: "2026-09-01", slug: "parallel_currency_dedollarization", title: "Parallel Currencies: The New Reality of De-Dollarization in a Multipolar World", tags: "Globalization, De-Dollarization, Parallel Currency, RMB" },
+{ date: "2026-09-01", slug: "geotech_chips", title: "US Chip Export Controls on China, Decoded: The MATCH Act, the 2026 Escalation, and China's Computing Autonomy", tags: "AI Governance, Chip Controls, MATCH Act, Geotechnology" },
+{ date: "2026-09-01", slug: "global_ai_literacy_legal", title: "When \"Knowing AI\" Becomes Law: Why Global Rulemaking Keeps Landing on People", tags: "AI Governance, AI Literacy, Regulation" },
+{ date: "2026-09-01", slug: "ai_agent_era", title: "AI Agents Move From Demo to Production Line: Capability Breakout, the Enterprise Tipping Point, and the Governance Paradox", tags: "Frontier Tech, AI Agent, Enterprise Scaling, Governance" },
+{ date: "2026-09-01", slug: "embodied_intelligence", title: "Embodied Intelligence: US-China Technology Routes, Supply Chains, and the AI Factory", tags: "Frontier Tech, Embodied Intelligence, Robotics, Supply Chain" },
+{ date: "2026-09-01", slug: "ai_benchmarking", title: "The Underlying Logic of AI Evaluation: From LMArena's User Battles to Benchmark Rankings, Who Defines What Makes AI 'Good'", tags: "Frontier Tech, AI Evaluation, LMArena, Benchmark" },
+{ date: "2026-09-01", slug: "ai_productivity_paradox", title: "AI Productivity: Why You Don't See the Results", tags: "AI & Organization, Productivity, Efficiency" },
+{ date: "2026-09-01", slug: "ai_goes_consumer", title: "AI Goes Consumer: The Hardest Gate Isn't Technology, It's Trust", tags: "AI & Organization, Consumer AI, Trust" },
+{ date: "2026-09-01", slug: "enterprise_ai_rigor", title: "Enterprise AI Adoption: Rigorous Data Discipline and Systemic Reinvention", tags: "AI & Organization, Enterprise AI, Data, Systemic" },
+{ date: "2026-09-01", slug: "ai_rebuilding_training", title: "AI Is Rebuilding Corporate Training: Two Paths for Blue-Collar and White-Collar", tags: "AI & Organization, Corporate Training, Blue-Collar, White-Collar" },
+{ date: "2026-09-01", slug: "ai_adoption_people_2026", title: "The Last Mile of AI Adoption Is Usually Not Technical", tags: "AI & Organization, AI Adoption, People Factor" },
+{ date: "2026-09-01", slug: "digital_tech_reshape_collaboration", title: "When Digital Technology Reshapes Human Collaboration, the Boundaries of Management Are Being Rewritten", tags: "AI & Organization, Collaboration, Management" },
+{ date: "2026-09-01", slug: "ai_parenting_2026", title: "After Kids Start Using AI, the Real Job for Parents Isn't the Tool — It's These Two Things", tags: "AI Education, Parenting, Children" },
+{ date: "2026-09-01", slug: "7agents_childrens_day_2026", title: "Children's Day, Falling Birth Rates, and Fertility Willingness: A Cross-Disciplinary Dialogue with 7 AI AGENTS", tags: "AI Education, Children, Birth Rates, Fertility" },
+{ date: "2026-09-01", slug: "ai_literacy_expression", title: "AI Can Think One Thing and Say Another — The Lesson Schools Haven't Taught", tags: "AI Education, AI Literacy, Schools" },
+{ date: "2026-09-01", slug: "education_skills_mismatch", title: "Ten Frontier Industries Are All Starving for Talent. Is Education Keeping Pace?", tags: "AI Education, Frontier Industries, Skills Mismatch" },
+{ date: "2026-09-01", slug: "nev_policy_tables", title: "The NEV Policy Landscape in China, the EU and the US: Three Routes, One Battlefield", tags: "NEV Watch, NEV, China-EU-US" },
+];
+
+
+
+
+
+
+
+const tagGroups = ["All", "About", "Human-AI Fit", "Carbon Compliance", "Globalization", "Global Economy", "AI Governance & Policy", "Frontier Tech", "AI & Organization", "AI Education & Talent", "Culture", "NEV Watch"];
+---
+
+<Base title="Blog" description="Deep dives on Human-AI Fit, carbon compliance, globalization and knowledge management." lang="en" path="/en/blog/">
+  <section class="section" style="padding-top:96px;">
+    <div class="container text-center" style="position:relative;z-index:1;">
+      <p class="section-label" style="color:var(--color-accent);font-weight:600;">Blog</p>
+      <h1>Thinking at the Frontier</h1>
+      <p style="max-width:600px;margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);font-size:16px;">
+        Deep dives on Human-AI Fit, carbon compliance, globalization and knowledge management.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tag filter -->
+  <section style="padding:24px 0;border-bottom:1px solid var(--color-border);">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      {tagGroups.map(tag => (
+        <span class={`tag-filter ${tag === 'All' ? 'tag-active' : ''}`} data-tag={tag === 'All' ? 'all' : tag}>
+          {tag}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Pinned articles -->
+  <section class="section">
+    <div class="container" id="article-list">
+      {pinned.length > 0 && (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-accent);margin-bottom:24px;font-weight:500;">📌 Featured</h3>
+          <div style="display:grid;gap:20px;">
+            {pinned.map(item => (
+              <a href={`/en/blog/${item.slug}/`} class="article-card"
+                data-tags={item.tags}
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.02));
+                       border:1px solid rgba(201,169,110,0.3);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;display:flex;align-items:center;gap:16px;">
+                  <ArticleCover title={item.title} tags={item.tags} size="64px" radius="12px" />
+                  <div style="min-width:0;flex:1;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="blog-grid" id="blog-grid">
+        {articles.map(item => (
+          <a href={`/en/blog/${item.slug}/`} class="article-card"
+            data-tags={item.tags}
+            style="display:flex;flex-direction:column;
+                   padding:0;border-radius:14px;background:var(--color-surface);
+                   border:1px solid var(--color-border);transition:all 0.25s;
+                   text-decoration:none;overflow:hidden;">
+            <ArticleCover title={item.title} tags={item.tags} banner={true} radius="0" />
+            <div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1;">
+              <div style="font-size:15.5px;font-weight:600;color:var(--color-primary);line-height:1.5;">
+                {item.title}
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;">
+                {item.tags.split(', ').slice(0,3).map(t => (
+                  <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-dark text-center">
+    <div class="container">
+      <h2>Don't want to miss updates?</h2>
+      <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
+        Leave your contact and we'll notify you when new articles are published.
+      </p>
+      <a href="/en/contact/" class="btn btn-primary">Subscribe →</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 980px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  }
+  @media (max-width: 600px) {
+    .blog-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  .article-card { height: 100%; }
+  .article-card:hover {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 6px 20px rgba(201,169,110,0.16);
+    transform: translateY(-3px);
+  }
+  .tag-filter {
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s;
+    border:1.5px solid var(--color-border);
+    color:var(--color-text-secondary);
+    background:transparent;
+  }
+  .tag-filter:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent-dark) !important;
+  }
+  .tag-filter.tag-active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+</style>
+
+<script>
+  function filterArticles(el) {
+    document.querySelectorAll('.tag-filter').forEach(t => t.classList.remove('tag-active'));
+    el.classList.add('tag-active');
+    
+    const tag = el.dataset.tag;
+    document.querySelectorAll('.article-card').forEach(card => {
+      if (tag === 'all' || card.dataset.tags.includes(tag)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  document.querySelectorAll('.tag-filter').forEach(el => {
+    el.addEventListener('click', () => filterArticles(el));
+  });
+</script>

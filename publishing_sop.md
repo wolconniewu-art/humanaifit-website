@@ -207,6 +207,65 @@ bash approve_publish.sh --rollback <slug>
 | check_topic_repeat.py | 话题重复检查 | . |
 | auto_sync_check.py | 中英文同步巡检 | scripts/ |
 
+## 7. 订阅邮件通知（Buttondown，2026-10-22 接入）
+
+> 页脚「订阅更新」已接入免费 newsletter 服务 Buttondown：新文章发布成功后会**自动群发邮件**给所有订阅者。
+
+### 7.1 订阅侧（自动，无需手动）
+
+访客在页脚提交邮箱 → `POST /api/lead`（`source=subscribe`）→ `functions/api/lead.js` 调用 Buttondown `POST /v1/subscribers` 加入列表（`type=regular` 跳过双重确认）。非阻断：key 未配置时只退化为飞书留资，不影响原链路。
+
+### 7.2 群发侧（发布时自动触发，无需手动）
+
+`publish-article.sh` 导出 `PUBLISH_SLUG / PUBLISH_TITLE_ZH / PUBLISH_TITLE_EN` → `deploy_humanaifit.sh` 部署成功后 **Step 5** 调用 `scripts/notify_subscribers.py` 创建 email + `publish` 群发（中英文链接自动拼好）。无 key 时静默跳过（exit 0），**绝不阻断发布**。
+
+### 7.3 密钥与配置（换 key / 换账号时必看）
+
+Buttondown API key 存**两处**，缺一不可：
+
+| 位置 | 用途 |
+|------|------|
+| `~/.buttondown_key`（权限 0600） | 发布时群发脚本 `notify_subscribers.py` 读取 |
+| Cloudflare Pages 环境变量 `BUTTONDOWN_API_KEY`（secret_text） | 线上 `/api/lead` 订阅接口读取 |
+
+用 wrangler 配 secret：
+```bash
+printf '%s' '<key>' | CLOUDFLARE_API_TOKEN="$(cat ~/.wsl_cf_token)" \
+  npx wrangler pages secret put BUTTONDOWN_API_KEY --project-name humanaifit-website
+```
+
+### 7.4 踩坑（复用必看）
+
+1. **新账号防火墙拦截**：Buttondown 新账号默认拦截所有新订阅者（报 `subscriber_blocked: blocked by your firewall`），**没有 API 可关**——必须在网页 https://buttondown.com/settings/firewall 手动关防火墙，并完成「Write your first email」激活。
+2. **key 报 401 先别急着换**：先用「从文件读 key 并 `tr -d '\r\n'` 去换行」重测，大概率是传参转写问题而非 key 失效。
+3. **端到端验证用 `recipients` 定向发送**：`send-draft` 支持 `recipients` 参数只发给测试邮箱，避免打扰真实订阅者；验证完 DELETE 清理测试邮箱/测试邮件。
+4. **真正群发必须用 `publish` 端点，不是 `send-draft`**：`send-draft` 是「发测试预览」端点（邮件只停在 `draft` 状态，不会发给订阅者）；真正群发要 `POST /emails/{id}/publish`。曾误用 `send-draft` 导致通知邮件一直停在 draft 没发出去——脚本已改，别再改回去。
+
+### 7.5 手动触发群发（补发 / 测试）
+
+```bash
+cd humanaifit-website
+python3 scripts/notify_subscribers.py <slug> <中文标题> <英文标题> [中文URL] [英文URL]
+```
+
+---
+
+## 8. 发布脚本踩坑（2026-10-22 血泪，复用必看）
+
+> 以下三个 bug 均影响**所有走 publish-article.sh 流程的文章**，已修复；以后若遇到类似现象先查这里。
+
+1. **`md_to_astro.py` 多位数有序列表 bug**：旧代码用 `stripped[0].isdigit() and stripped[1:2]=='.'` 判断有序列表，只能识别 `1.`–`9.` 单位数编号；`10.` 起（`10.` 的第二个字符是 `0` 不是 `.`）判断失败，被当成段落 → 参考文献第 10 条起全部崩坏（`<ol>` 里混进 `<p>`，参考文献格式门禁报错）。已改为 `re.match(r'^\d+\.\s', ...)`。**症状**：构建时报「参考文献 <ol> 内含 <p> 标签」，且恰好是第 10 条起。
+
+2. **`md_to_astro.py` 缺 `# ` 一级标题处理**：旧代码只处理 `## `（h2）和 `### `（h3），`# 标题` 被当成普通段落（16px）+ 字面量 `#` 号。已补 `# ` → `<h1>`；同时 `BlogLayout.astro` 补了 `.article-body h1` 样式（桌面 clamp(1.75rem,2.5vw+0.5rem,2.25rem)，移动 1.6rem）。**症状**：文章标题字号异常小、前面还顶着个 `#`。
+
+3. **`register_blog_article.py` 中英 tags 未翻译**：旧代码把同一套中文 tags 同时写进中英文两个 blog.astro，导致英文博客卡片显示中文标签。已加 `TAG_ZH2EN` 映射表 + `tags_to_en()`，注册英文 blog 时自动翻译。**症状**：英文 `/en/blog/` 卡片封面/标签显示中文。
+
+4. **`md_to_astro.py` 用 `layout: "@/layouts/BlogLayout.astro"` 导致页面缺 charset → 中文乱码**：这种 frontmatter `layout:` 写法渲染时 `<html><head><body><meta charset>` 整个外壳丢失（只剩 `<!DOCTYPE html>` + 正文）。**必须改用老文章同款 `import Article from '../../layouts/Article.astro'` + `<Article>` 组件写法**（41 篇老文章已验证）。`md_to_astro.py` 已重写为 Article 组件结构。**症状**：文章页标题/正文中文乱码，`curl` 页面 HTML 里 grep 不到 `<meta charset>`。
+
+5. **`register_blog_article.py` 的 `safe_title()` 把 `'` 转成 `&apos;` 导致英文卡片标题乱码**：blog.astro 的标题放在 **JS 字符串**（`title: "..."`）里，不是 HTML 属性，所以单引号、`&` 必须原样保留，只需转义反斜杠和双引号。旧代码用 HTML 实体转义（`'`→`&apos;`），Astro 渲染时又转义 `&`→`&amp;`，最终浏览器显示字面量 `&apos;`。**症状**：英文 `/en/blog/` 卡片标题显示 `Isn&apos;t` 这种乱码（文章页标题正常，因为那里是 HTML 属性）。
+
+---
+
 ## 附录：禁用操作
 
 - ❌ 禁止绕过 publish-article.sh 直接编辑 blog.astro

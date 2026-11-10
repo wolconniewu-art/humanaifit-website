@@ -209,7 +209,7 @@ import '../styles/global.css';
         <div>
           <h4>{isCn ? '订阅更新' : 'Subscribe'}</h4>
           <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:var(--spacing-sm);">
-            {isCn ? '每周精选博客，直接到你的邮箱。' : 'Weekly insights delivered to your inbox.'}
+            {isCn ? '新文章发布时，直接到你的邮箱。' : 'New posts delivered straight to your inbox.'}
           </p>
           <form id="footerSubscribe" onsubmit="return humaSubscribe(event)" style="display:flex;gap:6px;">
             <input type="email" name="email" placeholder={isCn ? '输入邮箱' : 'your@email.com'} required style="flex:1;min-width:0;padding:8px 12px;border:1px solid var(--color-border);border-radius:6px;font-size:13px;background:var(--color-bg);" />

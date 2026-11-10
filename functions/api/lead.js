@@ -12,6 +12,20 @@
 const FEISHU_APP_ID_DEFAULT = 'cli_aaaa6529aebadcff';
 const CHAT_ID_DEFAULT = 'oc_c9e23bedfec97d8491c4787f0c2dca42';
 
+// Buttondown newsletter（页脚订阅 → 真实邮件群发）
+const BUTTONDOWN_API_BASE = 'https://api.buttondown.com/v1';
+
+async function subscribeToButtondown(email, apiKey) {
+  return fetch(`${BUTTONDOWN_API_BASE}/subscribers`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Token ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email_address: email, type: 'regular' }),
+  });
+}
+
 // 兜底 secret：已移除明文硬编码（2026-08-29 安全加固，密钥轮换后）。
 // 必须从 Cloudflare Pages 环境变量读取 FEISHU_APP_SECRET（dashboard/wrangler 配置）。
 const FEISHU_APP_SECRET_FALLBACK = ''; // 无明文兜底，强制走环境变量
@@ -67,6 +81,22 @@ export async function onRequest(context) {
     const { nickname, name, email, contact, intent, source, note, result } = body;
     const now = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
 
+    // ---- 页脚订阅 → Buttondown 真实邮件群发（非阻断）----
+    let newsletterStatus = null;
+    if (source === 'subscribe' && email) {
+      const bdKey = context.env.BUTTONDOWN_API_KEY;
+      if (bdKey) {
+        try {
+          const bdResp = await subscribeToButtondown(email, bdKey);
+          newsletterStatus = bdResp.ok ? '已加入邮件通知列表' : `失败(${bdResp.status})`;
+        } catch (e) {
+          newsletterStatus = `失败(${e.message})`;
+        }
+      } else {
+        newsletterStatus = '未配置(BUTTONDOWN_API_KEY)';
+      }
+    }
+
     // ---- 判断是"AI素养诊断"还是"通用线索" ----
     const isDiagnosis = !!(result && (result.type || result.typeLabel));
     const srcLabel = SOURCE_LABELS[source] || SOURCE_LABELS.default;
@@ -115,6 +145,7 @@ export async function onRequest(context) {
           { tag: 'div', text: { tag: 'lark_md', content: `**📞 联系方式：**${contact || '未填写'}` } },
           { tag: 'div', text: { tag: 'lark_md', content: `**🎯 意向：**${intentLabel}` } },
           ...(note ? [{ tag: 'div', text: { tag: 'lark_md', content: `**📝 需求：**${note}` } }] : []),
+          ...(newsletterStatus ? [{ tag: 'div', text: { tag: 'lark_md', content: `**✉️ 邮件订阅：**${newsletterStatus}` } }] : []),
         ],
       };
     }

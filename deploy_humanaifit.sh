@@ -176,3 +176,10 @@ echo ""
 echo "=========================================="
 echo "  部署完成！访问 https://www.humanaifit.com 查看"
 echo "=========================================="
+
+# ---- Step 5: 向订阅者发送新文章通知（仅发布新文章时）----
+if [ -n "${PUBLISH_SLUG:-}" ] && [ -n "${PUBLISH_TITLE_ZH:-}" ]; then
+  echo ""
+  echo "Step 5: 向订阅者发送新文章通知..."
+  python3 scripts/notify_subscribers.py "$PUBLISH_SLUG" "$PUBLISH_TITLE_ZH" "${PUBLISH_TITLE_EN:-}" || echo "   ⚠️ 通知发送失败（非阻断，不影响部署结果）"
+fi

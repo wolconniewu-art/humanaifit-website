@@ -1,0 +1,211 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleCover from '../components/ArticleCover.astro';
+
+const pinned = [];
+const articles = [
+{ date: "2026-10-15", slug: "weo_2026_split_economy", title: "IMF 最新报告都说了些啥？", tags: "全球经济, IMF, AI投资, 地缘政治" },
+{ date: "2026-10-02", slug: "ai_power_regroup_2026", title: "芯片买生态、巨头抢智能体、海湾抢第三极：如何理解 2026 年这场 AI 权力重组？", tags: "前沿科技, AI产业, 智能体, 算力经济, 科技地缘" },
+{ date: "2026-09-27", slug: "ai_education_standards_gateways_2026", title: "教育AI的「标准之争」与「入口之争」：2026年9月，两条战线同时开打", tags: "前沿科技, AI教育, AI素养, 生态竞争, 大模型" },
+{ date: "2026-09-17", slug: "making_trust_verifiable", title: "信任的可验证化：AI 产业的三条信任机制", tags: "前沿科技, AI治理与政策, 人机契合, 开源权重, 数字信任" },
+{ date: "2026-09-15", slug: "ai_brake_slowdown_2026", title: "大佬们为什么突然喊\"踩刹车\"？关于AI速度、控制权与竞争的结构性分析", tags: "前沿科技, AI治理与政策, AI安全, 递归自我改进, 人机契合" },
+{ date: "2026-09-01", slug: "about_humanaifit", title: "认识humanaifit——让人与AI真正协同", tags: "关于, 人机契合" },
+{ date: "2026-09-12", slug: "three_summits_ai_physical", title: "AI 从虚拟走向物理：2026 年 9 月 12 日，三场大会在同一个问题上收敛", tags: "前沿科技, 世界模型, 具身智能, ECCV, 外滩大会, 金砖峰会" },
+{ date: "2026-09-01", slug: "lingnan_daily_61_tales", title: "当AI垃圾内容塑造孩子的认知，什么才是\"有根的内容\"？——61个岭南故事给出的答案", tags: "文化纪实, 岭南, AI垃圾内容, 儿童" },
+{ date: "2026-09-01", slug: "ai_invisible_cost", title: "当 AI 把活都替你干了，你最该做的是什么？", tags: "人机契合, 个体, 情绪税, 认知" },
+{ date: "2026-09-01", slug: "opc_individual_economy", title: "一个人 + AI：从\"会用工具\"到\"活成公司\"的三层跨越", tags: "人机契合, OPC, 个体经济, 全球化" },
+{ date: "2026-09-01", slug: "ai_irreplaceability_2026", title: "AI 替代不了你的四个理由：翻译、层级、份额、适应力", tags: "人机契合, 不可替代, 个体竞争力" },
+{ date: "2026-09-01", slug: "ai_widening_gap", title: "AI 没有抹平差距，它在拉开差距", tags: "人机契合, 差距, 竞争力" },
+{ date: "2026-09-01", slug: "ai_knowledge_feeding", title: "你的知识与技能，怎样被AI学走、怎样喂好AI", tags: "人机契合, 知识管理, 双向蒸馏" },
+{ date: "2026-09-01", slug: "ai_cognition_question", title: "会问问题，才是AI时代真正的认知", tags: "人机契合, 认知, 原创性, 提问" },
+{ date: "2026-09-01", slug: "eu_compliance_carbon_guide", title: "读懂碳世界的定价地图——欧盟CBAM、英国CBAM与全球碳价如何重构中国出口的底层逻辑", tags: "碳合规, CBAM, 碳定价, 中欧" },
+{ date: "2026-09-01", slug: "eu_compliance_carbon_roadmap", title: "从HS编码到碳数据竞争力——中国出口企业应对CBAM的完整实操路线", tags: "碳合规, CBAM, 实操, 碳数据" },
+{ date: "2026-09-01", slug: "cbam_agent_1_plus_3_x", title: "1+3+X：CBAM合规的Agent架构", tags: "碳合规, CBAM, Agent架构" },
+{ date: "2026-09-01", slug: "smart_cars_going_global", title: "智能汽车出海，中企全球化的一面镜子", tags: "中国全球化, 智能汽车, 出海" },
+{ date: "2026-09-01", slug: "china_going_global_challenges", title: "中国出海的结构性挑战", tags: "中国全球化, 出海, 结构挑战" },
+{ date: "2026-09-01", slug: "china_ai_global_value", title: "从\"会读论文\"到\"能吃数据\"：中国 AI 的三条战线，和一个还没答案的问题", tags: "中国全球化, 中国AI, 宏观" },
+{ date: "2026-09-01", slug: "hukou_reform_2026", title: "户口不再那么重要", tags: "中国全球化, 户口, 流动人口" },
+{ date: "2026-09-01", slug: "china_global_chessboard", title: "中国出海的底牌，与全球化的多极竞合", tags: "中国全球化, 出海, 多极竞合" },
+{ date: "2026-09-01", slug: "global_south_digital_livelihood", title: "全球南方：数字民生，与非洲的 AI 之路", tags: "中国全球化, 全球南方, 非洲, 数字民生" },
+{ date: "2026-09-01", slug: "chinamaxxing_soft_power", title: "Chinamaxxing 背后的软实力重构：从\"功能认可\"到\"生活方式认同\"", tags: "中国全球化, Chinamaxxing, 软实力" },
+{ date: "2026-09-01", slug: "parallel_currency_dedollarization", title: "平行货币：多极世界的去美元化新现实", tags: "中国全球化, 去美元化, 平行货币, 人民币国际化" },
+{ date: "2026-09-01", slug: "geotech_chips", title: "美国对华芯片出口管制全解：MATCH法案、2026升级与中国算力自主", tags: "AI治理与政策, 芯片管制, MATCH法案, 地缘科技" },
+{ date: "2026-09-01", slug: "global_ai_literacy_legal", title: "当全球把\"会AI\"写进法律：监管在做减法，为什么最终都指向人？", tags: "AI治理与政策, AI素养, 监管" },
+{ date: "2026-09-01", slug: "ai_agent_era", title: "AI Agent 从 Demo 到生产线：能力爆发、企业规模化的临界点与治理悖论", tags: "前沿科技, AI Agent, 企业规模化, 治理" },
+{ date: "2026-09-01", slug: "embodied_intelligence", title: "具身智能：中美技术路线、供应链与AI工厂", tags: "前沿科技, 具身智能, 机器人, 供应链, AI工厂" },
+{ date: "2026-09-01", slug: "ai_benchmarking", title: "AI评测的底层逻辑：从用户对战的LMArena到基准排名，谁在定义AI好坏", tags: "前沿科技, AI评测, LMArena, 基准" },
+{ date: "2026-09-01", slug: "ai_productivity_paradox", title: "AI生产力：为什么看不见效果", tags: "AI与组织, 生产力, 效率" },
+{ date: "2026-09-01", slug: "ai_goes_consumer", title: "AI走向消费：最难的关口不是技术，是信任", tags: "AI与组织, 消费AI, 信任" },
+{ date: "2026-09-01", slug: "enterprise_ai_rigor", title: "企业AI落地：严谨的数据观与系统性重塑", tags: "AI与组织, 企业AI, 数据, 系统性" },
+{ date: "2026-09-01", slug: "ai_rebuilding_training", title: "AI重构企业培训：蓝领与白领的两种路线", tags: "AI与组织, 企业培训, 蓝领, 白领" },
+{ date: "2026-09-01", slug: "ai_adoption_people_2026", title: "AI 落不了地，问题多半不在 AI", tags: "AI与组织, AI采纳, 人的因素" },
+{ date: "2026-09-01", slug: "digital_tech_reshape_collaboration", title: "当数字技术重塑人类协作方式，管理学的边界正在被重写", tags: "AI与组织, 协作, 管理学" },
+{ date: "2026-09-01", slug: "ai_parenting_2026", title: "孩子用上AI之后，家长真正该管的不是工具，是这两件事", tags: "AI教育与人, 家长, 儿童, 教养" },
+{ date: "2026-09-01", slug: "7agents_childrens_day_2026", title: "儿童节、少子化与生育意愿：7位AI AGENT的一次跨学科深谈", tags: "AI教育与人, 儿童, 少子化, 生育意愿" },
+{ date: "2026-09-01", slug: "ai_literacy_expression", title: "AI心里想的，和说出来的可能不一样——学校还没教这堂课", tags: "AI教育与人, AI素养, 学校教育" },
+{ date: "2026-09-01", slug: "education_skills_mismatch", title: "未来产业十大赛道同时缺人，教育跟上节奏了吗？", tags: "AI教育与人, 未来产业, 技能错配" },
+{ date: "2026-09-01", slug: "nev_policy_tables", title: "中欧美新能源政策全景：三条路线，一个战场", tags: "新能源观察, 新能源, 中欧美" },
+];
+
+
+
+
+
+
+
+const tagGroups = ["全部", "关于", "人机契合", "碳合规", "中国全球化", "全球经济", "AI治理与政策", "前沿科技", "AI与组织", "AI教育与人", "文化纪实", "新能源观察"];
+---
+
+<Base title="博客" description="关于人机契合、碳合规、全球化与知识管理的深度文章。" lang="zh-CN" path="/blog/">
+  <section class="section" style="padding-top:96px;">
+    <div class="container text-center" style="position:relative;z-index:1;">
+      <p class="section-label" style="color:var(--color-accent);font-weight:600;">博客</p>
+      <h1>前沿思考</h1>
+      <p style="margin:var(--spacing-md) auto 0;color:var(--color-text-secondary);font-size:16px;max-width:600px;">
+        关于人机契合、碳合规、全球化与知识管理的深度文章。
+      </p>
+    </div>
+  </section>
+
+  <!-- Tag filter -->
+  <section style="padding:24px 0;border-bottom:1px solid var(--color-border);">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      {tagGroups.map(tag => (
+        <span class={`tag-filter ${tag === '全部' ? 'tag-active' : ''}`} data-tag={tag === '全部' ? 'all' : tag}>
+          {tag}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Pinned articles -->
+  <section class="section">
+    <div class="container" id="article-list">
+      {pinned.length > 0 && (
+        <div style="margin-bottom:48px;">
+          <h3 style="font-size:1.1rem;color:var(--color-accent);margin-bottom:24px;font-weight:500;">📌 Featured</h3>
+          <div style="display:grid;gap:20px;">
+            {pinned.map(item => (
+              <a href={`/blog/${item.slug}/`} class="article-card"
+                data-tags={item.tags}
+                style="display:flex;justify-content:space-between;align-items:center;
+                       padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.02));
+                       border:1px solid rgba(201,169,110,0.3);transition:all 0.25s;
+                       text-decoration:none;gap:24px;">
+                <div style="flex:1;min-width:0;display:flex;align-items:center;gap:16px;">
+                  <ArticleCover title={item.title} tags={item.tags} size="56px" radius="12px" />
+                  <div style="min-width:0;flex:1;">
+                  <div style="font-size:15px;font-weight:600;color:var(--color-primary);margin-bottom:6px;line-height:1.4;">
+                    {item.title}
+                  </div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    {item.tags.split(', ').map(t => (
+                      <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                    ))}
+                  </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="blog-grid" id="blog-grid">
+        {articles.map(item => (
+          <a href={`/blog/${item.slug}/`} class="article-card"
+            data-tags={item.tags}
+            style="display:flex;flex-direction:column;
+                   padding:0;border-radius:14px;background:var(--color-surface);
+                   border:1px solid var(--color-border);transition:all 0.25s;
+                   text-decoration:none;overflow:hidden;">
+            <ArticleCover title={item.title} tags={item.tags} banner={true} radius="0" />
+            <div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1;">
+              <div style="font-size:15.5px;font-weight:600;color:var(--color-primary);line-height:1.5;">
+                {item.title}
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;">
+                {item.tags.split(', ').slice(0,3).map(t => (
+                  <span style="padding:2px 8px;background:rgba(201,169,110,0.1);border-radius:10px;font-size:11px;color:var(--color-accent-dark);">{t}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark text-center">
+    <div class="container">
+      <h2>不想错过更新？</h2>
+      <p style="max-width:500px;margin:var(--spacing-md) auto var(--spacing-xl);opacity:0.85;font-size:15px;">
+        留下邮箱，有新文章发布时通知你。
+      </p>
+      <a href="/contact/" class="btn btn-primary">订阅 →</a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 980px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  }
+  @media (max-width: 600px) {
+    .blog-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  .article-card {
+    height: 100%;
+  }
+  .article-card:hover {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 6px 20px rgba(201,169,110,0.16);
+    transform: translateY(-3px);
+  }
+  .tag-filter {
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.2s;
+    border:1.5px solid var(--color-border);
+    color:var(--color-text-secondary);
+    background:transparent;
+  }
+  .tag-filter:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent-dark) !important;
+  }
+  .tag-filter.tag-active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+</style>
+
+<script>
+  function filterArticles(el) {
+    document.querySelectorAll('.tag-filter').forEach(t => t.classList.remove('tag-active'));
+    el.classList.add('tag-active');
+    
+    const tag = el.dataset.tag;
+    document.querySelectorAll('.article-card').forEach(card => {
+      if (tag === 'all' || card.dataset.tags.includes(tag)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  document.querySelectorAll('.tag-filter').forEach(el => {
+    el.addEventListener('click', () => filterArticles(el));
+  });
+</script>

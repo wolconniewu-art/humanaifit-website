@@ -69,6 +69,14 @@ const path = Astro.url.pathname;
       line-height: 1.9;
       color: var(--color-text);
     }
+    .article-body h1 {
+      font-size: clamp(1.75rem, 2.5vw + 0.5rem, 2.25rem);
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 24px 0;
+      color: var(--color-primary, #0F2B46);
+      letter-spacing: -0.01em;
+    }
     .article-body h2 {
       font-size: 1.5rem;
       margin-top: 48px;
@@ -184,6 +192,7 @@ const path = Astro.url.pathname;
     @media (max-width: 768px) {
       .article-hero { padding: 90px 0 24px; }
       .article-body { font-size: 15px; padding: 24px var(--content-padding) 80px; }
+      .article-body h1 { font-size: 1.6rem; }
       .article-body h2 { font-size: 1.3rem; }
     }
   </style>

@@ -44,6 +44,11 @@ DATE="$4"
 SCENE="$5"
 shift 5
 
+# 供 deploy_humanaifit.sh 部署后向订阅者发送新文章通知
+export PUBLISH_SLUG="$SLUG"
+export PUBLISH_TITLE_ZH="$TITLE_ZH"
+export PUBLISH_TITLE_EN="$TITLE_EN"
+
 ZH_FILE=""; EN_FILE=""
 SKIP_PREFLIGHT=false
 FORCE_DEPLOY=false
